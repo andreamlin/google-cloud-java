@@ -301,8 +301,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
 
   private final UnaryCallable<AddSignedUrlKeyBackendServiceHttpRequest, Operation>
       addSignedUrlKeyBackendServiceCallable;
-  private final OperationCallable<
-          AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendServiceOperationCallable;
   private final UnaryCallable<
           AggregatedListBackendServicesHttpRequest, BackendServiceAggregatedList>
@@ -312,12 +311,12 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
       aggregatedListBackendServicesPagedCallable;
   private final UnaryCallable<DeleteBackendServiceHttpRequest, Operation>
       deleteBackendServiceCallable;
-  private final OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteBackendServiceOperationCallable;
   private final UnaryCallable<DeleteSignedUrlKeyBackendServiceHttpRequest, Operation>
       deleteSignedUrlKeyBackendServiceCallable;
   private final OperationCallable<
-          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendServiceOperationCallable;
   private final UnaryCallable<GetBackendServiceHttpRequest, BackendService>
       getBackendServiceCallable;
@@ -325,7 +324,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
       getHealthBackendServiceCallable;
   private final UnaryCallable<InsertBackendServiceHttpRequest, Operation>
       insertBackendServiceCallable;
-  private final OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, Operation>
       insertBackendServiceOperationCallable;
   private final UnaryCallable<ListBackendServicesHttpRequest, BackendServiceList>
       listBackendServicesCallable;
@@ -333,16 +332,16 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
       listBackendServicesPagedCallable;
   private final UnaryCallable<PatchBackendServiceHttpRequest, Operation>
       patchBackendServiceCallable;
-  private final OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, Operation>
       patchBackendServiceOperationCallable;
   private final UnaryCallable<SetSecurityPolicyBackendServiceHttpRequest, Operation>
       setSecurityPolicyBackendServiceCallable;
   private final OperationCallable<
-          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, Operation>
       setSecurityPolicyBackendServiceOperationCallable;
   private final UnaryCallable<UpdateBackendServiceHttpRequest, Operation>
       updateBackendServiceCallable;
-  private final OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, Operation>
       updateBackendServiceOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -564,7 +563,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendServiceOperationCallable() {
     return addSignedUrlKeyBackendServiceOperationCallable;
   }
@@ -589,7 +588,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteBackendServiceOperationCallable() {
     return deleteBackendServiceOperationCallable;
   }
@@ -600,7 +599,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendServiceOperationCallable() {
     return deleteSignedUrlKeyBackendServiceOperationCallable;
   }
@@ -623,7 +622,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, Operation>
       insertBackendServiceOperationCallable() {
     return insertBackendServiceOperationCallable;
   }
@@ -646,7 +645,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, Operation>
       patchBackendServiceOperationCallable() {
     return patchBackendServiceOperationCallable;
   }
@@ -657,7 +656,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, Operation>
       setSecurityPolicyBackendServiceOperationCallable() {
     return setSecurityPolicyBackendServiceOperationCallable;
   }
@@ -669,7 +668,7 @@ public class HttpJsonBackendServiceStub extends BackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, Operation>
       updateBackendServiceOperationCallable() {
     return updateBackendServiceOperationCallable;
   }

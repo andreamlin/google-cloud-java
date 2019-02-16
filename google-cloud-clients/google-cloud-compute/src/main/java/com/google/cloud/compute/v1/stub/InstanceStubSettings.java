@@ -139,8 +139,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   private final UnaryCallSettings<AddAccessConfigInstanceHttpRequest, Operation>
       addAccessConfigInstanceSettings;
-  private final OperationCallSettings<
-          AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationSettings;
   private final PagedCallSettings<
           AggregatedListInstancesHttpRequest,
@@ -149,19 +148,19 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
       aggregatedListInstancesSettings;
   private final UnaryCallSettings<AttachDiskInstanceHttpRequest, Operation>
       attachDiskInstanceSettings;
-  private final OperationCallSettings<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationSettings;
   private final UnaryCallSettings<DeleteInstanceHttpRequest, Operation> deleteInstanceSettings;
-  private final OperationCallSettings<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationSettings;
   private final UnaryCallSettings<DeleteAccessConfigInstanceHttpRequest, Operation>
       deleteAccessConfigInstanceSettings;
   private final OperationCallSettings<
-          DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationSettings;
   private final UnaryCallSettings<DetachDiskInstanceHttpRequest, Operation>
       detachDiskInstanceSettings;
-  private final OperationCallSettings<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationSettings;
   private final UnaryCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings;
   private final UnaryCallSettings<GetIamPolicyInstanceHttpRequest, Policy>
@@ -169,7 +168,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
   private final UnaryCallSettings<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput>
       getSerialPortOutputInstanceSettings;
   private final UnaryCallSettings<InsertInstanceHttpRequest, Operation> insertInstanceSettings;
-  private final OperationCallSettings<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationSettings;
   private final PagedCallSettings<
           ListInstancesHttpRequest, InstanceList, ListInstancesPagedResponse>
@@ -180,81 +179,78 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
           ListReferrersInstancesPagedResponse>
       listReferrersInstancesSettings;
   private final UnaryCallSettings<ResetInstanceHttpRequest, Operation> resetInstanceSettings;
-  private final OperationCallSettings<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationSettings;
   private final UnaryCallSettings<SetDeletionProtectionInstanceHttpRequest, Operation>
       setDeletionProtectionInstanceSettings;
   private final OperationCallSettings<
-          SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationSettings;
   private final UnaryCallSettings<SetDiskAutoDeleteInstanceHttpRequest, Operation>
       setDiskAutoDeleteInstanceSettings;
-  private final OperationCallSettings<
-          SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationSettings;
   private final UnaryCallSettings<SetIamPolicyInstanceHttpRequest, Policy>
       setIamPolicyInstanceSettings;
   private final UnaryCallSettings<SetLabelsInstanceHttpRequest, Operation>
       setLabelsInstanceSettings;
-  private final OperationCallSettings<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationSettings;
   private final UnaryCallSettings<SetMachineResourcesInstanceHttpRequest, Operation>
       setMachineResourcesInstanceSettings;
   private final OperationCallSettings<
-          SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationSettings;
   private final UnaryCallSettings<SetMachineTypeInstanceHttpRequest, Operation>
       setMachineTypeInstanceSettings;
-  private final OperationCallSettings<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationSettings;
   private final UnaryCallSettings<SetMetadataInstanceHttpRequest, Operation>
       setMetadataInstanceSettings;
-  private final OperationCallSettings<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationSettings;
   private final UnaryCallSettings<SetMinCpuPlatformInstanceHttpRequest, Operation>
       setMinCpuPlatformInstanceSettings;
-  private final OperationCallSettings<
-          SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationSettings;
   private final UnaryCallSettings<SetSchedulingInstanceHttpRequest, Operation>
       setSchedulingInstanceSettings;
-  private final OperationCallSettings<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationSettings;
   private final UnaryCallSettings<SetServiceAccountInstanceHttpRequest, Operation>
       setServiceAccountInstanceSettings;
-  private final OperationCallSettings<
-          SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationSettings;
   private final UnaryCallSettings<SetTagsInstanceHttpRequest, Operation> setTagsInstanceSettings;
-  private final OperationCallSettings<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationSettings;
   private final UnaryCallSettings<SimulateMaintenanceEventInstanceHttpRequest, Operation>
       simulateMaintenanceEventInstanceSettings;
   private final OperationCallSettings<
-          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationSettings;
   private final UnaryCallSettings<StartInstanceHttpRequest, Operation> startInstanceSettings;
-  private final OperationCallSettings<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationSettings;
   private final UnaryCallSettings<StartWithEncryptionKeyInstanceHttpRequest, Operation>
       startWithEncryptionKeyInstanceSettings;
   private final OperationCallSettings<
-          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationSettings;
   private final UnaryCallSettings<StopInstanceHttpRequest, Operation> stopInstanceSettings;
-  private final OperationCallSettings<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsInstanceHttpRequest, TestPermissionsResponse>
       testIamPermissionsInstanceSettings;
   private final UnaryCallSettings<UpdateAccessConfigInstanceHttpRequest, Operation>
       updateAccessConfigInstanceSettings;
   private final OperationCallSettings<
-          UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationSettings;
   private final UnaryCallSettings<UpdateNetworkInterfaceInstanceHttpRequest, Operation>
       updateNetworkInterfaceInstanceSettings;
   private final OperationCallSettings<
-          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationSettings;
 
   /** Returns the object with the settings used for calls to addAccessConfigInstance. */
@@ -265,7 +261,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to addAccessConfigInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationSettings() {
     return addAccessConfigInstanceOperationSettings;
   }
@@ -286,7 +282,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to attachDiskInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationSettings() {
     return attachDiskInstanceOperationSettings;
   }
@@ -298,7 +294,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationSettings() {
     return deleteInstanceOperationSettings;
   }
@@ -311,7 +307,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteAccessConfigInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationSettings() {
     return deleteAccessConfigInstanceOperationSettings;
   }
@@ -323,7 +319,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to detachDiskInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationSettings() {
     return detachDiskInstanceOperationSettings;
   }
@@ -351,7 +347,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to insertInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationSettings() {
     return insertInstanceOperationSettings;
   }
@@ -378,7 +374,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to resetInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationSettings() {
     return resetInstanceOperationSettings;
   }
@@ -391,7 +387,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setDeletionProtectionInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationSettings() {
     return setDeletionProtectionInstanceOperationSettings;
   }
@@ -404,7 +400,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setDiskAutoDeleteInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationSettings() {
     return setDiskAutoDeleteInstanceOperationSettings;
   }
@@ -421,7 +417,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setLabelsInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationSettings() {
     return setLabelsInstanceOperationSettings;
   }
@@ -434,7 +430,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setMachineResourcesInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationSettings() {
     return setMachineResourcesInstanceOperationSettings;
   }
@@ -447,7 +443,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setMachineTypeInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationSettings() {
     return setMachineTypeInstanceOperationSettings;
   }
@@ -460,7 +456,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setMetadataInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationSettings() {
     return setMetadataInstanceOperationSettings;
   }
@@ -473,7 +469,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setMinCpuPlatformInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationSettings() {
     return setMinCpuPlatformInstanceOperationSettings;
   }
@@ -486,7 +482,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setSchedulingInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationSettings() {
     return setSchedulingInstanceOperationSettings;
   }
@@ -499,7 +495,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setServiceAccountInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationSettings() {
     return setServiceAccountInstanceOperationSettings;
   }
@@ -511,7 +507,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to setTagsInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationSettings() {
     return setTagsInstanceOperationSettings;
   }
@@ -524,8 +520,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to simulateMaintenanceEventInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationSettings() {
     return simulateMaintenanceEventInstanceOperationSettings;
   }
@@ -537,7 +532,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to startInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationSettings() {
     return startInstanceOperationSettings;
   }
@@ -550,8 +545,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to startWithEncryptionKeyInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationSettings() {
     return startWithEncryptionKeyInstanceOperationSettings;
   }
@@ -563,7 +557,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to stopInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationSettings() {
     return stopInstanceOperationSettings;
   }
@@ -582,7 +576,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to updateAccessConfigInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationSettings() {
     return updateAccessConfigInstanceOperationSettings;
   }
@@ -595,8 +589,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the object with the settings used for calls to updateNetworkInterfaceInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationSettings() {
     return updateNetworkInterfaceInstanceOperationSettings;
   }
@@ -956,7 +949,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     private final UnaryCallSettings.Builder<AddAccessConfigInstanceHttpRequest, Operation>
         addAccessConfigInstanceSettings;
     private final OperationCallSettings.Builder<
-            AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         addAccessConfigInstanceOperationSettings;
     private final PagedCallSettings.Builder<
             AggregatedListInstancesHttpRequest,
@@ -966,22 +959,21 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     private final UnaryCallSettings.Builder<AttachDiskInstanceHttpRequest, Operation>
         attachDiskInstanceSettings;
     private final OperationCallSettings.Builder<
-            AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
         attachDiskInstanceOperationSettings;
     private final UnaryCallSettings.Builder<DeleteInstanceHttpRequest, Operation>
         deleteInstanceSettings;
-    private final OperationCallSettings.Builder<
-            DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteInstanceHttpRequest, EmptyMessage, Operation>
         deleteInstanceOperationSettings;
     private final UnaryCallSettings.Builder<DeleteAccessConfigInstanceHttpRequest, Operation>
         deleteAccessConfigInstanceSettings;
     private final OperationCallSettings.Builder<
-            DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         deleteAccessConfigInstanceOperationSettings;
     private final UnaryCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation>
         detachDiskInstanceSettings;
     private final OperationCallSettings.Builder<
-            DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
         detachDiskInstanceOperationSettings;
     private final UnaryCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings;
     private final UnaryCallSettings.Builder<GetIamPolicyInstanceHttpRequest, Policy>
@@ -991,8 +983,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         getSerialPortOutputInstanceSettings;
     private final UnaryCallSettings.Builder<InsertInstanceHttpRequest, Operation>
         insertInstanceSettings;
-    private final OperationCallSettings.Builder<
-            InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertInstanceHttpRequest, EmptyMessage, Operation>
         insertInstanceOperationSettings;
     private final PagedCallSettings.Builder<
             ListInstancesHttpRequest, InstanceList, ListInstancesPagedResponse>
@@ -1004,79 +995,76 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         listReferrersInstancesSettings;
     private final UnaryCallSettings.Builder<ResetInstanceHttpRequest, Operation>
         resetInstanceSettings;
-    private final OperationCallSettings.Builder<
-            ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<ResetInstanceHttpRequest, EmptyMessage, Operation>
         resetInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetDeletionProtectionInstanceHttpRequest, Operation>
         setDeletionProtectionInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
         setDeletionProtectionInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetDiskAutoDeleteInstanceHttpRequest, Operation>
         setDiskAutoDeleteInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
         setDiskAutoDeleteInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetIamPolicyInstanceHttpRequest, Policy>
         setIamPolicyInstanceSettings;
     private final UnaryCallSettings.Builder<SetLabelsInstanceHttpRequest, Operation>
         setLabelsInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
         setLabelsInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetMachineResourcesInstanceHttpRequest, Operation>
         setMachineResourcesInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
         setMachineResourcesInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetMachineTypeInstanceHttpRequest, Operation>
         setMachineTypeInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
         setMachineTypeInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetMetadataInstanceHttpRequest, Operation>
         setMetadataInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
         setMetadataInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetMinCpuPlatformInstanceHttpRequest, Operation>
         setMinCpuPlatformInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
         setMinCpuPlatformInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetSchedulingInstanceHttpRequest, Operation>
         setSchedulingInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
         setSchedulingInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetServiceAccountInstanceHttpRequest, Operation>
         setServiceAccountInstanceSettings;
     private final OperationCallSettings.Builder<
-            SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
         setServiceAccountInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SetTagsInstanceHttpRequest, Operation>
         setTagsInstanceSettings;
-    private final OperationCallSettings.Builder<
-            SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
         setTagsInstanceOperationSettings;
     private final UnaryCallSettings.Builder<SimulateMaintenanceEventInstanceHttpRequest, Operation>
         simulateMaintenanceEventInstanceSettings;
     private final OperationCallSettings.Builder<
-            SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
         simulateMaintenanceEventInstanceOperationSettings;
     private final UnaryCallSettings.Builder<StartInstanceHttpRequest, Operation>
         startInstanceSettings;
-    private final OperationCallSettings.Builder<
-            StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<StartInstanceHttpRequest, EmptyMessage, Operation>
         startInstanceOperationSettings;
     private final UnaryCallSettings.Builder<StartWithEncryptionKeyInstanceHttpRequest, Operation>
         startWithEncryptionKeyInstanceSettings;
     private final OperationCallSettings.Builder<
-            StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
         startWithEncryptionKeyInstanceOperationSettings;
     private final UnaryCallSettings.Builder<StopInstanceHttpRequest, Operation>
         stopInstanceSettings;
-    private final OperationCallSettings.Builder<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<StopInstanceHttpRequest, EmptyMessage, Operation>
         stopInstanceOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsInstanceHttpRequest, TestPermissionsResponse>
@@ -1084,12 +1072,12 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     private final UnaryCallSettings.Builder<UpdateAccessConfigInstanceHttpRequest, Operation>
         updateAccessConfigInstanceSettings;
     private final OperationCallSettings.Builder<
-            UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         updateAccessConfigInstanceOperationSettings;
     private final UnaryCallSettings.Builder<UpdateNetworkInterfaceInstanceHttpRequest, Operation>
         updateNetworkInterfaceInstanceSettings;
     private final OperationCallSettings.Builder<
-            UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
         updateNetworkInterfaceInstanceOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -1454,8 +1442,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1475,8 +1463,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1496,8 +1484,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1518,8 +1506,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1539,8 +1527,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1560,8 +1548,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1581,8 +1569,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1603,8 +1591,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1625,8 +1613,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1646,8 +1634,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1668,8 +1656,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1690,8 +1678,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1711,8 +1699,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1733,8 +1721,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1755,8 +1743,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1777,8 +1765,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1798,8 +1786,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1820,8 +1808,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1841,8 +1829,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1863,8 +1851,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1884,8 +1872,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1906,8 +1894,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1928,8 +1916,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -2086,7 +2074,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         addAccessConfigInstanceOperationSettings() {
       return addAccessConfigInstanceOperationSettings;
     }
@@ -2109,7 +2097,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to attachDiskInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
         attachDiskInstanceOperationSettings() {
       return attachDiskInstanceOperationSettings;
     }
@@ -2123,7 +2111,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to deleteInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInstanceHttpRequest, EmptyMessage, Operation>
         deleteInstanceOperationSettings() {
       return deleteInstanceOperationSettings;
     }
@@ -2138,7 +2126,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         deleteAccessConfigInstanceOperationSettings() {
       return deleteAccessConfigInstanceOperationSettings;
     }
@@ -2152,7 +2140,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to detachDiskInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
         detachDiskInstanceOperationSettings() {
       return detachDiskInstanceOperationSettings;
     }
@@ -2183,7 +2171,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to insertInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInstanceHttpRequest, EmptyMessage, Operation>
         insertInstanceOperationSettings() {
       return insertInstanceOperationSettings;
     }
@@ -2212,7 +2200,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to resetInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<ResetInstanceHttpRequest, EmptyMessage, Operation>
         resetInstanceOperationSettings() {
       return resetInstanceOperationSettings;
     }
@@ -2227,7 +2215,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
         setDeletionProtectionInstanceOperationSettings() {
       return setDeletionProtectionInstanceOperationSettings;
     }
@@ -2242,7 +2230,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
         setDiskAutoDeleteInstanceOperationSettings() {
       return setDiskAutoDeleteInstanceOperationSettings;
     }
@@ -2262,7 +2250,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to setLabelsInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
         setLabelsInstanceOperationSettings() {
       return setLabelsInstanceOperationSettings;
     }
@@ -2277,7 +2265,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
         setMachineResourcesInstanceOperationSettings() {
       return setMachineResourcesInstanceOperationSettings;
     }
@@ -2291,8 +2279,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to setMachineTypeInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
         setMachineTypeInstanceOperationSettings() {
       return setMachineTypeInstanceOperationSettings;
     }
@@ -2306,7 +2293,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to setMetadataInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
         setMetadataInstanceOperationSettings() {
       return setMetadataInstanceOperationSettings;
     }
@@ -2321,7 +2308,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
         setMinCpuPlatformInstanceOperationSettings() {
       return setMinCpuPlatformInstanceOperationSettings;
     }
@@ -2335,8 +2322,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to setSchedulingInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
         setSchedulingInstanceOperationSettings() {
       return setSchedulingInstanceOperationSettings;
     }
@@ -2351,7 +2337,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
         setServiceAccountInstanceOperationSettings() {
       return setServiceAccountInstanceOperationSettings;
     }
@@ -2365,7 +2351,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to setTagsInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
         setTagsInstanceOperationSettings() {
       return setTagsInstanceOperationSettings;
     }
@@ -2380,7 +2366,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
         simulateMaintenanceEventInstanceOperationSettings() {
       return simulateMaintenanceEventInstanceOperationSettings;
     }
@@ -2393,7 +2379,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to startInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<StartInstanceHttpRequest, EmptyMessage, Operation>
         startInstanceOperationSettings() {
       return startInstanceOperationSettings;
     }
@@ -2408,7 +2394,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
         startWithEncryptionKeyInstanceOperationSettings() {
       return startWithEncryptionKeyInstanceOperationSettings;
     }
@@ -2421,7 +2407,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to stopInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<StopInstanceHttpRequest, EmptyMessage, Operation>
         stopInstanceOperationSettings() {
       return stopInstanceOperationSettings;
     }
@@ -2442,7 +2428,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         updateAccessConfigInstanceOperationSettings() {
       return updateAccessConfigInstanceOperationSettings;
     }
@@ -2457,7 +2443,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
         updateNetworkInterfaceInstanceOperationSettings() {
       return updateNetworkInterfaceInstanceOperationSettings;
     }

@@ -162,13 +162,13 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
 
   private final UnaryCallable<DeleteGlobalForwardingRuleHttpRequest, Operation>
       deleteGlobalForwardingRuleCallable;
-  private final OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationCallable;
   private final UnaryCallable<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
       getGlobalForwardingRuleCallable;
   private final UnaryCallable<InsertGlobalForwardingRuleHttpRequest, Operation>
       insertGlobalForwardingRuleCallable;
-  private final OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationCallable;
   private final UnaryCallable<ListGlobalForwardingRulesHttpRequest, ForwardingRuleList>
       listGlobalForwardingRulesCallable;
@@ -177,8 +177,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
       listGlobalForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetGlobalForwardingRuleHttpRequest, Operation>
       setTargetGlobalForwardingRuleCallable;
-  private final OperationCallable<
-          SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -308,7 +307,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationCallable() {
     return deleteGlobalForwardingRuleOperationCallable;
   }
@@ -326,7 +325,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationCallable() {
     return insertGlobalForwardingRuleOperationCallable;
   }
@@ -350,7 +349,7 @@ public class HttpJsonGlobalForwardingRuleStub extends GlobalForwardingRuleStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationCallable() {
     return setTargetGlobalForwardingRuleOperationCallable;
   }

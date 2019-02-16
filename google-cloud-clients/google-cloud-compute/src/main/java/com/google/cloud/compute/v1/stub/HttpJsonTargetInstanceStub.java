@@ -176,13 +176,13 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
       aggregatedListTargetInstancesPagedCallable;
   private final UnaryCallable<DeleteTargetInstanceHttpRequest, Operation>
       deleteTargetInstanceCallable;
-  private final OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
       deleteTargetInstanceOperationCallable;
   private final UnaryCallable<GetTargetInstanceHttpRequest, TargetInstance>
       getTargetInstanceCallable;
   private final UnaryCallable<InsertTargetInstanceHttpRequest, Operation>
       insertTargetInstanceCallable;
-  private final OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
       insertTargetInstanceOperationCallable;
   private final UnaryCallable<ListTargetInstancesHttpRequest, TargetInstanceList>
       listTargetInstancesCallable;
@@ -329,7 +329,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
       deleteTargetInstanceOperationCallable() {
     return deleteTargetInstanceOperationCallable;
   }
@@ -345,7 +345,7 @@ public class HttpJsonTargetInstanceStub extends TargetInstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
       insertTargetInstanceOperationCallable() {
     return insertTargetInstanceOperationCallable;
   }

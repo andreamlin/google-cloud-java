@@ -185,7 +185,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteHealthCheckAsync(
       ProjectGlobalHealthCheckName healthCheck) {
 
     DeleteHealthCheckHttpRequest request =
@@ -213,8 +213,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteHealthCheckAsync(
-      String healthCheck) {
+  public final OperationFuture<EmptyMessage, Operation> deleteHealthCheckAsync(String healthCheck) {
 
     DeleteHealthCheckHttpRequest request =
         DeleteHealthCheckHttpRequest.newBuilder().setHealthCheck(healthCheck).build();
@@ -242,7 +241,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteHealthCheckAsync(
       DeleteHealthCheckHttpRequest request) {
     return deleteHealthCheckOperationCallable().futureCall(request);
   }
@@ -259,14 +258,14 @@ public class HealthCheckClient implements BackgroundResource {
    *   DeleteHealthCheckHttpRequest request = DeleteHealthCheckHttpRequest.newBuilder()
    *     .setHealthCheck(healthCheck.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = healthCheckClient.deleteHealthCheckOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = healthCheckClient.deleteHealthCheckOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHealthCheckOperationCallable() {
     return stub.deleteHealthCheckOperationCallable();
   }
@@ -417,7 +416,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertHealthCheckAsync(
       ProjectName project, HealthCheck healthCheckResource) {
 
     InsertHealthCheckHttpRequest request =
@@ -450,7 +449,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertHealthCheckAsync(
       String project, HealthCheck healthCheckResource) {
 
     InsertHealthCheckHttpRequest request =
@@ -484,7 +483,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertHealthCheckAsync(
       InsertHealthCheckHttpRequest request) {
     return insertHealthCheckOperationCallable().futureCall(request);
   }
@@ -503,14 +502,14 @@ public class HealthCheckClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setHealthCheckResource(healthCheckResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = healthCheckClient.insertHealthCheckOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = healthCheckClient.insertHealthCheckOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHealthCheckOperationCallable() {
     return stub.insertHealthCheckOperationCallable();
   }
@@ -705,7 +704,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchHealthCheckAsync(
       ProjectGlobalHealthCheckName healthCheck,
       HealthCheck healthCheckResource,
       List<String> fieldMask) {
@@ -747,7 +746,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchHealthCheckAsync(
       String healthCheck, HealthCheck healthCheckResource, List<String> fieldMask) {
 
     PatchHealthCheckHttpRequest request =
@@ -785,7 +784,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchHealthCheckAsync(
       PatchHealthCheckHttpRequest request) {
     return patchHealthCheckOperationCallable().futureCall(request);
   }
@@ -807,14 +806,14 @@ public class HealthCheckClient implements BackgroundResource {
    *     .setHealthCheckResource(healthCheckResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = healthCheckClient.patchHealthCheckOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = healthCheckClient.patchHealthCheckOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHealthCheckOperationCallable() {
     return stub.patchHealthCheckOperationCallable();
   }
@@ -874,7 +873,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateHealthCheckAsync(
       ProjectGlobalHealthCheckName healthCheck,
       HealthCheck healthCheckResource,
       List<String> fieldMask) {
@@ -915,7 +914,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateHealthCheckAsync(
       String healthCheck, HealthCheck healthCheckResource, List<String> fieldMask) {
 
     UpdateHealthCheckHttpRequest request =
@@ -952,7 +951,7 @@ public class HealthCheckClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateHealthCheckAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateHealthCheckAsync(
       UpdateHealthCheckHttpRequest request) {
     return updateHealthCheckOperationCallable().futureCall(request);
   }
@@ -973,14 +972,14 @@ public class HealthCheckClient implements BackgroundResource {
    *     .setHealthCheckResource(healthCheckResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = healthCheckClient.updateHealthCheckOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = healthCheckClient.updateHealthCheckOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHealthCheckOperationCallable() {
     return stub.updateHealthCheckOperationCallable();
   }

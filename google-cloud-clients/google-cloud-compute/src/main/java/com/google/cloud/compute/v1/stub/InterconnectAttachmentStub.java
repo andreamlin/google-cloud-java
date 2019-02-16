@@ -68,7 +68,7 @@ public abstract class InterconnectAttachmentStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteInterconnectAttachmentOperationCallable()");
@@ -88,7 +88,7 @@ public abstract class InterconnectAttachmentStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertInterconnectAttachmentOperationCallable()");
@@ -117,7 +117,7 @@ public abstract class InterconnectAttachmentStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchInterconnectAttachmentOperationCallable()");

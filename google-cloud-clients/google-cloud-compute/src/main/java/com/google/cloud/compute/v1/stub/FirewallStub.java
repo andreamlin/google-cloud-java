@@ -49,7 +49,7 @@ public abstract class FirewallStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, Operation>
       deleteFirewallOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteFirewallOperationCallable()");
   }
@@ -65,7 +65,7 @@ public abstract class FirewallStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertFirewallHttpRequest, EmptyMessage, Operation>
       insertFirewallOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertFirewallOperationCallable()");
   }
@@ -87,7 +87,7 @@ public abstract class FirewallStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchFirewallHttpRequest, EmptyMessage, Operation>
       patchFirewallOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchFirewallOperationCallable()");
   }
@@ -98,7 +98,7 @@ public abstract class FirewallStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, Operation>
       updateFirewallOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: updateFirewallOperationCallable()");
   }

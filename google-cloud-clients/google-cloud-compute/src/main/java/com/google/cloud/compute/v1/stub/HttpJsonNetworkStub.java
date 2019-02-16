@@ -220,28 +220,28 @@ public class HttpJsonNetworkStub extends NetworkStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<AddPeeringNetworkHttpRequest, Operation> addPeeringNetworkCallable;
-  private final OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
       addPeeringNetworkOperationCallable;
   private final UnaryCallable<DeleteNetworkHttpRequest, Operation> deleteNetworkCallable;
-  private final OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, Operation>
       deleteNetworkOperationCallable;
   private final UnaryCallable<GetNetworkHttpRequest, Network> getNetworkCallable;
   private final UnaryCallable<InsertNetworkHttpRequest, Operation> insertNetworkCallable;
-  private final OperationCallable<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertNetworkHttpRequest, EmptyMessage, Operation>
       insertNetworkOperationCallable;
   private final UnaryCallable<ListNetworksHttpRequest, NetworkList> listNetworksCallable;
   private final UnaryCallable<ListNetworksHttpRequest, ListNetworksPagedResponse>
       listNetworksPagedCallable;
   private final UnaryCallable<PatchNetworkHttpRequest, Operation> patchNetworkCallable;
-  private final OperationCallable<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchNetworkHttpRequest, EmptyMessage, Operation>
       patchNetworkOperationCallable;
   private final UnaryCallable<RemovePeeringNetworkHttpRequest, Operation>
       removePeeringNetworkCallable;
-  private final OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
       removePeeringNetworkOperationCallable;
   private final UnaryCallable<SwitchToCustomModeNetworkHttpRequest, Operation>
       switchToCustomModeNetworkCallable;
-  private final OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
       switchToCustomModeNetworkOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -398,7 +398,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
       addPeeringNetworkOperationCallable() {
     return addPeeringNetworkOperationCallable;
   }
@@ -409,7 +409,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, Operation>
       deleteNetworkOperationCallable() {
     return deleteNetworkOperationCallable;
   }
@@ -425,7 +425,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertNetworkHttpRequest, EmptyMessage, Operation>
       insertNetworkOperationCallable() {
     return insertNetworkOperationCallable;
   }
@@ -447,7 +447,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchNetworkHttpRequest, EmptyMessage, Operation>
       patchNetworkOperationCallable() {
     return patchNetworkOperationCallable;
   }
@@ -458,7 +458,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
       removePeeringNetworkOperationCallable() {
     return removePeeringNetworkOperationCallable;
   }
@@ -469,7 +469,7 @@ public class HttpJsonNetworkStub extends NetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
       switchToCustomModeNetworkOperationCallable() {
     return switchToCustomModeNetworkOperationCallable;
   }

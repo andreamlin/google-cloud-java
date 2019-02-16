@@ -303,11 +303,11 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
 
   private final UnaryCallable<AddHealthCheckTargetPoolHttpRequest, Operation>
       addHealthCheckTargetPoolCallable;
-  private final OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       addHealthCheckTargetPoolOperationCallable;
   private final UnaryCallable<AddInstanceTargetPoolHttpRequest, Operation>
       addInstanceTargetPoolCallable;
-  private final OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       addInstanceTargetPoolOperationCallable;
   private final UnaryCallable<AggregatedListTargetPoolsHttpRequest, TargetPoolAggregatedList>
       aggregatedListTargetPoolsCallable;
@@ -315,29 +315,28 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
           AggregatedListTargetPoolsHttpRequest, AggregatedListTargetPoolsPagedResponse>
       aggregatedListTargetPoolsPagedCallable;
   private final UnaryCallable<DeleteTargetPoolHttpRequest, Operation> deleteTargetPoolCallable;
-  private final OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, Operation>
       deleteTargetPoolOperationCallable;
   private final UnaryCallable<GetTargetPoolHttpRequest, TargetPool> getTargetPoolCallable;
   private final UnaryCallable<GetHealthTargetPoolHttpRequest, TargetPoolInstanceHealth>
       getHealthTargetPoolCallable;
   private final UnaryCallable<InsertTargetPoolHttpRequest, Operation> insertTargetPoolCallable;
-  private final OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, Operation>
       insertTargetPoolOperationCallable;
   private final UnaryCallable<ListTargetPoolsHttpRequest, TargetPoolList> listTargetPoolsCallable;
   private final UnaryCallable<ListTargetPoolsHttpRequest, ListTargetPoolsPagedResponse>
       listTargetPoolsPagedCallable;
   private final UnaryCallable<RemoveHealthCheckTargetPoolHttpRequest, Operation>
       removeHealthCheckTargetPoolCallable;
-  private final OperationCallable<
-          RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       removeHealthCheckTargetPoolOperationCallable;
   private final UnaryCallable<RemoveInstanceTargetPoolHttpRequest, Operation>
       removeInstanceTargetPoolCallable;
-  private final OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       removeInstanceTargetPoolOperationCallable;
   private final UnaryCallable<SetBackupTargetPoolHttpRequest, Operation>
       setBackupTargetPoolCallable;
-  private final OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, Operation>
       setBackupTargetPoolOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -543,7 +542,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       addHealthCheckTargetPoolOperationCallable() {
     return addHealthCheckTargetPoolOperationCallable;
   }
@@ -555,7 +554,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       addInstanceTargetPoolOperationCallable() {
     return addInstanceTargetPoolOperationCallable;
   }
@@ -579,7 +578,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, Operation>
       deleteTargetPoolOperationCallable() {
     return deleteTargetPoolOperationCallable;
   }
@@ -601,7 +600,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, Operation>
       insertTargetPoolOperationCallable() {
     return insertTargetPoolOperationCallable;
   }
@@ -623,7 +622,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       removeHealthCheckTargetPoolOperationCallable() {
     return removeHealthCheckTargetPoolOperationCallable;
   }
@@ -635,7 +634,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       removeInstanceTargetPoolOperationCallable() {
     return removeInstanceTargetPoolOperationCallable;
   }
@@ -647,7 +646,7 @@ public class HttpJsonTargetPoolStub extends TargetPoolStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, Operation>
       setBackupTargetPoolOperationCallable() {
     return setBackupTargetPoolOperationCallable;
   }

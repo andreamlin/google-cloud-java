@@ -201,11 +201,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
-      abandonInstancesInstanceGroupManagerAsync(
-          ProjectZoneInstanceGroupManagerName instanceGroupManager,
-          InstanceGroupManagersAbandonInstancesRequest
-              instanceGroupManagersAbandonInstancesRequestResource) {
+  public final OperationFuture<EmptyMessage, Operation> abandonInstancesInstanceGroupManagerAsync(
+      ProjectZoneInstanceGroupManagerName instanceGroupManager,
+      InstanceGroupManagersAbandonInstancesRequest
+          instanceGroupManagersAbandonInstancesRequestResource) {
 
     AbandonInstancesInstanceGroupManagerHttpRequest request =
         AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -249,11 +248,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
-      abandonInstancesInstanceGroupManagerAsync(
-          String instanceGroupManager,
-          InstanceGroupManagersAbandonInstancesRequest
-              instanceGroupManagersAbandonInstancesRequestResource) {
+  public final OperationFuture<EmptyMessage, Operation> abandonInstancesInstanceGroupManagerAsync(
+      String instanceGroupManager,
+      InstanceGroupManagersAbandonInstancesRequest
+          instanceGroupManagersAbandonInstancesRequestResource) {
 
     AbandonInstancesInstanceGroupManagerHttpRequest request =
         AbandonInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -299,9 +297,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
-      abandonInstancesInstanceGroupManagerAsync(
-          AbandonInstancesInstanceGroupManagerHttpRequest request) {
+  public final OperationFuture<EmptyMessage, Operation> abandonInstancesInstanceGroupManagerAsync(
+      AbandonInstancesInstanceGroupManagerHttpRequest request) {
     return abandonInstancesInstanceGroupManagerOperationCallable().futureCall(request);
   }
 
@@ -331,7 +328,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersAbandonInstancesRequestResource(instanceGroupManagersAbandonInstancesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.abandonInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.abandonInstancesInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -339,7 +336,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesInstanceGroupManagerOperationCallable() {
     return stub.abandonInstancesInstanceGroupManagerOperationCallable();
   }
@@ -545,7 +542,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager) {
 
     DeleteInstanceGroupManagerHttpRequest request =
@@ -576,7 +573,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceGroupManagerAsync(
       String instanceGroupManager) {
 
     DeleteInstanceGroupManagerHttpRequest request =
@@ -609,7 +606,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceGroupManagerAsync(
       DeleteInstanceGroupManagerHttpRequest request) {
     return deleteInstanceGroupManagerOperationCallable().futureCall(request);
   }
@@ -628,14 +625,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *   DeleteInstanceGroupManagerHttpRequest request = DeleteInstanceGroupManagerHttpRequest.newBuilder()
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.deleteInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.deleteInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupManagerOperationCallable() {
     return stub.deleteInstanceGroupManagerOperationCallable();
   }
@@ -697,7 +694,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstancesInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstancesInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManagersDeleteInstancesRequest
           instanceGroupManagersDeleteInstancesRequestResource) {
@@ -743,7 +740,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstancesInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstancesInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManagersDeleteInstancesRequest
           instanceGroupManagersDeleteInstancesRequestResource) {
@@ -791,7 +788,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstancesInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstancesInstanceGroupManagerAsync(
       DeleteInstancesInstanceGroupManagerHttpRequest request) {
     return deleteInstancesInstanceGroupManagerOperationCallable().futureCall(request);
   }
@@ -821,7 +818,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersDeleteInstancesRequestResource(instanceGroupManagersDeleteInstancesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.deleteInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.deleteInstancesInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -829,7 +826,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesInstanceGroupManagerOperationCallable() {
     return stub.deleteInstancesInstanceGroupManagerOperationCallable();
   }
@@ -1008,7 +1005,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceGroupManagerAsync(
       ProjectZoneName zone, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertInstanceGroupManagerHttpRequest request =
@@ -1049,7 +1046,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceGroupManagerAsync(
       String zone, InstanceGroupManager instanceGroupManagerResource) {
 
     InsertInstanceGroupManagerHttpRequest request =
@@ -1090,7 +1087,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceGroupManagerAsync(
       InsertInstanceGroupManagerHttpRequest request) {
     return insertInstanceGroupManagerOperationCallable().futureCall(request);
   }
@@ -1116,14 +1113,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.insertInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.insertInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupManagerOperationCallable() {
     return stub.insertInstanceGroupManagerOperationCallable();
   }
@@ -1458,7 +1455,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManager instanceGroupManagerResource,
       List<String> fieldMask) {
@@ -1505,7 +1502,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManager instanceGroupManagerResource,
       List<String> fieldMask) {
@@ -1548,7 +1545,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInstanceGroupManagerAsync(
       PatchInstanceGroupManagerHttpRequest request) {
     return patchInstanceGroupManagerOperationCallable().futureCall(request);
   }
@@ -1573,14 +1570,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManagerResource(instanceGroupManagerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.patchInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.patchInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchInstanceGroupManagerOperationCallable() {
     return stub.patchInstanceGroupManagerOperationCallable();
   }
@@ -1647,11 +1644,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
-      recreateInstancesInstanceGroupManagerAsync(
-          ProjectZoneInstanceGroupManagerName instanceGroupManager,
-          InstanceGroupManagersRecreateInstancesRequest
-              instanceGroupManagersRecreateInstancesRequestResource) {
+  public final OperationFuture<EmptyMessage, Operation> recreateInstancesInstanceGroupManagerAsync(
+      ProjectZoneInstanceGroupManagerName instanceGroupManager,
+      InstanceGroupManagersRecreateInstancesRequest
+          instanceGroupManagersRecreateInstancesRequestResource) {
 
     RecreateInstancesInstanceGroupManagerHttpRequest request =
         RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -1693,11 +1689,10 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
-      recreateInstancesInstanceGroupManagerAsync(
-          String instanceGroupManager,
-          InstanceGroupManagersRecreateInstancesRequest
-              instanceGroupManagersRecreateInstancesRequestResource) {
+  public final OperationFuture<EmptyMessage, Operation> recreateInstancesInstanceGroupManagerAsync(
+      String instanceGroupManager,
+      InstanceGroupManagersRecreateInstancesRequest
+          instanceGroupManagersRecreateInstancesRequestResource) {
 
     RecreateInstancesInstanceGroupManagerHttpRequest request =
         RecreateInstancesInstanceGroupManagerHttpRequest.newBuilder()
@@ -1741,9 +1736,8 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
-      recreateInstancesInstanceGroupManagerAsync(
-          RecreateInstancesInstanceGroupManagerHttpRequest request) {
+  public final OperationFuture<EmptyMessage, Operation> recreateInstancesInstanceGroupManagerAsync(
+      RecreateInstancesInstanceGroupManagerHttpRequest request) {
     return recreateInstancesInstanceGroupManagerOperationCallable().futureCall(request);
   }
 
@@ -1771,7 +1765,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersRecreateInstancesRequestResource(instanceGroupManagersRecreateInstancesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.recreateInstancesInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.recreateInstancesInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -1779,7 +1773,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesInstanceGroupManagerOperationCallable() {
     return stub.recreateInstancesInstanceGroupManagerOperationCallable();
   }
@@ -1859,7 +1853,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeInstanceGroupManagerAsync(
       Integer size, ProjectZoneInstanceGroupManagerName instanceGroupManager) {
 
     ResizeInstanceGroupManagerHttpRequest request =
@@ -1910,7 +1904,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeInstanceGroupManagerAsync(
       Integer size, String instanceGroupManager) {
 
     ResizeInstanceGroupManagerHttpRequest request =
@@ -1961,7 +1955,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeInstanceGroupManagerAsync(
       ResizeInstanceGroupManagerHttpRequest request) {
     return resizeInstanceGroupManagerOperationCallable().futureCall(request);
   }
@@ -1997,14 +1991,14 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setSize(size)
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.resizeInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.resizeInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeInstanceGroupManagerOperationCallable() {
     return stub.resizeInstanceGroupManagerOperationCallable();
   }
@@ -2073,7 +2067,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
+  public final OperationFuture<EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerAsync(
           ProjectZoneInstanceGroupManagerName instanceGroupManager,
           InstanceGroupManagersSetInstanceTemplateRequest
@@ -2110,7 +2104,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
+  public final OperationFuture<EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerAsync(
           String instanceGroupManager,
           InstanceGroupManagersSetInstanceTemplateRequest
@@ -2149,7 +2143,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage>
+  public final OperationFuture<EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerAsync(
           SetInstanceTemplateInstanceGroupManagerHttpRequest request) {
     return setInstanceTemplateInstanceGroupManagerOperationCallable().futureCall(request);
@@ -2170,7 +2164,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersSetInstanceTemplateRequestResource(instanceGroupManagersSetInstanceTemplateRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.setInstanceTemplateInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -2178,7 +2172,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerOperationCallable() {
     return stub.setInstanceTemplateInstanceGroupManagerOperationCallable();
   }
@@ -2234,7 +2228,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetPoolsInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetPoolsInstanceGroupManagerAsync(
       ProjectZoneInstanceGroupManagerName instanceGroupManager,
       InstanceGroupManagersSetTargetPoolsRequest
           instanceGroupManagersSetTargetPoolsRequestResource) {
@@ -2273,7 +2267,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetPoolsInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetPoolsInstanceGroupManagerAsync(
       String instanceGroupManager,
       InstanceGroupManagersSetTargetPoolsRequest
           instanceGroupManagersSetTargetPoolsRequestResource) {
@@ -2314,7 +2308,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetPoolsInstanceGroupManagerAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetPoolsInstanceGroupManagerAsync(
       SetTargetPoolsInstanceGroupManagerHttpRequest request) {
     return setTargetPoolsInstanceGroupManagerOperationCallable().futureCall(request);
   }
@@ -2337,7 +2331,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    *     .setInstanceGroupManager(instanceGroupManager.toString())
    *     .setInstanceGroupManagersSetTargetPoolsRequestResource(instanceGroupManagersSetTargetPoolsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupManagerClient.setTargetPoolsInstanceGroupManagerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -2345,7 +2339,7 @@ public class InstanceGroupManagerClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsInstanceGroupManagerOperationCallable() {
     return stub.setTargetPoolsInstanceGroupManagerOperationCallable();
   }

@@ -52,7 +52,7 @@ public abstract class RegionDiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotRegionDiskOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: createSnapshotRegionDiskOperationCallable()");
@@ -65,7 +65,7 @@ public abstract class RegionDiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, Operation>
       deleteRegionDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRegionDiskOperationCallable()");
   }
@@ -81,7 +81,7 @@ public abstract class RegionDiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, Operation>
       insertRegionDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertRegionDiskOperationCallable()");
   }
@@ -103,7 +103,7 @@ public abstract class RegionDiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, Operation>
       resizeRegionDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: resizeRegionDiskOperationCallable()");
   }
@@ -114,7 +114,7 @@ public abstract class RegionDiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, Operation>
       setLabelsRegionDiskOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setLabelsRegionDiskOperationCallable()");

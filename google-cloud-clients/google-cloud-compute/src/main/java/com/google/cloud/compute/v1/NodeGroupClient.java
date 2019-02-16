@@ -186,7 +186,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addNodesNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> addNodesNodeGroupAsync(
       ProjectZoneNodeGroupName nodeGroup,
       NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource) {
 
@@ -218,7 +218,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addNodesNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> addNodesNodeGroupAsync(
       String nodeGroup, NodeGroupsAddNodesRequest nodeGroupsAddNodesRequestResource) {
 
     AddNodesNodeGroupHttpRequest request =
@@ -252,7 +252,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addNodesNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> addNodesNodeGroupAsync(
       AddNodesNodeGroupHttpRequest request) {
     return addNodesNodeGroupOperationCallable().futureCall(request);
   }
@@ -271,14 +271,14 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setNodeGroup(nodeGroup.toString())
    *     .setNodeGroupsAddNodesRequestResource(nodeGroupsAddNodesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.addNodesNodeGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeGroupClient.addNodesNodeGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       addNodesNodeGroupOperationCallable() {
     return stub.addNodesNodeGroupOperationCallable();
   }
@@ -470,7 +470,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodeGroupAsync(
       ProjectZoneNodeGroupName nodeGroup) {
 
     DeleteNodeGroupHttpRequest request =
@@ -498,7 +498,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeGroupAsync(String nodeGroup) {
+  public final OperationFuture<EmptyMessage, Operation> deleteNodeGroupAsync(String nodeGroup) {
 
     DeleteNodeGroupHttpRequest request =
         DeleteNodeGroupHttpRequest.newBuilder().setNodeGroup(nodeGroup).build();
@@ -526,7 +526,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodeGroupAsync(
       DeleteNodeGroupHttpRequest request) {
     return deleteNodeGroupOperationCallable().futureCall(request);
   }
@@ -543,14 +543,14 @@ public class NodeGroupClient implements BackgroundResource {
    *   DeleteNodeGroupHttpRequest request = DeleteNodeGroupHttpRequest.newBuilder()
    *     .setNodeGroup(nodeGroup.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.deleteNodeGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeGroupClient.deleteNodeGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodeGroupOperationCallable() {
     return stub.deleteNodeGroupOperationCallable();
   }
@@ -598,7 +598,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodesNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodesNodeGroupAsync(
       ProjectZoneNodeGroupName nodeGroup,
       NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource) {
 
@@ -630,7 +630,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodesNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodesNodeGroupAsync(
       String nodeGroup, NodeGroupsDeleteNodesRequest nodeGroupsDeleteNodesRequestResource) {
 
     DeleteNodesNodeGroupHttpRequest request =
@@ -664,7 +664,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodesNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodesNodeGroupAsync(
       DeleteNodesNodeGroupHttpRequest request) {
     return deleteNodesNodeGroupOperationCallable().futureCall(request);
   }
@@ -683,14 +683,14 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setNodeGroup(nodeGroup.toString())
    *     .setNodeGroupsDeleteNodesRequestResource(nodeGroupsDeleteNodesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.deleteNodesNodeGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeGroupClient.deleteNodesNodeGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodesNodeGroupOperationCallable() {
     return stub.deleteNodesNodeGroupOperationCallable();
   }
@@ -946,7 +946,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNodeGroupAsync(
       Integer initialNodeCount, ProjectZoneName zone, NodeGroup nodeGroupResource) {
 
     InsertNodeGroupHttpRequest request =
@@ -980,7 +980,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNodeGroupAsync(
       Integer initialNodeCount, String zone, NodeGroup nodeGroupResource) {
 
     InsertNodeGroupHttpRequest request =
@@ -1017,7 +1017,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNodeGroupAsync(
       InsertNodeGroupHttpRequest request) {
     return insertNodeGroupOperationCallable().futureCall(request);
   }
@@ -1038,14 +1038,14 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setNodeGroupResource(nodeGroupResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.insertNodeGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeGroupClient.insertNodeGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
       insertNodeGroupOperationCallable() {
     return stub.insertNodeGroupOperationCallable();
   }
@@ -1490,7 +1490,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNodeTemplateNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNodeTemplateNodeGroupAsync(
       ProjectZoneNodeGroupName nodeGroup,
       NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource) {
 
@@ -1522,7 +1522,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNodeTemplateNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNodeTemplateNodeGroupAsync(
       String nodeGroup, NodeGroupsSetNodeTemplateRequest nodeGroupsSetNodeTemplateRequestResource) {
 
     SetNodeTemplateNodeGroupHttpRequest request =
@@ -1556,7 +1556,7 @@ public class NodeGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNodeTemplateNodeGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNodeTemplateNodeGroupAsync(
       SetNodeTemplateNodeGroupHttpRequest request) {
     return setNodeTemplateNodeGroupOperationCallable().futureCall(request);
   }
@@ -1575,14 +1575,14 @@ public class NodeGroupClient implements BackgroundResource {
    *     .setNodeGroup(nodeGroup.toString())
    *     .setNodeGroupsSetNodeTemplateRequestResource(nodeGroupsSetNodeTemplateRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeGroupClient.setNodeTemplateNodeGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeGroupClient.setNodeTemplateNodeGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
       setNodeTemplateNodeGroupOperationCallable() {
     return stub.setNodeTemplateNodeGroupOperationCallable();
   }

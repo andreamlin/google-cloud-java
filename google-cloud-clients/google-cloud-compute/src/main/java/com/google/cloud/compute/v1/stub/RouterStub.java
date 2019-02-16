@@ -72,7 +72,7 @@ public abstract class RouterStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRouterHttpRequest, EmptyMessage, Operation>
       deleteRouterOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRouterOperationCallable()");
   }
@@ -107,7 +107,7 @@ public abstract class RouterStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRouterHttpRequest, EmptyMessage, Operation>
       insertRouterOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertRouterOperationCallable()");
   }
@@ -129,7 +129,7 @@ public abstract class RouterStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRouterHttpRequest, EmptyMessage, Operation>
       patchRouterOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchRouterOperationCallable()");
   }
@@ -145,7 +145,7 @@ public abstract class RouterStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateRouterHttpRequest, EmptyMessage, Operation>
       updateRouterOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: updateRouterOperationCallable()");
   }

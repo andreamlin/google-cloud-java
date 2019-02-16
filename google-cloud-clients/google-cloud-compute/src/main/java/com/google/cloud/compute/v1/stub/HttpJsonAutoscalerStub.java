@@ -209,20 +209,20 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
           AggregatedListAutoscalersHttpRequest, AggregatedListAutoscalersPagedResponse>
       aggregatedListAutoscalersPagedCallable;
   private final UnaryCallable<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerCallable;
-  private final OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationCallable;
   private final UnaryCallable<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerCallable;
   private final UnaryCallable<InsertAutoscalerHttpRequest, Operation> insertAutoscalerCallable;
-  private final OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationCallable;
   private final UnaryCallable<ListAutoscalersHttpRequest, AutoscalerList> listAutoscalersCallable;
   private final UnaryCallable<ListAutoscalersHttpRequest, ListAutoscalersPagedResponse>
       listAutoscalersPagedCallable;
   private final UnaryCallable<PatchAutoscalerHttpRequest, Operation> patchAutoscalerCallable;
-  private final OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationCallable;
   private final UnaryCallable<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerCallable;
-  private final OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -375,7 +375,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationCallable() {
     return deleteAutoscalerOperationCallable;
   }
@@ -391,7 +391,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationCallable() {
     return insertAutoscalerOperationCallable;
   }
@@ -413,7 +413,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationCallable() {
     return patchAutoscalerOperationCallable;
   }
@@ -424,7 +424,7 @@ public class HttpJsonAutoscalerStub extends AutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationCallable() {
     return updateAutoscalerOperationCallable;
   }

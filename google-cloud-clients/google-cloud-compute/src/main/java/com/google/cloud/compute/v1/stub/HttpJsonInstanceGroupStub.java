@@ -263,7 +263,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
 
   private final UnaryCallable<AddInstancesInstanceGroupHttpRequest, Operation>
       addInstancesInstanceGroupCallable;
-  private final OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationCallable;
   private final UnaryCallable<AggregatedListInstanceGroupsHttpRequest, InstanceGroupAggregatedList>
       aggregatedListInstanceGroupsCallable;
@@ -272,12 +272,12 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
       aggregatedListInstanceGroupsPagedCallable;
   private final UnaryCallable<DeleteInstanceGroupHttpRequest, Operation>
       deleteInstanceGroupCallable;
-  private final OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationCallable;
   private final UnaryCallable<GetInstanceGroupHttpRequest, InstanceGroup> getInstanceGroupCallable;
   private final UnaryCallable<InsertInstanceGroupHttpRequest, Operation>
       insertInstanceGroupCallable;
-  private final OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationCallable;
   private final UnaryCallable<ListInstanceGroupsHttpRequest, InstanceGroupList>
       listInstanceGroupsCallable;
@@ -290,12 +290,11 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
       listInstancesInstanceGroupsPagedCallable;
   private final UnaryCallable<RemoveInstancesInstanceGroupHttpRequest, Operation>
       removeInstancesInstanceGroupCallable;
-  private final OperationCallable<
-          RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationCallable;
   private final UnaryCallable<SetNamedPortsInstanceGroupHttpRequest, Operation>
       setNamedPortsInstanceGroupCallable;
-  private final OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -486,7 +485,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationCallable() {
     return addInstancesInstanceGroupOperationCallable;
   }
@@ -511,7 +510,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationCallable() {
     return deleteInstanceGroupOperationCallable;
   }
@@ -527,7 +526,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationCallable() {
     return insertInstanceGroupOperationCallable;
   }
@@ -563,7 +562,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationCallable() {
     return removeInstancesInstanceGroupOperationCallable;
   }
@@ -575,7 +574,7 @@ public class HttpJsonInstanceGroupStub extends InstanceGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationCallable() {
     return setNamedPortsInstanceGroupOperationCallable;
   }

@@ -190,7 +190,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> addSignedUrlKeyBackendBucketAsync(
       ProjectGlobalBackendBucketName backendBucket, SignedUrlKey signedUrlKeyResource) {
 
     AddSignedUrlKeyBackendBucketHttpRequest request =
@@ -223,7 +223,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> addSignedUrlKeyBackendBucketAsync(
       String backendBucket, SignedUrlKey signedUrlKeyResource) {
 
     AddSignedUrlKeyBackendBucketHttpRequest request =
@@ -257,7 +257,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> addSignedUrlKeyBackendBucketAsync(
       AddSignedUrlKeyBackendBucketHttpRequest request) {
     return addSignedUrlKeyBackendBucketOperationCallable().futureCall(request);
   }
@@ -276,15 +276,14 @@ public class BackendBucketClient implements BackgroundResource {
    *     .setBackendBucket(backendBucket.toString())
    *     .setSignedUrlKeyResource(signedUrlKeyResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendBucketClient.addSignedUrlKeyBackendBucketOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendBucketClient.addSignedUrlKeyBackendBucketOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationCallable() {
     return stub.addSignedUrlKeyBackendBucketOperationCallable();
   }
@@ -333,7 +332,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteBackendBucketAsync(
       ProjectGlobalBackendBucketName backendBucket) {
 
     DeleteBackendBucketHttpRequest request =
@@ -361,7 +360,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteBackendBucketAsync(
       String backendBucket) {
 
     DeleteBackendBucketHttpRequest request =
@@ -390,7 +389,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteBackendBucketAsync(
       DeleteBackendBucketHttpRequest request) {
     return deleteBackendBucketOperationCallable().futureCall(request);
   }
@@ -407,14 +406,14 @@ public class BackendBucketClient implements BackgroundResource {
    *   DeleteBackendBucketHttpRequest request = DeleteBackendBucketHttpRequest.newBuilder()
    *     .setBackendBucket(backendBucket.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendBucketClient.deleteBackendBucketOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendBucketClient.deleteBackendBucketOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationCallable() {
     return stub.deleteBackendBucketOperationCallable();
   }
@@ -464,7 +463,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSignedUrlKeyBackendBucketAsync(
       ProjectGlobalBackendBucketName backendBucket, String keyName) {
 
     DeleteSignedUrlKeyBackendBucketHttpRequest request =
@@ -496,7 +495,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSignedUrlKeyBackendBucketAsync(
       String backendBucket, String keyName) {
 
     DeleteSignedUrlKeyBackendBucketHttpRequest request =
@@ -530,7 +529,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSignedUrlKeyBackendBucketAsync(
       DeleteSignedUrlKeyBackendBucketHttpRequest request) {
     return deleteSignedUrlKeyBackendBucketOperationCallable().futureCall(request);
   }
@@ -549,7 +548,7 @@ public class BackendBucketClient implements BackgroundResource {
    *     .setBackendBucket(backendBucket.toString())
    *     .setKeyName(keyName)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendBucketClient.deleteSignedUrlKeyBackendBucketOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendBucketClient.deleteSignedUrlKeyBackendBucketOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -557,7 +556,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationCallable() {
     return stub.deleteSignedUrlKeyBackendBucketOperationCallable();
   }
@@ -712,7 +711,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertBackendBucketAsync(
       ProjectName project, BackendBucket backendBucketResource) {
 
     InsertBackendBucketHttpRequest request =
@@ -745,7 +744,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertBackendBucketAsync(
       String project, BackendBucket backendBucketResource) {
 
     InsertBackendBucketHttpRequest request =
@@ -780,7 +779,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertBackendBucketAsync(
       InsertBackendBucketHttpRequest request) {
     return insertBackendBucketOperationCallable().futureCall(request);
   }
@@ -800,14 +799,14 @@ public class BackendBucketClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setBackendBucketResource(backendBucketResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendBucketClient.insertBackendBucketOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendBucketClient.insertBackendBucketOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationCallable() {
     return stub.insertBackendBucketOperationCallable();
   }
@@ -1004,7 +1003,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchBackendBucketAsync(
       ProjectGlobalBackendBucketName backendBucket,
       BackendBucket backendBucketResource,
       List<String> fieldMask) {
@@ -1045,7 +1044,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchBackendBucketAsync(
       String backendBucket, BackendBucket backendBucketResource, List<String> fieldMask) {
 
     PatchBackendBucketHttpRequest request =
@@ -1083,7 +1082,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchBackendBucketAsync(
       PatchBackendBucketHttpRequest request) {
     return patchBackendBucketOperationCallable().futureCall(request);
   }
@@ -1105,14 +1104,14 @@ public class BackendBucketClient implements BackgroundResource {
    *     .setBackendBucketResource(backendBucketResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendBucketClient.patchBackendBucketOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendBucketClient.patchBackendBucketOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationCallable() {
     return stub.patchBackendBucketOperationCallable();
   }
@@ -1172,7 +1171,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateBackendBucketAsync(
       ProjectGlobalBackendBucketName backendBucket,
       BackendBucket backendBucketResource,
       List<String> fieldMask) {
@@ -1212,7 +1211,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateBackendBucketAsync(
       String backendBucket, BackendBucket backendBucketResource, List<String> fieldMask) {
 
     UpdateBackendBucketHttpRequest request =
@@ -1249,7 +1248,7 @@ public class BackendBucketClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendBucketAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateBackendBucketAsync(
       UpdateBackendBucketHttpRequest request) {
     return updateBackendBucketOperationCallable().futureCall(request);
   }
@@ -1270,14 +1269,14 @@ public class BackendBucketClient implements BackgroundResource {
    *     .setBackendBucketResource(backendBucketResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendBucketClient.updateBackendBucketOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendBucketClient.updateBackendBucketOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationCallable() {
     return stub.updateBackendBucketOperationCallable();
   }

@@ -51,7 +51,7 @@ public abstract class BackendBucketStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addSignedUrlKeyBackendBucketOperationCallable()");
@@ -65,7 +65,7 @@ public abstract class BackendBucketStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteBackendBucketOperationCallable()");
@@ -77,7 +77,7 @@ public abstract class BackendBucketStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteSignedUrlKeyBackendBucketOperationCallable()");
@@ -96,7 +96,7 @@ public abstract class BackendBucketStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertBackendBucketOperationCallable()");
@@ -120,7 +120,7 @@ public abstract class BackendBucketStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchBackendBucketOperationCallable()");
@@ -132,7 +132,7 @@ public abstract class BackendBucketStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateBackendBucketOperationCallable()");

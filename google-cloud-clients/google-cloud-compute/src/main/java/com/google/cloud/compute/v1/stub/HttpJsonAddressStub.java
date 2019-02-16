@@ -168,11 +168,11 @@ public class HttpJsonAddressStub extends AddressStub {
           AggregatedListAddressesHttpRequest, AggregatedListAddressesPagedResponse>
       aggregatedListAddressesPagedCallable;
   private final UnaryCallable<DeleteAddressHttpRequest, Operation> deleteAddressCallable;
-  private final OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationCallable;
   private final UnaryCallable<GetAddressHttpRequest, Address> getAddressCallable;
   private final UnaryCallable<InsertAddressHttpRequest, Operation> insertAddressCallable;
-  private final OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationCallable;
   private final UnaryCallable<ListAddressesHttpRequest, AddressList> listAddressesCallable;
   private final UnaryCallable<ListAddressesHttpRequest, ListAddressesPagedResponse>
@@ -299,7 +299,7 @@ public class HttpJsonAddressStub extends AddressStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationCallable() {
     return deleteAddressOperationCallable;
   }
@@ -315,7 +315,7 @@ public class HttpJsonAddressStub extends AddressStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationCallable() {
     return insertAddressOperationCallable;
   }

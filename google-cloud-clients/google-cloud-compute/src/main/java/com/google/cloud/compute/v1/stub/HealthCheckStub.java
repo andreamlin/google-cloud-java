@@ -49,7 +49,7 @@ public abstract class HealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteHealthCheckOperationCallable()");
@@ -66,7 +66,7 @@ public abstract class HealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertHealthCheckOperationCallable()");
@@ -89,7 +89,7 @@ public abstract class HealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHealthCheckOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchHealthCheckOperationCallable()");
   }
@@ -100,7 +100,7 @@ public abstract class HealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateHealthCheckOperationCallable()");

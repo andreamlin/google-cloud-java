@@ -74,7 +74,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
   /** Returns the object with the settings used for calls to addSignedUrlKeyBackendBucket. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationSettings() {
     return ((BackendBucketStubSettings) getStubSettings())
         .addSignedUrlKeyBackendBucketOperationSettings();
@@ -89,7 +89,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
   /** Returns the object with the settings used for calls to deleteBackendBucket. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationSettings() {
     return ((BackendBucketStubSettings) getStubSettings()).deleteBackendBucketOperationSettings();
   }
@@ -104,8 +104,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
   /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendBucket. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationSettings() {
     return ((BackendBucketStubSettings) getStubSettings())
         .deleteSignedUrlKeyBackendBucketOperationSettings();
@@ -125,7 +124,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
   /** Returns the object with the settings used for calls to insertBackendBucket. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationSettings() {
     return ((BackendBucketStubSettings) getStubSettings()).insertBackendBucketOperationSettings();
   }
@@ -145,7 +144,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
   /** Returns the object with the settings used for calls to patchBackendBucket. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationSettings() {
     return ((BackendBucketStubSettings) getStubSettings()).patchBackendBucketOperationSettings();
   }
@@ -159,7 +158,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
   /** Returns the object with the settings used for calls to updateBackendBucket. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationSettings() {
     return ((BackendBucketStubSettings) getStubSettings()).updateBackendBucketOperationSettings();
   }
@@ -276,7 +275,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
         addSignedUrlKeyBackendBucketOperationSettings() {
       return getStubSettingsBuilder().addSignedUrlKeyBackendBucketOperationSettings();
     }
@@ -290,7 +289,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
     /** Returns the builder for the settings used for calls to deleteBackendBucket. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
         deleteBackendBucketOperationSettings() {
       return getStubSettingsBuilder().deleteBackendBucketOperationSettings();
     }
@@ -305,7 +304,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
         deleteSignedUrlKeyBackendBucketOperationSettings() {
       return getStubSettingsBuilder().deleteSignedUrlKeyBackendBucketOperationSettings();
     }
@@ -325,7 +324,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
     /** Returns the builder for the settings used for calls to insertBackendBucket. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
         insertBackendBucketOperationSettings() {
       return getStubSettingsBuilder().insertBackendBucketOperationSettings();
     }
@@ -346,7 +345,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
     /** Returns the builder for the settings used for calls to patchBackendBucket. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
         patchBackendBucketOperationSettings() {
       return getStubSettingsBuilder().patchBackendBucketOperationSettings();
     }
@@ -360,7 +359,7 @@ public class BackendBucketSettings extends ClientSettings<BackendBucketSettings>
     /** Returns the builder for the settings used for calls to updateBackendBucket. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
         updateBackendBucketOperationSettings() {
       return getStubSettingsBuilder().updateBackendBucketOperationSettings();
     }

@@ -112,13 +112,13 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
       aggregatedListTargetVpnGatewaysSettings;
   private final UnaryCallSettings<DeleteTargetVpnGatewayHttpRequest, Operation>
       deleteTargetVpnGatewaySettings;
-  private final OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationSettings;
   private final UnaryCallSettings<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewaySettings;
   private final UnaryCallSettings<InsertTargetVpnGatewayHttpRequest, Operation>
       insertTargetVpnGatewaySettings;
-  private final OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationSettings;
   private final PagedCallSettings<
           ListTargetVpnGatewaysHttpRequest,
@@ -143,7 +143,7 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
 
   /** Returns the object with the settings used for calls to deleteTargetVpnGateway. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationSettings() {
     return deleteTargetVpnGatewayOperationSettings;
   }
@@ -162,7 +162,7 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
 
   /** Returns the object with the settings used for calls to insertTargetVpnGateway. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationSettings() {
     return insertTargetVpnGatewayOperationSettings;
   }
@@ -423,14 +423,14 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     private final UnaryCallSettings.Builder<DeleteTargetVpnGatewayHttpRequest, Operation>
         deleteTargetVpnGatewaySettings;
     private final OperationCallSettings.Builder<
-            DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
         deleteTargetVpnGatewayOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
         getTargetVpnGatewaySettings;
     private final UnaryCallSettings.Builder<InsertTargetVpnGatewayHttpRequest, Operation>
         insertTargetVpnGatewaySettings;
     private final OperationCallSettings.Builder<
-            InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+            InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
         insertTargetVpnGatewayOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetVpnGatewaysHttpRequest,
@@ -550,8 +550,8 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -572,8 +572,8 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -646,8 +646,7 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     /** Returns the builder for the settings used for calls to deleteTargetVpnGateway. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
         deleteTargetVpnGatewayOperationSettings() {
       return deleteTargetVpnGatewayOperationSettings;
     }
@@ -667,8 +666,7 @@ public class TargetVpnGatewayStubSettings extends StubSettings<TargetVpnGatewayS
     /** Returns the builder for the settings used for calls to insertTargetVpnGateway. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
         insertTargetVpnGatewayOperationSettings() {
       return insertTargetVpnGatewayOperationSettings;
     }

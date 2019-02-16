@@ -74,7 +74,7 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
   /** Returns the object with the settings used for calls to deleteInstanceTemplate. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationSettings() {
     return ((InstanceTemplateStubSettings) getStubSettings())
         .deleteInstanceTemplateOperationSettings();
@@ -102,7 +102,7 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
   /** Returns the object with the settings used for calls to insertInstanceTemplate. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationSettings() {
     return ((InstanceTemplateStubSettings) getStubSettings())
         .insertInstanceTemplateOperationSettings();
@@ -242,8 +242,7 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
     /** Returns the builder for the settings used for calls to deleteInstanceTemplate. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
         deleteInstanceTemplateOperationSettings() {
       return getStubSettingsBuilder().deleteInstanceTemplateOperationSettings();
     }
@@ -269,8 +268,7 @@ public class InstanceTemplateSettings extends ClientSettings<InstanceTemplateSet
     /** Returns the builder for the settings used for calls to insertInstanceTemplate. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
         insertInstanceTemplateOperationSettings() {
       return getStubSettingsBuilder().insertInstanceTemplateOperationSettings();
     }

@@ -280,7 +280,7 @@ public class HttpJsonRouterStub extends RouterStub {
   private final UnaryCallable<AggregatedListRoutersHttpRequest, AggregatedListRoutersPagedResponse>
       aggregatedListRoutersPagedCallable;
   private final UnaryCallable<DeleteRouterHttpRequest, Operation> deleteRouterCallable;
-  private final OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteRouterHttpRequest, EmptyMessage, Operation>
       deleteRouterOperationCallable;
   private final UnaryCallable<GetRouterHttpRequest, Router> getRouterCallable;
   private final UnaryCallable<GetNatMappingInfoRoutersHttpRequest, VmEndpointNatMappingsList>
@@ -291,18 +291,18 @@ public class HttpJsonRouterStub extends RouterStub {
   private final UnaryCallable<GetRouterStatusRouterHttpRequest, RouterStatusResponse>
       getRouterStatusRouterCallable;
   private final UnaryCallable<InsertRouterHttpRequest, Operation> insertRouterCallable;
-  private final OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertRouterHttpRequest, EmptyMessage, Operation>
       insertRouterOperationCallable;
   private final UnaryCallable<ListRoutersHttpRequest, RouterList> listRoutersCallable;
   private final UnaryCallable<ListRoutersHttpRequest, ListRoutersPagedResponse>
       listRoutersPagedCallable;
   private final UnaryCallable<PatchRouterHttpRequest, Operation> patchRouterCallable;
-  private final OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchRouterHttpRequest, EmptyMessage, Operation>
       patchRouterOperationCallable;
   private final UnaryCallable<PreviewRouterHttpRequest, RoutersPreviewResponse>
       previewRouterCallable;
   private final UnaryCallable<UpdateRouterHttpRequest, Operation> updateRouterCallable;
-  private final OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateRouterHttpRequest, EmptyMessage, Operation>
       updateRouterOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -487,7 +487,7 @@ public class HttpJsonRouterStub extends RouterStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRouterHttpRequest, EmptyMessage, Operation>
       deleteRouterOperationCallable() {
     return deleteRouterOperationCallable;
   }
@@ -521,7 +521,7 @@ public class HttpJsonRouterStub extends RouterStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRouterHttpRequest, EmptyMessage, Operation>
       insertRouterOperationCallable() {
     return insertRouterOperationCallable;
   }
@@ -543,7 +543,7 @@ public class HttpJsonRouterStub extends RouterStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRouterHttpRequest, EmptyMessage, Operation>
       patchRouterOperationCallable() {
     return patchRouterOperationCallable;
   }
@@ -559,7 +559,7 @@ public class HttpJsonRouterStub extends RouterStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateRouterHttpRequest, EmptyMessage, Operation>
       updateRouterOperationCallable() {
     return updateRouterOperationCallable;
   }

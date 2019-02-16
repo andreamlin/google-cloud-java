@@ -49,7 +49,7 @@ public abstract class HttpsHealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHttpsHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteHttpsHealthCheckOperationCallable()");
@@ -68,7 +68,7 @@ public abstract class HttpsHealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHttpsHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertHttpsHealthCheckOperationCallable()");
@@ -94,7 +94,7 @@ public abstract class HttpsHealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHttpsHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchHttpsHealthCheckOperationCallable()");
@@ -107,7 +107,7 @@ public abstract class HttpsHealthCheckStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHttpsHealthCheckOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateHttpsHealthCheckOperationCallable()");

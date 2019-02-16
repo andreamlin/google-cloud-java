@@ -104,21 +104,20 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
 
   private final UnaryCallSettings<DeleteTargetHttpProxyHttpRequest, Operation>
       deleteTargetHttpProxySettings;
-  private final OperationCallSettings<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpProxyOperationSettings;
   private final UnaryCallSettings<GetTargetHttpProxyHttpRequest, TargetHttpProxy>
       getTargetHttpProxySettings;
   private final UnaryCallSettings<InsertTargetHttpProxyHttpRequest, Operation>
       insertTargetHttpProxySettings;
-  private final OperationCallSettings<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpProxyOperationSettings;
   private final PagedCallSettings<
           ListTargetHttpProxiesHttpRequest, TargetHttpProxyList, ListTargetHttpProxiesPagedResponse>
       listTargetHttpProxiesSettings;
   private final UnaryCallSettings<SetUrlMapTargetHttpProxyHttpRequest, Operation>
       setUrlMapTargetHttpProxySettings;
-  private final OperationCallSettings<
-          SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpProxyOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteTargetHttpProxy. */
@@ -129,7 +128,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
 
   /** Returns the object with the settings used for calls to deleteTargetHttpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpProxyOperationSettings() {
     return deleteTargetHttpProxyOperationSettings;
   }
@@ -148,7 +147,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
 
   /** Returns the object with the settings used for calls to insertTargetHttpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpProxyOperationSettings() {
     return insertTargetHttpProxyOperationSettings;
   }
@@ -168,7 +167,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
 
   /** Returns the object with the settings used for calls to setUrlMapTargetHttpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpProxyOperationSettings() {
     return setUrlMapTargetHttpProxyOperationSettings;
   }
@@ -333,14 +332,14 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
     private final UnaryCallSettings.Builder<DeleteTargetHttpProxyHttpRequest, Operation>
         deleteTargetHttpProxySettings;
     private final OperationCallSettings.Builder<
-            DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetHttpProxyOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetHttpProxyHttpRequest, TargetHttpProxy>
         getTargetHttpProxySettings;
     private final UnaryCallSettings.Builder<InsertTargetHttpProxyHttpRequest, Operation>
         insertTargetHttpProxySettings;
     private final OperationCallSettings.Builder<
-            InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         insertTargetHttpProxyOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetHttpProxiesHttpRequest,
@@ -350,7 +349,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
     private final UnaryCallSettings.Builder<SetUrlMapTargetHttpProxyHttpRequest, Operation>
         setUrlMapTargetHttpProxySettings;
     private final OperationCallSettings.Builder<
-            SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         setUrlMapTargetHttpProxyOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -466,8 +465,8 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -488,8 +487,8 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -510,8 +509,8 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -576,8 +575,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
     /** Returns the builder for the settings used for calls to deleteTargetHttpProxy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetHttpProxyOperationSettings() {
       return deleteTargetHttpProxyOperationSettings;
     }
@@ -597,8 +595,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
     /** Returns the builder for the settings used for calls to insertTargetHttpProxy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         insertTargetHttpProxyOperationSettings() {
       return insertTargetHttpProxyOperationSettings;
     }
@@ -622,7 +619,7 @@ public class TargetHttpProxyStubSettings extends StubSettings<TargetHttpProxyStu
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         setUrlMapTargetHttpProxyOperationSettings() {
       return setUrlMapTargetHttpProxyOperationSettings;
     }

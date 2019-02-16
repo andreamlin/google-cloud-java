@@ -57,7 +57,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       addHealthCheckTargetPoolOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addHealthCheckTargetPoolOperationCallable()");
@@ -70,7 +70,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       addInstanceTargetPoolOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addInstanceTargetPoolOperationCallable()");
@@ -96,7 +96,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, Operation>
       deleteTargetPoolOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteTargetPoolOperationCallable()");
   }
@@ -118,7 +118,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, Operation>
       insertTargetPoolOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertTargetPoolOperationCallable()");
   }
@@ -140,7 +140,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       removeHealthCheckTargetPoolOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: removeHealthCheckTargetPoolOperationCallable()");
@@ -154,7 +154,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       removeInstanceTargetPoolOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: removeInstanceTargetPoolOperationCallable()");
@@ -167,7 +167,7 @@ public abstract class TargetPoolStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, Operation>
       setBackupTargetPoolOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setBackupTargetPoolOperationCallable()");

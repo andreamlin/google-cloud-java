@@ -249,11 +249,11 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
 
   private final UnaryCallable<AddRuleSecurityPolicyHttpRequest, Operation>
       addRuleSecurityPolicyCallable;
-  private final OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationCallable;
   private final UnaryCallable<DeleteSecurityPolicyHttpRequest, Operation>
       deleteSecurityPolicyCallable;
-  private final OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationCallable;
   private final UnaryCallable<GetSecurityPolicyHttpRequest, SecurityPolicy>
       getSecurityPolicyCallable;
@@ -261,7 +261,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
       getRuleSecurityPolicyCallable;
   private final UnaryCallable<InsertSecurityPolicyHttpRequest, Operation>
       insertSecurityPolicyCallable;
-  private final OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationCallable;
   private final UnaryCallable<ListSecurityPoliciesHttpRequest, SecurityPolicyList>
       listSecurityPoliciesCallable;
@@ -269,15 +269,15 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
       listSecurityPoliciesPagedCallable;
   private final UnaryCallable<PatchSecurityPolicyHttpRequest, Operation>
       patchSecurityPolicyCallable;
-  private final OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationCallable;
   private final UnaryCallable<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicyCallable;
-  private final OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationCallable;
   private final UnaryCallable<RemoveRuleSecurityPolicyHttpRequest, Operation>
       removeRuleSecurityPolicyCallable;
-  private final OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -464,7 +464,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationCallable() {
     return addRuleSecurityPolicyOperationCallable;
   }
@@ -476,7 +476,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationCallable() {
     return deleteSecurityPolicyOperationCallable;
   }
@@ -498,7 +498,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationCallable() {
     return insertSecurityPolicyOperationCallable;
   }
@@ -521,7 +521,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationCallable() {
     return patchSecurityPolicyOperationCallable;
   }
@@ -532,7 +532,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationCallable() {
     return patchRuleSecurityPolicyOperationCallable;
   }
@@ -544,7 +544,7 @@ public class HttpJsonSecurityPolicyStub extends SecurityPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationCallable() {
     return removeRuleSecurityPolicyOperationCallable;
   }

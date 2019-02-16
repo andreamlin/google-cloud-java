@@ -323,7 +323,7 @@ public class VpnTunnelClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteVpnTunnelAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteVpnTunnelAsync(
       ProjectRegionVpnTunnelName vpnTunnel) {
 
     DeleteVpnTunnelHttpRequest request =
@@ -351,7 +351,7 @@ public class VpnTunnelClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteVpnTunnelAsync(String vpnTunnel) {
+  public final OperationFuture<EmptyMessage, Operation> deleteVpnTunnelAsync(String vpnTunnel) {
 
     DeleteVpnTunnelHttpRequest request =
         DeleteVpnTunnelHttpRequest.newBuilder().setVpnTunnel(vpnTunnel).build();
@@ -379,7 +379,7 @@ public class VpnTunnelClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteVpnTunnelAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteVpnTunnelAsync(
       DeleteVpnTunnelHttpRequest request) {
     return deleteVpnTunnelOperationCallable().futureCall(request);
   }
@@ -396,14 +396,14 @@ public class VpnTunnelClient implements BackgroundResource {
    *   DeleteVpnTunnelHttpRequest request = DeleteVpnTunnelHttpRequest.newBuilder()
    *     .setVpnTunnel(vpnTunnel.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = vpnTunnelClient.deleteVpnTunnelOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = vpnTunnelClient.deleteVpnTunnelOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationCallable() {
     return stub.deleteVpnTunnelOperationCallable();
   }
@@ -554,7 +554,7 @@ public class VpnTunnelClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertVpnTunnelAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertVpnTunnelAsync(
       ProjectRegionName region, VpnTunnel vpnTunnelResource) {
 
     InsertVpnTunnelHttpRequest request =
@@ -587,7 +587,7 @@ public class VpnTunnelClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertVpnTunnelAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertVpnTunnelAsync(
       String region, VpnTunnel vpnTunnelResource) {
 
     InsertVpnTunnelHttpRequest request =
@@ -622,7 +622,7 @@ public class VpnTunnelClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertVpnTunnelAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertVpnTunnelAsync(
       InsertVpnTunnelHttpRequest request) {
     return insertVpnTunnelOperationCallable().futureCall(request);
   }
@@ -642,14 +642,14 @@ public class VpnTunnelClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setVpnTunnelResource(vpnTunnelResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = vpnTunnelClient.insertVpnTunnelOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = vpnTunnelClient.insertVpnTunnelOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationCallable() {
     return stub.insertVpnTunnelOperationCallable();
   }

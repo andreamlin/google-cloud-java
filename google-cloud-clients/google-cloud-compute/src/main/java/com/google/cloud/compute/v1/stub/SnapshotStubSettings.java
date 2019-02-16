@@ -107,7 +107,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteSnapshotHttpRequest, Operation> deleteSnapshotSettings;
-  private final OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationSettings;
   private final UnaryCallSettings<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings;
   private final UnaryCallSettings<GetIamPolicySnapshotHttpRequest, Policy>
@@ -119,7 +119,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
       setIamPolicySnapshotSettings;
   private final UnaryCallSettings<SetLabelsSnapshotHttpRequest, Operation>
       setLabelsSnapshotSettings;
-  private final OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsSnapshotHttpRequest, TestPermissionsResponse>
       testIamPermissionsSnapshotSettings;
@@ -131,7 +131,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteSnapshot. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationSettings() {
     return deleteSnapshotOperationSettings;
   }
@@ -164,7 +164,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
 
   /** Returns the object with the settings used for calls to setLabelsSnapshot. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationSettings() {
     return setLabelsSnapshotOperationSettings;
   }
@@ -323,8 +323,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteSnapshotHttpRequest, Operation>
         deleteSnapshotSettings;
-    private final OperationCallSettings.Builder<
-            DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
         deleteSnapshotOperationSettings;
     private final UnaryCallSettings.Builder<GetSnapshotHttpRequest, Snapshot> getSnapshotSettings;
     private final UnaryCallSettings.Builder<GetIamPolicySnapshotHttpRequest, Policy>
@@ -337,7 +336,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
     private final UnaryCallSettings.Builder<SetLabelsSnapshotHttpRequest, Operation>
         setLabelsSnapshotSettings;
     private final OperationCallSettings.Builder<
-            SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+            SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
         setLabelsSnapshotOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsSnapshotHttpRequest, TestPermissionsResponse>
@@ -468,8 +467,8 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -489,8 +488,8 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -555,7 +554,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
     /** Returns the builder for the settings used for calls to deleteSnapshot. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
         deleteSnapshotOperationSettings() {
       return deleteSnapshotOperationSettings;
     }
@@ -593,7 +592,7 @@ public class SnapshotStubSettings extends StubSettings<SnapshotStubSettings> {
     /** Returns the builder for the settings used for calls to setLabelsSnapshot. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
         setLabelsSnapshotOperationSettings() {
       return setLabelsSnapshotOperationSettings;
     }

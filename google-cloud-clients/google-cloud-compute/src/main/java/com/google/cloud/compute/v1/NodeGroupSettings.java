@@ -75,7 +75,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to addNodesNodeGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       addNodesNodeGroupOperationSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).addNodesNodeGroupOperationSettings();
   }
@@ -97,7 +97,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to deleteNodeGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodeGroupOperationSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).deleteNodeGroupOperationSettings();
   }
@@ -111,7 +111,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to deleteNodesNodeGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodesNodeGroupOperationSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).deleteNodesNodeGroupOperationSettings();
   }
@@ -135,7 +135,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to insertNodeGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
       insertNodeGroupOperationSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).insertNodeGroupOperationSettings();
   }
@@ -168,7 +168,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
   /** Returns the object with the settings used for calls to setNodeTemplateNodeGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
       setNodeTemplateNodeGroupOperationSettings() {
     return ((NodeGroupStubSettings) getStubSettings()).setNodeTemplateNodeGroupOperationSettings();
   }
@@ -289,7 +289,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     /** Returns the builder for the settings used for calls to addNodesNodeGroup. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
         addNodesNodeGroupOperationSettings() {
       return getStubSettingsBuilder().addNodesNodeGroupOperationSettings();
     }
@@ -312,7 +312,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     /** Returns the builder for the settings used for calls to deleteNodeGroup. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
         deleteNodeGroupOperationSettings() {
       return getStubSettingsBuilder().deleteNodeGroupOperationSettings();
     }
@@ -326,8 +326,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     /** Returns the builder for the settings used for calls to deleteNodesNodeGroup. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
         deleteNodesNodeGroupOperationSettings() {
       return getStubSettingsBuilder().deleteNodesNodeGroupOperationSettings();
     }
@@ -352,7 +351,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     /** Returns the builder for the settings used for calls to insertNodeGroup. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
         insertNodeGroupOperationSettings() {
       return getStubSettingsBuilder().insertNodeGroupOperationSettings();
     }
@@ -387,7 +386,7 @@ public class NodeGroupSettings extends ClientSettings<NodeGroupSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
         setNodeTemplateNodeGroupOperationSettings() {
       return getStubSettingsBuilder().setNodeTemplateNodeGroupOperationSettings();
     }

@@ -329,7 +329,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetVpnGatewayAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetVpnGatewayAsync(
       ProjectRegionTargetVpnGatewayName targetVpnGateway) {
 
     DeleteTargetVpnGatewayHttpRequest request =
@@ -357,7 +357,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetVpnGatewayAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetVpnGatewayAsync(
       String targetVpnGateway) {
 
     DeleteTargetVpnGatewayHttpRequest request =
@@ -388,7 +388,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetVpnGatewayAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetVpnGatewayAsync(
       DeleteTargetVpnGatewayHttpRequest request) {
     return deleteTargetVpnGatewayOperationCallable().futureCall(request);
   }
@@ -405,14 +405,14 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *   DeleteTargetVpnGatewayHttpRequest request = DeleteTargetVpnGatewayHttpRequest.newBuilder()
    *     .setTargetVpnGateway(targetVpnGateway.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetVpnGatewayClient.deleteTargetVpnGatewayOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationCallable() {
     return stub.deleteTargetVpnGatewayOperationCallable();
   }
@@ -566,7 +566,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetVpnGatewayAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetVpnGatewayAsync(
       ProjectRegionName region, TargetVpnGateway targetVpnGatewayResource) {
 
     InsertTargetVpnGatewayHttpRequest request =
@@ -599,7 +599,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetVpnGatewayAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetVpnGatewayAsync(
       String region, TargetVpnGateway targetVpnGatewayResource) {
 
     InsertTargetVpnGatewayHttpRequest request =
@@ -634,7 +634,7 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetVpnGatewayAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetVpnGatewayAsync(
       InsertTargetVpnGatewayHttpRequest request) {
     return insertTargetVpnGatewayOperationCallable().futureCall(request);
   }
@@ -654,14 +654,14 @@ public class TargetVpnGatewayClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setTargetVpnGatewayResource(targetVpnGatewayResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetVpnGatewayClient.insertTargetVpnGatewayOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationCallable() {
     return stub.insertTargetVpnGatewayOperationCallable();
   }

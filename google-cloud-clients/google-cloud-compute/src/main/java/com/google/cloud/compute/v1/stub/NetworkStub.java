@@ -51,7 +51,7 @@ public abstract class NetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
       addPeeringNetworkOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addPeeringNetworkOperationCallable()");
@@ -63,7 +63,7 @@ public abstract class NetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, Operation>
       deleteNetworkOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteNetworkOperationCallable()");
   }
@@ -79,7 +79,7 @@ public abstract class NetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertNetworkHttpRequest, EmptyMessage, Operation>
       insertNetworkOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertNetworkOperationCallable()");
   }
@@ -101,7 +101,7 @@ public abstract class NetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchNetworkHttpRequest, EmptyMessage, Operation>
       patchNetworkOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchNetworkOperationCallable()");
   }
@@ -112,7 +112,7 @@ public abstract class NetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
       removePeeringNetworkOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: removePeeringNetworkOperationCallable()");
@@ -124,7 +124,7 @@ public abstract class NetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
       switchToCustomModeNetworkOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: switchToCustomModeNetworkOperationCallable()");

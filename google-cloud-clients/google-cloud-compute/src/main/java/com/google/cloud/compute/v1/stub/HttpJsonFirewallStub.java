@@ -176,20 +176,20 @@ public class HttpJsonFirewallStub extends FirewallStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteFirewallHttpRequest, Operation> deleteFirewallCallable;
-  private final OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, Operation>
       deleteFirewallOperationCallable;
   private final UnaryCallable<GetFirewallHttpRequest, Firewall> getFirewallCallable;
   private final UnaryCallable<InsertFirewallHttpRequest, Operation> insertFirewallCallable;
-  private final OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertFirewallHttpRequest, EmptyMessage, Operation>
       insertFirewallOperationCallable;
   private final UnaryCallable<ListFirewallsHttpRequest, FirewallList> listFirewallsCallable;
   private final UnaryCallable<ListFirewallsHttpRequest, ListFirewallsPagedResponse>
       listFirewallsPagedCallable;
   private final UnaryCallable<PatchFirewallHttpRequest, Operation> patchFirewallCallable;
-  private final OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchFirewallHttpRequest, EmptyMessage, Operation>
       patchFirewallOperationCallable;
   private final UnaryCallable<UpdateFirewallHttpRequest, Operation> updateFirewallCallable;
-  private final OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, Operation>
       updateFirewallOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -312,7 +312,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, Operation>
       deleteFirewallOperationCallable() {
     return deleteFirewallOperationCallable;
   }
@@ -328,7 +328,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertFirewallHttpRequest, EmptyMessage, Operation>
       insertFirewallOperationCallable() {
     return insertFirewallOperationCallable;
   }
@@ -350,7 +350,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchFirewallHttpRequest, EmptyMessage, Operation>
       patchFirewallOperationCallable() {
     return patchFirewallOperationCallable;
   }
@@ -361,7 +361,7 @@ public class HttpJsonFirewallStub extends FirewallStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, Operation>
       updateFirewallOperationCallable() {
     return updateFirewallOperationCallable;
   }

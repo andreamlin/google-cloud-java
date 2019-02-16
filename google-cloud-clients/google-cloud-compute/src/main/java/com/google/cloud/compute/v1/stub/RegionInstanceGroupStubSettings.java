@@ -119,7 +119,7 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
   private final UnaryCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
       setNamedPortsRegionInstanceGroupSettings;
   private final OperationCallSettings<
-          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationSettings;
 
   /** Returns the object with the settings used for calls to getRegionInstanceGroup. */
@@ -154,8 +154,7 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
 
   /** Returns the object with the settings used for calls to setNamedPortsRegionInstanceGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationSettings() {
     return setNamedPortsRegionInstanceGroupOperationSettings;
   }
@@ -416,7 +415,7 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
     private final UnaryCallSettings.Builder<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
         setNamedPortsRegionInstanceGroupSettings;
     private final OperationCallSettings.Builder<
-            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
         setNamedPortsRegionInstanceGroupOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -521,8 +520,8 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -608,7 +607,7 @@ public class RegionInstanceGroupStubSettings extends StubSettings<RegionInstance
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
         setNamedPortsRegionInstanceGroupOperationSettings() {
       return setNamedPortsRegionInstanceGroupOperationSettings;
     }

@@ -73,7 +73,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
   /** Returns the object with the settings used for calls to deleteFirewall. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteFirewallHttpRequest, EmptyMessage, Operation>
       deleteFirewallOperationSettings() {
     return ((FirewallStubSettings) getStubSettings()).deleteFirewallOperationSettings();
   }
@@ -91,7 +91,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
   /** Returns the object with the settings used for calls to insertFirewall. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertFirewallHttpRequest, EmptyMessage, Operation>
       insertFirewallOperationSettings() {
     return ((FirewallStubSettings) getStubSettings()).insertFirewallOperationSettings();
   }
@@ -110,7 +110,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
   /** Returns the object with the settings used for calls to patchFirewall. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchFirewallHttpRequest, EmptyMessage, Operation>
       patchFirewallOperationSettings() {
     return ((FirewallStubSettings) getStubSettings()).patchFirewallOperationSettings();
   }
@@ -123,7 +123,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
   /** Returns the object with the settings used for calls to updateFirewall. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateFirewallHttpRequest, EmptyMessage, Operation>
       updateFirewallOperationSettings() {
     return ((FirewallStubSettings) getStubSettings()).updateFirewallOperationSettings();
   }
@@ -238,7 +238,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
     /** Returns the builder for the settings used for calls to deleteFirewall. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteFirewallHttpRequest, EmptyMessage, Operation>
         deleteFirewallOperationSettings() {
       return getStubSettingsBuilder().deleteFirewallOperationSettings();
     }
@@ -257,7 +257,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
     /** Returns the builder for the settings used for calls to insertFirewall. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertFirewallHttpRequest, EmptyMessage, Operation>
         insertFirewallOperationSettings() {
       return getStubSettingsBuilder().insertFirewallOperationSettings();
     }
@@ -277,7 +277,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
     /** Returns the builder for the settings used for calls to patchFirewall. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchFirewallHttpRequest, EmptyMessage, Operation>
         patchFirewallOperationSettings() {
       return getStubSettingsBuilder().patchFirewallOperationSettings();
     }
@@ -291,7 +291,7 @@ public class FirewallSettings extends ClientSettings<FirewallSettings> {
     /** Returns the builder for the settings used for calls to updateFirewall. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateFirewallHttpRequest, EmptyMessage, Operation>
         updateFirewallOperationSettings() {
       return getStubSettingsBuilder().updateFirewallOperationSettings();
     }

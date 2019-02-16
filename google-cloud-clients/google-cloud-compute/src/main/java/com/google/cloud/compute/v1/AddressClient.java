@@ -323,7 +323,7 @@ public class AddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAddressAsync(
       ProjectRegionAddressName address) {
 
     DeleteAddressHttpRequest request =
@@ -351,7 +351,7 @@ public class AddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAddressAsync(String address) {
+  public final OperationFuture<EmptyMessage, Operation> deleteAddressAsync(String address) {
 
     DeleteAddressHttpRequest request =
         DeleteAddressHttpRequest.newBuilder().setAddress(address).build();
@@ -379,7 +379,7 @@ public class AddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAddressAsync(
       DeleteAddressHttpRequest request) {
     return deleteAddressOperationCallable().futureCall(request);
   }
@@ -396,14 +396,14 @@ public class AddressClient implements BackgroundResource {
    *   DeleteAddressHttpRequest request = DeleteAddressHttpRequest.newBuilder()
    *     .setAddress(address.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = addressClient.deleteAddressOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = addressClient.deleteAddressOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationCallable() {
     return stub.deleteAddressOperationCallable();
   }
@@ -549,7 +549,7 @@ public class AddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertAddressAsync(
       ProjectRegionName region, Address addressResource) {
 
     InsertAddressHttpRequest request =
@@ -582,7 +582,7 @@ public class AddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertAddressAsync(
       String region, Address addressResource) {
 
     InsertAddressHttpRequest request =
@@ -616,7 +616,7 @@ public class AddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertAddressAsync(
       InsertAddressHttpRequest request) {
     return insertAddressOperationCallable().futureCall(request);
   }
@@ -635,14 +635,14 @@ public class AddressClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setAddressResource(addressResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = addressClient.insertAddressOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = addressClient.insertAddressOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationCallable() {
     return stub.insertAddressOperationCallable();
   }

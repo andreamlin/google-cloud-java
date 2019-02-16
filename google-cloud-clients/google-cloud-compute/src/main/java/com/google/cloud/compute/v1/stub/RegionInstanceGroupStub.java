@@ -85,7 +85,7 @@ public abstract class RegionInstanceGroupStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setNamedPortsRegionInstanceGroupOperationCallable()");

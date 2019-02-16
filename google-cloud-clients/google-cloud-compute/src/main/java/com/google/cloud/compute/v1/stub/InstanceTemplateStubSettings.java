@@ -108,7 +108,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
 
   private final UnaryCallSettings<DeleteInstanceTemplateHttpRequest, Operation>
       deleteInstanceTemplateSettings;
-  private final OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationSettings;
   private final UnaryCallSettings<GetInstanceTemplateHttpRequest, InstanceTemplate>
       getInstanceTemplateSettings;
@@ -116,7 +116,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
       getIamPolicyInstanceTemplateSettings;
   private final UnaryCallSettings<InsertInstanceTemplateHttpRequest, Operation>
       insertInstanceTemplateSettings;
-  private final OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationSettings;
   private final PagedCallSettings<
           ListInstanceTemplatesHttpRequest,
@@ -137,7 +137,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
 
   /** Returns the object with the settings used for calls to deleteInstanceTemplate. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationSettings() {
     return deleteInstanceTemplateOperationSettings;
   }
@@ -162,7 +162,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
 
   /** Returns the object with the settings used for calls to insertInstanceTemplate. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationSettings() {
     return insertInstanceTemplateOperationSettings;
   }
@@ -353,7 +353,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
     private final UnaryCallSettings.Builder<DeleteInstanceTemplateHttpRequest, Operation>
         deleteInstanceTemplateSettings;
     private final OperationCallSettings.Builder<
-            DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
         deleteInstanceTemplateOperationSettings;
     private final UnaryCallSettings.Builder<GetInstanceTemplateHttpRequest, InstanceTemplate>
         getInstanceTemplateSettings;
@@ -362,7 +362,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
     private final UnaryCallSettings.Builder<InsertInstanceTemplateHttpRequest, Operation>
         insertInstanceTemplateSettings;
     private final OperationCallSettings.Builder<
-            InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
         insertInstanceTemplateOperationSettings;
     private final PagedCallSettings.Builder<
             ListInstanceTemplatesHttpRequest,
@@ -502,8 +502,8 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -524,8 +524,8 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -595,8 +595,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
     /** Returns the builder for the settings used for calls to deleteInstanceTemplate. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
         deleteInstanceTemplateOperationSettings() {
       return deleteInstanceTemplateOperationSettings;
     }
@@ -622,8 +621,7 @@ public class InstanceTemplateStubSettings extends StubSettings<InstanceTemplateS
     /** Returns the builder for the settings used for calls to insertInstanceTemplate. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
         insertInstanceTemplateOperationSettings() {
       return insertInstanceTemplateOperationSettings;
     }

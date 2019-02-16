@@ -73,7 +73,7 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
   /** Returns the object with the settings used for calls to deleteRoute. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationSettings() {
     return ((RouteStubSettings) getStubSettings()).deleteRouteOperationSettings();
   }
@@ -91,7 +91,7 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
   /** Returns the object with the settings used for calls to insertRoute. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationSettings() {
     return ((RouteStubSettings) getStubSettings()).insertRouteOperationSettings();
   }
@@ -211,7 +211,7 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
     /** Returns the builder for the settings used for calls to deleteRoute. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, Operation>
         deleteRouteOperationSettings() {
       return getStubSettingsBuilder().deleteRouteOperationSettings();
     }
@@ -229,7 +229,7 @@ public class RouteSettings extends ClientSettings<RouteSettings> {
     /** Returns the builder for the settings used for calls to insertRoute. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, Operation>
         insertRouteOperationSettings() {
       return getStubSettingsBuilder().insertRouteOperationSettings();
     }

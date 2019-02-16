@@ -65,7 +65,7 @@ public abstract class TargetVpnGatewayStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteTargetVpnGatewayOperationCallable()");
@@ -84,7 +84,7 @@ public abstract class TargetVpnGatewayStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertTargetVpnGatewayOperationCallable()");

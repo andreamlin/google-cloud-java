@@ -74,7 +74,7 @@ public abstract class SubnetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteSubnetworkOperationCallable()");
   }
@@ -85,7 +85,7 @@ public abstract class SubnetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: expandIpCidrRangeSubnetworkOperationCallable()");
@@ -109,7 +109,7 @@ public abstract class SubnetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertSubnetworkOperationCallable()");
   }
@@ -144,7 +144,7 @@ public abstract class SubnetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchSubnetworkOperationCallable()");
   }
@@ -160,8 +160,7 @@ public abstract class SubnetworkStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setPrivateIpGoogleAccessSubnetworkOperationCallable()");

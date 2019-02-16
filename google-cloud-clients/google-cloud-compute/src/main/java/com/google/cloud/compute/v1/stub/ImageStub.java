@@ -55,7 +55,7 @@ public abstract class ImageStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteImageOperationCallable()");
   }
@@ -66,7 +66,7 @@ public abstract class ImageStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deprecateImageOperationCallable()");
   }
@@ -92,7 +92,7 @@ public abstract class ImageStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertImageOperationCallable()");
   }
@@ -118,7 +118,7 @@ public abstract class ImageStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: setLabelsImageOperationCallable()");
   }

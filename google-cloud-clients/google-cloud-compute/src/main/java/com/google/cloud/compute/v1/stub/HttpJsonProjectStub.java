@@ -324,19 +324,19 @@ public class HttpJsonProjectStub extends ProjectStub {
 
   private final UnaryCallable<DisableXpnHostProjectHttpRequest, Operation>
       disableXpnHostProjectCallable;
-  private final OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       disableXpnHostProjectOperationCallable;
   private final UnaryCallable<DisableXpnResourceProjectHttpRequest, Operation>
       disableXpnResourceProjectCallable;
-  private final OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       disableXpnResourceProjectOperationCallable;
   private final UnaryCallable<EnableXpnHostProjectHttpRequest, Operation>
       enableXpnHostProjectCallable;
-  private final OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       enableXpnHostProjectOperationCallable;
   private final UnaryCallable<EnableXpnResourceProjectHttpRequest, Operation>
       enableXpnResourceProjectCallable;
-  private final OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       enableXpnResourceProjectOperationCallable;
   private final UnaryCallable<GetProjectHttpRequest, Project> getProjectCallable;
   private final UnaryCallable<GetXpnHostProjectHttpRequest, Project> getXpnHostProjectCallable;
@@ -350,26 +350,24 @@ public class HttpJsonProjectStub extends ProjectStub {
   private final UnaryCallable<ListXpnHostsProjectsHttpRequest, ListXpnHostsProjectsPagedResponse>
       listXpnHostsProjectsPagedCallable;
   private final UnaryCallable<MoveDiskProjectHttpRequest, Operation> moveDiskProjectCallable;
-  private final OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
       moveDiskProjectOperationCallable;
   private final UnaryCallable<MoveInstanceProjectHttpRequest, Operation>
       moveInstanceProjectCallable;
-  private final OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
       moveInstanceProjectOperationCallable;
   private final UnaryCallable<SetCommonInstanceMetadataProjectHttpRequest, Operation>
       setCommonInstanceMetadataProjectCallable;
   private final OperationCallable<
-          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
       setCommonInstanceMetadataProjectOperationCallable;
   private final UnaryCallable<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectCallable;
-  private final OperationCallable<
-          SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
       setDefaultNetworkTierProjectOperationCallable;
   private final UnaryCallable<SetUsageExportBucketProjectHttpRequest, Operation>
       setUsageExportBucketProjectCallable;
-  private final OperationCallable<
-          SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
       setUsageExportBucketProjectOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -611,7 +609,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       disableXpnHostProjectOperationCallable() {
     return disableXpnHostProjectOperationCallable;
   }
@@ -623,7 +621,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       disableXpnResourceProjectOperationCallable() {
     return disableXpnResourceProjectOperationCallable;
   }
@@ -635,7 +633,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       enableXpnHostProjectOperationCallable() {
     return enableXpnHostProjectOperationCallable;
   }
@@ -646,7 +644,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       enableXpnResourceProjectOperationCallable() {
     return enableXpnResourceProjectOperationCallable;
   }
@@ -692,7 +690,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
       moveDiskProjectOperationCallable() {
     return moveDiskProjectOperationCallable;
   }
@@ -703,7 +701,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
       moveInstanceProjectOperationCallable() {
     return moveInstanceProjectOperationCallable;
   }
@@ -714,7 +712,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
       setCommonInstanceMetadataProjectOperationCallable() {
     return setCommonInstanceMetadataProjectOperationCallable;
   }
@@ -726,7 +724,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
       setDefaultNetworkTierProjectOperationCallable() {
     return setDefaultNetworkTierProjectOperationCallable;
   }
@@ -738,7 +736,7 @@ public class HttpJsonProjectStub extends ProjectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
       setUsageExportBucketProjectOperationCallable() {
     return setUsageExportBucketProjectOperationCallable;
   }

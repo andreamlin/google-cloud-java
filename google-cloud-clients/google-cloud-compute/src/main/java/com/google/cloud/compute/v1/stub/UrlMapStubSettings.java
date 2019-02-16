@@ -107,23 +107,23 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteUrlMapHttpRequest, Operation> deleteUrlMapSettings;
-  private final OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationSettings;
   private final UnaryCallSettings<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
   private final UnaryCallSettings<InsertUrlMapHttpRequest, Operation> insertUrlMapSettings;
-  private final OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationSettings;
   private final UnaryCallSettings<InvalidateCacheUrlMapHttpRequest, Operation>
       invalidateCacheUrlMapSettings;
-  private final OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationSettings;
   private final PagedCallSettings<ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse>
       listUrlMapsSettings;
   private final UnaryCallSettings<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
-  private final OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationSettings;
   private final UnaryCallSettings<UpdateUrlMapHttpRequest, Operation> updateUrlMapSettings;
-  private final OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationSettings;
   private final UnaryCallSettings<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>
       validateUrlMapSettings;
@@ -135,7 +135,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteUrlMap. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationSettings() {
     return deleteUrlMapOperationSettings;
   }
@@ -152,7 +152,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
   /** Returns the object with the settings used for calls to insertUrlMap. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationSettings() {
     return insertUrlMapOperationSettings;
   }
@@ -165,7 +165,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
   /** Returns the object with the settings used for calls to invalidateCacheUrlMap. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationSettings() {
     return invalidateCacheUrlMapOperationSettings;
   }
@@ -183,7 +183,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
   /** Returns the object with the settings used for calls to patchUrlMap. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationSettings() {
     return patchUrlMapOperationSettings;
   }
@@ -195,7 +195,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
   /** Returns the object with the settings used for calls to updateUrlMap. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationSettings() {
     return updateUrlMapOperationSettings;
   }
@@ -357,27 +357,27 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteUrlMapHttpRequest, Operation>
         deleteUrlMapSettings;
-    private final OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
         deleteUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<GetUrlMapHttpRequest, UrlMap> getUrlMapSettings;
     private final UnaryCallSettings.Builder<InsertUrlMapHttpRequest, Operation>
         insertUrlMapSettings;
-    private final OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, Operation>
         insertUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, Operation>
         invalidateCacheUrlMapSettings;
     private final OperationCallSettings.Builder<
-            InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+            InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
         invalidateCacheUrlMapOperationSettings;
     private final PagedCallSettings.Builder<
             ListUrlMapsHttpRequest, UrlMapList, ListUrlMapsPagedResponse>
         listUrlMapsSettings;
     private final UnaryCallSettings.Builder<PatchUrlMapHttpRequest, Operation> patchUrlMapSettings;
-    private final OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, Operation>
         patchUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<UpdateUrlMapHttpRequest, Operation>
         updateUrlMapSettings;
-    private final OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
         updateUrlMapOperationSettings;
     private final UnaryCallSettings.Builder<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>
         validateUrlMapSettings;
@@ -521,8 +521,8 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -542,8 +542,8 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -564,8 +564,8 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -585,8 +585,8 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -606,8 +606,8 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -677,7 +677,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     /** Returns the builder for the settings used for calls to deleteUrlMap. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
         deleteUrlMapOperationSettings() {
       return deleteUrlMapOperationSettings;
     }
@@ -695,7 +695,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     /** Returns the builder for the settings used for calls to insertUrlMap. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, Operation>
         insertUrlMapOperationSettings() {
       return insertUrlMapOperationSettings;
     }
@@ -709,8 +709,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     /** Returns the builder for the settings used for calls to invalidateCacheUrlMap. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
         invalidateCacheUrlMapOperationSettings() {
       return invalidateCacheUrlMapOperationSettings;
     }
@@ -729,7 +728,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     /** Returns the builder for the settings used for calls to patchUrlMap. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, Operation>
         patchUrlMapOperationSettings() {
       return patchUrlMapOperationSettings;
     }
@@ -742,7 +741,7 @@ public class UrlMapStubSettings extends StubSettings<UrlMapStubSettings> {
     /** Returns the builder for the settings used for calls to updateUrlMap. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
         updateUrlMapOperationSettings() {
       return updateUrlMapOperationSettings;
     }

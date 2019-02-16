@@ -111,11 +111,11 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
           AggregatedListAddressesPagedResponse>
       aggregatedListAddressesSettings;
   private final UnaryCallSettings<DeleteAddressHttpRequest, Operation> deleteAddressSettings;
-  private final OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationSettings;
   private final UnaryCallSettings<GetAddressHttpRequest, Address> getAddressSettings;
   private final UnaryCallSettings<InsertAddressHttpRequest, Operation> insertAddressSettings;
-  private final OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationSettings;
   private final PagedCallSettings<ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse>
       listAddressesSettings;
@@ -136,7 +136,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteAddress. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationSettings() {
     return deleteAddressOperationSettings;
   }
@@ -153,7 +153,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
 
   /** Returns the object with the settings used for calls to insertAddress. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationSettings() {
     return insertAddressOperationSettings;
   }
@@ -383,14 +383,12 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
         aggregatedListAddressesSettings;
     private final UnaryCallSettings.Builder<DeleteAddressHttpRequest, Operation>
         deleteAddressSettings;
-    private final OperationCallSettings.Builder<
-            DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteAddressHttpRequest, EmptyMessage, Operation>
         deleteAddressOperationSettings;
     private final UnaryCallSettings.Builder<GetAddressHttpRequest, Address> getAddressSettings;
     private final UnaryCallSettings.Builder<InsertAddressHttpRequest, Operation>
         insertAddressSettings;
-    private final OperationCallSettings.Builder<
-            InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertAddressHttpRequest, EmptyMessage, Operation>
         insertAddressOperationSettings;
     private final PagedCallSettings.Builder<
             ListAddressesHttpRequest, AddressList, ListAddressesPagedResponse>
@@ -506,8 +504,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -527,8 +525,8 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -597,7 +595,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     /** Returns the builder for the settings used for calls to deleteAddress. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteAddressHttpRequest, EmptyMessage, Operation>
         deleteAddressOperationSettings() {
       return deleteAddressOperationSettings;
     }
@@ -615,7 +613,7 @@ public class AddressStubSettings extends StubSettings<AddressStubSettings> {
     /** Returns the builder for the settings used for calls to insertAddress. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertAddressHttpRequest, EmptyMessage, Operation>
         insertAddressOperationSettings() {
       return insertAddressOperationSettings;
     }

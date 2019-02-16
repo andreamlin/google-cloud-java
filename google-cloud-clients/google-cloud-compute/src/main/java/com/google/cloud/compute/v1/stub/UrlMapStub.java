@@ -52,7 +52,7 @@ public abstract class UrlMapStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteUrlMapOperationCallable()");
   }
@@ -68,7 +68,7 @@ public abstract class UrlMapStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertUrlMapOperationCallable()");
   }
@@ -79,7 +79,7 @@ public abstract class UrlMapStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: invalidateCacheUrlMapOperationCallable()");
@@ -103,7 +103,7 @@ public abstract class UrlMapStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchUrlMapOperationCallable()");
   }
@@ -114,7 +114,7 @@ public abstract class UrlMapStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: updateUrlMapOperationCallable()");
   }

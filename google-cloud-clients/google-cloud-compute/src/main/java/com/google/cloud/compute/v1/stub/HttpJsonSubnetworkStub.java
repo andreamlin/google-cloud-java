@@ -339,18 +339,17 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
           AggregatedListSubnetworksHttpRequest, AggregatedListSubnetworksPagedResponse>
       aggregatedListSubnetworksPagedCallable;
   private final UnaryCallable<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkCallable;
-  private final OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationCallable;
   private final UnaryCallable<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>
       expandIpCidrRangeSubnetworkCallable;
-  private final OperationCallable<
-          ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationCallable;
   private final UnaryCallable<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkCallable;
   private final UnaryCallable<GetIamPolicySubnetworkHttpRequest, Policy>
       getIamPolicySubnetworkCallable;
   private final UnaryCallable<InsertSubnetworkHttpRequest, Operation> insertSubnetworkCallable;
-  private final OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, SubnetworkList> listSubnetworksCallable;
   private final UnaryCallable<ListSubnetworksHttpRequest, ListSubnetworksPagedResponse>
@@ -360,14 +359,14 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   private final UnaryCallable<ListUsableSubnetworksHttpRequest, ListUsableSubnetworksPagedResponse>
       listUsableSubnetworksPagedCallable;
   private final UnaryCallable<PatchSubnetworkHttpRequest, Operation> patchSubnetworkCallable;
-  private final OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationCallable;
   private final UnaryCallable<SetIamPolicySubnetworkHttpRequest, Policy>
       setIamPolicySubnetworkCallable;
   private final UnaryCallable<SetPrivateIpGoogleAccessSubnetworkHttpRequest, Operation>
       setPrivateIpGoogleAccessSubnetworkCallable;
   private final OperationCallable<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationCallable;
   private final UnaryCallable<TestIamPermissionsSubnetworkHttpRequest, TestPermissionsResponse>
       testIamPermissionsSubnetworkCallable;
@@ -589,7 +588,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationCallable() {
     return deleteSubnetworkOperationCallable;
   }
@@ -600,7 +599,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationCallable() {
     return expandIpCidrRangeSubnetworkOperationCallable;
   }
@@ -622,7 +621,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationCallable() {
     return insertSubnetworkOperationCallable;
   }
@@ -656,7 +655,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationCallable() {
     return patchSubnetworkOperationCallable;
   }
@@ -672,8 +671,7 @@ public class HttpJsonSubnetworkStub extends SubnetworkStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationCallable() {
     return setPrivateIpGoogleAccessSubnetworkOperationCallable;
   }

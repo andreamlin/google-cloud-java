@@ -74,7 +74,7 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
   /** Returns the object with the settings used for calls to deleteSslCertificate. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationSettings() {
     return ((SslCertificateStubSettings) getStubSettings()).deleteSslCertificateOperationSettings();
   }
@@ -94,7 +94,7 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
   /** Returns the object with the settings used for calls to insertSslCertificate. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationSettings() {
     return ((SslCertificateStubSettings) getStubSettings()).insertSslCertificateOperationSettings();
   }
@@ -217,8 +217,7 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
     /** Returns the builder for the settings used for calls to deleteSslCertificate. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
         deleteSslCertificateOperationSettings() {
       return getStubSettingsBuilder().deleteSslCertificateOperationSettings();
     }
@@ -238,8 +237,7 @@ public class SslCertificateSettings extends ClientSettings<SslCertificateSetting
     /** Returns the builder for the settings used for calls to insertSslCertificate. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
         insertSslCertificateOperationSettings() {
       return getStubSettingsBuilder().insertSslCertificateOperationSettings();
     }

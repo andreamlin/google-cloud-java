@@ -218,7 +218,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
 
   private final UnaryCallable<DeleteInstanceTemplateHttpRequest, Operation>
       deleteInstanceTemplateCallable;
-  private final OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationCallable;
   private final UnaryCallable<GetInstanceTemplateHttpRequest, InstanceTemplate>
       getInstanceTemplateCallable;
@@ -226,7 +226,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
       getIamPolicyInstanceTemplateCallable;
   private final UnaryCallable<InsertInstanceTemplateHttpRequest, Operation>
       insertInstanceTemplateCallable;
-  private final OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationCallable;
   private final UnaryCallable<ListInstanceTemplatesHttpRequest, InstanceTemplateList>
       listInstanceTemplatesCallable;
@@ -381,7 +381,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationCallable() {
     return deleteInstanceTemplateOperationCallable;
   }
@@ -405,7 +405,7 @@ public class HttpJsonInstanceTemplateStub extends InstanceTemplateStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationCallable() {
     return insertInstanceTemplateOperationCallable;
   }

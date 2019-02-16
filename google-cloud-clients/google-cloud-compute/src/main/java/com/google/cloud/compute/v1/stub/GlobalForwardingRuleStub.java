@@ -48,7 +48,7 @@ public abstract class GlobalForwardingRuleStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteGlobalForwardingRuleOperationCallable()");
@@ -68,7 +68,7 @@ public abstract class GlobalForwardingRuleStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertGlobalForwardingRuleOperationCallable()");
@@ -95,7 +95,7 @@ public abstract class GlobalForwardingRuleStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setTargetGlobalForwardingRuleOperationCallable()");

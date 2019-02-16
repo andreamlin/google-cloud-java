@@ -169,7 +169,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   private final UnaryCallable<SetNamedPortsRegionInstanceGroupHttpRequest, Operation>
       setNamedPortsRegionInstanceGroupCallable;
   private final OperationCallable<
-          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -319,7 +319,7 @@ public class HttpJsonRegionInstanceGroupStub extends RegionInstanceGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationCallable() {
     return setNamedPortsRegionInstanceGroupOperationCallable;
   }

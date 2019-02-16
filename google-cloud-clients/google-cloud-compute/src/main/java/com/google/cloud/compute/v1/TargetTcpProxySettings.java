@@ -74,7 +74,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
   /** Returns the object with the settings used for calls to deleteTargetTcpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationSettings() {
     return ((TargetTcpProxyStubSettings) getStubSettings()).deleteTargetTcpProxyOperationSettings();
   }
@@ -94,7 +94,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
   /** Returns the object with the settings used for calls to insertTargetTcpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationSettings() {
     return ((TargetTcpProxyStubSettings) getStubSettings()).insertTargetTcpProxyOperationSettings();
   }
@@ -116,8 +116,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
   /** Returns the object with the settings used for calls to setBackendServiceTargetTcpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationSettings() {
     return ((TargetTcpProxyStubSettings) getStubSettings())
         .setBackendServiceTargetTcpProxyOperationSettings();
@@ -132,7 +131,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
   /** Returns the object with the settings used for calls to setProxyHeaderTargetTcpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationSettings() {
     return ((TargetTcpProxyStubSettings) getStubSettings())
         .setProxyHeaderTargetTcpProxyOperationSettings();
@@ -249,8 +248,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
     /** Returns the builder for the settings used for calls to deleteTargetTcpProxy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetTcpProxyOperationSettings() {
       return getStubSettingsBuilder().deleteTargetTcpProxyOperationSettings();
     }
@@ -270,8 +268,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
     /** Returns the builder for the settings used for calls to insertTargetTcpProxy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         insertTargetTcpProxyOperationSettings() {
       return getStubSettingsBuilder().insertTargetTcpProxyOperationSettings();
     }
@@ -293,7 +290,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         setBackendServiceTargetTcpProxyOperationSettings() {
       return getStubSettingsBuilder().setBackendServiceTargetTcpProxyOperationSettings();
     }
@@ -308,7 +305,7 @@ public class TargetTcpProxySettings extends ClientSettings<TargetTcpProxySetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         setProxyHeaderTargetTcpProxyOperationSettings() {
       return getStubSettingsBuilder().setProxyHeaderTargetTcpProxyOperationSettings();
     }

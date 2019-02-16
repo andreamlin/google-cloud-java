@@ -81,7 +81,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addAccessConfigInstanceOperationCallable()");
@@ -107,7 +107,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: attachDiskInstanceOperationCallable()");
@@ -119,7 +119,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteInstanceOperationCallable()");
   }
@@ -130,7 +130,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteAccessConfigInstanceOperationCallable()");
@@ -144,7 +144,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: detachDiskInstanceOperationCallable()");
@@ -173,7 +173,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
+  public OperationCallable<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertInstanceOperationCallable()");
   }
@@ -208,7 +208,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: resetInstanceOperationCallable()");
   }
@@ -219,7 +219,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setDeletionProtectionInstanceOperationCallable()");
@@ -233,7 +233,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setDiskAutoDeleteInstanceOperationCallable()");
@@ -251,7 +251,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setLabelsInstanceOperationCallable()");
@@ -263,7 +263,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setMachineResourcesInstanceOperationCallable()");
@@ -277,7 +277,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setMachineTypeInstanceOperationCallable()");
@@ -290,7 +290,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setMetadataInstanceOperationCallable()");
@@ -302,7 +302,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setMinCpuPlatformInstanceOperationCallable()");
@@ -315,7 +315,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setSchedulingInstanceOperationCallable()");
@@ -328,7 +328,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setServiceAccountInstanceOperationCallable()");
@@ -341,7 +341,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: setTagsInstanceOperationCallable()");
   }
@@ -352,7 +352,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: simulateMaintenanceEventInstanceOperationCallable()");
@@ -366,7 +366,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: startInstanceOperationCallable()");
   }
@@ -377,7 +377,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: startWithEncryptionKeyInstanceOperationCallable()");
@@ -391,7 +391,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: stopInstanceOperationCallable()");
   }
@@ -409,7 +409,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateAccessConfigInstanceOperationCallable()");
@@ -423,7 +423,7 @@ public abstract class InstanceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateNetworkInterfaceInstanceOperationCallable()");

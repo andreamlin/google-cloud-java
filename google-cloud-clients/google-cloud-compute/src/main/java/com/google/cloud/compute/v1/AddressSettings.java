@@ -83,7 +83,7 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
   /** Returns the object with the settings used for calls to deleteAddress. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationSettings() {
     return ((AddressStubSettings) getStubSettings()).deleteAddressOperationSettings();
   }
@@ -101,7 +101,7 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
   /** Returns the object with the settings used for calls to insertAddress. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationSettings() {
     return ((AddressStubSettings) getStubSettings()).insertAddressOperationSettings();
   }
@@ -230,7 +230,7 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
     /** Returns the builder for the settings used for calls to deleteAddress. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteAddressHttpRequest, EmptyMessage, Operation>
         deleteAddressOperationSettings() {
       return getStubSettingsBuilder().deleteAddressOperationSettings();
     }
@@ -248,7 +248,7 @@ public class AddressSettings extends ClientSettings<AddressSettings> {
     /** Returns the builder for the settings used for calls to insertAddress. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertAddressHttpRequest, EmptyMessage, Operation>
         insertAddressOperationSettings() {
       return getStubSettingsBuilder().insertAddressOperationSettings();
     }

@@ -327,7 +327,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> createSnapshotDiskAsync(
       ProjectZoneDiskName disk, Boolean guestFlush, Snapshot snapshotResource) {
 
     CreateSnapshotDiskHttpRequest request =
@@ -362,7 +362,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> createSnapshotDiskAsync(
       String disk, Boolean guestFlush, Snapshot snapshotResource) {
 
     CreateSnapshotDiskHttpRequest request =
@@ -399,7 +399,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> createSnapshotDiskAsync(
       CreateSnapshotDiskHttpRequest request) {
     return createSnapshotDiskOperationCallable().futureCall(request);
   }
@@ -420,14 +420,14 @@ public class DiskClient implements BackgroundResource {
    *     .setGuestFlush(guestFlush)
    *     .setSnapshotResource(snapshotResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.createSnapshotDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = diskClient.createSnapshotDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationCallable() {
     return stub.createSnapshotDiskOperationCallable();
   }
@@ -480,8 +480,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteDiskAsync(
-      ProjectZoneDiskName disk) {
+  public final OperationFuture<EmptyMessage, Operation> deleteDiskAsync(ProjectZoneDiskName disk) {
 
     DeleteDiskHttpRequest request =
         DeleteDiskHttpRequest.newBuilder().setDisk(disk == null ? null : disk.toString()).build();
@@ -508,7 +507,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteDiskAsync(String disk) {
+  public final OperationFuture<EmptyMessage, Operation> deleteDiskAsync(String disk) {
 
     DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder().setDisk(disk).build();
     return deleteDiskAsync(request);
@@ -537,7 +536,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteDiskAsync(
       DeleteDiskHttpRequest request) {
     return deleteDiskOperationCallable().futureCall(request);
   }
@@ -556,14 +555,14 @@ public class DiskClient implements BackgroundResource {
    *   DeleteDiskHttpRequest request = DeleteDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.deleteDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = diskClient.deleteDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationCallable() {
     return stub.deleteDiskOperationCallable();
   }
@@ -816,7 +815,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertDiskAsync(
       ProjectZoneName zone, Disk diskResource) {
 
     InsertDiskHttpRequest request =
@@ -851,7 +850,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertDiskAsync(
       String zone, Disk diskResource) {
 
     InsertDiskHttpRequest request =
@@ -885,7 +884,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertDiskAsync(
       InsertDiskHttpRequest request) {
     return insertDiskOperationCallable().futureCall(request);
   }
@@ -907,14 +906,14 @@ public class DiskClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setDiskResource(diskResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.insertDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = diskClient.insertDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationCallable() {
     return stub.insertDiskOperationCallable();
   }
@@ -1100,7 +1099,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeDiskAsync(
       ProjectZoneDiskName disk, DisksResizeRequest disksResizeRequestResource) {
 
     ResizeDiskHttpRequest request =
@@ -1131,7 +1130,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeDiskAsync(
       String disk, DisksResizeRequest disksResizeRequestResource) {
 
     ResizeDiskHttpRequest request =
@@ -1165,7 +1164,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeDiskAsync(
       ResizeDiskHttpRequest request) {
     return resizeDiskOperationCallable().futureCall(request);
   }
@@ -1184,14 +1183,14 @@ public class DiskClient implements BackgroundResource {
    *     .setDisk(disk.toString())
    *     .setDisksResizeRequestResource(disksResizeRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.resizeDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = diskClient.resizeDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationCallable() {
     return stub.resizeDiskOperationCallable();
   }
@@ -1353,7 +1352,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsDiskAsync(
       ProjectZoneDiskResourceName resource, ZoneSetLabelsRequest zoneSetLabelsRequestResource) {
 
     SetLabelsDiskHttpRequest request =
@@ -1385,7 +1384,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsDiskAsync(
       String resource, ZoneSetLabelsRequest zoneSetLabelsRequestResource) {
 
     SetLabelsDiskHttpRequest request =
@@ -1420,7 +1419,7 @@ public class DiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsDiskAsync(
       SetLabelsDiskHttpRequest request) {
     return setLabelsDiskOperationCallable().futureCall(request);
   }
@@ -1440,14 +1439,14 @@ public class DiskClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setZoneSetLabelsRequestResource(zoneSetLabelsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = diskClient.setLabelsDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = diskClient.setLabelsDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationCallable() {
     return stub.setLabelsDiskOperationCallable();
   }

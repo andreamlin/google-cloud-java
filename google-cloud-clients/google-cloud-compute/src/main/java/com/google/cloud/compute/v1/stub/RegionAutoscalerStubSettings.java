@@ -105,13 +105,13 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
   private final UnaryCallSettings<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerSettings;
-  private final OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationSettings;
   private final UnaryCallSettings<GetRegionAutoscalerHttpRequest, Autoscaler>
       getRegionAutoscalerSettings;
   private final UnaryCallSettings<InsertRegionAutoscalerHttpRequest, Operation>
       insertRegionAutoscalerSettings;
-  private final OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationSettings;
   private final PagedCallSettings<
           ListRegionAutoscalersHttpRequest,
@@ -120,11 +120,11 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
       listRegionAutoscalersSettings;
   private final UnaryCallSettings<PatchRegionAutoscalerHttpRequest, Operation>
       patchRegionAutoscalerSettings;
-  private final OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationSettings;
   private final UnaryCallSettings<UpdateRegionAutoscalerHttpRequest, Operation>
       updateRegionAutoscalerSettings;
-  private final OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteRegionAutoscaler. */
@@ -135,7 +135,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
   /** Returns the object with the settings used for calls to deleteRegionAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationSettings() {
     return deleteRegionAutoscalerOperationSettings;
   }
@@ -154,7 +154,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
   /** Returns the object with the settings used for calls to insertRegionAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationSettings() {
     return insertRegionAutoscalerOperationSettings;
   }
@@ -176,7 +176,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
   /** Returns the object with the settings used for calls to patchRegionAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationSettings() {
     return patchRegionAutoscalerOperationSettings;
   }
@@ -189,7 +189,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
 
   /** Returns the object with the settings used for calls to updateRegionAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationSettings() {
     return updateRegionAutoscalerOperationSettings;
   }
@@ -359,14 +359,14 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     private final UnaryCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, Operation>
         deleteRegionAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         deleteRegionAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<GetRegionAutoscalerHttpRequest, Autoscaler>
         getRegionAutoscalerSettings;
     private final UnaryCallSettings.Builder<InsertRegionAutoscalerHttpRequest, Operation>
         insertRegionAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         insertRegionAutoscalerOperationSettings;
     private final PagedCallSettings.Builder<
             ListRegionAutoscalersHttpRequest,
@@ -376,12 +376,12 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     private final UnaryCallSettings.Builder<PatchRegionAutoscalerHttpRequest, Operation>
         patchRegionAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         patchRegionAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, Operation>
         updateRegionAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         updateRegionAutoscalerOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -507,8 +507,8 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -529,8 +529,8 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -551,8 +551,8 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -573,8 +573,8 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -643,8 +643,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     /** Returns the builder for the settings used for calls to deleteRegionAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         deleteRegionAutoscalerOperationSettings() {
       return deleteRegionAutoscalerOperationSettings;
     }
@@ -664,8 +663,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     /** Returns the builder for the settings used for calls to insertRegionAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         insertRegionAutoscalerOperationSettings() {
       return insertRegionAutoscalerOperationSettings;
     }
@@ -688,8 +686,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     /** Returns the builder for the settings used for calls to patchRegionAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         patchRegionAutoscalerOperationSettings() {
       return patchRegionAutoscalerOperationSettings;
     }
@@ -703,8 +700,7 @@ public class RegionAutoscalerStubSettings extends StubSettings<RegionAutoscalerS
     /** Returns the builder for the settings used for calls to updateRegionAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         updateRegionAutoscalerOperationSettings() {
       return updateRegionAutoscalerOperationSettings;
     }

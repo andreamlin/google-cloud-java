@@ -83,7 +83,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
   /** Returns the object with the settings used for calls to deleteAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationSettings() {
     return ((AutoscalerStubSettings) getStubSettings()).deleteAutoscalerOperationSettings();
   }
@@ -101,7 +101,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
   /** Returns the object with the settings used for calls to insertAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationSettings() {
     return ((AutoscalerStubSettings) getStubSettings()).insertAutoscalerOperationSettings();
   }
@@ -120,7 +120,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
   /** Returns the object with the settings used for calls to patchAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationSettings() {
     return ((AutoscalerStubSettings) getStubSettings()).patchAutoscalerOperationSettings();
   }
@@ -133,7 +133,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
   /** Returns the object with the settings used for calls to updateAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationSettings() {
     return ((AutoscalerStubSettings) getStubSettings()).updateAutoscalerOperationSettings();
   }
@@ -257,7 +257,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
     /** Returns the builder for the settings used for calls to deleteAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
         deleteAutoscalerOperationSettings() {
       return getStubSettingsBuilder().deleteAutoscalerOperationSettings();
     }
@@ -276,7 +276,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
     /** Returns the builder for the settings used for calls to insertAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
         insertAutoscalerOperationSettings() {
       return getStubSettingsBuilder().insertAutoscalerOperationSettings();
     }
@@ -297,7 +297,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
     /** Returns the builder for the settings used for calls to patchAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
         patchAutoscalerOperationSettings() {
       return getStubSettingsBuilder().patchAutoscalerOperationSettings();
     }
@@ -311,7 +311,7 @@ public class AutoscalerSettings extends ClientSettings<AutoscalerSettings> {
     /** Returns the builder for the settings used for calls to updateAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
         updateAutoscalerOperationSettings() {
       return getStubSettingsBuilder().updateAutoscalerOperationSettings();
     }

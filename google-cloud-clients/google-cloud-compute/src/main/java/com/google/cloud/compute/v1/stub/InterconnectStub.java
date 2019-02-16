@@ -50,7 +50,7 @@ public abstract class InterconnectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteInterconnectOperationCallable()");
@@ -74,7 +74,7 @@ public abstract class InterconnectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertInterconnectOperationCallable()");
@@ -97,7 +97,7 @@ public abstract class InterconnectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchInterconnectOperationCallable()");

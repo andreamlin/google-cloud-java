@@ -180,21 +180,21 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteHealthCheckHttpRequest, Operation> deleteHealthCheckCallable;
-  private final OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHealthCheckOperationCallable;
   private final UnaryCallable<GetHealthCheckHttpRequest, HealthCheck> getHealthCheckCallable;
   private final UnaryCallable<InsertHealthCheckHttpRequest, Operation> insertHealthCheckCallable;
-  private final OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHealthCheckOperationCallable;
   private final UnaryCallable<ListHealthChecksHttpRequest, HealthCheckList>
       listHealthChecksCallable;
   private final UnaryCallable<ListHealthChecksHttpRequest, ListHealthChecksPagedResponse>
       listHealthChecksPagedCallable;
   private final UnaryCallable<PatchHealthCheckHttpRequest, Operation> patchHealthCheckCallable;
-  private final OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHealthCheckOperationCallable;
   private final UnaryCallable<UpdateHealthCheckHttpRequest, Operation> updateHealthCheckCallable;
-  private final OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHealthCheckOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -328,7 +328,7 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHealthCheckOperationCallable() {
     return deleteHealthCheckOperationCallable;
   }
@@ -344,7 +344,7 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHealthCheckOperationCallable() {
     return insertHealthCheckOperationCallable;
   }
@@ -366,7 +366,7 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHealthCheckOperationCallable() {
     return patchHealthCheckOperationCallable;
   }
@@ -377,7 +377,7 @@ public class HttpJsonHealthCheckStub extends HealthCheckStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHealthCheckOperationCallable() {
     return updateHealthCheckOperationCallable;
   }

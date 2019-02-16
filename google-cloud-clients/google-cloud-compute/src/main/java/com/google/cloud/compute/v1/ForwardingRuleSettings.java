@@ -84,7 +84,7 @@ public class ForwardingRuleSettings extends ClientSettings<ForwardingRuleSetting
   /** Returns the object with the settings used for calls to deleteForwardingRule. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationSettings() {
     return ((ForwardingRuleStubSettings) getStubSettings()).deleteForwardingRuleOperationSettings();
   }
@@ -104,7 +104,7 @@ public class ForwardingRuleSettings extends ClientSettings<ForwardingRuleSetting
   /** Returns the object with the settings used for calls to insertForwardingRule. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationSettings() {
     return ((ForwardingRuleStubSettings) getStubSettings()).insertForwardingRuleOperationSettings();
   }
@@ -125,7 +125,7 @@ public class ForwardingRuleSettings extends ClientSettings<ForwardingRuleSetting
   /** Returns the object with the settings used for calls to setTargetForwardingRule. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationSettings() {
     return ((ForwardingRuleStubSettings) getStubSettings())
         .setTargetForwardingRuleOperationSettings();
@@ -251,8 +251,7 @@ public class ForwardingRuleSettings extends ClientSettings<ForwardingRuleSetting
     /** Returns the builder for the settings used for calls to deleteForwardingRule. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
         deleteForwardingRuleOperationSettings() {
       return getStubSettingsBuilder().deleteForwardingRuleOperationSettings();
     }
@@ -272,8 +271,7 @@ public class ForwardingRuleSettings extends ClientSettings<ForwardingRuleSetting
     /** Returns the builder for the settings used for calls to insertForwardingRule. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
         insertForwardingRuleOperationSettings() {
       return getStubSettingsBuilder().insertForwardingRuleOperationSettings();
     }
@@ -295,7 +293,7 @@ public class ForwardingRuleSettings extends ClientSettings<ForwardingRuleSetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
         setTargetForwardingRuleOperationSettings() {
       return getStubSettingsBuilder().setTargetForwardingRuleOperationSettings();
     }

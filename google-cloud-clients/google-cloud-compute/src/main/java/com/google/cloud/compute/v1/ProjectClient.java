@@ -184,7 +184,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> disableXpnHostProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> disableXpnHostProjectAsync(
       ProjectName project) {
 
     DisableXpnHostProjectHttpRequest request =
@@ -212,8 +212,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> disableXpnHostProjectAsync(
-      String project) {
+  public final OperationFuture<EmptyMessage, Operation> disableXpnHostProjectAsync(String project) {
 
     DisableXpnHostProjectHttpRequest request =
         DisableXpnHostProjectHttpRequest.newBuilder().setProject(project).build();
@@ -241,7 +240,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> disableXpnHostProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> disableXpnHostProjectAsync(
       DisableXpnHostProjectHttpRequest request) {
     return disableXpnHostProjectOperationCallable().futureCall(request);
   }
@@ -258,14 +257,14 @@ public class ProjectClient implements BackgroundResource {
    *   DisableXpnHostProjectHttpRequest request = DisableXpnHostProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.disableXpnHostProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.disableXpnHostProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       disableXpnHostProjectOperationCallable() {
     return stub.disableXpnHostProjectOperationCallable();
   }
@@ -314,7 +313,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> disableXpnResourceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> disableXpnResourceProjectAsync(
       ProjectName project,
       ProjectsDisableXpnResourceRequest projectsDisableXpnResourceRequestResource) {
 
@@ -346,7 +345,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> disableXpnResourceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> disableXpnResourceProjectAsync(
       String project, ProjectsDisableXpnResourceRequest projectsDisableXpnResourceRequestResource) {
 
     DisableXpnResourceProjectHttpRequest request =
@@ -380,7 +379,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> disableXpnResourceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> disableXpnResourceProjectAsync(
       DisableXpnResourceProjectHttpRequest request) {
     return disableXpnResourceProjectOperationCallable().futureCall(request);
   }
@@ -399,14 +398,14 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setProjectsDisableXpnResourceRequestResource(projectsDisableXpnResourceRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.disableXpnResourceProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.disableXpnResourceProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       disableXpnResourceProjectOperationCallable() {
     return stub.disableXpnResourceProjectOperationCallable();
   }
@@ -455,7 +454,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> enableXpnHostProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> enableXpnHostProjectAsync(
       ProjectName project) {
 
     EnableXpnHostProjectHttpRequest request =
@@ -483,8 +482,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> enableXpnHostProjectAsync(
-      String project) {
+  public final OperationFuture<EmptyMessage, Operation> enableXpnHostProjectAsync(String project) {
 
     EnableXpnHostProjectHttpRequest request =
         EnableXpnHostProjectHttpRequest.newBuilder().setProject(project).build();
@@ -512,7 +510,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> enableXpnHostProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> enableXpnHostProjectAsync(
       EnableXpnHostProjectHttpRequest request) {
     return enableXpnHostProjectOperationCallable().futureCall(request);
   }
@@ -529,14 +527,14 @@ public class ProjectClient implements BackgroundResource {
    *   EnableXpnHostProjectHttpRequest request = EnableXpnHostProjectHttpRequest.newBuilder()
    *     .setProject(project.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.enableXpnHostProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.enableXpnHostProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       enableXpnHostProjectOperationCallable() {
     return stub.enableXpnHostProjectOperationCallable();
   }
@@ -586,7 +584,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> enableXpnResourceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> enableXpnResourceProjectAsync(
       ProjectName project,
       ProjectsEnableXpnResourceRequest projectsEnableXpnResourceRequestResource) {
 
@@ -619,7 +617,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> enableXpnResourceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> enableXpnResourceProjectAsync(
       String project, ProjectsEnableXpnResourceRequest projectsEnableXpnResourceRequestResource) {
 
     EnableXpnResourceProjectHttpRequest request =
@@ -654,7 +652,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> enableXpnResourceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> enableXpnResourceProjectAsync(
       EnableXpnResourceProjectHttpRequest request) {
     return enableXpnResourceProjectOperationCallable().futureCall(request);
   }
@@ -674,14 +672,14 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setProjectsEnableXpnResourceRequestResource(projectsEnableXpnResourceRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.enableXpnResourceProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.enableXpnResourceProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       enableXpnResourceProjectOperationCallable() {
     return stub.enableXpnResourceProjectOperationCallable();
   }
@@ -1219,7 +1217,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> moveDiskProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> moveDiskProjectAsync(
       ProjectName project, DiskMoveRequest diskMoveRequestResource) {
 
     MoveDiskProjectHttpRequest request =
@@ -1250,7 +1248,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> moveDiskProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> moveDiskProjectAsync(
       String project, DiskMoveRequest diskMoveRequestResource) {
 
     MoveDiskProjectHttpRequest request =
@@ -1284,7 +1282,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> moveDiskProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> moveDiskProjectAsync(
       MoveDiskProjectHttpRequest request) {
     return moveDiskProjectOperationCallable().futureCall(request);
   }
@@ -1303,14 +1301,14 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setDiskMoveRequestResource(diskMoveRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.moveDiskProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.moveDiskProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
       moveDiskProjectOperationCallable() {
     return stub.moveDiskProjectOperationCallable();
   }
@@ -1360,7 +1358,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> moveInstanceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> moveInstanceProjectAsync(
       ProjectName project, InstanceMoveRequest instanceMoveRequestResource) {
 
     MoveInstanceProjectHttpRequest request =
@@ -1391,7 +1389,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> moveInstanceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> moveInstanceProjectAsync(
       String project, InstanceMoveRequest instanceMoveRequestResource) {
 
     MoveInstanceProjectHttpRequest request =
@@ -1425,7 +1423,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> moveInstanceProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> moveInstanceProjectAsync(
       MoveInstanceProjectHttpRequest request) {
     return moveInstanceProjectOperationCallable().futureCall(request);
   }
@@ -1444,14 +1442,14 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setInstanceMoveRequestResource(instanceMoveRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.moveInstanceProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.moveInstanceProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
       moveInstanceProjectOperationCallable() {
     return stub.moveInstanceProjectOperationCallable();
   }
@@ -1503,7 +1501,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setCommonInstanceMetadataProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setCommonInstanceMetadataProjectAsync(
       ProjectName project, Metadata metadataResource) {
 
     SetCommonInstanceMetadataProjectHttpRequest request =
@@ -1535,7 +1533,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setCommonInstanceMetadataProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setCommonInstanceMetadataProjectAsync(
       String project, Metadata metadataResource) {
 
     SetCommonInstanceMetadataProjectHttpRequest request =
@@ -1570,7 +1568,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setCommonInstanceMetadataProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setCommonInstanceMetadataProjectAsync(
       SetCommonInstanceMetadataProjectHttpRequest request) {
     return setCommonInstanceMetadataProjectOperationCallable().futureCall(request);
   }
@@ -1590,7 +1588,7 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setMetadataResource(metadataResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.setCommonInstanceMetadataProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.setCommonInstanceMetadataProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -1598,7 +1596,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
       setCommonInstanceMetadataProjectOperationCallable() {
     return stub.setCommonInstanceMetadataProjectOperationCallable();
   }
@@ -1651,7 +1649,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDefaultNetworkTierProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDefaultNetworkTierProjectAsync(
       ProjectName project,
       ProjectsSetDefaultNetworkTierRequest projectsSetDefaultNetworkTierRequestResource) {
 
@@ -1685,7 +1683,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDefaultNetworkTierProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDefaultNetworkTierProjectAsync(
       String project,
       ProjectsSetDefaultNetworkTierRequest projectsSetDefaultNetworkTierRequestResource) {
 
@@ -1722,7 +1720,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDefaultNetworkTierProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDefaultNetworkTierProjectAsync(
       SetDefaultNetworkTierProjectHttpRequest request) {
     return setDefaultNetworkTierProjectOperationCallable().futureCall(request);
   }
@@ -1742,15 +1740,14 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setProjectsSetDefaultNetworkTierRequestResource(projectsSetDefaultNetworkTierRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.setDefaultNetworkTierProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.setDefaultNetworkTierProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
       setDefaultNetworkTierProjectOperationCallable() {
     return stub.setDefaultNetworkTierProjectOperationCallable();
   }
@@ -1804,7 +1801,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setUsageExportBucketProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setUsageExportBucketProjectAsync(
       ProjectName project, UsageExportLocation usageExportLocationResource) {
 
     SetUsageExportBucketProjectHttpRequest request =
@@ -1837,7 +1834,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setUsageExportBucketProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setUsageExportBucketProjectAsync(
       String project, UsageExportLocation usageExportLocationResource) {
 
     SetUsageExportBucketProjectHttpRequest request =
@@ -1872,7 +1869,7 @@ public class ProjectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setUsageExportBucketProjectAsync(
+  public final OperationFuture<EmptyMessage, Operation> setUsageExportBucketProjectAsync(
       SetUsageExportBucketProjectHttpRequest request) {
     return setUsageExportBucketProjectOperationCallable().futureCall(request);
   }
@@ -1892,14 +1889,14 @@ public class ProjectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setUsageExportLocationResource(usageExportLocationResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = projectClient.setUsageExportBucketProjectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = projectClient.setUsageExportBucketProjectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
       setUsageExportBucketProjectOperationCallable() {
     return stub.setUsageExportBucketProjectOperationCallable();
   }

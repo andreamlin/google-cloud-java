@@ -63,7 +63,7 @@ public abstract class AddressStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteAddressHttpRequest, EmptyMessage, Operation>
       deleteAddressOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteAddressOperationCallable()");
   }
@@ -79,7 +79,7 @@ public abstract class AddressStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertAddressHttpRequest, EmptyMessage, Operation>
       insertAddressOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertAddressOperationCallable()");
   }

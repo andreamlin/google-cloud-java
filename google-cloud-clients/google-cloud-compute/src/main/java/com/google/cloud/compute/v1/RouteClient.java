@@ -184,7 +184,7 @@ public class RouteClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRouteAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRouteAsync(
       ProjectGlobalRouteName route) {
 
     DeleteRouteHttpRequest request =
@@ -212,7 +212,7 @@ public class RouteClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRouteAsync(String route) {
+  public final OperationFuture<EmptyMessage, Operation> deleteRouteAsync(String route) {
 
     DeleteRouteHttpRequest request = DeleteRouteHttpRequest.newBuilder().setRoute(route).build();
     return deleteRouteAsync(request);
@@ -239,7 +239,7 @@ public class RouteClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRouteAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRouteAsync(
       DeleteRouteHttpRequest request) {
     return deleteRouteOperationCallable().futureCall(request);
   }
@@ -256,14 +256,14 @@ public class RouteClient implements BackgroundResource {
    *   DeleteRouteHttpRequest request = DeleteRouteHttpRequest.newBuilder()
    *     .setRoute(route.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = routeClient.deleteRouteOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = routeClient.deleteRouteOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationCallable() {
     return stub.deleteRouteOperationCallable();
   }
@@ -421,7 +421,7 @@ public class RouteClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRouteAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRouteAsync(
       ProjectName project, Route routeResource) {
 
     InsertRouteHttpRequest request =
@@ -464,7 +464,7 @@ public class RouteClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRouteAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRouteAsync(
       String project, Route routeResource) {
 
     InsertRouteHttpRequest request =
@@ -498,7 +498,7 @@ public class RouteClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRouteAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRouteAsync(
       InsertRouteHttpRequest request) {
     return insertRouteOperationCallable().futureCall(request);
   }
@@ -517,14 +517,14 @@ public class RouteClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setRouteResource(routeResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = routeClient.insertRouteOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = routeClient.insertRouteOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationCallable() {
     return stub.insertRouteOperationCallable();
   }

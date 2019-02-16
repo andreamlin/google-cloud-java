@@ -184,7 +184,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteFirewallAsync(
       ProjectGlobalFirewallName firewall) {
 
     DeleteFirewallHttpRequest request =
@@ -212,7 +212,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteFirewallAsync(String firewall) {
+  public final OperationFuture<EmptyMessage, Operation> deleteFirewallAsync(String firewall) {
 
     DeleteFirewallHttpRequest request =
         DeleteFirewallHttpRequest.newBuilder().setFirewall(firewall).build();
@@ -240,7 +240,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteFirewallAsync(
       DeleteFirewallHttpRequest request) {
     return deleteFirewallOperationCallable().futureCall(request);
   }
@@ -257,14 +257,14 @@ public class FirewallClient implements BackgroundResource {
    *   DeleteFirewallHttpRequest request = DeleteFirewallHttpRequest.newBuilder()
    *     .setFirewall(firewall.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.deleteFirewallOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = firewallClient.deleteFirewallOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteFirewallHttpRequest, EmptyMessage, Operation>
       deleteFirewallOperationCallable() {
     return stub.deleteFirewallOperationCallable();
   }
@@ -409,7 +409,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertFirewallAsync(
       ProjectName project, Firewall firewallResource) {
 
     InsertFirewallHttpRequest request =
@@ -440,7 +440,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertFirewallAsync(
       String project, Firewall firewallResource) {
 
     InsertFirewallHttpRequest request =
@@ -474,7 +474,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertFirewallAsync(
       InsertFirewallHttpRequest request) {
     return insertFirewallOperationCallable().futureCall(request);
   }
@@ -493,14 +493,14 @@ public class FirewallClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setFirewallResource(firewallResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.insertFirewallOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = firewallClient.insertFirewallOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertFirewallHttpRequest, EmptyMessage, Operation>
       insertFirewallOperationCallable() {
     return stub.insertFirewallOperationCallable();
   }
@@ -692,7 +692,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchFirewallAsync(
       ProjectGlobalFirewallName firewall, Firewall firewallResource, List<String> fieldMask) {
 
     PatchFirewallHttpRequest request =
@@ -730,7 +730,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchFirewallAsync(
       String firewall, Firewall firewallResource, List<String> fieldMask) {
 
     PatchFirewallHttpRequest request =
@@ -768,7 +768,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchFirewallAsync(
       PatchFirewallHttpRequest request) {
     return patchFirewallOperationCallable().futureCall(request);
   }
@@ -790,14 +790,14 @@ public class FirewallClient implements BackgroundResource {
    *     .setFirewallResource(firewallResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.patchFirewallOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = firewallClient.patchFirewallOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchFirewallHttpRequest, EmptyMessage, Operation>
       patchFirewallOperationCallable() {
     return stub.patchFirewallOperationCallable();
   }
@@ -857,7 +857,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateFirewallAsync(
       ProjectGlobalFirewallName firewall, Firewall firewallResource, List<String> fieldMask) {
 
     UpdateFirewallHttpRequest request =
@@ -896,7 +896,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateFirewallAsync(
       String firewall, Firewall firewallResource, List<String> fieldMask) {
 
     UpdateFirewallHttpRequest request =
@@ -935,7 +935,7 @@ public class FirewallClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateFirewallAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateFirewallAsync(
       UpdateFirewallHttpRequest request) {
     return updateFirewallOperationCallable().futureCall(request);
   }
@@ -958,14 +958,14 @@ public class FirewallClient implements BackgroundResource {
    *     .setFirewallResource(firewallResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = firewallClient.updateFirewallOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = firewallClient.updateFirewallOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateFirewallHttpRequest, EmptyMessage, Operation>
       updateFirewallOperationCallable() {
     return stub.updateFirewallOperationCallable();
   }

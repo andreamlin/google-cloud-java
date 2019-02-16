@@ -322,7 +322,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRouterAsync(
       ProjectRegionRouterName router) {
 
     DeleteRouterHttpRequest request =
@@ -350,7 +350,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRouterAsync(String router) {
+  public final OperationFuture<EmptyMessage, Operation> deleteRouterAsync(String router) {
 
     DeleteRouterHttpRequest request =
         DeleteRouterHttpRequest.newBuilder().setRouter(router).build();
@@ -378,7 +378,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRouterAsync(
       DeleteRouterHttpRequest request) {
     return deleteRouterOperationCallable().futureCall(request);
   }
@@ -395,14 +395,14 @@ public class RouterClient implements BackgroundResource {
    *   DeleteRouterHttpRequest request = DeleteRouterHttpRequest.newBuilder()
    *     .setRouter(router.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = routerClient.deleteRouterOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = routerClient.deleteRouterOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteRouterHttpRequest, EmptyMessage, Operation>
       deleteRouterOperationCallable() {
     return stub.deleteRouterOperationCallable();
   }
@@ -790,7 +790,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRouterAsync(
       ProjectRegionName region, Router routerResource) {
 
     InsertRouterHttpRequest request =
@@ -822,7 +822,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRouterAsync(
       String region, Router routerResource) {
 
     InsertRouterHttpRequest request =
@@ -857,7 +857,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRouterAsync(
       InsertRouterHttpRequest request) {
     return insertRouterOperationCallable().futureCall(request);
   }
@@ -877,14 +877,14 @@ public class RouterClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setRouterResource(routerResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = routerClient.insertRouterOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = routerClient.insertRouterOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertRouterHttpRequest, EmptyMessage, Operation>
       insertRouterOperationCallable() {
     return stub.insertRouterOperationCallable();
   }
@@ -1076,7 +1076,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRouterAsync(
       ProjectRegionRouterName router, Router routerResource, List<String> fieldMask) {
 
     PatchRouterHttpRequest request =
@@ -1114,7 +1114,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRouterAsync(
       String router, Router routerResource, List<String> fieldMask) {
 
     PatchRouterHttpRequest request =
@@ -1152,7 +1152,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRouterAsync(
       PatchRouterHttpRequest request) {
     return patchRouterOperationCallable().futureCall(request);
   }
@@ -1174,14 +1174,14 @@ public class RouterClient implements BackgroundResource {
    *     .setRouterResource(routerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = routerClient.patchRouterOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = routerClient.patchRouterOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchRouterHttpRequest, EmptyMessage, Operation>
       patchRouterOperationCallable() {
     return stub.patchRouterOperationCallable();
   }
@@ -1354,7 +1354,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRouterAsync(
       ProjectRegionRouterName router, Router routerResource, List<String> fieldMask) {
 
     UpdateRouterHttpRequest request =
@@ -1391,7 +1391,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRouterAsync(
       String router, Router routerResource, List<String> fieldMask) {
 
     UpdateRouterHttpRequest request =
@@ -1428,7 +1428,7 @@ public class RouterClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRouterAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRouterAsync(
       UpdateRouterHttpRequest request) {
     return updateRouterOperationCallable().futureCall(request);
   }
@@ -1449,14 +1449,14 @@ public class RouterClient implements BackgroundResource {
    *     .setRouterResource(routerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = routerClient.updateRouterOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = routerClient.updateRouterOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateRouterHttpRequest, EmptyMessage, Operation>
       updateRouterOperationCallable() {
     return stub.updateRouterOperationCallable();
   }

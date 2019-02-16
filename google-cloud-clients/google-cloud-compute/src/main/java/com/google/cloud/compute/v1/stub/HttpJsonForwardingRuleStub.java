@@ -198,13 +198,13 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
       aggregatedListForwardingRulesPagedCallable;
   private final UnaryCallable<DeleteForwardingRuleHttpRequest, Operation>
       deleteForwardingRuleCallable;
-  private final OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationCallable;
   private final UnaryCallable<GetForwardingRuleHttpRequest, ForwardingRule>
       getForwardingRuleCallable;
   private final UnaryCallable<InsertForwardingRuleHttpRequest, Operation>
       insertForwardingRuleCallable;
-  private final OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationCallable;
   private final UnaryCallable<ListForwardingRulesHttpRequest, ForwardingRuleList>
       listForwardingRulesCallable;
@@ -212,7 +212,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
       listForwardingRulesPagedCallable;
   private final UnaryCallable<SetTargetForwardingRuleHttpRequest, Operation>
       setTargetForwardingRuleCallable;
-  private final OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -371,7 +371,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationCallable() {
     return deleteForwardingRuleOperationCallable;
   }
@@ -387,7 +387,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationCallable() {
     return insertForwardingRuleOperationCallable;
   }
@@ -410,7 +410,7 @@ public class HttpJsonForwardingRuleStub extends ForwardingRuleStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationCallable() {
     return setTargetForwardingRuleOperationCallable;
   }

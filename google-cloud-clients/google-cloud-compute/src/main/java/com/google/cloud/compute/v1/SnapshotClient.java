@@ -189,7 +189,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSnapshotAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSnapshotAsync(
       ProjectGlobalSnapshotName snapshot) {
 
     DeleteSnapshotHttpRequest request =
@@ -222,7 +222,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSnapshotAsync(String snapshot) {
+  public final OperationFuture<EmptyMessage, Operation> deleteSnapshotAsync(String snapshot) {
 
     DeleteSnapshotHttpRequest request =
         DeleteSnapshotHttpRequest.newBuilder().setSnapshot(snapshot).build();
@@ -255,7 +255,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSnapshotAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSnapshotAsync(
       DeleteSnapshotHttpRequest request) {
     return deleteSnapshotOperationCallable().futureCall(request);
   }
@@ -277,14 +277,14 @@ public class SnapshotClient implements BackgroundResource {
    *   DeleteSnapshotHttpRequest request = DeleteSnapshotHttpRequest.newBuilder()
    *     .setSnapshot(snapshot.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = snapshotClient.deleteSnapshotOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = snapshotClient.deleteSnapshotOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationCallable() {
     return stub.deleteSnapshotOperationCallable();
   }
@@ -790,7 +790,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsSnapshotAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsSnapshotAsync(
       ProjectGlobalSnapshotResourceName resource,
       GlobalSetLabelsRequest globalSetLabelsRequestResource) {
 
@@ -823,7 +823,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsSnapshotAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsSnapshotAsync(
       String resource, GlobalSetLabelsRequest globalSetLabelsRequestResource) {
 
     SetLabelsSnapshotHttpRequest request =
@@ -858,7 +858,7 @@ public class SnapshotClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsSnapshotAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsSnapshotAsync(
       SetLabelsSnapshotHttpRequest request) {
     return setLabelsSnapshotOperationCallable().futureCall(request);
   }
@@ -878,14 +878,14 @@ public class SnapshotClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setGlobalSetLabelsRequestResource(globalSetLabelsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = snapshotClient.setLabelsSnapshotOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = snapshotClient.setLabelsSnapshotOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationCallable() {
     return stub.setLabelsSnapshotOperationCallable();
   }

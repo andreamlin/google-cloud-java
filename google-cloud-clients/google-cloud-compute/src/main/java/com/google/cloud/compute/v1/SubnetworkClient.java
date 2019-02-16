@@ -324,7 +324,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork) {
 
     DeleteSubnetworkHttpRequest request =
@@ -352,8 +352,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSubnetworkAsync(
-      String subnetwork) {
+  public final OperationFuture<EmptyMessage, Operation> deleteSubnetworkAsync(String subnetwork) {
 
     DeleteSubnetworkHttpRequest request =
         DeleteSubnetworkHttpRequest.newBuilder().setSubnetwork(subnetwork).build();
@@ -381,7 +380,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSubnetworkAsync(
       DeleteSubnetworkHttpRequest request) {
     return deleteSubnetworkOperationCallable().futureCall(request);
   }
@@ -398,14 +397,14 @@ public class SubnetworkClient implements BackgroundResource {
    *   DeleteSubnetworkHttpRequest request = DeleteSubnetworkHttpRequest.newBuilder()
    *     .setSubnetwork(subnetwork.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.deleteSubnetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = subnetworkClient.deleteSubnetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationCallable() {
     return stub.deleteSubnetworkOperationCallable();
   }
@@ -453,7 +452,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> expandIpCidrRangeSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> expandIpCidrRangeSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork,
       SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource) {
 
@@ -486,7 +485,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> expandIpCidrRangeSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> expandIpCidrRangeSubnetworkAsync(
       String subnetwork,
       SubnetworksExpandIpCidrRangeRequest subnetworksExpandIpCidrRangeRequestResource) {
 
@@ -522,7 +521,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> expandIpCidrRangeSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> expandIpCidrRangeSubnetworkAsync(
       ExpandIpCidrRangeSubnetworkHttpRequest request) {
     return expandIpCidrRangeSubnetworkOperationCallable().futureCall(request);
   }
@@ -541,14 +540,14 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setSubnetwork(subnetwork.toString())
    *     .setSubnetworksExpandIpCidrRangeRequestResource(subnetworksExpandIpCidrRangeRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = subnetworkClient.expandIpCidrRangeSubnetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationCallable() {
     return stub.expandIpCidrRangeSubnetworkOperationCallable();
   }
@@ -799,7 +798,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSubnetworkAsync(
       ProjectRegionName region, Subnetwork subnetworkResource) {
 
     InsertSubnetworkHttpRequest request =
@@ -831,7 +830,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSubnetworkAsync(
       String region, Subnetwork subnetworkResource) {
 
     InsertSubnetworkHttpRequest request =
@@ -865,7 +864,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSubnetworkAsync(
       InsertSubnetworkHttpRequest request) {
     return insertSubnetworkOperationCallable().futureCall(request);
   }
@@ -884,14 +883,14 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setSubnetworkResource(subnetworkResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.insertSubnetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = subnetworkClient.insertSubnetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationCallable() {
     return stub.insertSubnetworkOperationCallable();
   }
@@ -1223,7 +1222,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork,
       Subnetwork subnetworkResource,
       List<String> fieldMask) {
@@ -1265,7 +1264,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSubnetworkAsync(
       String subnetwork, Subnetwork subnetworkResource, List<String> fieldMask) {
 
     PatchSubnetworkHttpRequest request =
@@ -1304,7 +1303,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSubnetworkAsync(
       PatchSubnetworkHttpRequest request) {
     return patchSubnetworkOperationCallable().futureCall(request);
   }
@@ -1327,14 +1326,14 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setSubnetworkResource(subnetworkResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.patchSubnetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = subnetworkClient.patchSubnetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationCallable() {
     return stub.patchSubnetworkOperationCallable();
   }
@@ -1502,7 +1501,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setPrivateIpGoogleAccessSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> setPrivateIpGoogleAccessSubnetworkAsync(
       ProjectRegionSubnetworkName subnetwork,
       SubnetworksSetPrivateIpGoogleAccessRequest
           subnetworksSetPrivateIpGoogleAccessRequestResource) {
@@ -1537,7 +1536,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setPrivateIpGoogleAccessSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> setPrivateIpGoogleAccessSubnetworkAsync(
       String subnetwork,
       SubnetworksSetPrivateIpGoogleAccessRequest
           subnetworksSetPrivateIpGoogleAccessRequestResource) {
@@ -1575,7 +1574,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setPrivateIpGoogleAccessSubnetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> setPrivateIpGoogleAccessSubnetworkAsync(
       SetPrivateIpGoogleAccessSubnetworkHttpRequest request) {
     return setPrivateIpGoogleAccessSubnetworkOperationCallable().futureCall(request);
   }
@@ -1595,7 +1594,7 @@ public class SubnetworkClient implements BackgroundResource {
    *     .setSubnetwork(subnetwork.toString())
    *     .setSubnetworksSetPrivateIpGoogleAccessRequestResource(subnetworksSetPrivateIpGoogleAccessRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = subnetworkClient.setPrivateIpGoogleAccessSubnetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = subnetworkClient.setPrivateIpGoogleAccessSubnetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -1603,7 +1602,7 @@ public class SubnetworkClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationCallable() {
     return stub.setPrivateIpGoogleAccessSubnetworkOperationCallable();
   }

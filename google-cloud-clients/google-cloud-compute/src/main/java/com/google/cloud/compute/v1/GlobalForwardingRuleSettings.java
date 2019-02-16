@@ -75,7 +75,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
   /** Returns the object with the settings used for calls to deleteGlobalForwardingRule. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationSettings() {
     return ((GlobalForwardingRuleStubSettings) getStubSettings())
         .deleteGlobalForwardingRuleOperationSettings();
@@ -97,7 +97,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
   /** Returns the object with the settings used for calls to insertGlobalForwardingRule. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationSettings() {
     return ((GlobalForwardingRuleStubSettings) getStubSettings())
         .insertGlobalForwardingRuleOperationSettings();
@@ -123,7 +123,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
   /** Returns the object with the settings used for calls to setTargetGlobalForwardingRule. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationSettings() {
     return ((GlobalForwardingRuleStubSettings) getStubSettings())
         .setTargetGlobalForwardingRuleOperationSettings();
@@ -242,7 +242,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         deleteGlobalForwardingRuleOperationSettings() {
       return getStubSettingsBuilder().deleteGlobalForwardingRuleOperationSettings();
     }
@@ -263,7 +263,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         insertGlobalForwardingRuleOperationSettings() {
       return getStubSettingsBuilder().insertGlobalForwardingRuleOperationSettings();
     }
@@ -287,7 +287,7 @@ public class GlobalForwardingRuleSettings extends ClientSettings<GlobalForwardin
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         setTargetGlobalForwardingRuleOperationSettings() {
       return getStubSettingsBuilder().setTargetGlobalForwardingRuleOperationSettings();
     }

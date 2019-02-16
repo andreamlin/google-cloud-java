@@ -186,7 +186,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetTcpProxyAsync(
       ProjectGlobalTargetTcpProxyName targetTcpProxy) {
 
     DeleteTargetTcpProxyHttpRequest request =
@@ -214,7 +214,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetTcpProxyAsync(
       String targetTcpProxy) {
 
     DeleteTargetTcpProxyHttpRequest request =
@@ -243,7 +243,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetTcpProxyAsync(
       DeleteTargetTcpProxyHttpRequest request) {
     return deleteTargetTcpProxyOperationCallable().futureCall(request);
   }
@@ -260,14 +260,14 @@ public class TargetTcpProxyClient implements BackgroundResource {
    *   DeleteTargetTcpProxyHttpRequest request = DeleteTargetTcpProxyHttpRequest.newBuilder()
    *     .setTargetTcpProxy(targetTcpProxy.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetTcpProxyClient.deleteTargetTcpProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetTcpProxyClient.deleteTargetTcpProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationCallable() {
     return stub.deleteTargetTcpProxyOperationCallable();
   }
@@ -420,7 +420,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetTcpProxyAsync(
       ProjectName project, TargetTcpProxy targetTcpProxyResource) {
 
     InsertTargetTcpProxyHttpRequest request =
@@ -453,7 +453,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetTcpProxyAsync(
       String project, TargetTcpProxy targetTcpProxyResource) {
 
     InsertTargetTcpProxyHttpRequest request =
@@ -488,7 +488,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetTcpProxyAsync(
       InsertTargetTcpProxyHttpRequest request) {
     return insertTargetTcpProxyOperationCallable().futureCall(request);
   }
@@ -508,14 +508,14 @@ public class TargetTcpProxyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setTargetTcpProxyResource(targetTcpProxyResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetTcpProxyClient.insertTargetTcpProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetTcpProxyClient.insertTargetTcpProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationCallable() {
     return stub.insertTargetTcpProxyOperationCallable();
   }
@@ -706,7 +706,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackendServiceTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackendServiceTargetTcpProxyAsync(
       ProjectGlobalTargetTcpProxyName targetTcpProxy,
       TargetTcpProxiesSetBackendServiceRequest targetTcpProxiesSetBackendServiceRequestResource) {
 
@@ -740,7 +740,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackendServiceTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackendServiceTargetTcpProxyAsync(
       String targetTcpProxy,
       TargetTcpProxiesSetBackendServiceRequest targetTcpProxiesSetBackendServiceRequestResource) {
 
@@ -776,7 +776,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackendServiceTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackendServiceTargetTcpProxyAsync(
       SetBackendServiceTargetTcpProxyHttpRequest request) {
     return setBackendServiceTargetTcpProxyOperationCallable().futureCall(request);
   }
@@ -795,7 +795,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    *     .setTargetTcpProxy(targetTcpProxy.toString())
    *     .setTargetTcpProxiesSetBackendServiceRequestResource(targetTcpProxiesSetBackendServiceRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetTcpProxyClient.setBackendServiceTargetTcpProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetTcpProxyClient.setBackendServiceTargetTcpProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -803,7 +803,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationCallable() {
     return stub.setBackendServiceTargetTcpProxyOperationCallable();
   }
@@ -854,7 +854,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setProxyHeaderTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setProxyHeaderTargetTcpProxyAsync(
       ProjectGlobalTargetTcpProxyName targetTcpProxy,
       TargetTcpProxiesSetProxyHeaderRequest targetTcpProxiesSetProxyHeaderRequestResource) {
 
@@ -887,7 +887,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setProxyHeaderTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setProxyHeaderTargetTcpProxyAsync(
       String targetTcpProxy,
       TargetTcpProxiesSetProxyHeaderRequest targetTcpProxiesSetProxyHeaderRequestResource) {
 
@@ -923,7 +923,7 @@ public class TargetTcpProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setProxyHeaderTargetTcpProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setProxyHeaderTargetTcpProxyAsync(
       SetProxyHeaderTargetTcpProxyHttpRequest request) {
     return setProxyHeaderTargetTcpProxyOperationCallable().futureCall(request);
   }
@@ -942,15 +942,14 @@ public class TargetTcpProxyClient implements BackgroundResource {
    *     .setTargetTcpProxy(targetTcpProxy.toString())
    *     .setTargetTcpProxiesSetProxyHeaderRequestResource(targetTcpProxiesSetProxyHeaderRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetTcpProxyClient.setProxyHeaderTargetTcpProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetTcpProxyClient.setProxyHeaderTargetTcpProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationCallable() {
     return stub.setProxyHeaderTargetTcpProxyOperationCallable();
   }

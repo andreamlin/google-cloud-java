@@ -74,7 +74,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
   /** Returns the object with the settings used for calls to createSnapshotRegionDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotRegionDiskOperationSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).createSnapshotRegionDiskOperationSettings();
   }
@@ -87,7 +87,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
   /** Returns the object with the settings used for calls to deleteRegionDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionDiskHttpRequest, EmptyMessage, Operation>
       deleteRegionDiskOperationSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).deleteRegionDiskOperationSettings();
   }
@@ -105,7 +105,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
   /** Returns the object with the settings used for calls to insertRegionDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionDiskHttpRequest, EmptyMessage, Operation>
       insertRegionDiskOperationSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).insertRegionDiskOperationSettings();
   }
@@ -124,7 +124,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
   /** Returns the object with the settings used for calls to resizeRegionDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResizeRegionDiskHttpRequest, EmptyMessage, Operation>
       resizeRegionDiskOperationSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).resizeRegionDiskOperationSettings();
   }
@@ -138,7 +138,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
   /** Returns the object with the settings used for calls to setLabelsRegionDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsRegionDiskHttpRequest, EmptyMessage, Operation>
       setLabelsRegionDiskOperationSettings() {
     return ((RegionDiskStubSettings) getStubSettings()).setLabelsRegionDiskOperationSettings();
   }
@@ -260,7 +260,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+            CreateSnapshotRegionDiskHttpRequest, EmptyMessage, Operation>
         createSnapshotRegionDiskOperationSettings() {
       return getStubSettingsBuilder().createSnapshotRegionDiskOperationSettings();
     }
@@ -274,7 +274,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     /** Returns the builder for the settings used for calls to deleteRegionDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteRegionDiskHttpRequest, EmptyMessage, Operation>
         deleteRegionDiskOperationSettings() {
       return getStubSettingsBuilder().deleteRegionDiskOperationSettings();
     }
@@ -293,7 +293,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     /** Returns the builder for the settings used for calls to insertRegionDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRegionDiskHttpRequest, EmptyMessage, Operation>
         insertRegionDiskOperationSettings() {
       return getStubSettingsBuilder().insertRegionDiskOperationSettings();
     }
@@ -314,7 +314,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     /** Returns the builder for the settings used for calls to resizeRegionDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<ResizeRegionDiskHttpRequest, EmptyMessage, Operation>
         resizeRegionDiskOperationSettings() {
       return getStubSettingsBuilder().resizeRegionDiskOperationSettings();
     }
@@ -328,7 +328,7 @@ public class RegionDiskSettings extends ClientSettings<RegionDiskSettings> {
     /** Returns the builder for the settings used for calls to setLabelsRegionDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsRegionDiskHttpRequest, EmptyMessage, Operation>
         setLabelsRegionDiskOperationSettings() {
       return getStubSettingsBuilder().setLabelsRegionDiskOperationSettings();
     }

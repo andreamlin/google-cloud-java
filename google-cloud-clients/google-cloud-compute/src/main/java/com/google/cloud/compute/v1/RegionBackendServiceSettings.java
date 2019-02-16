@@ -75,7 +75,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
   /** Returns the object with the settings used for calls to deleteRegionBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationSettings() {
     return ((RegionBackendServiceStubSettings) getStubSettings())
         .deleteRegionBackendServiceOperationSettings();
@@ -104,7 +104,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
   /** Returns the object with the settings used for calls to insertRegionBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationSettings() {
     return ((RegionBackendServiceStubSettings) getStubSettings())
         .insertRegionBackendServiceOperationSettings();
@@ -130,7 +130,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
   /** Returns the object with the settings used for calls to patchRegionBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationSettings() {
     return ((RegionBackendServiceStubSettings) getStubSettings())
         .patchRegionBackendServiceOperationSettings();
@@ -146,7 +146,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
   /** Returns the object with the settings used for calls to updateRegionBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationSettings() {
     return ((RegionBackendServiceStubSettings) getStubSettings())
         .updateRegionBackendServiceOperationSettings();
@@ -265,7 +265,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         deleteRegionBackendServiceOperationSettings() {
       return getStubSettingsBuilder().deleteRegionBackendServiceOperationSettings();
     }
@@ -293,7 +293,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         insertRegionBackendServiceOperationSettings() {
       return getStubSettingsBuilder().insertRegionBackendServiceOperationSettings();
     }
@@ -317,7 +317,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         patchRegionBackendServiceOperationSettings() {
       return getStubSettingsBuilder().patchRegionBackendServiceOperationSettings();
     }
@@ -332,7 +332,7 @@ public class RegionBackendServiceSettings extends ClientSettings<RegionBackendSe
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         updateRegionBackendServiceOperationSettings() {
       return getStubSettingsBuilder().updateRegionBackendServiceOperationSettings();
     }

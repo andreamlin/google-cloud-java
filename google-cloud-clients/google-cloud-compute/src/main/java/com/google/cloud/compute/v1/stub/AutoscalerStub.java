@@ -65,7 +65,7 @@ public abstract class AutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteAutoscalerOperationCallable()");
   }
@@ -81,7 +81,7 @@ public abstract class AutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertAutoscalerOperationCallable()");
   }
@@ -103,7 +103,7 @@ public abstract class AutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchAutoscalerOperationCallable()");
   }
@@ -114,7 +114,7 @@ public abstract class AutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: updateAutoscalerOperationCallable()");
   }

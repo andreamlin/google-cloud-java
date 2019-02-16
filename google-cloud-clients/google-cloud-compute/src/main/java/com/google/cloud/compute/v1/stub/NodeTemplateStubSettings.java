@@ -117,14 +117,14 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
       aggregatedListNodeTemplatesSettings;
   private final UnaryCallSettings<DeleteNodeTemplateHttpRequest, Operation>
       deleteNodeTemplateSettings;
-  private final OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationSettings;
   private final UnaryCallSettings<GetNodeTemplateHttpRequest, NodeTemplate> getNodeTemplateSettings;
   private final UnaryCallSettings<GetIamPolicyNodeTemplateHttpRequest, Policy>
       getIamPolicyNodeTemplateSettings;
   private final UnaryCallSettings<InsertNodeTemplateHttpRequest, Operation>
       insertNodeTemplateSettings;
-  private final OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationSettings;
   private final PagedCallSettings<
           ListNodeTemplatesHttpRequest, NodeTemplateList, ListNodeTemplatesPagedResponse>
@@ -151,7 +151,7 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
 
   /** Returns the object with the settings used for calls to deleteNodeTemplate. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationSettings() {
     return deleteNodeTemplateOperationSettings;
   }
@@ -174,7 +174,7 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
 
   /** Returns the object with the settings used for calls to insertNodeTemplate. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationSettings() {
     return insertNodeTemplateOperationSettings;
   }
@@ -438,7 +438,7 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
     private final UnaryCallSettings.Builder<DeleteNodeTemplateHttpRequest, Operation>
         deleteNodeTemplateSettings;
     private final OperationCallSettings.Builder<
-            DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
         deleteNodeTemplateOperationSettings;
     private final UnaryCallSettings.Builder<GetNodeTemplateHttpRequest, NodeTemplate>
         getNodeTemplateSettings;
@@ -447,7 +447,7 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
     private final UnaryCallSettings.Builder<InsertNodeTemplateHttpRequest, Operation>
         insertNodeTemplateSettings;
     private final OperationCallSettings.Builder<
-            InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+            InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
         insertNodeTemplateOperationSettings;
     private final PagedCallSettings.Builder<
             ListNodeTemplatesHttpRequest, NodeTemplateList, ListNodeTemplatesPagedResponse>
@@ -592,8 +592,8 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -613,8 +613,8 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -694,7 +694,7 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
     /** Returns the builder for the settings used for calls to deleteNodeTemplate. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
         deleteNodeTemplateOperationSettings() {
       return deleteNodeTemplateOperationSettings;
     }
@@ -720,7 +720,7 @@ public class NodeTemplateStubSettings extends StubSettings<NodeTemplateStubSetti
     /** Returns the builder for the settings used for calls to insertNodeTemplate. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
         insertNodeTemplateOperationSettings() {
       return insertNodeTemplateOperationSettings;
     }

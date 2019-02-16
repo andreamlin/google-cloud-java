@@ -56,7 +56,7 @@ public abstract class InstanceGroupStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addInstancesInstanceGroupOperationCallable()");
@@ -84,7 +84,7 @@ public abstract class InstanceGroupStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteInstanceGroupOperationCallable()");
@@ -101,7 +101,7 @@ public abstract class InstanceGroupStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertInstanceGroupOperationCallable()");
@@ -140,7 +140,7 @@ public abstract class InstanceGroupStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: removeInstancesInstanceGroupOperationCallable()");
@@ -154,7 +154,7 @@ public abstract class InstanceGroupStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setNamedPortsInstanceGroupOperationCallable()");

@@ -84,7 +84,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
   /** Returns the object with the settings used for calls to deleteRouter. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRouterHttpRequest, EmptyMessage, Operation>
       deleteRouterOperationSettings() {
     return ((RouterStubSettings) getStubSettings()).deleteRouterOperationSettings();
   }
@@ -117,7 +117,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
   /** Returns the object with the settings used for calls to insertRouter. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRouterHttpRequest, EmptyMessage, Operation>
       insertRouterOperationSettings() {
     return ((RouterStubSettings) getStubSettings()).insertRouterOperationSettings();
   }
@@ -136,7 +136,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
   /** Returns the object with the settings used for calls to patchRouter. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRouterHttpRequest, EmptyMessage, Operation>
       patchRouterOperationSettings() {
     return ((RouterStubSettings) getStubSettings()).patchRouterOperationSettings();
   }
@@ -155,7 +155,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
   /** Returns the object with the settings used for calls to updateRouter. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateRouterHttpRequest, EmptyMessage, Operation>
       updateRouterOperationSettings() {
     return ((RouterStubSettings) getStubSettings()).updateRouterOperationSettings();
   }
@@ -278,7 +278,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     /** Returns the builder for the settings used for calls to deleteRouter. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteRouterHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteRouterHttpRequest, EmptyMessage, Operation>
         deleteRouterOperationSettings() {
       return getStubSettingsBuilder().deleteRouterOperationSettings();
     }
@@ -311,7 +311,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     /** Returns the builder for the settings used for calls to insertRouter. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertRouterHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRouterHttpRequest, EmptyMessage, Operation>
         insertRouterOperationSettings() {
       return getStubSettingsBuilder().insertRouterOperationSettings();
     }
@@ -330,7 +330,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     /** Returns the builder for the settings used for calls to patchRouter. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchRouterHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchRouterHttpRequest, EmptyMessage, Operation>
         patchRouterOperationSettings() {
       return getStubSettingsBuilder().patchRouterOperationSettings();
     }
@@ -349,7 +349,7 @@ public class RouterSettings extends ClientSettings<RouterSettings> {
     /** Returns the builder for the settings used for calls to updateRouter. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateRouterHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateRouterHttpRequest, EmptyMessage, Operation>
         updateRouterOperationSettings() {
       return getStubSettingsBuilder().updateRouterOperationSettings();
     }

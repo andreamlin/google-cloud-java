@@ -47,7 +47,7 @@ public abstract class GlobalAddressStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteGlobalAddressOperationCallable()");
@@ -64,7 +64,7 @@ public abstract class GlobalAddressStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertGlobalAddressOperationCallable()");

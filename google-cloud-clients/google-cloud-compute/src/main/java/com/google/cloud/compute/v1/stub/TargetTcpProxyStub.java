@@ -49,7 +49,7 @@ public abstract class TargetTcpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteTargetTcpProxyOperationCallable()");
@@ -66,7 +66,7 @@ public abstract class TargetTcpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertTargetTcpProxyOperationCallable()");
@@ -90,7 +90,7 @@ public abstract class TargetTcpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setBackendServiceTargetTcpProxyOperationCallable()");
@@ -104,7 +104,7 @@ public abstract class TargetTcpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setProxyHeaderTargetTcpProxyOperationCallable()");

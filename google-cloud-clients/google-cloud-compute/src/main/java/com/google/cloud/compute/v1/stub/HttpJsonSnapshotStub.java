@@ -206,7 +206,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteSnapshotHttpRequest, Operation> deleteSnapshotCallable;
-  private final OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationCallable;
   private final UnaryCallable<GetSnapshotHttpRequest, Snapshot> getSnapshotCallable;
   private final UnaryCallable<GetIamPolicySnapshotHttpRequest, Policy> getIamPolicySnapshotCallable;
@@ -215,7 +215,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
       listSnapshotsPagedCallable;
   private final UnaryCallable<SetIamPolicySnapshotHttpRequest, Policy> setIamPolicySnapshotCallable;
   private final UnaryCallable<SetLabelsSnapshotHttpRequest, Operation> setLabelsSnapshotCallable;
-  private final OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationCallable;
   private final UnaryCallable<TestIamPermissionsSnapshotHttpRequest, TestPermissionsResponse>
       testIamPermissionsSnapshotCallable;
@@ -348,7 +348,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationCallable() {
     return deleteSnapshotOperationCallable;
   }
@@ -385,7 +385,7 @@ public class HttpJsonSnapshotStub extends SnapshotStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationCallable() {
     return setLabelsSnapshotOperationCallable;
   }

@@ -103,12 +103,12 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
 
   private final UnaryCallSettings<DeleteGlobalAddressHttpRequest, Operation>
       deleteGlobalAddressSettings;
-  private final OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationSettings;
   private final UnaryCallSettings<GetGlobalAddressHttpRequest, Address> getGlobalAddressSettings;
   private final UnaryCallSettings<InsertGlobalAddressHttpRequest, Operation>
       insertGlobalAddressSettings;
-  private final OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationSettings;
   private final PagedCallSettings<
           ListGlobalAddressesHttpRequest, AddressList, ListGlobalAddressesPagedResponse>
@@ -122,7 +122,7 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
 
   /** Returns the object with the settings used for calls to deleteGlobalAddress. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationSettings() {
     return deleteGlobalAddressOperationSettings;
   }
@@ -140,7 +140,7 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
 
   /** Returns the object with the settings used for calls to insertGlobalAddress. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationSettings() {
     return insertGlobalAddressOperationSettings;
   }
@@ -302,14 +302,14 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
     private final UnaryCallSettings.Builder<DeleteGlobalAddressHttpRequest, Operation>
         deleteGlobalAddressSettings;
     private final OperationCallSettings.Builder<
-            DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
         deleteGlobalAddressOperationSettings;
     private final UnaryCallSettings.Builder<GetGlobalAddressHttpRequest, Address>
         getGlobalAddressSettings;
     private final UnaryCallSettings.Builder<InsertGlobalAddressHttpRequest, Operation>
         insertGlobalAddressSettings;
     private final OperationCallSettings.Builder<
-            InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+            InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
         insertGlobalAddressOperationSettings;
     private final PagedCallSettings.Builder<
             ListGlobalAddressesHttpRequest, AddressList, ListGlobalAddressesPagedResponse>
@@ -417,8 +417,8 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -438,8 +438,8 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -500,7 +500,7 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
     /** Returns the builder for the settings used for calls to deleteGlobalAddress. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
         deleteGlobalAddressOperationSettings() {
       return deleteGlobalAddressOperationSettings;
     }
@@ -520,7 +520,7 @@ public class GlobalAddressStubSettings extends StubSettings<GlobalAddressStubSet
     /** Returns the builder for the settings used for calls to insertGlobalAddress. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
         insertGlobalAddressOperationSettings() {
       return insertGlobalAddressOperationSettings;
     }

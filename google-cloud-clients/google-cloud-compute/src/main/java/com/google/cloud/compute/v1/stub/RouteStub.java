@@ -47,7 +47,7 @@ public abstract class RouteStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteRouteOperationCallable()");
   }
@@ -63,7 +63,7 @@ public abstract class RouteStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertRouteOperationCallable()");
   }

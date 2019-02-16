@@ -103,13 +103,13 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
 
   private final UnaryCallSettings<DeleteSslCertificateHttpRequest, Operation>
       deleteSslCertificateSettings;
-  private final OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationSettings;
   private final UnaryCallSettings<GetSslCertificateHttpRequest, SslCertificate>
       getSslCertificateSettings;
   private final UnaryCallSettings<InsertSslCertificateHttpRequest, Operation>
       insertSslCertificateSettings;
-  private final OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationSettings;
   private final PagedCallSettings<
           ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse>
@@ -123,7 +123,7 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
 
   /** Returns the object with the settings used for calls to deleteSslCertificate. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationSettings() {
     return deleteSslCertificateOperationSettings;
   }
@@ -142,7 +142,7 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
 
   /** Returns the object with the settings used for calls to insertSslCertificate. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationSettings() {
     return insertSslCertificateOperationSettings;
   }
@@ -309,14 +309,14 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
     private final UnaryCallSettings.Builder<DeleteSslCertificateHttpRequest, Operation>
         deleteSslCertificateSettings;
     private final OperationCallSettings.Builder<
-            DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
         deleteSslCertificateOperationSettings;
     private final UnaryCallSettings.Builder<GetSslCertificateHttpRequest, SslCertificate>
         getSslCertificateSettings;
     private final UnaryCallSettings.Builder<InsertSslCertificateHttpRequest, Operation>
         insertSslCertificateSettings;
     private final OperationCallSettings.Builder<
-            InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+            InsertSslCertificateHttpRequest, EmptyMessage, Operation>
         insertSslCertificateOperationSettings;
     private final PagedCallSettings.Builder<
             ListSslCertificatesHttpRequest, SslCertificateList, ListSslCertificatesPagedResponse>
@@ -424,8 +424,8 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -445,8 +445,8 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -507,8 +507,7 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
     /** Returns the builder for the settings used for calls to deleteSslCertificate. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
         deleteSslCertificateOperationSettings() {
       return deleteSslCertificateOperationSettings;
     }
@@ -528,8 +527,7 @@ public class SslCertificateStubSettings extends StubSettings<SslCertificateStubS
     /** Returns the builder for the settings used for calls to insertSslCertificate. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
         insertSslCertificateOperationSettings() {
       return insertSslCertificateOperationSettings;
     }

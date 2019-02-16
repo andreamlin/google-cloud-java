@@ -297,24 +297,24 @@ public class HttpJsonDiskStub extends DiskStub {
   private final UnaryCallable<AggregatedListDisksHttpRequest, AggregatedListDisksPagedResponse>
       aggregatedListDisksPagedCallable;
   private final UnaryCallable<CreateSnapshotDiskHttpRequest, Operation> createSnapshotDiskCallable;
-  private final OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationCallable;
   private final UnaryCallable<DeleteDiskHttpRequest, Operation> deleteDiskCallable;
-  private final OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationCallable;
   private final UnaryCallable<GetDiskHttpRequest, Disk> getDiskCallable;
   private final UnaryCallable<GetIamPolicyDiskHttpRequest, Policy> getIamPolicyDiskCallable;
   private final UnaryCallable<InsertDiskHttpRequest, Operation> insertDiskCallable;
-  private final OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationCallable;
   private final UnaryCallable<ListDisksHttpRequest, DiskList> listDisksCallable;
   private final UnaryCallable<ListDisksHttpRequest, ListDisksPagedResponse> listDisksPagedCallable;
   private final UnaryCallable<ResizeDiskHttpRequest, Operation> resizeDiskCallable;
-  private final OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationCallable;
   private final UnaryCallable<SetIamPolicyDiskHttpRequest, Policy> setIamPolicyDiskCallable;
   private final UnaryCallable<SetLabelsDiskHttpRequest, Operation> setLabelsDiskCallable;
-  private final OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationCallable;
   private final UnaryCallable<TestIamPermissionsDiskHttpRequest, TestPermissionsResponse>
       testIamPermissionsDiskCallable;
@@ -504,7 +504,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationCallable() {
     return createSnapshotDiskOperationCallable;
   }
@@ -515,7 +515,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationCallable() {
     return deleteDiskOperationCallable;
   }
@@ -536,7 +536,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationCallable() {
     return insertDiskOperationCallable;
   }
@@ -557,7 +557,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationCallable() {
     return resizeDiskOperationCallable;
   }
@@ -573,7 +573,7 @@ public class HttpJsonDiskStub extends DiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationCallable() {
     return setLabelsDiskOperationCallable;
   }

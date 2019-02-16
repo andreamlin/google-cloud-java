@@ -37,8 +37,10 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
   }
 
   @Override
-  public Object getMetadata() {
-    return null;
+  // Returns the underlying Compute Operation object that is natively returned by
+  // longrunning methods.
+  public Operation getMetadata() {
+    return operation;
   }
 
   @Override
@@ -48,6 +50,7 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   @Override
   public Object getResponse() {
+    // Compute methods do not have responses.
     return null;
   }
 

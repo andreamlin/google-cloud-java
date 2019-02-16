@@ -52,7 +52,7 @@ public abstract class LicenseStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteLicenseOperationCallable()");
   }
@@ -73,7 +73,7 @@ public abstract class LicenseStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertLicenseOperationCallable()");
   }

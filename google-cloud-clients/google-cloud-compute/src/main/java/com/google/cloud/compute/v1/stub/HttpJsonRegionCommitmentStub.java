@@ -155,7 +155,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
       getRegionCommitmentCallable;
   private final UnaryCallable<InsertRegionCommitmentHttpRequest, Operation>
       insertRegionCommitmentCallable;
-  private final OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationCallable;
   private final UnaryCallable<ListRegionCommitmentsHttpRequest, CommitmentList>
       listRegionCommitmentsCallable;
@@ -290,7 +290,7 @@ public class HttpJsonRegionCommitmentStub extends RegionCommitmentStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationCallable() {
     return insertRegionCommitmentOperationCallable;
   }

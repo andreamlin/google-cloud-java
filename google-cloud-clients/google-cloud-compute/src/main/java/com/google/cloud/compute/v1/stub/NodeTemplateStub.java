@@ -70,7 +70,7 @@ public abstract class NodeTemplateStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteNodeTemplateOperationCallable()");
@@ -93,7 +93,7 @@ public abstract class NodeTemplateStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertNodeTemplateOperationCallable()");

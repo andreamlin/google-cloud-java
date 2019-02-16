@@ -119,7 +119,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   private final UnaryCallSettings<AddNodesNodeGroupHttpRequest, Operation>
       addNodesNodeGroupSettings;
-  private final OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       addNodesNodeGroupOperationSettings;
   private final PagedCallSettings<
           AggregatedListNodeGroupsHttpRequest,
@@ -127,17 +127,17 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
           AggregatedListNodeGroupsPagedResponse>
       aggregatedListNodeGroupsSettings;
   private final UnaryCallSettings<DeleteNodeGroupHttpRequest, Operation> deleteNodeGroupSettings;
-  private final OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodeGroupOperationSettings;
   private final UnaryCallSettings<DeleteNodesNodeGroupHttpRequest, Operation>
       deleteNodesNodeGroupSettings;
-  private final OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodesNodeGroupOperationSettings;
   private final UnaryCallSettings<GetNodeGroupHttpRequest, NodeGroup> getNodeGroupSettings;
   private final UnaryCallSettings<GetIamPolicyNodeGroupHttpRequest, Policy>
       getIamPolicyNodeGroupSettings;
   private final UnaryCallSettings<InsertNodeGroupHttpRequest, Operation> insertNodeGroupSettings;
-  private final OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
       insertNodeGroupOperationSettings;
   private final PagedCallSettings<
           ListNodeGroupsHttpRequest, NodeGroupList, ListNodeGroupsPagedResponse>
@@ -149,8 +149,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
       setIamPolicyNodeGroupSettings;
   private final UnaryCallSettings<SetNodeTemplateNodeGroupHttpRequest, Operation>
       setNodeTemplateNodeGroupSettings;
-  private final OperationCallSettings<
-          SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
       setNodeTemplateNodeGroupOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsNodeGroupHttpRequest, TestPermissionsResponse>
       testIamPermissionsNodeGroupSettings;
@@ -162,7 +161,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   /** Returns the object with the settings used for calls to addNodesNodeGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       addNodesNodeGroupOperationSettings() {
     return addNodesNodeGroupOperationSettings;
   }
@@ -183,7 +182,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteNodeGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodeGroupOperationSettings() {
     return deleteNodeGroupOperationSettings;
   }
@@ -196,7 +195,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteNodesNodeGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodesNodeGroupOperationSettings() {
     return deleteNodesNodeGroupOperationSettings;
   }
@@ -219,7 +218,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   /** Returns the object with the settings used for calls to insertNodeGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
       insertNodeGroupOperationSettings() {
     return insertNodeGroupOperationSettings;
   }
@@ -251,7 +250,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
 
   /** Returns the object with the settings used for calls to setNodeTemplateNodeGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
       setNodeTemplateNodeGroupOperationSettings() {
     return setNodeTemplateNodeGroupOperationSettings;
   }
@@ -558,7 +557,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     private final UnaryCallSettings.Builder<AddNodesNodeGroupHttpRequest, Operation>
         addNodesNodeGroupSettings;
     private final OperationCallSettings.Builder<
-            AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+            AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
         addNodesNodeGroupOperationSettings;
     private final PagedCallSettings.Builder<
             AggregatedListNodeGroupsHttpRequest,
@@ -567,13 +566,12 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
         aggregatedListNodeGroupsSettings;
     private final UnaryCallSettings.Builder<DeleteNodeGroupHttpRequest, Operation>
         deleteNodeGroupSettings;
-    private final OperationCallSettings.Builder<
-            DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
         deleteNodeGroupOperationSettings;
     private final UnaryCallSettings.Builder<DeleteNodesNodeGroupHttpRequest, Operation>
         deleteNodesNodeGroupSettings;
     private final OperationCallSettings.Builder<
-            DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
         deleteNodesNodeGroupOperationSettings;
     private final UnaryCallSettings.Builder<GetNodeGroupHttpRequest, NodeGroup>
         getNodeGroupSettings;
@@ -581,8 +579,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
         getIamPolicyNodeGroupSettings;
     private final UnaryCallSettings.Builder<InsertNodeGroupHttpRequest, Operation>
         insertNodeGroupSettings;
-    private final OperationCallSettings.Builder<
-            InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
         insertNodeGroupOperationSettings;
     private final PagedCallSettings.Builder<
             ListNodeGroupsHttpRequest, NodeGroupList, ListNodeGroupsPagedResponse>
@@ -595,7 +592,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     private final UnaryCallSettings.Builder<SetNodeTemplateNodeGroupHttpRequest, Operation>
         setNodeTemplateNodeGroupSettings;
     private final OperationCallSettings.Builder<
-            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
         setNodeTemplateNodeGroupOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsNodeGroupHttpRequest, TestPermissionsResponse>
@@ -774,8 +771,8 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -795,8 +792,8 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -816,8 +813,8 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -837,8 +834,8 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -859,8 +856,8 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -941,7 +938,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     /** Returns the builder for the settings used for calls to addNodesNodeGroup. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
         addNodesNodeGroupOperationSettings() {
       return addNodesNodeGroupOperationSettings;
     }
@@ -964,7 +961,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     /** Returns the builder for the settings used for calls to deleteNodeGroup. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
         deleteNodeGroupOperationSettings() {
       return deleteNodeGroupOperationSettings;
     }
@@ -978,8 +975,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     /** Returns the builder for the settings used for calls to deleteNodesNodeGroup. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
         deleteNodesNodeGroupOperationSettings() {
       return deleteNodesNodeGroupOperationSettings;
     }
@@ -1004,7 +1000,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     /** Returns the builder for the settings used for calls to insertNodeGroup. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
         insertNodeGroupOperationSettings() {
       return insertNodeGroupOperationSettings;
     }
@@ -1039,7 +1035,7 @@ public class NodeGroupStubSettings extends StubSettings<NodeGroupStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
         setNodeTemplateNodeGroupOperationSettings() {
       return setNodeTemplateNodeGroupOperationSettings;
     }

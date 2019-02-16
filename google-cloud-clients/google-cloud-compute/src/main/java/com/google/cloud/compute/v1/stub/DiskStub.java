@@ -70,7 +70,7 @@ public abstract class DiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: createSnapshotDiskOperationCallable()");
@@ -82,7 +82,7 @@ public abstract class DiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteDiskOperationCallable()");
   }
@@ -103,7 +103,7 @@ public abstract class DiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertDiskOperationCallable()");
   }
@@ -124,7 +124,7 @@ public abstract class DiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: resizeDiskOperationCallable()");
   }
@@ -140,7 +140,7 @@ public abstract class DiskStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: setLabelsDiskOperationCallable()");
   }

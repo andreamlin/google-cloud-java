@@ -115,14 +115,14 @@ public class InterconnectAttachmentStubSettings
   private final UnaryCallSettings<DeleteInterconnectAttachmentHttpRequest, Operation>
       deleteInterconnectAttachmentSettings;
   private final OperationCallSettings<
-          DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationSettings;
   private final UnaryCallSettings<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentSettings;
   private final UnaryCallSettings<InsertInterconnectAttachmentHttpRequest, Operation>
       insertInterconnectAttachmentSettings;
   private final OperationCallSettings<
-          InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+          InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationSettings;
   private final PagedCallSettings<
           ListInterconnectAttachmentsHttpRequest,
@@ -132,7 +132,7 @@ public class InterconnectAttachmentStubSettings
   private final UnaryCallSettings<PatchInterconnectAttachmentHttpRequest, Operation>
       patchInterconnectAttachmentSettings;
   private final OperationCallSettings<
-          PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+          PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationSettings;
 
   /**
@@ -154,7 +154,7 @@ public class InterconnectAttachmentStubSettings
 
   /** Returns the object with the settings used for calls to deleteInterconnectAttachment. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationSettings() {
     return deleteInterconnectAttachmentOperationSettings;
   }
@@ -173,7 +173,7 @@ public class InterconnectAttachmentStubSettings
 
   /** Returns the object with the settings used for calls to insertInterconnectAttachment. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationSettings() {
     return insertInterconnectAttachmentOperationSettings;
   }
@@ -195,7 +195,7 @@ public class InterconnectAttachmentStubSettings
 
   /** Returns the object with the settings used for calls to patchInterconnectAttachment. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationSettings() {
     return patchInterconnectAttachmentOperationSettings;
   }
@@ -468,7 +468,7 @@ public class InterconnectAttachmentStubSettings
     private final UnaryCallSettings.Builder<DeleteInterconnectAttachmentHttpRequest, Operation>
         deleteInterconnectAttachmentSettings;
     private final OperationCallSettings.Builder<
-            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         deleteInterconnectAttachmentOperationSettings;
     private final UnaryCallSettings.Builder<
             GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
@@ -476,7 +476,7 @@ public class InterconnectAttachmentStubSettings
     private final UnaryCallSettings.Builder<InsertInterconnectAttachmentHttpRequest, Operation>
         insertInterconnectAttachmentSettings;
     private final OperationCallSettings.Builder<
-            InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         insertInterconnectAttachmentOperationSettings;
     private final PagedCallSettings.Builder<
             ListInterconnectAttachmentsHttpRequest,
@@ -486,7 +486,7 @@ public class InterconnectAttachmentStubSettings
     private final UnaryCallSettings.Builder<PatchInterconnectAttachmentHttpRequest, Operation>
         patchInterconnectAttachmentSettings;
     private final OperationCallSettings.Builder<
-            PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         patchInterconnectAttachmentOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -611,8 +611,8 @@ public class InterconnectAttachmentStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -633,8 +633,8 @@ public class InterconnectAttachmentStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -655,8 +655,8 @@ public class InterconnectAttachmentStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -740,7 +740,7 @@ public class InterconnectAttachmentStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         deleteInterconnectAttachmentOperationSettings() {
       return deleteInterconnectAttachmentOperationSettings;
     }
@@ -761,7 +761,7 @@ public class InterconnectAttachmentStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         insertInterconnectAttachmentOperationSettings() {
       return insertInterconnectAttachmentOperationSettings;
     }
@@ -785,7 +785,7 @@ public class InterconnectAttachmentStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         patchInterconnectAttachmentOperationSettings() {
       return patchInterconnectAttachmentOperationSettings;
     }

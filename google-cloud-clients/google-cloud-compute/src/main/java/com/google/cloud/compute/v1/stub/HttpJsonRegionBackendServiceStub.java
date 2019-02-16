@@ -213,7 +213,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
 
   private final UnaryCallable<DeleteRegionBackendServiceHttpRequest, Operation>
       deleteRegionBackendServiceCallable;
-  private final OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationCallable;
   private final UnaryCallable<GetRegionBackendServiceHttpRequest, BackendService>
       getRegionBackendServiceCallable;
@@ -221,7 +221,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
       getHealthRegionBackendServiceCallable;
   private final UnaryCallable<InsertRegionBackendServiceHttpRequest, Operation>
       insertRegionBackendServiceCallable;
-  private final OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationCallable;
   private final UnaryCallable<ListRegionBackendServicesHttpRequest, BackendServiceList>
       listRegionBackendServicesCallable;
@@ -230,11 +230,11 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
       listRegionBackendServicesPagedCallable;
   private final UnaryCallable<PatchRegionBackendServiceHttpRequest, Operation>
       patchRegionBackendServiceCallable;
-  private final OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationCallable;
   private final UnaryCallable<UpdateRegionBackendServiceHttpRequest, Operation>
       updateRegionBackendServiceCallable;
-  private final OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -391,7 +391,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationCallable() {
     return deleteRegionBackendServiceOperationCallable;
   }
@@ -415,7 +415,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationCallable() {
     return insertRegionBackendServiceOperationCallable;
   }
@@ -439,7 +439,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationCallable() {
     return patchRegionBackendServiceOperationCallable;
   }
@@ -451,7 +451,7 @@ public class HttpJsonRegionBackendServiceStub extends RegionBackendServiceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationCallable() {
     return updateRegionBackendServiceOperationCallable;
   }

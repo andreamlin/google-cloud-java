@@ -187,7 +187,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionBackendServiceAsync(
       ProjectRegionBackendServiceName backendService) {
 
     DeleteRegionBackendServiceHttpRequest request =
@@ -215,7 +215,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionBackendServiceAsync(
       String backendService) {
 
     DeleteRegionBackendServiceHttpRequest request =
@@ -246,7 +246,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionBackendServiceAsync(
       DeleteRegionBackendServiceHttpRequest request) {
     return deleteRegionBackendServiceOperationCallable().futureCall(request);
   }
@@ -263,14 +263,14 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *   DeleteRegionBackendServiceHttpRequest request = DeleteRegionBackendServiceHttpRequest.newBuilder()
    *     .setBackendService(backendService.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.deleteRegionBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionBackendServiceClient.deleteRegionBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationCallable() {
     return stub.deleteRegionBackendServiceOperationCallable();
   }
@@ -536,7 +536,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionBackendServiceAsync(
       ProjectRegionName region, BackendService backendServiceResource) {
 
     InsertRegionBackendServiceHttpRequest request =
@@ -571,7 +571,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionBackendServiceAsync(
       String region, BackendService backendServiceResource) {
 
     InsertRegionBackendServiceHttpRequest request =
@@ -607,7 +607,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionBackendServiceAsync(
       InsertRegionBackendServiceHttpRequest request) {
     return insertRegionBackendServiceOperationCallable().futureCall(request);
   }
@@ -628,14 +628,14 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setBackendServiceResource(backendServiceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.insertRegionBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionBackendServiceClient.insertRegionBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationCallable() {
     return stub.insertRegionBackendServiceOperationCallable();
   }
@@ -843,7 +843,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRegionBackendServiceAsync(
       ProjectRegionBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -887,7 +887,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRegionBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     PatchRegionBackendServiceHttpRequest request =
@@ -927,7 +927,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRegionBackendServiceAsync(
       PatchRegionBackendServiceHttpRequest request) {
     return patchRegionBackendServiceOperationCallable().futureCall(request);
   }
@@ -951,14 +951,14 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.patchRegionBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionBackendServiceClient.patchRegionBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationCallable() {
     return stub.patchRegionBackendServiceOperationCallable();
   }
@@ -1023,7 +1023,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRegionBackendServiceAsync(
       ProjectRegionBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -1066,7 +1066,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRegionBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     UpdateRegionBackendServiceHttpRequest request =
@@ -1105,7 +1105,7 @@ public class RegionBackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRegionBackendServiceAsync(
       UpdateRegionBackendServiceHttpRequest request) {
     return updateRegionBackendServiceOperationCallable().futureCall(request);
   }
@@ -1128,14 +1128,14 @@ public class RegionBackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionBackendServiceClient.updateRegionBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionBackendServiceClient.updateRegionBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationCallable() {
     return stub.updateRegionBackendServiceOperationCallable();
   }

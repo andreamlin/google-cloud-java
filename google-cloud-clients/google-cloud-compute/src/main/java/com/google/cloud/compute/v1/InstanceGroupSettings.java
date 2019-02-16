@@ -76,7 +76,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   /** Returns the object with the settings used for calls to addInstancesInstanceGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationSettings() {
     return ((InstanceGroupStubSettings) getStubSettings())
         .addInstancesInstanceGroupOperationSettings();
@@ -100,7 +100,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   /** Returns the object with the settings used for calls to deleteInstanceGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationSettings() {
     return ((InstanceGroupStubSettings) getStubSettings()).deleteInstanceGroupOperationSettings();
   }
@@ -119,7 +119,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   /** Returns the object with the settings used for calls to insertInstanceGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationSettings() {
     return ((InstanceGroupStubSettings) getStubSettings()).insertInstanceGroupOperationSettings();
   }
@@ -149,7 +149,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   /** Returns the object with the settings used for calls to removeInstancesInstanceGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationSettings() {
     return ((InstanceGroupStubSettings) getStubSettings())
         .removeInstancesInstanceGroupOperationSettings();
@@ -164,7 +164,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
   /** Returns the object with the settings used for calls to setNamedPortsInstanceGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationSettings() {
     return ((InstanceGroupStubSettings) getStubSettings())
         .setNamedPortsInstanceGroupOperationSettings();
@@ -282,7 +282,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
         addInstancesInstanceGroupOperationSettings() {
       return getStubSettingsBuilder().addInstancesInstanceGroupOperationSettings();
     }
@@ -305,7 +305,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     /** Returns the builder for the settings used for calls to deleteInstanceGroup. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
         deleteInstanceGroupOperationSettings() {
       return getStubSettingsBuilder().deleteInstanceGroupOperationSettings();
     }
@@ -325,7 +325,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     /** Returns the builder for the settings used for calls to insertInstanceGroup. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
         insertInstanceGroupOperationSettings() {
       return getStubSettingsBuilder().insertInstanceGroupOperationSettings();
     }
@@ -356,7 +356,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
         removeInstancesInstanceGroupOperationSettings() {
       return getStubSettingsBuilder().removeInstancesInstanceGroupOperationSettings();
     }
@@ -371,7 +371,7 @@ public class InstanceGroupSettings extends ClientSettings<InstanceGroupSettings>
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
         setNamedPortsInstanceGroupOperationSettings() {
       return getStubSettingsBuilder().setNamedPortsInstanceGroupOperationSettings();
     }

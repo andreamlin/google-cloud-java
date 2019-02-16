@@ -91,7 +91,7 @@ public class RegionCommitmentSettings extends ClientSettings<RegionCommitmentSet
   /** Returns the object with the settings used for calls to insertRegionCommitment. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationSettings() {
     return ((RegionCommitmentStubSettings) getStubSettings())
         .insertRegionCommitmentOperationSettings();
@@ -230,8 +230,7 @@ public class RegionCommitmentSettings extends ClientSettings<RegionCommitmentSet
     /** Returns the builder for the settings used for calls to insertRegionCommitment. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
         insertRegionCommitmentOperationSettings() {
       return getStubSettingsBuilder().insertRegionCommitmentOperationSettings();
     }

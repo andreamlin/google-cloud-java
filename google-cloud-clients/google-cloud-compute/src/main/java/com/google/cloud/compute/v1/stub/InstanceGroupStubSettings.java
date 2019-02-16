@@ -114,8 +114,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
 
   private final UnaryCallSettings<AddInstancesInstanceGroupHttpRequest, Operation>
       addInstancesInstanceGroupSettings;
-  private final OperationCallSettings<
-          AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationSettings;
   private final PagedCallSettings<
           AggregatedListInstanceGroupsHttpRequest,
@@ -124,13 +123,13 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
       aggregatedListInstanceGroupsSettings;
   private final UnaryCallSettings<DeleteInstanceGroupHttpRequest, Operation>
       deleteInstanceGroupSettings;
-  private final OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationSettings;
   private final UnaryCallSettings<GetInstanceGroupHttpRequest, InstanceGroup>
       getInstanceGroupSettings;
   private final UnaryCallSettings<InsertInstanceGroupHttpRequest, Operation>
       insertInstanceGroupSettings;
-  private final OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationSettings;
   private final PagedCallSettings<
           ListInstanceGroupsHttpRequest, InstanceGroupList, ListInstanceGroupsPagedResponse>
@@ -143,12 +142,12 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
   private final UnaryCallSettings<RemoveInstancesInstanceGroupHttpRequest, Operation>
       removeInstancesInstanceGroupSettings;
   private final OperationCallSettings<
-          RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+          RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationSettings;
   private final UnaryCallSettings<SetNamedPortsInstanceGroupHttpRequest, Operation>
       setNamedPortsInstanceGroupSettings;
   private final OperationCallSettings<
-          SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+          SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationSettings;
 
   /** Returns the object with the settings used for calls to addInstancesInstanceGroup. */
@@ -159,7 +158,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
 
   /** Returns the object with the settings used for calls to addInstancesInstanceGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationSettings() {
     return addInstancesInstanceGroupOperationSettings;
   }
@@ -181,7 +180,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
 
   /** Returns the object with the settings used for calls to deleteInstanceGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationSettings() {
     return deleteInstanceGroupOperationSettings;
   }
@@ -199,7 +198,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
 
   /** Returns the object with the settings used for calls to insertInstanceGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationSettings() {
     return insertInstanceGroupOperationSettings;
   }
@@ -228,7 +227,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
 
   /** Returns the object with the settings used for calls to removeInstancesInstanceGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationSettings() {
     return removeInstancesInstanceGroupOperationSettings;
   }
@@ -241,7 +240,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
 
   /** Returns the object with the settings used for calls to setNamedPortsInstanceGroup. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationSettings() {
     return setNamedPortsInstanceGroupOperationSettings;
   }
@@ -571,7 +570,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     private final UnaryCallSettings.Builder<AddInstancesInstanceGroupHttpRequest, Operation>
         addInstancesInstanceGroupSettings;
     private final OperationCallSettings.Builder<
-            AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
         addInstancesInstanceGroupOperationSettings;
     private final PagedCallSettings.Builder<
             AggregatedListInstanceGroupsHttpRequest,
@@ -581,14 +580,14 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     private final UnaryCallSettings.Builder<DeleteInstanceGroupHttpRequest, Operation>
         deleteInstanceGroupSettings;
     private final OperationCallSettings.Builder<
-            DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
         deleteInstanceGroupOperationSettings;
     private final UnaryCallSettings.Builder<GetInstanceGroupHttpRequest, InstanceGroup>
         getInstanceGroupSettings;
     private final UnaryCallSettings.Builder<InsertInstanceGroupHttpRequest, Operation>
         insertInstanceGroupSettings;
     private final OperationCallSettings.Builder<
-            InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
         insertInstanceGroupOperationSettings;
     private final PagedCallSettings.Builder<
             ListInstanceGroupsHttpRequest, InstanceGroupList, ListInstanceGroupsPagedResponse>
@@ -601,12 +600,12 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     private final UnaryCallSettings.Builder<RemoveInstancesInstanceGroupHttpRequest, Operation>
         removeInstancesInstanceGroupSettings;
     private final OperationCallSettings.Builder<
-            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
         removeInstancesInstanceGroupOperationSettings;
     private final UnaryCallSettings.Builder<SetNamedPortsInstanceGroupHttpRequest, Operation>
         setNamedPortsInstanceGroupSettings;
     private final OperationCallSettings.Builder<
-            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
         setNamedPortsInstanceGroupOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -759,8 +758,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -780,8 +779,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -801,8 +800,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -823,8 +822,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -845,8 +844,8 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -927,7 +926,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
         addInstancesInstanceGroupOperationSettings() {
       return addInstancesInstanceGroupOperationSettings;
     }
@@ -950,7 +949,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     /** Returns the builder for the settings used for calls to deleteInstanceGroup. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
         deleteInstanceGroupOperationSettings() {
       return deleteInstanceGroupOperationSettings;
     }
@@ -970,7 +969,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     /** Returns the builder for the settings used for calls to insertInstanceGroup. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
         insertInstanceGroupOperationSettings() {
       return insertInstanceGroupOperationSettings;
     }
@@ -1001,7 +1000,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
         removeInstancesInstanceGroupOperationSettings() {
       return removeInstancesInstanceGroupOperationSettings;
     }
@@ -1016,7 +1015,7 @@ public class InstanceGroupStubSettings extends StubSettings<InstanceGroupStubSet
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
         setNamedPortsInstanceGroupOperationSettings() {
       return setNamedPortsInstanceGroupOperationSettings;
     }

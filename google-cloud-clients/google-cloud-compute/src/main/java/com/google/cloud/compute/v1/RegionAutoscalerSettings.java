@@ -74,7 +74,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
   /** Returns the object with the settings used for calls to deleteRegionAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationSettings() {
     return ((RegionAutoscalerStubSettings) getStubSettings())
         .deleteRegionAutoscalerOperationSettings();
@@ -95,7 +95,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
   /** Returns the object with the settings used for calls to insertRegionAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationSettings() {
     return ((RegionAutoscalerStubSettings) getStubSettings())
         .insertRegionAutoscalerOperationSettings();
@@ -119,7 +119,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
   /** Returns the object with the settings used for calls to patchRegionAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationSettings() {
     return ((RegionAutoscalerStubSettings) getStubSettings())
         .patchRegionAutoscalerOperationSettings();
@@ -134,7 +134,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
   /** Returns the object with the settings used for calls to updateRegionAutoscaler. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationSettings() {
     return ((RegionAutoscalerStubSettings) getStubSettings())
         .updateRegionAutoscalerOperationSettings();
@@ -251,8 +251,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     /** Returns the builder for the settings used for calls to deleteRegionAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         deleteRegionAutoscalerOperationSettings() {
       return getStubSettingsBuilder().deleteRegionAutoscalerOperationSettings();
     }
@@ -272,8 +271,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     /** Returns the builder for the settings used for calls to insertRegionAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         insertRegionAutoscalerOperationSettings() {
       return getStubSettingsBuilder().insertRegionAutoscalerOperationSettings();
     }
@@ -296,8 +294,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     /** Returns the builder for the settings used for calls to patchRegionAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         patchRegionAutoscalerOperationSettings() {
       return getStubSettingsBuilder().patchRegionAutoscalerOperationSettings();
     }
@@ -311,8 +308,7 @@ public class RegionAutoscalerSettings extends ClientSettings<RegionAutoscalerSet
     /** Returns the builder for the settings used for calls to updateRegionAutoscaler. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
         updateRegionAutoscalerOperationSettings() {
       return getStubSettingsBuilder().updateRegionAutoscalerOperationSettings();
     }

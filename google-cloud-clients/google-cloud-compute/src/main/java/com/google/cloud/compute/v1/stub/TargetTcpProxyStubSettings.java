@@ -105,13 +105,13 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
 
   private final UnaryCallSettings<DeleteTargetTcpProxyHttpRequest, Operation>
       deleteTargetTcpProxySettings;
-  private final OperationCallSettings<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationSettings;
   private final UnaryCallSettings<GetTargetTcpProxyHttpRequest, TargetTcpProxy>
       getTargetTcpProxySettings;
   private final UnaryCallSettings<InsertTargetTcpProxyHttpRequest, Operation>
       insertTargetTcpProxySettings;
-  private final OperationCallSettings<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationSettings;
   private final PagedCallSettings<
           ListTargetTcpProxiesHttpRequest, TargetTcpProxyList, ListTargetTcpProxiesPagedResponse>
@@ -119,12 +119,12 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
   private final UnaryCallSettings<SetBackendServiceTargetTcpProxyHttpRequest, Operation>
       setBackendServiceTargetTcpProxySettings;
   private final OperationCallSettings<
-          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationSettings;
   private final UnaryCallSettings<SetProxyHeaderTargetTcpProxyHttpRequest, Operation>
       setProxyHeaderTargetTcpProxySettings;
   private final OperationCallSettings<
-          SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteTargetTcpProxy. */
@@ -135,7 +135,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
 
   /** Returns the object with the settings used for calls to deleteTargetTcpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationSettings() {
     return deleteTargetTcpProxyOperationSettings;
   }
@@ -154,7 +154,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
 
   /** Returns the object with the settings used for calls to insertTargetTcpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationSettings() {
     return insertTargetTcpProxyOperationSettings;
   }
@@ -174,8 +174,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
 
   /** Returns the object with the settings used for calls to setBackendServiceTargetTcpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationSettings() {
     return setBackendServiceTargetTcpProxyOperationSettings;
   }
@@ -188,7 +187,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
 
   /** Returns the object with the settings used for calls to setProxyHeaderTargetTcpProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationSettings() {
     return setProxyHeaderTargetTcpProxyOperationSettings;
   }
@@ -358,14 +357,14 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
     private final UnaryCallSettings.Builder<DeleteTargetTcpProxyHttpRequest, Operation>
         deleteTargetTcpProxySettings;
     private final OperationCallSettings.Builder<
-            DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetTcpProxyOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetTcpProxyHttpRequest, TargetTcpProxy>
         getTargetTcpProxySettings;
     private final UnaryCallSettings.Builder<InsertTargetTcpProxyHttpRequest, Operation>
         insertTargetTcpProxySettings;
     private final OperationCallSettings.Builder<
-            InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         insertTargetTcpProxyOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetTcpProxiesHttpRequest, TargetTcpProxyList, ListTargetTcpProxiesPagedResponse>
@@ -373,12 +372,12 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
     private final UnaryCallSettings.Builder<SetBackendServiceTargetTcpProxyHttpRequest, Operation>
         setBackendServiceTargetTcpProxySettings;
     private final OperationCallSettings.Builder<
-            SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         setBackendServiceTargetTcpProxyOperationSettings;
     private final UnaryCallSettings.Builder<SetProxyHeaderTargetTcpProxyHttpRequest, Operation>
         setProxyHeaderTargetTcpProxySettings;
     private final OperationCallSettings.Builder<
-            SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         setProxyHeaderTargetTcpProxyOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -503,8 +502,8 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -524,8 +523,8 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -546,8 +545,8 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -568,8 +567,8 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -640,8 +639,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
     /** Returns the builder for the settings used for calls to deleteTargetTcpProxy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetTcpProxyOperationSettings() {
       return deleteTargetTcpProxyOperationSettings;
     }
@@ -661,8 +659,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
     /** Returns the builder for the settings used for calls to insertTargetTcpProxy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         insertTargetTcpProxyOperationSettings() {
       return insertTargetTcpProxyOperationSettings;
     }
@@ -684,7 +681,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         setBackendServiceTargetTcpProxyOperationSettings() {
       return setBackendServiceTargetTcpProxyOperationSettings;
     }
@@ -699,7 +696,7 @@ public class TargetTcpProxyStubSettings extends StubSettings<TargetTcpProxyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
         setProxyHeaderTargetTcpProxyOperationSettings() {
       return setProxyHeaderTargetTcpProxyOperationSettings;
     }

@@ -186,7 +186,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addHealthCheckTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> addHealthCheckTargetPoolAsync(
       ProjectRegionTargetPoolName targetPool,
       TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource) {
 
@@ -218,7 +218,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addHealthCheckTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> addHealthCheckTargetPoolAsync(
       String targetPool,
       TargetPoolsAddHealthCheckRequest targetPoolsAddHealthCheckRequestResource) {
 
@@ -253,7 +253,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addHealthCheckTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> addHealthCheckTargetPoolAsync(
       AddHealthCheckTargetPoolHttpRequest request) {
     return addHealthCheckTargetPoolOperationCallable().futureCall(request);
   }
@@ -272,14 +272,14 @@ public class TargetPoolClient implements BackgroundResource {
    *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsAddHealthCheckRequestResource(targetPoolsAddHealthCheckRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.addHealthCheckTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.addHealthCheckTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       addHealthCheckTargetPoolOperationCallable() {
     return stub.addHealthCheckTargetPoolOperationCallable();
   }
@@ -330,7 +330,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addInstanceTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> addInstanceTargetPoolAsync(
       ProjectRegionTargetPoolName targetPool,
       TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource) {
 
@@ -362,7 +362,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addInstanceTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> addInstanceTargetPoolAsync(
       String targetPool, TargetPoolsAddInstanceRequest targetPoolsAddInstanceRequestResource) {
 
     AddInstanceTargetPoolHttpRequest request =
@@ -396,7 +396,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addInstanceTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> addInstanceTargetPoolAsync(
       AddInstanceTargetPoolHttpRequest request) {
     return addInstanceTargetPoolOperationCallable().futureCall(request);
   }
@@ -415,14 +415,14 @@ public class TargetPoolClient implements BackgroundResource {
    *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsAddInstanceRequestResource(targetPoolsAddInstanceRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.addInstanceTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.addInstanceTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       addInstanceTargetPoolOperationCallable() {
     return stub.addInstanceTargetPoolOperationCallable();
   }
@@ -611,7 +611,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetPoolAsync(
       ProjectRegionTargetPoolName targetPool) {
 
     DeleteTargetPoolHttpRequest request =
@@ -639,8 +639,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetPoolAsync(
-      String targetPool) {
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetPoolAsync(String targetPool) {
 
     DeleteTargetPoolHttpRequest request =
         DeleteTargetPoolHttpRequest.newBuilder().setTargetPool(targetPool).build();
@@ -668,7 +667,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetPoolAsync(
       DeleteTargetPoolHttpRequest request) {
     return deleteTargetPoolOperationCallable().futureCall(request);
   }
@@ -685,14 +684,14 @@ public class TargetPoolClient implements BackgroundResource {
    *   DeleteTargetPoolHttpRequest request = DeleteTargetPoolHttpRequest.newBuilder()
    *     .setTargetPool(targetPool.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.deleteTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.deleteTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteTargetPoolHttpRequest, EmptyMessage, Operation>
       deleteTargetPoolOperationCallable() {
     return stub.deleteTargetPoolOperationCallable();
   }
@@ -961,7 +960,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetPoolAsync(
       ProjectRegionName region, TargetPool targetPoolResource) {
 
     InsertTargetPoolHttpRequest request =
@@ -995,7 +994,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetPoolAsync(
       String region, TargetPool targetPoolResource) {
 
     InsertTargetPoolHttpRequest request =
@@ -1030,7 +1029,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetPoolAsync(
       InsertTargetPoolHttpRequest request) {
     return insertTargetPoolOperationCallable().futureCall(request);
   }
@@ -1050,14 +1049,14 @@ public class TargetPoolClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setTargetPoolResource(targetPoolResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.insertTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.insertTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertTargetPoolHttpRequest, EmptyMessage, Operation>
       insertTargetPoolOperationCallable() {
     return stub.insertTargetPoolOperationCallable();
   }
@@ -1244,7 +1243,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeHealthCheckTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeHealthCheckTargetPoolAsync(
       ProjectRegionTargetPoolName targetPool,
       TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource) {
 
@@ -1277,7 +1276,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeHealthCheckTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeHealthCheckTargetPoolAsync(
       String targetPool,
       TargetPoolsRemoveHealthCheckRequest targetPoolsRemoveHealthCheckRequestResource) {
 
@@ -1313,7 +1312,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeHealthCheckTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeHealthCheckTargetPoolAsync(
       RemoveHealthCheckTargetPoolHttpRequest request) {
     return removeHealthCheckTargetPoolOperationCallable().futureCall(request);
   }
@@ -1332,14 +1331,14 @@ public class TargetPoolClient implements BackgroundResource {
    *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsRemoveHealthCheckRequestResource(targetPoolsRemoveHealthCheckRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.removeHealthCheckTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.removeHealthCheckTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<RemoveHealthCheckTargetPoolHttpRequest, EmptyMessage, Operation>
       removeHealthCheckTargetPoolOperationCallable() {
     return stub.removeHealthCheckTargetPoolOperationCallable();
   }
@@ -1390,7 +1389,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeInstanceTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeInstanceTargetPoolAsync(
       ProjectRegionTargetPoolName targetPool,
       TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource) {
 
@@ -1422,7 +1421,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeInstanceTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeInstanceTargetPoolAsync(
       String targetPool,
       TargetPoolsRemoveInstanceRequest targetPoolsRemoveInstanceRequestResource) {
 
@@ -1457,7 +1456,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeInstanceTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeInstanceTargetPoolAsync(
       RemoveInstanceTargetPoolHttpRequest request) {
     return removeInstanceTargetPoolOperationCallable().futureCall(request);
   }
@@ -1476,14 +1475,14 @@ public class TargetPoolClient implements BackgroundResource {
    *     .setTargetPool(targetPool.toString())
    *     .setTargetPoolsRemoveInstanceRequestResource(targetPoolsRemoveInstanceRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.removeInstanceTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.removeInstanceTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<RemoveInstanceTargetPoolHttpRequest, EmptyMessage, Operation>
       removeInstanceTargetPoolOperationCallable() {
     return stub.removeInstanceTargetPoolOperationCallable();
   }
@@ -1536,7 +1535,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackupTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackupTargetPoolAsync(
       ProjectRegionTargetPoolName targetPool,
       Float failoverRatio,
       TargetReference targetReferenceResource) {
@@ -1572,7 +1571,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackupTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackupTargetPoolAsync(
       String targetPool, Float failoverRatio, TargetReference targetReferenceResource) {
 
     SetBackupTargetPoolHttpRequest request =
@@ -1609,7 +1608,7 @@ public class TargetPoolClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackupTargetPoolAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackupTargetPoolAsync(
       SetBackupTargetPoolHttpRequest request) {
     return setBackupTargetPoolOperationCallable().futureCall(request);
   }
@@ -1630,14 +1629,14 @@ public class TargetPoolClient implements BackgroundResource {
    *     .setFailoverRatio(failoverRatio)
    *     .setTargetReferenceResource(targetReferenceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetPoolClient.setBackupTargetPoolOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetPoolClient.setBackupTargetPoolOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetBackupTargetPoolHttpRequest, EmptyMessage, Operation>
       setBackupTargetPoolOperationCallable() {
     return stub.setBackupTargetPoolOperationCallable();
   }

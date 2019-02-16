@@ -189,7 +189,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> addAccessConfigInstanceAsync(
       ProjectZoneInstanceName instance,
       String networkInterface,
       AccessConfig accessConfigResource) {
@@ -226,7 +226,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> addAccessConfigInstanceAsync(
       String instance, String networkInterface, AccessConfig accessConfigResource) {
 
     AddAccessConfigInstanceHttpRequest request =
@@ -263,7 +263,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> addAccessConfigInstanceAsync(
       AddAccessConfigInstanceHttpRequest request) {
     return addAccessConfigInstanceOperationCallable().futureCall(request);
   }
@@ -284,14 +284,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setNetworkInterface(networkInterface)
    *     .setAccessConfigResource(accessConfigResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.addAccessConfigInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.addAccessConfigInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationCallable() {
     return stub.addAccessConfigInstanceOperationCallable();
   }
@@ -488,7 +488,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> attachDiskInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> attachDiskInstanceAsync(
       ProjectZoneInstanceName instance, Boolean forceAttach, AttachedDisk attachedDiskResource) {
 
     AttachDiskInstanceHttpRequest request =
@@ -525,7 +525,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> attachDiskInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> attachDiskInstanceAsync(
       String instance, Boolean forceAttach, AttachedDisk attachedDiskResource) {
 
     AttachDiskInstanceHttpRequest request =
@@ -564,7 +564,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> attachDiskInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> attachDiskInstanceAsync(
       AttachDiskInstanceHttpRequest request) {
     return attachDiskInstanceOperationCallable().futureCall(request);
   }
@@ -587,14 +587,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setForceAttach(forceAttach)
    *     .setAttachedDiskResource(attachedDiskResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.attachDiskInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.attachDiskInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationCallable() {
     return stub.attachDiskInstanceOperationCallable();
   }
@@ -648,7 +648,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceAsync(
       ProjectZoneInstanceName instance) {
 
     DeleteInstanceHttpRequest request =
@@ -677,7 +677,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceAsync(String instance) {
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceAsync(String instance) {
 
     DeleteInstanceHttpRequest request =
         DeleteInstanceHttpRequest.newBuilder().setInstance(instance).build();
@@ -706,7 +706,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceAsync(
       DeleteInstanceHttpRequest request) {
     return deleteInstanceOperationCallable().futureCall(request);
   }
@@ -724,14 +724,14 @@ public class InstanceClient implements BackgroundResource {
    *   DeleteInstanceHttpRequest request = DeleteInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.deleteInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.deleteInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationCallable() {
     return stub.deleteInstanceOperationCallable();
   }
@@ -782,7 +782,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAccessConfigInstanceAsync(
       ProjectZoneInstanceName instance, String networkInterface, String accessConfig) {
 
     DeleteAccessConfigInstanceHttpRequest request =
@@ -816,7 +816,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAccessConfigInstanceAsync(
       String instance, String networkInterface, String accessConfig) {
 
     DeleteAccessConfigInstanceHttpRequest request =
@@ -853,7 +853,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAccessConfigInstanceAsync(
       DeleteAccessConfigInstanceHttpRequest request) {
     return deleteAccessConfigInstanceOperationCallable().futureCall(request);
   }
@@ -874,14 +874,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setNetworkInterface(networkInterface)
    *     .setAccessConfig(accessConfig)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.deleteAccessConfigInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.deleteAccessConfigInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationCallable() {
     return stub.deleteAccessConfigInstanceOperationCallable();
   }
@@ -935,7 +935,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> detachDiskInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> detachDiskInstanceAsync(
       ProjectZoneInstanceName instance, String deviceName) {
 
     DetachDiskInstanceHttpRequest request =
@@ -967,7 +967,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> detachDiskInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> detachDiskInstanceAsync(
       String instance, String deviceName) {
 
     DetachDiskInstanceHttpRequest request =
@@ -1001,7 +1001,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> detachDiskInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> detachDiskInstanceAsync(
       DetachDiskInstanceHttpRequest request) {
     return detachDiskInstanceOperationCallable().futureCall(request);
   }
@@ -1020,14 +1020,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setDeviceName(deviceName)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.detachDiskInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.detachDiskInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationCallable() {
     return stub.detachDiskInstanceOperationCallable();
   }
@@ -1411,7 +1411,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<Operation, Operation> insertInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceAsync(
       ProjectZoneName zone, Instance instanceResource) {
 
     InsertInstanceHttpRequest request =
@@ -1443,7 +1443,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<Operation, Operation> insertInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceAsync(
       String zone, Instance instanceResource) {
 
     InsertInstanceHttpRequest request =
@@ -1477,7 +1477,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<Operation, Operation> insertInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceAsync(
       InsertInstanceHttpRequest request) {
     return insertInstanceOperationCallable().futureCall(request);
   }
@@ -1496,14 +1496,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setInstanceResource(instanceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.insertInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.insertInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
+  public final OperationCallable<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationCallable() {
     return stub.insertInstanceOperationCallable();
   }
@@ -1833,7 +1833,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> resetInstanceAsync(
       ProjectZoneInstanceName instance) {
 
     ResetInstanceHttpRequest request =
@@ -1862,7 +1862,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resetInstanceAsync(String instance) {
+  public final OperationFuture<EmptyMessage, Operation> resetInstanceAsync(String instance) {
 
     ResetInstanceHttpRequest request =
         ResetInstanceHttpRequest.newBuilder().setInstance(instance).build();
@@ -1891,7 +1891,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> resetInstanceAsync(
       ResetInstanceHttpRequest request) {
     return resetInstanceOperationCallable().futureCall(request);
   }
@@ -1909,14 +1909,14 @@ public class InstanceClient implements BackgroundResource {
    *   ResetInstanceHttpRequest request = ResetInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.resetInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.resetInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationCallable() {
     return stub.resetInstanceOperationCallable();
   }
@@ -1965,7 +1965,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDeletionProtectionInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDeletionProtectionInstanceAsync(
       ProjectZoneInstanceResourceName resource, Boolean deletionProtection) {
 
     SetDeletionProtectionInstanceHttpRequest request =
@@ -1996,7 +1996,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDeletionProtectionInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDeletionProtectionInstanceAsync(
       String resource, Boolean deletionProtection) {
 
     SetDeletionProtectionInstanceHttpRequest request =
@@ -2030,7 +2030,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDeletionProtectionInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDeletionProtectionInstanceAsync(
       SetDeletionProtectionInstanceHttpRequest request) {
     return setDeletionProtectionInstanceOperationCallable().futureCall(request);
   }
@@ -2049,15 +2049,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setDeletionProtection(deletionProtection)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setDeletionProtectionInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setDeletionProtectionInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationCallable() {
     return stub.setDeletionProtectionInstanceOperationCallable();
   }
@@ -2111,7 +2110,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDiskAutoDeleteInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDiskAutoDeleteInstanceAsync(
       ProjectZoneInstanceName instance, Boolean autoDelete, String deviceName) {
 
     SetDiskAutoDeleteInstanceHttpRequest request =
@@ -2146,7 +2145,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDiskAutoDeleteInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDiskAutoDeleteInstanceAsync(
       String instance, Boolean autoDelete, String deviceName) {
 
     SetDiskAutoDeleteInstanceHttpRequest request =
@@ -2183,7 +2182,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setDiskAutoDeleteInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setDiskAutoDeleteInstanceAsync(
       SetDiskAutoDeleteInstanceHttpRequest request) {
     return setDiskAutoDeleteInstanceOperationCallable().futureCall(request);
   }
@@ -2204,14 +2203,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setAutoDelete(autoDelete)
    *     .setDeviceName(deviceName)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setDiskAutoDeleteInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setDiskAutoDeleteInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationCallable() {
     return stub.setDiskAutoDeleteInstanceOperationCallable();
   }
@@ -2377,7 +2376,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsInstanceAsync(
       ProjectZoneInstanceName instance,
       InstancesSetLabelsRequest instancesSetLabelsRequestResource) {
 
@@ -2410,7 +2409,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsInstanceAsync(
       String instance, InstancesSetLabelsRequest instancesSetLabelsRequestResource) {
 
     SetLabelsInstanceHttpRequest request =
@@ -2445,7 +2444,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsInstanceAsync(
       SetLabelsInstanceHttpRequest request) {
     return setLabelsInstanceOperationCallable().futureCall(request);
   }
@@ -2465,14 +2464,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setInstancesSetLabelsRequestResource(instancesSetLabelsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setLabelsInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setLabelsInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationCallable() {
     return stub.setLabelsInstanceOperationCallable();
   }
@@ -2524,7 +2523,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMachineResourcesInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMachineResourcesInstanceAsync(
       ProjectZoneInstanceName instance,
       InstancesSetMachineResourcesRequest instancesSetMachineResourcesRequestResource) {
 
@@ -2558,7 +2557,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMachineResourcesInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMachineResourcesInstanceAsync(
       String instance,
       InstancesSetMachineResourcesRequest instancesSetMachineResourcesRequestResource) {
 
@@ -2595,7 +2594,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMachineResourcesInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMachineResourcesInstanceAsync(
       SetMachineResourcesInstanceHttpRequest request) {
     return setMachineResourcesInstanceOperationCallable().futureCall(request);
   }
@@ -2615,14 +2614,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setInstancesSetMachineResourcesRequestResource(instancesSetMachineResourcesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setMachineResourcesInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setMachineResourcesInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationCallable() {
     return stub.setMachineResourcesInstanceOperationCallable();
   }
@@ -2674,7 +2673,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMachineTypeInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMachineTypeInstanceAsync(
       ProjectZoneInstanceName instance,
       InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource) {
 
@@ -2706,7 +2705,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMachineTypeInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMachineTypeInstanceAsync(
       String instance, InstancesSetMachineTypeRequest instancesSetMachineTypeRequestResource) {
 
     SetMachineTypeInstanceHttpRequest request =
@@ -2740,7 +2739,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMachineTypeInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMachineTypeInstanceAsync(
       SetMachineTypeInstanceHttpRequest request) {
     return setMachineTypeInstanceOperationCallable().futureCall(request);
   }
@@ -2759,14 +2758,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setInstancesSetMachineTypeRequestResource(instancesSetMachineTypeRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setMachineTypeInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setMachineTypeInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationCallable() {
     return stub.setMachineTypeInstanceOperationCallable();
   }
@@ -2817,7 +2816,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMetadataInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMetadataInstanceAsync(
       ProjectZoneInstanceName instance, Metadata metadataResource) {
 
     SetMetadataInstanceHttpRequest request =
@@ -2848,7 +2847,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMetadataInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMetadataInstanceAsync(
       String instance, Metadata metadataResource) {
 
     SetMetadataInstanceHttpRequest request =
@@ -2882,7 +2881,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMetadataInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMetadataInstanceAsync(
       SetMetadataInstanceHttpRequest request) {
     return setMetadataInstanceOperationCallable().futureCall(request);
   }
@@ -2901,14 +2900,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setMetadataResource(metadataResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setMetadataInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setMetadataInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationCallable() {
     return stub.setMetadataInstanceOperationCallable();
   }
@@ -2960,7 +2959,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMinCpuPlatformInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMinCpuPlatformInstanceAsync(
       ProjectZoneInstanceName instance,
       InstancesSetMinCpuPlatformRequest instancesSetMinCpuPlatformRequestResource) {
 
@@ -2993,7 +2992,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMinCpuPlatformInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMinCpuPlatformInstanceAsync(
       String instance,
       InstancesSetMinCpuPlatformRequest instancesSetMinCpuPlatformRequestResource) {
 
@@ -3029,7 +3028,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setMinCpuPlatformInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setMinCpuPlatformInstanceAsync(
       SetMinCpuPlatformInstanceHttpRequest request) {
     return setMinCpuPlatformInstanceOperationCallable().futureCall(request);
   }
@@ -3049,14 +3048,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setInstancesSetMinCpuPlatformRequestResource(instancesSetMinCpuPlatformRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setMinCpuPlatformInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setMinCpuPlatformInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationCallable() {
     return stub.setMinCpuPlatformInstanceOperationCallable();
   }
@@ -3108,7 +3107,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSchedulingInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSchedulingInstanceAsync(
       ProjectZoneInstanceName instance, Scheduling schedulingResource) {
 
     SetSchedulingInstanceHttpRequest request =
@@ -3139,7 +3138,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSchedulingInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSchedulingInstanceAsync(
       String instance, Scheduling schedulingResource) {
 
     SetSchedulingInstanceHttpRequest request =
@@ -3173,7 +3172,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSchedulingInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSchedulingInstanceAsync(
       SetSchedulingInstanceHttpRequest request) {
     return setSchedulingInstanceOperationCallable().futureCall(request);
   }
@@ -3192,14 +3191,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setSchedulingResource(schedulingResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setSchedulingInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setSchedulingInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationCallable() {
     return stub.setSchedulingInstanceOperationCallable();
   }
@@ -3251,7 +3250,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setServiceAccountInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setServiceAccountInstanceAsync(
       ProjectZoneInstanceName instance,
       InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource) {
 
@@ -3284,7 +3283,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setServiceAccountInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setServiceAccountInstanceAsync(
       String instance,
       InstancesSetServiceAccountRequest instancesSetServiceAccountRequestResource) {
 
@@ -3320,7 +3319,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setServiceAccountInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setServiceAccountInstanceAsync(
       SetServiceAccountInstanceHttpRequest request) {
     return setServiceAccountInstanceOperationCallable().futureCall(request);
   }
@@ -3340,14 +3339,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setInstancesSetServiceAccountRequestResource(instancesSetServiceAccountRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setServiceAccountInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setServiceAccountInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationCallable() {
     return stub.setServiceAccountInstanceOperationCallable();
   }
@@ -3399,7 +3398,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTagsInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTagsInstanceAsync(
       ProjectZoneInstanceName instance, Tags tagsResource) {
 
     SetTagsInstanceHttpRequest request =
@@ -3430,7 +3429,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTagsInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTagsInstanceAsync(
       String instance, Tags tagsResource) {
 
     SetTagsInstanceHttpRequest request =
@@ -3464,7 +3463,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTagsInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTagsInstanceAsync(
       SetTagsInstanceHttpRequest request) {
     return setTagsInstanceOperationCallable().futureCall(request);
   }
@@ -3483,14 +3482,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setTagsResource(tagsResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.setTagsInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.setTagsInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationCallable() {
     return stub.setTagsInstanceOperationCallable();
   }
@@ -3538,7 +3537,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> simulateMaintenanceEventInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> simulateMaintenanceEventInstanceAsync(
       ProjectZoneInstanceName instance) {
 
     SimulateMaintenanceEventInstanceHttpRequest request =
@@ -3566,7 +3565,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> simulateMaintenanceEventInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> simulateMaintenanceEventInstanceAsync(
       String instance) {
 
     SimulateMaintenanceEventInstanceHttpRequest request =
@@ -3595,7 +3594,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> simulateMaintenanceEventInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> simulateMaintenanceEventInstanceAsync(
       SimulateMaintenanceEventInstanceHttpRequest request) {
     return simulateMaintenanceEventInstanceOperationCallable().futureCall(request);
   }
@@ -3612,7 +3611,7 @@ public class InstanceClient implements BackgroundResource {
    *   SimulateMaintenanceEventInstanceHttpRequest request = SimulateMaintenanceEventInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.simulateMaintenanceEventInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.simulateMaintenanceEventInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -3620,7 +3619,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationCallable() {
     return stub.simulateMaintenanceEventInstanceOperationCallable();
   }
@@ -3668,7 +3667,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> startInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> startInstanceAsync(
       ProjectZoneInstanceName instance) {
 
     StartInstanceHttpRequest request =
@@ -3697,7 +3696,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> startInstanceAsync(String instance) {
+  public final OperationFuture<EmptyMessage, Operation> startInstanceAsync(String instance) {
 
     StartInstanceHttpRequest request =
         StartInstanceHttpRequest.newBuilder().setInstance(instance).build();
@@ -3726,7 +3725,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> startInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> startInstanceAsync(
       StartInstanceHttpRequest request) {
     return startInstanceOperationCallable().futureCall(request);
   }
@@ -3744,14 +3743,14 @@ public class InstanceClient implements BackgroundResource {
    *   StartInstanceHttpRequest request = StartInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.startInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.startInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationCallable() {
     return stub.startInstanceOperationCallable();
   }
@@ -3801,7 +3800,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> startWithEncryptionKeyInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> startWithEncryptionKeyInstanceAsync(
       ProjectZoneInstanceName instance,
       InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource) {
 
@@ -3835,7 +3834,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> startWithEncryptionKeyInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> startWithEncryptionKeyInstanceAsync(
       String instance,
       InstancesStartWithEncryptionKeyRequest instancesStartWithEncryptionKeyRequestResource) {
 
@@ -3872,7 +3871,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> startWithEncryptionKeyInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> startWithEncryptionKeyInstanceAsync(
       StartWithEncryptionKeyInstanceHttpRequest request) {
     return startWithEncryptionKeyInstanceOperationCallable().futureCall(request);
   }
@@ -3892,15 +3891,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setInstance(instance.toString())
    *     .setInstancesStartWithEncryptionKeyRequestResource(instancesStartWithEncryptionKeyRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.startWithEncryptionKeyInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.startWithEncryptionKeyInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationCallable() {
     return stub.startWithEncryptionKeyInstanceOperationCallable();
   }
@@ -3953,7 +3951,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> stopInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> stopInstanceAsync(
       ProjectZoneInstanceName instance) {
 
     StopInstanceHttpRequest request =
@@ -3984,7 +3982,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> stopInstanceAsync(String instance) {
+  public final OperationFuture<EmptyMessage, Operation> stopInstanceAsync(String instance) {
 
     StopInstanceHttpRequest request =
         StopInstanceHttpRequest.newBuilder().setInstance(instance).build();
@@ -4015,7 +4013,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> stopInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> stopInstanceAsync(
       StopInstanceHttpRequest request) {
     return stopInstanceOperationCallable().futureCall(request);
   }
@@ -4035,14 +4033,14 @@ public class InstanceClient implements BackgroundResource {
    *   StopInstanceHttpRequest request = StopInstanceHttpRequest.newBuilder()
    *     .setInstance(instance.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.stopInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.stopInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationCallable() {
     return stub.stopInstanceOperationCallable();
   }
@@ -4212,7 +4210,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateAccessConfigInstanceAsync(
       ProjectZoneInstanceName instance,
       String networkInterface,
       AccessConfig accessConfigResource) {
@@ -4251,7 +4249,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateAccessConfigInstanceAsync(
       String instance, String networkInterface, AccessConfig accessConfigResource) {
 
     UpdateAccessConfigInstanceHttpRequest request =
@@ -4290,7 +4288,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateAccessConfigInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateAccessConfigInstanceAsync(
       UpdateAccessConfigInstanceHttpRequest request) {
     return updateAccessConfigInstanceOperationCallable().futureCall(request);
   }
@@ -4313,14 +4311,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setNetworkInterface(networkInterface)
    *     .setAccessConfigResource(accessConfigResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.updateAccessConfigInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.updateAccessConfigInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationCallable() {
     return stub.updateAccessConfigInstanceOperationCallable();
   }
@@ -4382,7 +4380,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateNetworkInterfaceInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateNetworkInterfaceInstanceAsync(
       ProjectZoneInstanceName instance,
       String networkInterface,
       NetworkInterface networkInterfaceResource,
@@ -4425,7 +4423,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateNetworkInterfaceInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateNetworkInterfaceInstanceAsync(
       String instance,
       String networkInterface,
       NetworkInterface networkInterfaceResource,
@@ -4468,7 +4466,7 @@ public class InstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateNetworkInterfaceInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateNetworkInterfaceInstanceAsync(
       UpdateNetworkInterfaceInstanceHttpRequest request) {
     return updateNetworkInterfaceInstanceOperationCallable().futureCall(request);
   }
@@ -4491,15 +4489,14 @@ public class InstanceClient implements BackgroundResource {
    *     .setNetworkInterfaceResource(networkInterfaceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceClient.updateNetworkInterfaceInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceClient.updateNetworkInterfaceInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationCallable() {
     return stub.updateNetworkInterfaceInstanceOperationCallable();
   }

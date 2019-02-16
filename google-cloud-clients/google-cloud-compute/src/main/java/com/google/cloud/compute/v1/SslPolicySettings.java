@@ -73,7 +73,7 @@ public class SslPolicySettings extends ClientSettings<SslPolicySettings> {
   /** Returns the object with the settings used for calls to deleteSslPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSslPolicyHttpRequest, EmptyMessage, Operation>
       deleteSslPolicyOperationSettings() {
     return ((SslPolicyStubSettings) getStubSettings()).deleteSslPolicyOperationSettings();
   }
@@ -91,7 +91,7 @@ public class SslPolicySettings extends ClientSettings<SslPolicySettings> {
   /** Returns the object with the settings used for calls to insertSslPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSslPolicyHttpRequest, EmptyMessage, Operation>
       insertSslPolicyOperationSettings() {
     return ((SslPolicyStubSettings) getStubSettings()).insertSslPolicyOperationSettings();
   }
@@ -118,7 +118,7 @@ public class SslPolicySettings extends ClientSettings<SslPolicySettings> {
   /** Returns the object with the settings used for calls to patchSslPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchSslPolicyHttpRequest, EmptyMessage, Operation>
       patchSslPolicyOperationSettings() {
     return ((SslPolicyStubSettings) getStubSettings()).patchSslPolicyOperationSettings();
   }
@@ -233,7 +233,7 @@ public class SslPolicySettings extends ClientSettings<SslPolicySettings> {
     /** Returns the builder for the settings used for calls to deleteSslPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSslPolicyHttpRequest, EmptyMessage, Operation>
         deleteSslPolicyOperationSettings() {
       return getStubSettingsBuilder().deleteSslPolicyOperationSettings();
     }
@@ -252,7 +252,7 @@ public class SslPolicySettings extends ClientSettings<SslPolicySettings> {
     /** Returns the builder for the settings used for calls to insertSslPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSslPolicyHttpRequest, EmptyMessage, Operation>
         insertSslPolicyOperationSettings() {
       return getStubSettingsBuilder().insertSslPolicyOperationSettings();
     }
@@ -280,7 +280,7 @@ public class SslPolicySettings extends ClientSettings<SslPolicySettings> {
     /** Returns the builder for the settings used for calls to patchSslPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchSslPolicyHttpRequest, EmptyMessage, Operation>
         patchSslPolicyOperationSettings() {
       return getStubSettingsBuilder().patchSslPolicyOperationSettings();
     }

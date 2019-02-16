@@ -187,7 +187,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> createSnapshotRegionDiskAsync(
       ProjectRegionDiskName disk, Snapshot snapshotResource) {
 
     CreateSnapshotRegionDiskHttpRequest request =
@@ -219,7 +219,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> createSnapshotRegionDiskAsync(
       String disk, Snapshot snapshotResource) {
 
     CreateSnapshotRegionDiskHttpRequest request =
@@ -253,7 +253,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> createSnapshotRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> createSnapshotRegionDiskAsync(
       CreateSnapshotRegionDiskHttpRequest request) {
     return createSnapshotRegionDiskOperationCallable().futureCall(request);
   }
@@ -272,14 +272,14 @@ public class RegionDiskClient implements BackgroundResource {
    *     .setDisk(disk.toString())
    *     .setSnapshotResource(snapshotResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionDiskClient.createSnapshotRegionDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionDiskClient.createSnapshotRegionDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotRegionDiskOperationCallable() {
     return stub.createSnapshotRegionDiskOperationCallable();
   }
@@ -330,7 +330,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionDiskAsync(
       ProjectRegionDiskName disk) {
 
     DeleteRegionDiskHttpRequest request =
@@ -360,7 +360,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionDiskAsync(String disk) {
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionDiskAsync(String disk) {
 
     DeleteRegionDiskHttpRequest request =
         DeleteRegionDiskHttpRequest.newBuilder().setDisk(disk).build();
@@ -390,7 +390,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionDiskAsync(
       DeleteRegionDiskHttpRequest request) {
     return deleteRegionDiskOperationCallable().futureCall(request);
   }
@@ -409,14 +409,14 @@ public class RegionDiskClient implements BackgroundResource {
    *   DeleteRegionDiskHttpRequest request = DeleteRegionDiskHttpRequest.newBuilder()
    *     .setDisk(disk.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionDiskClient.deleteRegionDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionDiskClient.deleteRegionDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, Operation>
       deleteRegionDiskOperationCallable() {
     return stub.deleteRegionDiskOperationCallable();
   }
@@ -564,7 +564,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionDiskAsync(
       ProjectRegionName region, Disk diskResource) {
 
     InsertRegionDiskHttpRequest request =
@@ -597,7 +597,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionDiskAsync(
       String region, Disk diskResource) {
 
     InsertRegionDiskHttpRequest request =
@@ -632,7 +632,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionDiskAsync(
       InsertRegionDiskHttpRequest request) {
     return insertRegionDiskOperationCallable().futureCall(request);
   }
@@ -652,14 +652,14 @@ public class RegionDiskClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setDiskResource(diskResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionDiskClient.insertRegionDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionDiskClient.insertRegionDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, Operation>
       insertRegionDiskOperationCallable() {
     return stub.insertRegionDiskOperationCallable();
   }
@@ -846,7 +846,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeRegionDiskAsync(
       ProjectRegionDiskName disk, RegionDisksResizeRequest regionDisksResizeRequestResource) {
 
     ResizeRegionDiskHttpRequest request =
@@ -877,7 +877,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeRegionDiskAsync(
       String disk, RegionDisksResizeRequest regionDisksResizeRequestResource) {
 
     ResizeRegionDiskHttpRequest request =
@@ -911,7 +911,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> resizeRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> resizeRegionDiskAsync(
       ResizeRegionDiskHttpRequest request) {
     return resizeRegionDiskOperationCallable().futureCall(request);
   }
@@ -930,14 +930,14 @@ public class RegionDiskClient implements BackgroundResource {
    *     .setDisk(disk.toString())
    *     .setRegionDisksResizeRequestResource(regionDisksResizeRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionDiskClient.resizeRegionDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionDiskClient.resizeRegionDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, Operation>
       resizeRegionDiskOperationCallable() {
     return stub.resizeRegionDiskOperationCallable();
   }
@@ -987,7 +987,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsRegionDiskAsync(
       ProjectRegionDiskResourceName resource,
       RegionSetLabelsRequest regionSetLabelsRequestResource) {
 
@@ -1019,7 +1019,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsRegionDiskAsync(
       String resource, RegionSetLabelsRequest regionSetLabelsRequestResource) {
 
     SetLabelsRegionDiskHttpRequest request =
@@ -1053,7 +1053,7 @@ public class RegionDiskClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsRegionDiskAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsRegionDiskAsync(
       SetLabelsRegionDiskHttpRequest request) {
     return setLabelsRegionDiskOperationCallable().futureCall(request);
   }
@@ -1072,14 +1072,14 @@ public class RegionDiskClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setRegionSetLabelsRequestResource(regionSetLabelsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionDiskClient.setLabelsRegionDiskOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionDiskClient.setLabelsRegionDiskOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, Operation>
       setLabelsRegionDiskOperationCallable() {
     return stub.setLabelsRegionDiskOperationCallable();
   }

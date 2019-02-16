@@ -106,7 +106,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
 
   private final UnaryCallSettings<DeleteInterconnectHttpRequest, Operation>
       deleteInterconnectSettings;
-  private final OperationCallSettings<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationSettings;
   private final UnaryCallSettings<GetInterconnectHttpRequest, Interconnect> getInterconnectSettings;
   private final UnaryCallSettings<
@@ -114,14 +114,14 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
       getDiagnosticsInterconnectSettings;
   private final UnaryCallSettings<InsertInterconnectHttpRequest, Operation>
       insertInterconnectSettings;
-  private final OperationCallSettings<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationSettings;
   private final PagedCallSettings<
           ListInterconnectsHttpRequest, InterconnectList, ListInterconnectsPagedResponse>
       listInterconnectsSettings;
   private final UnaryCallSettings<PatchInterconnectHttpRequest, Operation>
       patchInterconnectSettings;
-  private final OperationCallSettings<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteInterconnect. */
@@ -131,7 +131,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
 
   /** Returns the object with the settings used for calls to deleteInterconnect. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationSettings() {
     return deleteInterconnectOperationSettings;
   }
@@ -155,7 +155,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
 
   /** Returns the object with the settings used for calls to insertInterconnect. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationSettings() {
     return insertInterconnectOperationSettings;
   }
@@ -174,7 +174,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
 
   /** Returns the object with the settings used for calls to patchInterconnect. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationSettings() {
     return patchInterconnectOperationSettings;
   }
@@ -336,7 +336,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
     private final UnaryCallSettings.Builder<DeleteInterconnectHttpRequest, Operation>
         deleteInterconnectSettings;
     private final OperationCallSettings.Builder<
-            DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInterconnectHttpRequest, EmptyMessage, Operation>
         deleteInterconnectOperationSettings;
     private final UnaryCallSettings.Builder<GetInterconnectHttpRequest, Interconnect>
         getInterconnectSettings;
@@ -346,7 +346,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
     private final UnaryCallSettings.Builder<InsertInterconnectHttpRequest, Operation>
         insertInterconnectSettings;
     private final OperationCallSettings.Builder<
-            InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInterconnectHttpRequest, EmptyMessage, Operation>
         insertInterconnectOperationSettings;
     private final PagedCallSettings.Builder<
             ListInterconnectsHttpRequest, InterconnectList, ListInterconnectsPagedResponse>
@@ -354,7 +354,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
     private final UnaryCallSettings.Builder<PatchInterconnectHttpRequest, Operation>
         patchInterconnectSettings;
     private final OperationCallSettings.Builder<
-            PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+            PatchInterconnectHttpRequest, EmptyMessage, Operation>
         patchInterconnectOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -476,8 +476,8 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -497,8 +497,8 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -518,8 +518,8 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -585,7 +585,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
     /** Returns the builder for the settings used for calls to deleteInterconnect. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
         deleteInterconnectOperationSettings() {
       return deleteInterconnectOperationSettings;
     }
@@ -612,7 +612,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
     /** Returns the builder for the settings used for calls to insertInterconnect. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInterconnectHttpRequest, EmptyMessage, Operation>
         insertInterconnectOperationSettings() {
       return insertInterconnectOperationSettings;
     }
@@ -633,7 +633,7 @@ public class InterconnectStubSettings extends StubSettings<InterconnectStubSetti
     /** Returns the builder for the settings used for calls to patchInterconnect. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchInterconnectHttpRequest, EmptyMessage, Operation>
         patchInterconnectOperationSettings() {
       return patchInterconnectOperationSettings;
     }

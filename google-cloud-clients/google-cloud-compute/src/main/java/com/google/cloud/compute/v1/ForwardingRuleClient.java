@@ -327,7 +327,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteForwardingRuleAsync(
       ProjectRegionForwardingRuleName forwardingRule) {
 
     DeleteForwardingRuleHttpRequest request =
@@ -355,7 +355,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteForwardingRuleAsync(
       String forwardingRule) {
 
     DeleteForwardingRuleHttpRequest request =
@@ -384,7 +384,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteForwardingRuleAsync(
       DeleteForwardingRuleHttpRequest request) {
     return deleteForwardingRuleOperationCallable().futureCall(request);
   }
@@ -401,14 +401,14 @@ public class ForwardingRuleClient implements BackgroundResource {
    *   DeleteForwardingRuleHttpRequest request = DeleteForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRule(forwardingRule.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = forwardingRuleClient.deleteForwardingRuleOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = forwardingRuleClient.deleteForwardingRuleOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationCallable() {
     return stub.deleteForwardingRuleOperationCallable();
   }
@@ -561,7 +561,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertForwardingRuleAsync(
       ProjectRegionName region, ForwardingRule forwardingRuleResource) {
 
     InsertForwardingRuleHttpRequest request =
@@ -598,7 +598,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertForwardingRuleAsync(
       String region, ForwardingRule forwardingRuleResource) {
 
     InsertForwardingRuleHttpRequest request =
@@ -633,7 +633,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertForwardingRuleAsync(
       InsertForwardingRuleHttpRequest request) {
     return insertForwardingRuleOperationCallable().futureCall(request);
   }
@@ -653,14 +653,14 @@ public class ForwardingRuleClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setForwardingRuleResource(forwardingRuleResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = forwardingRuleClient.insertForwardingRuleOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = forwardingRuleClient.insertForwardingRuleOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationCallable() {
     return stub.insertForwardingRuleOperationCallable();
   }
@@ -851,7 +851,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetForwardingRuleAsync(
       ProjectRegionForwardingRuleName forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetForwardingRuleHttpRequest request =
@@ -883,7 +883,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetForwardingRuleAsync(
       String forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetForwardingRuleHttpRequest request =
@@ -918,7 +918,7 @@ public class ForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetForwardingRuleAsync(
       SetTargetForwardingRuleHttpRequest request) {
     return setTargetForwardingRuleOperationCallable().futureCall(request);
   }
@@ -938,14 +938,14 @@ public class ForwardingRuleClient implements BackgroundResource {
    *     .setForwardingRule(forwardingRule.toString())
    *     .setTargetReferenceResource(targetReferenceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = forwardingRuleClient.setTargetForwardingRuleOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = forwardingRuleClient.setTargetForwardingRuleOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationCallable() {
     return stub.setTargetForwardingRuleOperationCallable();
   }

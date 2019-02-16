@@ -109,11 +109,11 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   private final UnaryCallSettings<AddRuleSecurityPolicyHttpRequest, Operation>
       addRuleSecurityPolicySettings;
-  private final OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationSettings;
   private final UnaryCallSettings<DeleteSecurityPolicyHttpRequest, Operation>
       deleteSecurityPolicySettings;
-  private final OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationSettings;
   private final UnaryCallSettings<GetSecurityPolicyHttpRequest, SecurityPolicy>
       getSecurityPolicySettings;
@@ -121,24 +121,22 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
       getRuleSecurityPolicySettings;
   private final UnaryCallSettings<InsertSecurityPolicyHttpRequest, Operation>
       insertSecurityPolicySettings;
-  private final OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationSettings;
   private final PagedCallSettings<
           ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
       listSecurityPoliciesSettings;
   private final UnaryCallSettings<PatchSecurityPolicyHttpRequest, Operation>
       patchSecurityPolicySettings;
-  private final OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationSettings;
   private final UnaryCallSettings<PatchRuleSecurityPolicyHttpRequest, Operation>
       patchRuleSecurityPolicySettings;
-  private final OperationCallSettings<
-          PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationSettings;
   private final UnaryCallSettings<RemoveRuleSecurityPolicyHttpRequest, Operation>
       removeRuleSecurityPolicySettings;
-  private final OperationCallSettings<
-          RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationSettings;
 
   /** Returns the object with the settings used for calls to addRuleSecurityPolicy. */
@@ -149,7 +147,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   /** Returns the object with the settings used for calls to addRuleSecurityPolicy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationSettings() {
     return addRuleSecurityPolicyOperationSettings;
   }
@@ -162,7 +160,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   /** Returns the object with the settings used for calls to deleteSecurityPolicy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationSettings() {
     return deleteSecurityPolicyOperationSettings;
   }
@@ -187,7 +185,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   /** Returns the object with the settings used for calls to insertSecurityPolicy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationSettings() {
     return insertSecurityPolicyOperationSettings;
   }
@@ -207,7 +205,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   /** Returns the object with the settings used for calls to patchSecurityPolicy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationSettings() {
     return patchSecurityPolicyOperationSettings;
   }
@@ -220,7 +218,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   /** Returns the object with the settings used for calls to patchRuleSecurityPolicy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationSettings() {
     return patchRuleSecurityPolicyOperationSettings;
   }
@@ -233,7 +231,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
 
   /** Returns the object with the settings used for calls to removeRuleSecurityPolicy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationSettings() {
     return removeRuleSecurityPolicyOperationSettings;
   }
@@ -408,12 +406,12 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     private final UnaryCallSettings.Builder<AddRuleSecurityPolicyHttpRequest, Operation>
         addRuleSecurityPolicySettings;
     private final OperationCallSettings.Builder<
-            AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         addRuleSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<DeleteSecurityPolicyHttpRequest, Operation>
         deleteSecurityPolicySettings;
     private final OperationCallSettings.Builder<
-            DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
         deleteSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<GetSecurityPolicyHttpRequest, SecurityPolicy>
         getSecurityPolicySettings;
@@ -422,7 +420,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     private final UnaryCallSettings.Builder<InsertSecurityPolicyHttpRequest, Operation>
         insertSecurityPolicySettings;
     private final OperationCallSettings.Builder<
-            InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
         insertSecurityPolicyOperationSettings;
     private final PagedCallSettings.Builder<
             ListSecurityPoliciesHttpRequest, SecurityPolicyList, ListSecurityPoliciesPagedResponse>
@@ -430,17 +428,17 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     private final UnaryCallSettings.Builder<PatchSecurityPolicyHttpRequest, Operation>
         patchSecurityPolicySettings;
     private final OperationCallSettings.Builder<
-            PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
         patchSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<PatchRuleSecurityPolicyHttpRequest, Operation>
         patchRuleSecurityPolicySettings;
     private final OperationCallSettings.Builder<
-            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         patchRuleSecurityPolicyOperationSettings;
     private final UnaryCallSettings.Builder<RemoveRuleSecurityPolicyHttpRequest, Operation>
         removeRuleSecurityPolicySettings;
     private final OperationCallSettings.Builder<
-            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         removeRuleSecurityPolicyOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -594,8 +592,8 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -615,8 +613,8 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -636,8 +634,8 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -657,8 +655,8 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -679,8 +677,8 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -701,8 +699,8 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -781,8 +779,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     /** Returns the builder for the settings used for calls to addRuleSecurityPolicy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         addRuleSecurityPolicyOperationSettings() {
       return addRuleSecurityPolicyOperationSettings;
     }
@@ -796,8 +793,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     /** Returns the builder for the settings used for calls to deleteSecurityPolicy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
         deleteSecurityPolicyOperationSettings() {
       return deleteSecurityPolicyOperationSettings;
     }
@@ -823,8 +819,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     /** Returns the builder for the settings used for calls to insertSecurityPolicy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
         insertSecurityPolicyOperationSettings() {
       return insertSecurityPolicyOperationSettings;
     }
@@ -845,7 +840,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     /** Returns the builder for the settings used for calls to patchSecurityPolicy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
         patchSecurityPolicyOperationSettings() {
       return patchSecurityPolicyOperationSettings;
     }
@@ -860,7 +855,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         patchRuleSecurityPolicyOperationSettings() {
       return patchRuleSecurityPolicyOperationSettings;
     }
@@ -875,7 +870,7 @@ public class SecurityPolicyStubSettings extends StubSettings<SecurityPolicyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         removeRuleSecurityPolicyOperationSettings() {
       return removeRuleSecurityPolicyOperationSettings;
     }

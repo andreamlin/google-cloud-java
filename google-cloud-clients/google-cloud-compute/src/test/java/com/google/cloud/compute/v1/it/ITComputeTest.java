@@ -20,7 +20,6 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.longrunning.OperationFuture;
-import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.paging.Page;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.NotFoundException;
@@ -161,32 +160,48 @@ public class ITComputeTest {
   // This may take up to a minute.
   private static void removeResources(List<Class<? extends ApiException>> exceptionTypes)
       throws Exception {
+    Operation currentOperation;
     long startAt = System.currentTimeMillis();
-    log.log(Level.INFO, String.format("Attempting to remove the created Instance %sms.", INSTANCE_NAME));
+    log.log(
+        Level.INFO,
+        String.format("Attempting to remove the created Instance %sms.", INSTANCE_NAME));
     try {
-      OperationFuture<EmptyMessage, EmptyMessage> future =
+      OperationFuture<EmptyMessage, Operation> future =
           instanceClient.deleteInstanceAsync(INSTANCE_NAME);
-      future.get(50, TimeUnit.SECONDS);
+      currentOperation = future.getMetadata().get(); // Get operation status.
+      future.get(50, TimeUnit.SECONDS); // Block until operation completes.
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
-    log.log(Level.INFO, String.format("Removed the created Instance %s in %dms", INSTANCE_NAME, System.currentTimeMillis() - startAt));
+    log.log(
+        Level.INFO,
+        String.format(
+            "Removed the created Instance %s in %dms",
+            INSTANCE_NAME, System.currentTimeMillis() - startAt));
     startAt = System.currentTimeMillis();
     try {
-      OperationFuture<EmptyMessage, EmptyMessage> future = diskClient.deleteDiskAsync(DISK_NAME);
+      OperationFuture<EmptyMessage, Operation> future = diskClient.deleteDiskAsync(DISK_NAME);
       future.get(20, TimeUnit.SECONDS); // Block until operation completes.
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
-    log.log(Level.INFO, String.format("Removed the created Disk %s in %dms", INSTANCE_NAME, System.currentTimeMillis() - startAt));
+    log.log(
+        Level.INFO,
+        String.format(
+            "Removed the created Disk %s in %dms",
+            INSTANCE_NAME, System.currentTimeMillis() - startAt));
     startAt = System.currentTimeMillis();
     try {
-      OperationFuture<EmptyMessage, EmptyMessage> future = imageClient.deleteImageAsync(IMAGE_NAME);
+      OperationFuture<EmptyMessage, Operation> future = imageClient.deleteImageAsync(IMAGE_NAME);
       future.get(20, TimeUnit.SECONDS); // Block until operation completes.
     } catch (Exception e) {
       if (isNotExceptionType(exceptionTypes, e)) throw e;
     }
-    log.log(Level.INFO, String.format("Removed the created Image %s in %dms.", IMAGE_NAME, System.currentTimeMillis() - startAt));
+    log.log(
+        Level.INFO,
+        String.format(
+            "Removed the created Image %s in %dms.",
+            IMAGE_NAME, System.currentTimeMillis() - startAt));
   }
 
   private static boolean isNotExceptionType(
@@ -252,10 +267,12 @@ public class ITComputeTest {
             .setMachineType(MACHINE_TYPE_NAME.toString())
             .addDisks(bootDisk)
             .build();
-    OperationFuture<Operation, Operation> op1 =
+    OperationFuture<EmptyMessage, Operation> op1 =
         instanceClient.insertInstanceAsync(PROJECT_ZONE_NAME, instanceResource);
-    Operation operationSnapshot = op1.get(20, TimeUnit.SECONDS); // Blocking until operation completes or times out.
-    log.log(Level.INFO, (String.format("Instance created: %s", op1.toString())));
+    Operation operationSnapshot = op1.getMetadata().get(); // Get operation status.
+    log.log(Level.INFO, (String.format("Operation %s started to create instance: %s", operationSnapshot.getName(), INSTANCE_NAME)));
+    op1.get(); // Blocking until operation completes or times out
+    log.log(Level.INFO, (String.format("Instance created: %s", INSTANCE_NAME)));
 
     // Insert a disk.
     Disk disk =
@@ -264,10 +281,12 @@ public class ITComputeTest {
             .setSizeGb(String.valueOf(7))
             .setType(diskTypeName.toString())
             .build();
-    OperationFuture<EmptyMessage, EmptyMessage> op2 =
+    OperationFuture<EmptyMessage, Operation> op2 =
         diskClient.insertDiskAsync(PROJECT_ZONE_NAME, disk);
-    log.log(Level.INFO, String.format("Disk created: %s", op2.toString()));
+    operationSnapshot = op2.getMetadata().get();
+    log.log(Level.INFO, (String.format("Operation %s started to create instance: %s", operationSnapshot.getName(), DISK_NAME)));
     op1.get(10, TimeUnit.SECONDS); // Blocking until operation completes or times out.
+    log.log(Level.INFO, String.format("Disk created: %s", DISK_NAME));
 
     // Attach the disk to the instance.
     AttachedDisk attachedDisk =
@@ -277,14 +296,14 @@ public class ITComputeTest {
             .setMode("READ_WRITE")
             .setSource(DISK_NAME.toString())
             .build();
-    OperationFuture<EmptyMessage, EmptyMessage> op3 =
+    OperationFuture<EmptyMessage, Operation> op3 =
         instanceClient.attachDiskInstanceAsync(INSTANCE_NAME, false, attachedDisk);
     log.log(Level.INFO, String.format("Disk attached: %s", op3.toString()));
     op1.get(10, TimeUnit.SECONDS); // Blocking until operation completes or times out.
 
-    OperationFuture<EmptyMessage, EmptyMessage> op4 =
+    OperationFuture<EmptyMessage, Operation> op4 =
         instanceClient.detachDiskInstanceAsync(INSTANCE_NAME, DISK_NAME.getDisk());
-    log.log(Level.INFO, String.format("Disk detached: %s", op4.toString()));
+    log.log(Level.INFO, String.format("Disk detached: %s", DISK_NAME.toString()));
   }
 
   @Test

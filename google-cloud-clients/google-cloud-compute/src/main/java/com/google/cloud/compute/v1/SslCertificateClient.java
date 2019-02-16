@@ -186,7 +186,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslCertificateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSslCertificateAsync(
       ProjectGlobalSslCertificateName sslCertificate) {
 
     DeleteSslCertificateHttpRequest request =
@@ -214,7 +214,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslCertificateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSslCertificateAsync(
       String sslCertificate) {
 
     DeleteSslCertificateHttpRequest request =
@@ -243,7 +243,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslCertificateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSslCertificateAsync(
       DeleteSslCertificateHttpRequest request) {
     return deleteSslCertificateOperationCallable().futureCall(request);
   }
@@ -260,14 +260,14 @@ public class SslCertificateClient implements BackgroundResource {
    *   DeleteSslCertificateHttpRequest request = DeleteSslCertificateHttpRequest.newBuilder()
    *     .setSslCertificate(sslCertificate.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslCertificateClient.deleteSslCertificateOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = sslCertificateClient.deleteSslCertificateOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationCallable() {
     return stub.deleteSslCertificateOperationCallable();
   }
@@ -421,7 +421,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslCertificateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSslCertificateAsync(
       ProjectName project, SslCertificate sslCertificateResource) {
 
     InsertSslCertificateHttpRequest request =
@@ -455,7 +455,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslCertificateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSslCertificateAsync(
       String project, SslCertificate sslCertificateResource) {
 
     InsertSslCertificateHttpRequest request =
@@ -490,7 +490,7 @@ public class SslCertificateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslCertificateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSslCertificateAsync(
       InsertSslCertificateHttpRequest request) {
     return insertSslCertificateOperationCallable().futureCall(request);
   }
@@ -510,14 +510,14 @@ public class SslCertificateClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setSslCertificateResource(sslCertificateResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslCertificateClient.insertSslCertificateOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = sslCertificateClient.insertSslCertificateOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationCallable() {
     return stub.insertSslCertificateOperationCallable();
   }

@@ -47,7 +47,7 @@ public abstract class SslCertificateStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteSslCertificateOperationCallable()");
@@ -64,7 +64,7 @@ public abstract class SslCertificateStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertSslCertificateOperationCallable()");

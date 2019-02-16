@@ -190,7 +190,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> addSignedUrlKeyBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService, SignedUrlKey signedUrlKeyResource) {
 
     AddSignedUrlKeyBackendServiceHttpRequest request =
@@ -223,7 +223,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> addSignedUrlKeyBackendServiceAsync(
       String backendService, SignedUrlKey signedUrlKeyResource) {
 
     AddSignedUrlKeyBackendServiceHttpRequest request =
@@ -257,7 +257,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addSignedUrlKeyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> addSignedUrlKeyBackendServiceAsync(
       AddSignedUrlKeyBackendServiceHttpRequest request) {
     return addSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
   }
@@ -276,15 +276,14 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendService(backendService.toString())
    *     .setSignedUrlKeyResource(signedUrlKeyResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.addSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.addSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendServiceOperationCallable() {
     return stub.addSignedUrlKeyBackendServiceOperationCallable();
   }
@@ -479,7 +478,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService) {
 
     DeleteBackendServiceHttpRequest request =
@@ -507,7 +506,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteBackendServiceAsync(
       String backendService) {
 
     DeleteBackendServiceHttpRequest request =
@@ -536,7 +535,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteBackendServiceAsync(
       DeleteBackendServiceHttpRequest request) {
     return deleteBackendServiceOperationCallable().futureCall(request);
   }
@@ -553,14 +552,14 @@ public class BackendServiceClient implements BackgroundResource {
    *   DeleteBackendServiceHttpRequest request = DeleteBackendServiceHttpRequest.newBuilder()
    *     .setBackendService(backendService.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.deleteBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.deleteBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteBackendServiceOperationCallable() {
     return stub.deleteBackendServiceOperationCallable();
   }
@@ -610,7 +609,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSignedUrlKeyBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService, String keyName) {
 
     DeleteSignedUrlKeyBackendServiceHttpRequest request =
@@ -642,7 +641,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSignedUrlKeyBackendServiceAsync(
       String backendService, String keyName) {
 
     DeleteSignedUrlKeyBackendServiceHttpRequest request =
@@ -676,7 +675,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSignedUrlKeyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSignedUrlKeyBackendServiceAsync(
       DeleteSignedUrlKeyBackendServiceHttpRequest request) {
     return deleteSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
   }
@@ -695,7 +694,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendService(backendService.toString())
    *     .setKeyName(keyName)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.deleteSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.deleteSignedUrlKeyBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -703,7 +702,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendServiceOperationCallable() {
     return stub.deleteSignedUrlKeyBackendServiceOperationCallable();
   }
@@ -972,7 +971,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertBackendServiceAsync(
       ProjectName project, BackendService backendServiceResource) {
 
     InsertBackendServiceHttpRequest request =
@@ -1007,7 +1006,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertBackendServiceAsync(
       String project, BackendService backendServiceResource) {
 
     InsertBackendServiceHttpRequest request =
@@ -1043,7 +1042,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertBackendServiceAsync(
       InsertBackendServiceHttpRequest request) {
     return insertBackendServiceOperationCallable().futureCall(request);
   }
@@ -1064,14 +1063,14 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setBackendServiceResource(backendServiceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.insertBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.insertBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertBackendServiceHttpRequest, EmptyMessage, Operation>
       insertBackendServiceOperationCallable() {
     return stub.insertBackendServiceOperationCallable();
   }
@@ -1272,7 +1271,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -1316,7 +1315,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     PatchBackendServiceHttpRequest request =
@@ -1356,7 +1355,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchBackendServiceAsync(
       PatchBackendServiceHttpRequest request) {
     return patchBackendServiceOperationCallable().futureCall(request);
   }
@@ -1380,14 +1379,14 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.patchBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.patchBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchBackendServiceHttpRequest, EmptyMessage, Operation>
       patchBackendServiceOperationCallable() {
     return stub.patchBackendServiceOperationCallable();
   }
@@ -1444,7 +1443,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSecurityPolicyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSecurityPolicyBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService,
       SecurityPolicyReference securityPolicyReferenceResource) {
 
@@ -1477,7 +1476,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSecurityPolicyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSecurityPolicyBackendServiceAsync(
       String backendService, SecurityPolicyReference securityPolicyReferenceResource) {
 
     SetSecurityPolicyBackendServiceHttpRequest request =
@@ -1511,7 +1510,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSecurityPolicyBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSecurityPolicyBackendServiceAsync(
       SetSecurityPolicyBackendServiceHttpRequest request) {
     return setSecurityPolicyBackendServiceOperationCallable().futureCall(request);
   }
@@ -1530,7 +1529,7 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendService(backendService.toString())
    *     .setSecurityPolicyReferenceResource(securityPolicyReferenceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.setSecurityPolicyBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.setSecurityPolicyBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -1538,7 +1537,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, Operation>
       setSecurityPolicyBackendServiceOperationCallable() {
     return stub.setSecurityPolicyBackendServiceOperationCallable();
   }
@@ -1598,7 +1597,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateBackendServiceAsync(
       ProjectGlobalBackendServiceName backendService,
       BackendService backendServiceResource,
       List<String> fieldMask) {
@@ -1641,7 +1640,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateBackendServiceAsync(
       String backendService, BackendService backendServiceResource, List<String> fieldMask) {
 
     UpdateBackendServiceHttpRequest request =
@@ -1680,7 +1679,7 @@ public class BackendServiceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateBackendServiceAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateBackendServiceAsync(
       UpdateBackendServiceHttpRequest request) {
     return updateBackendServiceOperationCallable().futureCall(request);
   }
@@ -1703,14 +1702,14 @@ public class BackendServiceClient implements BackgroundResource {
    *     .setBackendServiceResource(backendServiceResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = backendServiceClient.updateBackendServiceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = backendServiceClient.updateBackendServiceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateBackendServiceHttpRequest, EmptyMessage, Operation>
       updateBackendServiceOperationCallable() {
     return stub.updateBackendServiceOperationCallable();
   }

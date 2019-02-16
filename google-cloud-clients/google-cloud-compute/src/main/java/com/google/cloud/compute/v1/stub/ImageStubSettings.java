@@ -110,22 +110,22 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteImageHttpRequest, Operation> deleteImageSettings;
-  private final OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationSettings;
   private final UnaryCallSettings<DeprecateImageHttpRequest, Operation> deprecateImageSettings;
-  private final OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationSettings;
   private final UnaryCallSettings<GetImageHttpRequest, Image> getImageSettings;
   private final UnaryCallSettings<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageSettings;
   private final UnaryCallSettings<GetIamPolicyImageHttpRequest, Policy> getIamPolicyImageSettings;
   private final UnaryCallSettings<InsertImageHttpRequest, Operation> insertImageSettings;
-  private final OperationCallSettings<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationSettings;
   private final PagedCallSettings<ListImagesHttpRequest, ImageList, ListImagesPagedResponse>
       listImagesSettings;
   private final UnaryCallSettings<SetIamPolicyImageHttpRequest, Policy> setIamPolicyImageSettings;
   private final UnaryCallSettings<SetLabelsImageHttpRequest, Operation> setLabelsImageSettings;
-  private final OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsImageHttpRequest, TestPermissionsResponse>
       testIamPermissionsImageSettings;
@@ -137,7 +137,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteImage. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationSettings() {
     return deleteImageOperationSettings;
   }
@@ -149,7 +149,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
 
   /** Returns the object with the settings used for calls to deprecateImage. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationSettings() {
     return deprecateImageOperationSettings;
   }
@@ -176,7 +176,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
 
   /** Returns the object with the settings used for calls to insertImage. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationSettings() {
     return insertImageOperationSettings;
   }
@@ -199,7 +199,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
 
   /** Returns the object with the settings used for calls to setLabelsImage. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationSettings() {
     return setLabelsImageOperationSettings;
   }
@@ -359,12 +359,11 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final UnaryCallSettings.Builder<DeleteImageHttpRequest, Operation> deleteImageSettings;
-    private final OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, Operation>
         deleteImageOperationSettings;
     private final UnaryCallSettings.Builder<DeprecateImageHttpRequest, Operation>
         deprecateImageSettings;
-    private final OperationCallSettings.Builder<
-            DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeprecateImageHttpRequest, EmptyMessage, Operation>
         deprecateImageOperationSettings;
     private final UnaryCallSettings.Builder<GetImageHttpRequest, Image> getImageSettings;
     private final UnaryCallSettings.Builder<GetFromFamilyImageHttpRequest, Image>
@@ -372,7 +371,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
     private final UnaryCallSettings.Builder<GetIamPolicyImageHttpRequest, Policy>
         getIamPolicyImageSettings;
     private final UnaryCallSettings.Builder<InsertImageHttpRequest, Operation> insertImageSettings;
-    private final OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, Operation>
         insertImageOperationSettings;
     private final PagedCallSettings.Builder<
             ListImagesHttpRequest, ImageList, ListImagesPagedResponse>
@@ -381,8 +380,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
         setIamPolicyImageSettings;
     private final UnaryCallSettings.Builder<SetLabelsImageHttpRequest, Operation>
         setLabelsImageSettings;
-    private final OperationCallSettings.Builder<
-            SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<SetLabelsImageHttpRequest, EmptyMessage, Operation>
         setLabelsImageOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsImageHttpRequest, TestPermissionsResponse>
@@ -541,8 +539,8 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -562,8 +560,8 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -583,8 +581,8 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -604,8 +602,8 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -677,7 +675,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
     /** Returns the builder for the settings used for calls to deleteImage. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, Operation>
         deleteImageOperationSettings() {
       return deleteImageOperationSettings;
     }
@@ -691,7 +689,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
     /** Returns the builder for the settings used for calls to deprecateImage. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeprecateImageHttpRequest, EmptyMessage, Operation>
         deprecateImageOperationSettings() {
       return deprecateImageOperationSettings;
     }
@@ -721,7 +719,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
     /** Returns the builder for the settings used for calls to insertImage. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, Operation>
         insertImageOperationSettings() {
       return insertImageOperationSettings;
     }
@@ -747,7 +745,7 @@ public class ImageStubSettings extends StubSettings<ImageStubSettings> {
     /** Returns the builder for the settings used for calls to setLabelsImage. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsImageHttpRequest, EmptyMessage, Operation>
         setLabelsImageOperationSettings() {
       return setLabelsImageOperationSettings;
     }

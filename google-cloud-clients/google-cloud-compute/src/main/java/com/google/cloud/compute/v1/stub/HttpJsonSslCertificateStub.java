@@ -139,13 +139,13 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
 
   private final UnaryCallable<DeleteSslCertificateHttpRequest, Operation>
       deleteSslCertificateCallable;
-  private final OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationCallable;
   private final UnaryCallable<GetSslCertificateHttpRequest, SslCertificate>
       getSslCertificateCallable;
   private final UnaryCallable<InsertSslCertificateHttpRequest, Operation>
       insertSslCertificateCallable;
-  private final OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationCallable;
   private final UnaryCallable<ListSslCertificatesHttpRequest, SslCertificateList>
       listSslCertificatesCallable;
@@ -262,7 +262,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSslCertificateHttpRequest, EmptyMessage, Operation>
       deleteSslCertificateOperationCallable() {
     return deleteSslCertificateOperationCallable;
   }
@@ -278,7 +278,7 @@ public class HttpJsonSslCertificateStub extends SslCertificateStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSslCertificateHttpRequest, EmptyMessage, Operation>
       insertSslCertificateOperationCallable() {
     return insertSslCertificateOperationCallable;
   }

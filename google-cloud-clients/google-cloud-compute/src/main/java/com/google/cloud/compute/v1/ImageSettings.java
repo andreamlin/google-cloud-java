@@ -73,7 +73,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
   /** Returns the object with the settings used for calls to deleteImage. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationSettings() {
     return ((ImageStubSettings) getStubSettings()).deleteImageOperationSettings();
   }
@@ -86,7 +86,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
   /** Returns the object with the settings used for calls to deprecateImage. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationSettings() {
     return ((ImageStubSettings) getStubSettings()).deprecateImageOperationSettings();
   }
@@ -114,7 +114,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
   /** Returns the object with the settings used for calls to insertImage. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationSettings() {
     return ((ImageStubSettings) getStubSettings()).insertImageOperationSettings();
   }
@@ -138,7 +138,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
   /** Returns the object with the settings used for calls to setLabelsImage. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationSettings() {
     return ((ImageStubSettings) getStubSettings()).setLabelsImageOperationSettings();
   }
@@ -258,7 +258,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     /** Returns the builder for the settings used for calls to deleteImage. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteImageHttpRequest, EmptyMessage, Operation>
         deleteImageOperationSettings() {
       return getStubSettingsBuilder().deleteImageOperationSettings();
     }
@@ -272,7 +272,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     /** Returns the builder for the settings used for calls to deprecateImage. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeprecateImageHttpRequest, EmptyMessage, Operation>
         deprecateImageOperationSettings() {
       return getStubSettingsBuilder().deprecateImageOperationSettings();
     }
@@ -302,7 +302,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     /** Returns the builder for the settings used for calls to insertImage. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertImageHttpRequest, EmptyMessage, Operation>
         insertImageOperationSettings() {
       return getStubSettingsBuilder().insertImageOperationSettings();
     }
@@ -328,7 +328,7 @@ public class ImageSettings extends ClientSettings<ImageSettings> {
     /** Returns the builder for the settings used for calls to setLabelsImage. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsImageHttpRequest, EmptyMessage, Operation>
         setLabelsImageOperationSettings() {
       return getStubSettingsBuilder().setLabelsImageOperationSettings();
     }

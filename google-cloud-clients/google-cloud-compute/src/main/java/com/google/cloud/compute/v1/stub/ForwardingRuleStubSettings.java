@@ -113,21 +113,20 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
       aggregatedListForwardingRulesSettings;
   private final UnaryCallSettings<DeleteForwardingRuleHttpRequest, Operation>
       deleteForwardingRuleSettings;
-  private final OperationCallSettings<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationSettings;
   private final UnaryCallSettings<GetForwardingRuleHttpRequest, ForwardingRule>
       getForwardingRuleSettings;
   private final UnaryCallSettings<InsertForwardingRuleHttpRequest, Operation>
       insertForwardingRuleSettings;
-  private final OperationCallSettings<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationSettings;
   private final PagedCallSettings<
           ListForwardingRulesHttpRequest, ForwardingRuleList, ListForwardingRulesPagedResponse>
       listForwardingRulesSettings;
   private final UnaryCallSettings<SetTargetForwardingRuleHttpRequest, Operation>
       setTargetForwardingRuleSettings;
-  private final OperationCallSettings<
-          SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationSettings;
 
   /** Returns the object with the settings used for calls to aggregatedListForwardingRules. */
@@ -147,7 +146,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
 
   /** Returns the object with the settings used for calls to deleteForwardingRule. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationSettings() {
     return deleteForwardingRuleOperationSettings;
   }
@@ -166,7 +165,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
 
   /** Returns the object with the settings used for calls to insertForwardingRule. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationSettings() {
     return insertForwardingRuleOperationSettings;
   }
@@ -186,7 +185,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
 
   /** Returns the object with the settings used for calls to setTargetForwardingRule. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationSettings() {
     return setTargetForwardingRuleOperationSettings;
   }
@@ -437,14 +436,14 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
     private final UnaryCallSettings.Builder<DeleteForwardingRuleHttpRequest, Operation>
         deleteForwardingRuleSettings;
     private final OperationCallSettings.Builder<
-            DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
         deleteForwardingRuleOperationSettings;
     private final UnaryCallSettings.Builder<GetForwardingRuleHttpRequest, ForwardingRule>
         getForwardingRuleSettings;
     private final UnaryCallSettings.Builder<InsertForwardingRuleHttpRequest, Operation>
         insertForwardingRuleSettings;
     private final OperationCallSettings.Builder<
-            InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
         insertForwardingRuleOperationSettings;
     private final PagedCallSettings.Builder<
             ListForwardingRulesHttpRequest, ForwardingRuleList, ListForwardingRulesPagedResponse>
@@ -452,7 +451,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
     private final UnaryCallSettings.Builder<SetTargetForwardingRuleHttpRequest, Operation>
         setTargetForwardingRuleSettings;
     private final OperationCallSettings.Builder<
-            SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
         setTargetForwardingRuleOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -576,8 +575,8 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -597,8 +596,8 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -619,8 +618,8 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -697,8 +696,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
     /** Returns the builder for the settings used for calls to deleteForwardingRule. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
         deleteForwardingRuleOperationSettings() {
       return deleteForwardingRuleOperationSettings;
     }
@@ -718,8 +716,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
     /** Returns the builder for the settings used for calls to insertForwardingRule. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
         insertForwardingRuleOperationSettings() {
       return insertForwardingRuleOperationSettings;
     }
@@ -741,7 +738,7 @@ public class ForwardingRuleStubSettings extends StubSettings<ForwardingRuleStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
         setTargetForwardingRuleOperationSettings() {
       return setTargetForwardingRuleOperationSettings;
     }

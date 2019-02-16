@@ -246,13 +246,13 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
           AggregatedListNodeTemplatesHttpRequest, AggregatedListNodeTemplatesPagedResponse>
       aggregatedListNodeTemplatesPagedCallable;
   private final UnaryCallable<DeleteNodeTemplateHttpRequest, Operation> deleteNodeTemplateCallable;
-  private final OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationCallable;
   private final UnaryCallable<GetNodeTemplateHttpRequest, NodeTemplate> getNodeTemplateCallable;
   private final UnaryCallable<GetIamPolicyNodeTemplateHttpRequest, Policy>
       getIamPolicyNodeTemplateCallable;
   private final UnaryCallable<InsertNodeTemplateHttpRequest, Operation> insertNodeTemplateCallable;
-  private final OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationCallable;
   private final UnaryCallable<ListNodeTemplatesHttpRequest, NodeTemplateList>
       listNodeTemplatesCallable;
@@ -431,7 +431,7 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationCallable() {
     return deleteNodeTemplateOperationCallable;
   }
@@ -453,7 +453,7 @@ public class HttpJsonNodeTemplateStub extends NodeTemplateStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationCallable() {
     return insertNodeTemplateOperationCallable;
   }

@@ -81,7 +81,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
   /** Returns the object with the settings used for calls to createSnapshotDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationSettings() {
     return ((DiskStubSettings) getStubSettings()).createSnapshotDiskOperationSettings();
   }
@@ -94,7 +94,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
   /** Returns the object with the settings used for calls to deleteDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationSettings() {
     return ((DiskStubSettings) getStubSettings()).deleteDiskOperationSettings();
   }
@@ -117,7 +117,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
   /** Returns the object with the settings used for calls to insertDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationSettings() {
     return ((DiskStubSettings) getStubSettings()).insertDiskOperationSettings();
   }
@@ -136,7 +136,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
   /** Returns the object with the settings used for calls to resizeDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationSettings() {
     return ((DiskStubSettings) getStubSettings()).resizeDiskOperationSettings();
   }
@@ -154,7 +154,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
   /** Returns the object with the settings used for calls to setLabelsDisk. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationSettings() {
     return ((DiskStubSettings) getStubSettings()).setLabelsDiskOperationSettings();
   }
@@ -282,7 +282,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     /** Returns the builder for the settings used for calls to createSnapshotDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
         createSnapshotDiskOperationSettings() {
       return getStubSettingsBuilder().createSnapshotDiskOperationSettings();
     }
@@ -295,7 +295,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     /** Returns the builder for the settings used for calls to deleteDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, Operation>
         deleteDiskOperationSettings() {
       return getStubSettingsBuilder().deleteDiskOperationSettings();
     }
@@ -319,7 +319,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     /** Returns the builder for the settings used for calls to insertDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, Operation>
         insertDiskOperationSettings() {
       return getStubSettingsBuilder().insertDiskOperationSettings();
     }
@@ -338,7 +338,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     /** Returns the builder for the settings used for calls to resizeDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, Operation>
         resizeDiskOperationSettings() {
       return getStubSettingsBuilder().resizeDiskOperationSettings();
     }
@@ -357,7 +357,7 @@ public class DiskSettings extends ClientSettings<DiskSettings> {
     /** Returns the builder for the settings used for calls to setLabelsDisk. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
         setLabelsDiskOperationSettings() {
       return getStubSettingsBuilder().setLabelsDiskOperationSettings();
     }

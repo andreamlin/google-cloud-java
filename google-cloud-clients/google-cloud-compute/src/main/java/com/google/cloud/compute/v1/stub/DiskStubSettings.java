@@ -118,24 +118,24 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
       aggregatedListDisksSettings;
   private final UnaryCallSettings<CreateSnapshotDiskHttpRequest, Operation>
       createSnapshotDiskSettings;
-  private final OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationSettings;
   private final UnaryCallSettings<DeleteDiskHttpRequest, Operation> deleteDiskSettings;
-  private final OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationSettings;
   private final UnaryCallSettings<GetDiskHttpRequest, Disk> getDiskSettings;
   private final UnaryCallSettings<GetIamPolicyDiskHttpRequest, Policy> getIamPolicyDiskSettings;
   private final UnaryCallSettings<InsertDiskHttpRequest, Operation> insertDiskSettings;
-  private final OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationSettings;
   private final PagedCallSettings<ListDisksHttpRequest, DiskList, ListDisksPagedResponse>
       listDisksSettings;
   private final UnaryCallSettings<ResizeDiskHttpRequest, Operation> resizeDiskSettings;
-  private final OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationSettings;
   private final UnaryCallSettings<SetIamPolicyDiskHttpRequest, Policy> setIamPolicyDiskSettings;
   private final UnaryCallSettings<SetLabelsDiskHttpRequest, Operation> setLabelsDiskSettings;
-  private final OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsDiskHttpRequest, TestPermissionsResponse>
       testIamPermissionsDiskSettings;
@@ -154,7 +154,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
 
   /** Returns the object with the settings used for calls to createSnapshotDisk. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotDiskOperationSettings() {
     return createSnapshotDiskOperationSettings;
   }
@@ -166,7 +166,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteDisk. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteDiskHttpRequest, EmptyMessage, Operation>
       deleteDiskOperationSettings() {
     return deleteDiskOperationSettings;
   }
@@ -188,7 +188,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
 
   /** Returns the object with the settings used for calls to insertDisk. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertDiskHttpRequest, EmptyMessage, Operation>
       insertDiskOperationSettings() {
     return insertDiskOperationSettings;
   }
@@ -206,7 +206,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
 
   /** Returns the object with the settings used for calls to resizeDisk. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResizeDiskHttpRequest, EmptyMessage, Operation>
       resizeDiskOperationSettings() {
     return resizeDiskOperationSettings;
   }
@@ -223,7 +223,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
 
   /** Returns the object with the settings used for calls to setLabelsDisk. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
       setLabelsDiskOperationSettings() {
     return setLabelsDiskOperationSettings;
   }
@@ -452,28 +452,27 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     private final UnaryCallSettings.Builder<CreateSnapshotDiskHttpRequest, Operation>
         createSnapshotDiskSettings;
     private final OperationCallSettings.Builder<
-            CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+            CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
         createSnapshotDiskOperationSettings;
     private final UnaryCallSettings.Builder<DeleteDiskHttpRequest, Operation> deleteDiskSettings;
-    private final OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, Operation>
         deleteDiskOperationSettings;
     private final UnaryCallSettings.Builder<GetDiskHttpRequest, Disk> getDiskSettings;
     private final UnaryCallSettings.Builder<GetIamPolicyDiskHttpRequest, Policy>
         getIamPolicyDiskSettings;
     private final UnaryCallSettings.Builder<InsertDiskHttpRequest, Operation> insertDiskSettings;
-    private final OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, Operation>
         insertDiskOperationSettings;
     private final PagedCallSettings.Builder<ListDisksHttpRequest, DiskList, ListDisksPagedResponse>
         listDisksSettings;
     private final UnaryCallSettings.Builder<ResizeDiskHttpRequest, Operation> resizeDiskSettings;
-    private final OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, Operation>
         resizeDiskOperationSettings;
     private final UnaryCallSettings.Builder<SetIamPolicyDiskHttpRequest, Policy>
         setIamPolicyDiskSettings;
     private final UnaryCallSettings.Builder<SetLabelsDiskHttpRequest, Operation>
         setLabelsDiskSettings;
-    private final OperationCallSettings.Builder<
-            SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
         setLabelsDiskOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsDiskHttpRequest, TestPermissionsResponse>
@@ -643,8 +642,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -664,8 +663,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -685,8 +684,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -706,8 +705,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -727,8 +726,8 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -812,7 +811,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     /** Returns the builder for the settings used for calls to createSnapshotDisk. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<CreateSnapshotDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<CreateSnapshotDiskHttpRequest, EmptyMessage, Operation>
         createSnapshotDiskOperationSettings() {
       return createSnapshotDiskOperationSettings;
     }
@@ -825,7 +824,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     /** Returns the builder for the settings used for calls to deleteDisk. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteDiskHttpRequest, EmptyMessage, Operation>
         deleteDiskOperationSettings() {
       return deleteDiskOperationSettings;
     }
@@ -849,7 +848,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     /** Returns the builder for the settings used for calls to insertDisk. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertDiskHttpRequest, EmptyMessage, Operation>
         insertDiskOperationSettings() {
       return insertDiskOperationSettings;
     }
@@ -868,7 +867,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     /** Returns the builder for the settings used for calls to resizeDisk. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<ResizeDiskHttpRequest, EmptyMessage, Operation>
         resizeDiskOperationSettings() {
       return resizeDiskOperationSettings;
     }
@@ -887,7 +886,7 @@ public class DiskStubSettings extends StubSettings<DiskStubSettings> {
     /** Returns the builder for the settings used for calls to setLabelsDisk. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsDiskHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsDiskHttpRequest, EmptyMessage, Operation>
         setLabelsDiskOperationSettings() {
       return setLabelsDiskOperationSettings;
     }

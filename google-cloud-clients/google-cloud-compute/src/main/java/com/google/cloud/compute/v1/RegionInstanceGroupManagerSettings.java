@@ -83,7 +83,7 @@ public class RegionInstanceGroupManagerSettings
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .abandonInstancesRegionInstanceGroupManagerOperationSettings();
@@ -99,8 +99,7 @@ public class RegionInstanceGroupManagerSettings
   /** Returns the object with the settings used for calls to deleteRegionInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .deleteRegionInstanceGroupManagerOperationSettings();
@@ -123,7 +122,7 @@ public class RegionInstanceGroupManagerSettings
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .deleteInstancesRegionInstanceGroupManagerOperationSettings();
@@ -146,8 +145,7 @@ public class RegionInstanceGroupManagerSettings
   /** Returns the object with the settings used for calls to insertRegionInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .insertRegionInstanceGroupManagerOperationSettings();
@@ -185,8 +183,7 @@ public class RegionInstanceGroupManagerSettings
   /** Returns the object with the settings used for calls to patchRegionInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .patchRegionInstanceGroupManagerOperationSettings();
@@ -209,7 +206,7 @@ public class RegionInstanceGroupManagerSettings
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .recreateInstancesRegionInstanceGroupManagerOperationSettings();
@@ -225,8 +222,7 @@ public class RegionInstanceGroupManagerSettings
   /** Returns the object with the settings used for calls to resizeRegionInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .resizeRegionInstanceGroupManagerOperationSettings();
@@ -249,7 +245,7 @@ public class RegionInstanceGroupManagerSettings
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .setInstanceTemplateRegionInstanceGroupManagerOperationSettings();
@@ -272,7 +268,7 @@ public class RegionInstanceGroupManagerSettings
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsRegionInstanceGroupManagerOperationSettings() {
     return ((RegionInstanceGroupManagerStubSettings) getStubSettings())
         .setTargetPoolsRegionInstanceGroupManagerOperationSettings();
@@ -398,7 +394,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         abandonInstancesRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().abandonInstancesRegionInstanceGroupManagerOperationSettings();
     }
@@ -413,7 +409,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().deleteRegionInstanceGroupManagerOperationSettings();
     }
@@ -435,7 +431,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteInstancesRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().deleteInstancesRegionInstanceGroupManagerOperationSettings();
     }
@@ -456,7 +452,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         insertRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().insertRegionInstanceGroupManagerOperationSettings();
     }
@@ -491,7 +487,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         patchRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().patchRegionInstanceGroupManagerOperationSettings();
     }
@@ -513,7 +509,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         recreateInstancesRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder()
           .recreateInstancesRegionInstanceGroupManagerOperationSettings();
@@ -529,7 +525,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         resizeRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().resizeRegionInstanceGroupManagerOperationSettings();
     }
@@ -551,7 +547,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setInstanceTemplateRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder()
           .setInstanceTemplateRegionInstanceGroupManagerOperationSettings();
@@ -573,7 +569,7 @@ public class RegionInstanceGroupManagerSettings
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setTargetPoolsRegionInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().setTargetPoolsRegionInstanceGroupManagerOperationSettings();
     }

@@ -88,7 +88,7 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
   /** Returns the object with the settings used for calls to deleteInterconnectAttachment. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationSettings() {
     return ((InterconnectAttachmentStubSettings) getStubSettings())
         .deleteInterconnectAttachmentOperationSettings();
@@ -111,7 +111,7 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
   /** Returns the object with the settings used for calls to insertInterconnectAttachment. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationSettings() {
     return ((InterconnectAttachmentStubSettings) getStubSettings())
         .insertInterconnectAttachmentOperationSettings();
@@ -137,7 +137,7 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
   /** Returns the object with the settings used for calls to patchInterconnectAttachment. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationSettings() {
     return ((InterconnectAttachmentStubSettings) getStubSettings())
         .patchInterconnectAttachmentOperationSettings();
@@ -267,7 +267,7 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         deleteInterconnectAttachmentOperationSettings() {
       return getStubSettingsBuilder().deleteInterconnectAttachmentOperationSettings();
     }
@@ -288,7 +288,7 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         insertInterconnectAttachmentOperationSettings() {
       return getStubSettingsBuilder().insertInterconnectAttachmentOperationSettings();
     }
@@ -312,7 +312,7 @@ public class InterconnectAttachmentSettings extends ClientSettings<InterconnectA
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+            PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
         patchInterconnectAttachmentOperationSettings() {
       return getStubSettingsBuilder().patchInterconnectAttachmentOperationSettings();
     }

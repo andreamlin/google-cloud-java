@@ -184,7 +184,7 @@ public class LicenseClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteLicenseAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteLicenseAsync(
       ProjectGlobalLicenseName license) {
 
     DeleteLicenseHttpRequest request =
@@ -212,7 +212,7 @@ public class LicenseClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteLicenseAsync(String license) {
+  public final OperationFuture<EmptyMessage, Operation> deleteLicenseAsync(String license) {
 
     DeleteLicenseHttpRequest request =
         DeleteLicenseHttpRequest.newBuilder().setLicense(license).build();
@@ -240,7 +240,7 @@ public class LicenseClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteLicenseAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteLicenseAsync(
       DeleteLicenseHttpRequest request) {
     return deleteLicenseOperationCallable().futureCall(request);
   }
@@ -257,14 +257,14 @@ public class LicenseClient implements BackgroundResource {
    *   DeleteLicenseHttpRequest request = DeleteLicenseHttpRequest.newBuilder()
    *     .setLicense(license.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = licenseClient.deleteLicenseOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = licenseClient.deleteLicenseOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationCallable() {
     return stub.deleteLicenseOperationCallable();
   }
@@ -509,7 +509,7 @@ public class LicenseClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertLicenseAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertLicenseAsync(
       ProjectName project, License licenseResource) {
 
     InsertLicenseHttpRequest request =
@@ -540,7 +540,7 @@ public class LicenseClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertLicenseAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertLicenseAsync(
       String project, License licenseResource) {
 
     InsertLicenseHttpRequest request =
@@ -574,7 +574,7 @@ public class LicenseClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertLicenseAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertLicenseAsync(
       InsertLicenseHttpRequest request) {
     return insertLicenseOperationCallable().futureCall(request);
   }
@@ -593,14 +593,14 @@ public class LicenseClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setLicenseResource(licenseResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = licenseClient.insertLicenseOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = licenseClient.insertLicenseOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationCallable() {
     return stub.insertLicenseOperationCallable();
   }

@@ -600,7 +600,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsRegionInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNamedPortsRegionInstanceGroupAsync(
       ProjectRegionInstanceGroupName instanceGroup,
       RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource) {
 
@@ -633,7 +633,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsRegionInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNamedPortsRegionInstanceGroupAsync(
       String instanceGroup,
       RegionInstanceGroupsSetNamedPortsRequest regionInstanceGroupsSetNamedPortsRequestResource) {
 
@@ -669,7 +669,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsRegionInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNamedPortsRegionInstanceGroupAsync(
       SetNamedPortsRegionInstanceGroupHttpRequest request) {
     return setNamedPortsRegionInstanceGroupOperationCallable().futureCall(request);
   }
@@ -688,7 +688,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    *     .setInstanceGroup(instanceGroup.toString())
    *     .setRegionInstanceGroupsSetNamedPortsRequestResource(regionInstanceGroupsSetNamedPortsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionInstanceGroupClient.setNamedPortsRegionInstanceGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -696,7 +696,7 @@ public class RegionInstanceGroupClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationCallable() {
     return stub.setNamedPortsRegionInstanceGroupOperationCallable();
   }

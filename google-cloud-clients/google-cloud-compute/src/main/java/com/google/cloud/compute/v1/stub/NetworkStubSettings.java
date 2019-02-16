@@ -107,28 +107,27 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   private final UnaryCallSettings<AddPeeringNetworkHttpRequest, Operation>
       addPeeringNetworkSettings;
-  private final OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
       addPeeringNetworkOperationSettings;
   private final UnaryCallSettings<DeleteNetworkHttpRequest, Operation> deleteNetworkSettings;
-  private final OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, Operation>
       deleteNetworkOperationSettings;
   private final UnaryCallSettings<GetNetworkHttpRequest, Network> getNetworkSettings;
   private final UnaryCallSettings<InsertNetworkHttpRequest, Operation> insertNetworkSettings;
-  private final OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, Operation>
       insertNetworkOperationSettings;
   private final PagedCallSettings<ListNetworksHttpRequest, NetworkList, ListNetworksPagedResponse>
       listNetworksSettings;
   private final UnaryCallSettings<PatchNetworkHttpRequest, Operation> patchNetworkSettings;
-  private final OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, Operation>
       patchNetworkOperationSettings;
   private final UnaryCallSettings<RemovePeeringNetworkHttpRequest, Operation>
       removePeeringNetworkSettings;
-  private final OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
       removePeeringNetworkOperationSettings;
   private final UnaryCallSettings<SwitchToCustomModeNetworkHttpRequest, Operation>
       switchToCustomModeNetworkSettings;
-  private final OperationCallSettings<
-          SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
       switchToCustomModeNetworkOperationSettings;
 
   /** Returns the object with the settings used for calls to addPeeringNetwork. */
@@ -138,7 +137,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   /** Returns the object with the settings used for calls to addPeeringNetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
       addPeeringNetworkOperationSettings() {
     return addPeeringNetworkOperationSettings;
   }
@@ -150,7 +149,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteNetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNetworkHttpRequest, EmptyMessage, Operation>
       deleteNetworkOperationSettings() {
     return deleteNetworkOperationSettings;
   }
@@ -167,7 +166,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   /** Returns the object with the settings used for calls to insertNetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertNetworkHttpRequest, EmptyMessage, Operation>
       insertNetworkOperationSettings() {
     return insertNetworkOperationSettings;
   }
@@ -185,7 +184,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   /** Returns the object with the settings used for calls to patchNetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchNetworkHttpRequest, EmptyMessage, Operation>
       patchNetworkOperationSettings() {
     return patchNetworkOperationSettings;
   }
@@ -198,7 +197,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   /** Returns the object with the settings used for calls to removePeeringNetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
       removePeeringNetworkOperationSettings() {
     return removePeeringNetworkOperationSettings;
   }
@@ -211,7 +210,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
 
   /** Returns the object with the settings used for calls to switchToCustomModeNetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
       switchToCustomModeNetworkOperationSettings() {
     return switchToCustomModeNetworkOperationSettings;
   }
@@ -371,35 +370,33 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     private final UnaryCallSettings.Builder<AddPeeringNetworkHttpRequest, Operation>
         addPeeringNetworkSettings;
     private final OperationCallSettings.Builder<
-            AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+            AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
         addPeeringNetworkOperationSettings;
     private final UnaryCallSettings.Builder<DeleteNetworkHttpRequest, Operation>
         deleteNetworkSettings;
-    private final OperationCallSettings.Builder<
-            DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteNetworkHttpRequest, EmptyMessage, Operation>
         deleteNetworkOperationSettings;
     private final UnaryCallSettings.Builder<GetNetworkHttpRequest, Network> getNetworkSettings;
     private final UnaryCallSettings.Builder<InsertNetworkHttpRequest, Operation>
         insertNetworkSettings;
-    private final OperationCallSettings.Builder<
-            InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertNetworkHttpRequest, EmptyMessage, Operation>
         insertNetworkOperationSettings;
     private final PagedCallSettings.Builder<
             ListNetworksHttpRequest, NetworkList, ListNetworksPagedResponse>
         listNetworksSettings;
     private final UnaryCallSettings.Builder<PatchNetworkHttpRequest, Operation>
         patchNetworkSettings;
-    private final OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, Operation>
         patchNetworkOperationSettings;
     private final UnaryCallSettings.Builder<RemovePeeringNetworkHttpRequest, Operation>
         removePeeringNetworkSettings;
     private final OperationCallSettings.Builder<
-            RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+            RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
         removePeeringNetworkOperationSettings;
     private final UnaryCallSettings.Builder<SwitchToCustomModeNetworkHttpRequest, Operation>
         switchToCustomModeNetworkSettings;
     private final OperationCallSettings.Builder<
-            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
         switchToCustomModeNetworkOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -543,8 +540,8 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -564,8 +561,8 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -585,8 +582,8 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -606,8 +603,8 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -627,8 +624,8 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -649,8 +646,8 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -723,7 +720,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     /** Returns the builder for the settings used for calls to addPeeringNetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
         addPeeringNetworkOperationSettings() {
       return addPeeringNetworkOperationSettings;
     }
@@ -736,7 +733,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     /** Returns the builder for the settings used for calls to deleteNetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNetworkHttpRequest, EmptyMessage, Operation>
         deleteNetworkOperationSettings() {
       return deleteNetworkOperationSettings;
     }
@@ -754,7 +751,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     /** Returns the builder for the settings used for calls to insertNetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertNetworkHttpRequest, EmptyMessage, Operation>
         insertNetworkOperationSettings() {
       return insertNetworkOperationSettings;
     }
@@ -774,7 +771,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     /** Returns the builder for the settings used for calls to patchNetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchNetworkHttpRequest, EmptyMessage, Operation>
         patchNetworkOperationSettings() {
       return patchNetworkOperationSettings;
     }
@@ -788,8 +785,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     /** Returns the builder for the settings used for calls to removePeeringNetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
         removePeeringNetworkOperationSettings() {
       return removePeeringNetworkOperationSettings;
     }
@@ -804,7 +800,7 @@ public class NetworkStubSettings extends StubSettings<NetworkStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+            SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
         switchToCustomModeNetworkOperationSettings() {
       return switchToCustomModeNetworkOperationSettings;
     }

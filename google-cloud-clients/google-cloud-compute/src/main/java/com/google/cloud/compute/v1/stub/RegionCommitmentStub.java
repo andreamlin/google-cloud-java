@@ -69,7 +69,7 @@ public abstract class RegionCommitmentStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertRegionCommitmentOperationCallable()");

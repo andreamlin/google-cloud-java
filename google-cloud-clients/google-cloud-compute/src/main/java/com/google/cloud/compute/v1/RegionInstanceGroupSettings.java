@@ -101,8 +101,7 @@ public class RegionInstanceGroupSettings extends ClientSettings<RegionInstanceGr
   /** Returns the object with the settings used for calls to setNamedPortsRegionInstanceGroup. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsRegionInstanceGroupOperationSettings() {
     return ((RegionInstanceGroupStubSettings) getStubSettings())
         .setNamedPortsRegionInstanceGroupOperationSettings();
@@ -244,7 +243,7 @@ public class RegionInstanceGroupSettings extends ClientSettings<RegionInstanceGr
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+            SetNamedPortsRegionInstanceGroupHttpRequest, EmptyMessage, Operation>
         setNamedPortsRegionInstanceGroupOperationSettings() {
       return getStubSettingsBuilder().setNamedPortsRegionInstanceGroupOperationSettings();
     }

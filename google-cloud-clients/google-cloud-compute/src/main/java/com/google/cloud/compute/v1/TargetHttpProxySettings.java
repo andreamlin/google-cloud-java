@@ -74,7 +74,7 @@ public class TargetHttpProxySettings extends ClientSettings<TargetHttpProxySetti
   /** Returns the object with the settings used for calls to deleteTargetHttpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpProxyOperationSettings() {
     return ((TargetHttpProxyStubSettings) getStubSettings())
         .deleteTargetHttpProxyOperationSettings();
@@ -95,7 +95,7 @@ public class TargetHttpProxySettings extends ClientSettings<TargetHttpProxySetti
   /** Returns the object with the settings used for calls to insertTargetHttpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpProxyOperationSettings() {
     return ((TargetHttpProxyStubSettings) getStubSettings())
         .insertTargetHttpProxyOperationSettings();
@@ -117,7 +117,7 @@ public class TargetHttpProxySettings extends ClientSettings<TargetHttpProxySetti
   /** Returns the object with the settings used for calls to setUrlMapTargetHttpProxy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpProxyOperationSettings() {
     return ((TargetHttpProxyStubSettings) getStubSettings())
         .setUrlMapTargetHttpProxyOperationSettings();
@@ -234,8 +234,7 @@ public class TargetHttpProxySettings extends ClientSettings<TargetHttpProxySetti
     /** Returns the builder for the settings used for calls to deleteTargetHttpProxy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetHttpProxyOperationSettings() {
       return getStubSettingsBuilder().deleteTargetHttpProxyOperationSettings();
     }
@@ -255,8 +254,7 @@ public class TargetHttpProxySettings extends ClientSettings<TargetHttpProxySetti
     /** Returns the builder for the settings used for calls to insertTargetHttpProxy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         insertTargetHttpProxyOperationSettings() {
       return getStubSettingsBuilder().insertTargetHttpProxyOperationSettings();
     }
@@ -280,7 +278,7 @@ public class TargetHttpProxySettings extends ClientSettings<TargetHttpProxySetti
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
         setUrlMapTargetHttpProxyOperationSettings() {
       return getStubSettingsBuilder().setUrlMapTargetHttpProxyOperationSettings();
     }

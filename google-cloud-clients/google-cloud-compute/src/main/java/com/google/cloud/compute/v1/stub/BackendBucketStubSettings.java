@@ -108,33 +108,33 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
   private final UnaryCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
       addSignedUrlKeyBackendBucketSettings;
   private final OperationCallSettings<
-          AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+          AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationSettings;
   private final UnaryCallSettings<DeleteBackendBucketHttpRequest, Operation>
       deleteBackendBucketSettings;
-  private final OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationSettings;
   private final UnaryCallSettings<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
       deleteSignedUrlKeyBackendBucketSettings;
   private final OperationCallSettings<
-          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationSettings;
   private final UnaryCallSettings<GetBackendBucketHttpRequest, BackendBucket>
       getBackendBucketSettings;
   private final UnaryCallSettings<InsertBackendBucketHttpRequest, Operation>
       insertBackendBucketSettings;
-  private final OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationSettings;
   private final PagedCallSettings<
           ListBackendBucketsHttpRequest, BackendBucketList, ListBackendBucketsPagedResponse>
       listBackendBucketsSettings;
   private final UnaryCallSettings<PatchBackendBucketHttpRequest, Operation>
       patchBackendBucketSettings;
-  private final OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationSettings;
   private final UnaryCallSettings<UpdateBackendBucketHttpRequest, Operation>
       updateBackendBucketSettings;
-  private final OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationSettings;
 
   /** Returns the object with the settings used for calls to addSignedUrlKeyBackendBucket. */
@@ -145,7 +145,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   /** Returns the object with the settings used for calls to addSignedUrlKeyBackendBucket. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationSettings() {
     return addSignedUrlKeyBackendBucketOperationSettings;
   }
@@ -158,7 +158,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   /** Returns the object with the settings used for calls to deleteBackendBucket. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationSettings() {
     return deleteBackendBucketOperationSettings;
   }
@@ -171,8 +171,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendBucket. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationSettings() {
     return deleteSignedUrlKeyBackendBucketOperationSettings;
   }
@@ -190,7 +189,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   /** Returns the object with the settings used for calls to insertBackendBucket. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationSettings() {
     return insertBackendBucketOperationSettings;
   }
@@ -209,7 +208,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   /** Returns the object with the settings used for calls to patchBackendBucket. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationSettings() {
     return patchBackendBucketOperationSettings;
   }
@@ -222,7 +221,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
 
   /** Returns the object with the settings used for calls to updateBackendBucket. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationSettings() {
     return updateBackendBucketOperationSettings;
   }
@@ -394,24 +393,24 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     private final UnaryCallSettings.Builder<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
         addSignedUrlKeyBackendBucketSettings;
     private final OperationCallSettings.Builder<
-            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
         addSignedUrlKeyBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<DeleteBackendBucketHttpRequest, Operation>
         deleteBackendBucketSettings;
     private final OperationCallSettings.Builder<
-            DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
         deleteBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
         deleteSignedUrlKeyBackendBucketSettings;
     private final OperationCallSettings.Builder<
-            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
         deleteSignedUrlKeyBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<GetBackendBucketHttpRequest, BackendBucket>
         getBackendBucketSettings;
     private final UnaryCallSettings.Builder<InsertBackendBucketHttpRequest, Operation>
         insertBackendBucketSettings;
     private final OperationCallSettings.Builder<
-            InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            InsertBackendBucketHttpRequest, EmptyMessage, Operation>
         insertBackendBucketOperationSettings;
     private final PagedCallSettings.Builder<
             ListBackendBucketsHttpRequest, BackendBucketList, ListBackendBucketsPagedResponse>
@@ -419,12 +418,12 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     private final UnaryCallSettings.Builder<PatchBackendBucketHttpRequest, Operation>
         patchBackendBucketSettings;
     private final OperationCallSettings.Builder<
-            PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            PatchBackendBucketHttpRequest, EmptyMessage, Operation>
         patchBackendBucketOperationSettings;
     private final UnaryCallSettings.Builder<UpdateBackendBucketHttpRequest, Operation>
         updateBackendBucketSettings;
     private final OperationCallSettings.Builder<
-            UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
         updateBackendBucketOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -569,8 +568,8 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -590,8 +589,8 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -612,8 +611,8 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -633,8 +632,8 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -654,8 +653,8 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -675,8 +674,8 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -756,7 +755,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
         addSignedUrlKeyBackendBucketOperationSettings() {
       return addSignedUrlKeyBackendBucketOperationSettings;
     }
@@ -770,7 +769,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     /** Returns the builder for the settings used for calls to deleteBackendBucket. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
         deleteBackendBucketOperationSettings() {
       return deleteBackendBucketOperationSettings;
     }
@@ -785,7 +784,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
         deleteSignedUrlKeyBackendBucketOperationSettings() {
       return deleteSignedUrlKeyBackendBucketOperationSettings;
     }
@@ -805,7 +804,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     /** Returns the builder for the settings used for calls to insertBackendBucket. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
         insertBackendBucketOperationSettings() {
       return insertBackendBucketOperationSettings;
     }
@@ -826,7 +825,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     /** Returns the builder for the settings used for calls to patchBackendBucket. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
         patchBackendBucketOperationSettings() {
       return patchBackendBucketOperationSettings;
     }
@@ -840,7 +839,7 @@ public class BackendBucketStubSettings extends StubSettings<BackendBucketStubSet
     /** Returns the builder for the settings used for calls to updateBackendBucket. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
         updateBackendBucketOperationSettings() {
       return updateBackendBucketOperationSettings;
     }

@@ -109,7 +109,7 @@ public class RegionBackendServiceStubSettings
   private final UnaryCallSettings<DeleteRegionBackendServiceHttpRequest, Operation>
       deleteRegionBackendServiceSettings;
   private final OperationCallSettings<
-          DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationSettings;
   private final UnaryCallSettings<GetRegionBackendServiceHttpRequest, BackendService>
       getRegionBackendServiceSettings;
@@ -119,7 +119,7 @@ public class RegionBackendServiceStubSettings
   private final UnaryCallSettings<InsertRegionBackendServiceHttpRequest, Operation>
       insertRegionBackendServiceSettings;
   private final OperationCallSettings<
-          InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationSettings;
   private final PagedCallSettings<
           ListRegionBackendServicesHttpRequest,
@@ -128,13 +128,12 @@ public class RegionBackendServiceStubSettings
       listRegionBackendServicesSettings;
   private final UnaryCallSettings<PatchRegionBackendServiceHttpRequest, Operation>
       patchRegionBackendServiceSettings;
-  private final OperationCallSettings<
-          PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationSettings;
   private final UnaryCallSettings<UpdateRegionBackendServiceHttpRequest, Operation>
       updateRegionBackendServiceSettings;
   private final OperationCallSettings<
-          UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+          UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteRegionBackendService. */
@@ -145,7 +144,7 @@ public class RegionBackendServiceStubSettings
 
   /** Returns the object with the settings used for calls to deleteRegionBackendService. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationSettings() {
     return deleteRegionBackendServiceOperationSettings;
   }
@@ -170,7 +169,7 @@ public class RegionBackendServiceStubSettings
 
   /** Returns the object with the settings used for calls to insertRegionBackendService. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationSettings() {
     return insertRegionBackendServiceOperationSettings;
   }
@@ -192,7 +191,7 @@ public class RegionBackendServiceStubSettings
 
   /** Returns the object with the settings used for calls to patchRegionBackendService. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationSettings() {
     return patchRegionBackendServiceOperationSettings;
   }
@@ -205,7 +204,7 @@ public class RegionBackendServiceStubSettings
 
   /** Returns the object with the settings used for calls to updateRegionBackendService. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationSettings() {
     return updateRegionBackendServiceOperationSettings;
   }
@@ -382,7 +381,7 @@ public class RegionBackendServiceStubSettings
     private final UnaryCallSettings.Builder<DeleteRegionBackendServiceHttpRequest, Operation>
         deleteRegionBackendServiceSettings;
     private final OperationCallSettings.Builder<
-            DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         deleteRegionBackendServiceOperationSettings;
     private final UnaryCallSettings.Builder<GetRegionBackendServiceHttpRequest, BackendService>
         getRegionBackendServiceSettings;
@@ -392,7 +391,7 @@ public class RegionBackendServiceStubSettings
     private final UnaryCallSettings.Builder<InsertRegionBackendServiceHttpRequest, Operation>
         insertRegionBackendServiceSettings;
     private final OperationCallSettings.Builder<
-            InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         insertRegionBackendServiceOperationSettings;
     private final PagedCallSettings.Builder<
             ListRegionBackendServicesHttpRequest,
@@ -402,12 +401,12 @@ public class RegionBackendServiceStubSettings
     private final UnaryCallSettings.Builder<PatchRegionBackendServiceHttpRequest, Operation>
         patchRegionBackendServiceSettings;
     private final OperationCallSettings.Builder<
-            PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         patchRegionBackendServiceOperationSettings;
     private final UnaryCallSettings.Builder<UpdateRegionBackendServiceHttpRequest, Operation>
         updateRegionBackendServiceSettings;
     private final OperationCallSettings.Builder<
-            UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         updateRegionBackendServiceOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -541,8 +540,8 @@ public class RegionBackendServiceStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -563,8 +562,8 @@ public class RegionBackendServiceStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -585,8 +584,8 @@ public class RegionBackendServiceStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -607,8 +606,8 @@ public class RegionBackendServiceStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -681,7 +680,7 @@ public class RegionBackendServiceStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         deleteRegionBackendServiceOperationSettings() {
       return deleteRegionBackendServiceOperationSettings;
     }
@@ -709,7 +708,7 @@ public class RegionBackendServiceStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         insertRegionBackendServiceOperationSettings() {
       return insertRegionBackendServiceOperationSettings;
     }
@@ -733,7 +732,7 @@ public class RegionBackendServiceStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         patchRegionBackendServiceOperationSettings() {
       return patchRegionBackendServiceOperationSettings;
     }
@@ -748,7 +747,7 @@ public class RegionBackendServiceStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
         updateRegionBackendServiceOperationSettings() {
       return updateRegionBackendServiceOperationSettings;
     }

@@ -185,13 +185,13 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
 
   private final UnaryCallable<DeleteRegionAutoscalerHttpRequest, Operation>
       deleteRegionAutoscalerCallable;
-  private final OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationCallable;
   private final UnaryCallable<GetRegionAutoscalerHttpRequest, Autoscaler>
       getRegionAutoscalerCallable;
   private final UnaryCallable<InsertRegionAutoscalerHttpRequest, Operation>
       insertRegionAutoscalerCallable;
-  private final OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationCallable;
   private final UnaryCallable<ListRegionAutoscalersHttpRequest, RegionAutoscalerList>
       listRegionAutoscalersCallable;
@@ -199,11 +199,11 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
       listRegionAutoscalersPagedCallable;
   private final UnaryCallable<PatchRegionAutoscalerHttpRequest, Operation>
       patchRegionAutoscalerCallable;
-  private final OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationCallable;
   private final UnaryCallable<UpdateRegionAutoscalerHttpRequest, Operation>
       updateRegionAutoscalerCallable;
-  private final OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -349,7 +349,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationCallable() {
     return deleteRegionAutoscalerOperationCallable;
   }
@@ -366,7 +366,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationCallable() {
     return insertRegionAutoscalerOperationCallable;
   }
@@ -390,7 +390,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationCallable() {
     return patchRegionAutoscalerOperationCallable;
   }
@@ -402,7 +402,7 @@ public class HttpJsonRegionAutoscalerStub extends RegionAutoscalerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationCallable() {
     return updateRegionAutoscalerOperationCallable;
   }

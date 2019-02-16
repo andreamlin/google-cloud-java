@@ -327,7 +327,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetInstanceAsync(
       ProjectZoneTargetInstanceName targetInstance) {
 
     DeleteTargetInstanceHttpRequest request =
@@ -355,7 +355,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetInstanceAsync(
       String targetInstance) {
 
     DeleteTargetInstanceHttpRequest request =
@@ -384,7 +384,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetInstanceAsync(
       DeleteTargetInstanceHttpRequest request) {
     return deleteTargetInstanceOperationCallable().futureCall(request);
   }
@@ -401,14 +401,14 @@ public class TargetInstanceClient implements BackgroundResource {
    *   DeleteTargetInstanceHttpRequest request = DeleteTargetInstanceHttpRequest.newBuilder()
    *     .setTargetInstance(targetInstance.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetInstanceClient.deleteTargetInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetInstanceClient.deleteTargetInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
       deleteTargetInstanceOperationCallable() {
     return stub.deleteTargetInstanceOperationCallable();
   }
@@ -562,7 +562,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetInstanceAsync(
       ProjectZoneName zone, TargetInstance targetInstanceResource) {
 
     InsertTargetInstanceHttpRequest request =
@@ -596,7 +596,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetInstanceAsync(
       String zone, TargetInstance targetInstanceResource) {
 
     InsertTargetInstanceHttpRequest request =
@@ -631,7 +631,7 @@ public class TargetInstanceClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetInstanceAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetInstanceAsync(
       InsertTargetInstanceHttpRequest request) {
     return insertTargetInstanceOperationCallable().futureCall(request);
   }
@@ -651,14 +651,14 @@ public class TargetInstanceClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setTargetInstanceResource(targetInstanceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetInstanceClient.insertTargetInstanceOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetInstanceClient.insertTargetInstanceOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
       insertTargetInstanceOperationCallable() {
     return stub.insertTargetInstanceOperationCallable();
   }

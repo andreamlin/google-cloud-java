@@ -73,7 +73,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
   /** Returns the object with the settings used for calls to deleteUrlMap. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationSettings() {
     return ((UrlMapStubSettings) getStubSettings()).deleteUrlMapOperationSettings();
   }
@@ -91,7 +91,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
   /** Returns the object with the settings used for calls to insertUrlMap. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationSettings() {
     return ((UrlMapStubSettings) getStubSettings()).insertUrlMapOperationSettings();
   }
@@ -105,7 +105,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
   /** Returns the object with the settings used for calls to invalidateCacheUrlMap. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationSettings() {
     return ((UrlMapStubSettings) getStubSettings()).invalidateCacheUrlMapOperationSettings();
   }
@@ -124,7 +124,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
   /** Returns the object with the settings used for calls to patchUrlMap. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationSettings() {
     return ((UrlMapStubSettings) getStubSettings()).patchUrlMapOperationSettings();
   }
@@ -137,7 +137,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
   /** Returns the object with the settings used for calls to updateUrlMap. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationSettings() {
     return ((UrlMapStubSettings) getStubSettings()).updateUrlMapOperationSettings();
   }
@@ -257,7 +257,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
     /** Returns the builder for the settings used for calls to deleteUrlMap. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
         deleteUrlMapOperationSettings() {
       return getStubSettingsBuilder().deleteUrlMapOperationSettings();
     }
@@ -275,7 +275,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
     /** Returns the builder for the settings used for calls to insertUrlMap. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertUrlMapHttpRequest, EmptyMessage, Operation>
         insertUrlMapOperationSettings() {
       return getStubSettingsBuilder().insertUrlMapOperationSettings();
     }
@@ -289,8 +289,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
     /** Returns the builder for the settings used for calls to invalidateCacheUrlMap. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
         invalidateCacheUrlMapOperationSettings() {
       return getStubSettingsBuilder().invalidateCacheUrlMapOperationSettings();
     }
@@ -309,7 +308,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
     /** Returns the builder for the settings used for calls to patchUrlMap. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchUrlMapHttpRequest, EmptyMessage, Operation>
         patchUrlMapOperationSettings() {
       return getStubSettingsBuilder().patchUrlMapOperationSettings();
     }
@@ -322,7 +321,7 @@ public class UrlMapSettings extends ClientSettings<UrlMapSettings> {
     /** Returns the builder for the settings used for calls to updateUrlMap. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
         updateUrlMapOperationSettings() {
       return getStubSettingsBuilder().updateUrlMapOperationSettings();
     }

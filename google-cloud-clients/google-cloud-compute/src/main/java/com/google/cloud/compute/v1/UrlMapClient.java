@@ -184,7 +184,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteUrlMapAsync(
       ProjectGlobalUrlMapName urlMap) {
 
     DeleteUrlMapHttpRequest request =
@@ -212,7 +212,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteUrlMapAsync(String urlMap) {
+  public final OperationFuture<EmptyMessage, Operation> deleteUrlMapAsync(String urlMap) {
 
     DeleteUrlMapHttpRequest request =
         DeleteUrlMapHttpRequest.newBuilder().setUrlMap(urlMap).build();
@@ -240,7 +240,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteUrlMapAsync(
       DeleteUrlMapHttpRequest request) {
     return deleteUrlMapOperationCallable().futureCall(request);
   }
@@ -257,14 +257,14 @@ public class UrlMapClient implements BackgroundResource {
    *   DeleteUrlMapHttpRequest request = DeleteUrlMapHttpRequest.newBuilder()
    *     .setUrlMap(urlMap.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.deleteUrlMapOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = urlMapClient.deleteUrlMapOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationCallable() {
     return stub.deleteUrlMapOperationCallable();
   }
@@ -413,7 +413,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertUrlMapAsync(
       ProjectName project, UrlMap urlMapResource) {
 
     InsertUrlMapHttpRequest request =
@@ -445,7 +445,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertUrlMapAsync(
       String project, UrlMap urlMapResource) {
 
     InsertUrlMapHttpRequest request =
@@ -479,7 +479,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertUrlMapAsync(
       InsertUrlMapHttpRequest request) {
     return insertUrlMapOperationCallable().futureCall(request);
   }
@@ -498,14 +498,14 @@ public class UrlMapClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setUrlMapResource(urlMapResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.insertUrlMapOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = urlMapClient.insertUrlMapOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationCallable() {
     return stub.insertUrlMapOperationCallable();
   }
@@ -556,7 +556,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> invalidateCacheUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> invalidateCacheUrlMapAsync(
       ProjectGlobalUrlMapName urlMap, CacheInvalidationRule cacheInvalidationRuleResource) {
 
     InvalidateCacheUrlMapHttpRequest request =
@@ -588,7 +588,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> invalidateCacheUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> invalidateCacheUrlMapAsync(
       String urlMap, CacheInvalidationRule cacheInvalidationRuleResource) {
 
     InvalidateCacheUrlMapHttpRequest request =
@@ -623,7 +623,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> invalidateCacheUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> invalidateCacheUrlMapAsync(
       InvalidateCacheUrlMapHttpRequest request) {
     return invalidateCacheUrlMapOperationCallable().futureCall(request);
   }
@@ -643,14 +643,14 @@ public class UrlMapClient implements BackgroundResource {
    *     .setUrlMap(urlMap.toString())
    *     .setCacheInvalidationRuleResource(cacheInvalidationRuleResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.invalidateCacheUrlMapOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = urlMapClient.invalidateCacheUrlMapOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationCallable() {
     return stub.invalidateCacheUrlMapOperationCallable();
   }
@@ -845,7 +845,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchUrlMapAsync(
       ProjectGlobalUrlMapName urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     PatchUrlMapHttpRequest request =
@@ -884,7 +884,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchUrlMapAsync(
       String urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     PatchUrlMapHttpRequest request =
@@ -922,7 +922,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchUrlMapAsync(
       PatchUrlMapHttpRequest request) {
     return patchUrlMapOperationCallable().futureCall(request);
   }
@@ -944,14 +944,14 @@ public class UrlMapClient implements BackgroundResource {
    *     .setUrlMapResource(urlMapResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.patchUrlMapOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = urlMapClient.patchUrlMapOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationCallable() {
     return stub.patchUrlMapOperationCallable();
   }
@@ -1010,7 +1010,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateUrlMapAsync(
       ProjectGlobalUrlMapName urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     UpdateUrlMapHttpRequest request =
@@ -1048,7 +1048,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateUrlMapAsync(
       String urlMap, UrlMap urlMapResource, List<String> fieldMask) {
 
     UpdateUrlMapHttpRequest request =
@@ -1085,7 +1085,7 @@ public class UrlMapClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateUrlMapAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateUrlMapAsync(
       UpdateUrlMapHttpRequest request) {
     return updateUrlMapOperationCallable().futureCall(request);
   }
@@ -1106,14 +1106,14 @@ public class UrlMapClient implements BackgroundResource {
    *     .setUrlMapResource(urlMapResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = urlMapClient.updateUrlMapOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = urlMapClient.updateUrlMapOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationCallable() {
     return stub.updateUrlMapOperationCallable();
   }

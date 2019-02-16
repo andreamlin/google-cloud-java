@@ -185,7 +185,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInterconnectAsync(
       ProjectGlobalInterconnectName interconnect) {
 
     DeleteInterconnectHttpRequest request =
@@ -213,7 +213,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInterconnectAsync(
       String interconnect) {
 
     DeleteInterconnectHttpRequest request =
@@ -242,7 +242,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInterconnectAsync(
       DeleteInterconnectHttpRequest request) {
     return deleteInterconnectOperationCallable().futureCall(request);
   }
@@ -259,14 +259,14 @@ public class InterconnectClient implements BackgroundResource {
    *   DeleteInterconnectHttpRequest request = DeleteInterconnectHttpRequest.newBuilder()
    *     .setInterconnect(interconnect.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectClient.deleteInterconnectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = interconnectClient.deleteInterconnectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationCallable() {
     return stub.deleteInterconnectOperationCallable();
   }
@@ -520,7 +520,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInterconnectAsync(
       ProjectName project, Interconnect interconnectResource) {
 
     InsertInterconnectHttpRequest request =
@@ -554,7 +554,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInterconnectAsync(
       String project, Interconnect interconnectResource) {
 
     InsertInterconnectHttpRequest request =
@@ -588,7 +588,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInterconnectAsync(
       InsertInterconnectHttpRequest request) {
     return insertInterconnectOperationCallable().futureCall(request);
   }
@@ -607,14 +607,14 @@ public class InterconnectClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setInterconnectResource(interconnectResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectClient.insertInterconnectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = interconnectClient.insertInterconnectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationCallable() {
     return stub.insertInterconnectOperationCallable();
   }
@@ -812,7 +812,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInterconnectAsync(
       ProjectGlobalInterconnectName interconnect,
       Interconnect interconnectResource,
       List<String> fieldMask) {
@@ -855,7 +855,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInterconnectAsync(
       String interconnect, Interconnect interconnectResource, List<String> fieldMask) {
 
     PatchInterconnectHttpRequest request =
@@ -893,7 +893,7 @@ public class InterconnectClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInterconnectAsync(
       PatchInterconnectHttpRequest request) {
     return patchInterconnectOperationCallable().futureCall(request);
   }
@@ -915,14 +915,14 @@ public class InterconnectClient implements BackgroundResource {
    *     .setInterconnectResource(interconnectResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectClient.patchInterconnectOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = interconnectClient.patchInterconnectOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationCallable() {
     return stub.patchInterconnectOperationCallable();
   }

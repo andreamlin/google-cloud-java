@@ -187,7 +187,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteGlobalForwardingRuleAsync(
       ProjectGlobalForwardingRuleName forwardingRule) {
 
     DeleteGlobalForwardingRuleHttpRequest request =
@@ -215,7 +215,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteGlobalForwardingRuleAsync(
       String forwardingRule) {
 
     DeleteGlobalForwardingRuleHttpRequest request =
@@ -246,7 +246,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteGlobalForwardingRuleAsync(
       DeleteGlobalForwardingRuleHttpRequest request) {
     return deleteGlobalForwardingRuleOperationCallable().futureCall(request);
   }
@@ -263,14 +263,14 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *   DeleteGlobalForwardingRuleHttpRequest request = DeleteGlobalForwardingRuleHttpRequest.newBuilder()
    *     .setForwardingRule(forwardingRule.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalForwardingRuleClient.deleteGlobalForwardingRuleOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = globalForwardingRuleClient.deleteGlobalForwardingRuleOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationCallable() {
     return stub.deleteGlobalForwardingRuleOperationCallable();
   }
@@ -428,7 +428,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertGlobalForwardingRuleAsync(
       ProjectName project, ForwardingRule forwardingRuleResource) {
 
     InsertGlobalForwardingRuleHttpRequest request =
@@ -465,7 +465,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertGlobalForwardingRuleAsync(
       String project, ForwardingRule forwardingRuleResource) {
 
     InsertGlobalForwardingRuleHttpRequest request =
@@ -500,7 +500,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertGlobalForwardingRuleAsync(
       InsertGlobalForwardingRuleHttpRequest request) {
     return insertGlobalForwardingRuleOperationCallable().futureCall(request);
   }
@@ -520,14 +520,14 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setForwardingRuleResource(forwardingRuleResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalForwardingRuleClient.insertGlobalForwardingRuleOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = globalForwardingRuleClient.insertGlobalForwardingRuleOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationCallable() {
     return stub.insertGlobalForwardingRuleOperationCallable();
   }
@@ -720,7 +720,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetGlobalForwardingRuleAsync(
       ProjectGlobalForwardingRuleName forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetGlobalForwardingRuleHttpRequest request =
@@ -752,7 +752,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetGlobalForwardingRuleAsync(
       String forwardingRule, TargetReference targetReferenceResource) {
 
     SetTargetGlobalForwardingRuleHttpRequest request =
@@ -787,7 +787,7 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setTargetGlobalForwardingRuleAsync(
+  public final OperationFuture<EmptyMessage, Operation> setTargetGlobalForwardingRuleAsync(
       SetTargetGlobalForwardingRuleHttpRequest request) {
     return setTargetGlobalForwardingRuleOperationCallable().futureCall(request);
   }
@@ -807,15 +807,14 @@ public class GlobalForwardingRuleClient implements BackgroundResource {
    *     .setForwardingRule(forwardingRule.toString())
    *     .setTargetReferenceResource(targetReferenceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalForwardingRuleClient.setTargetGlobalForwardingRuleOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = globalForwardingRuleClient.setTargetGlobalForwardingRuleOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationCallable() {
     return stub.setTargetGlobalForwardingRuleOperationCallable();
   }

@@ -73,7 +73,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
   /** Returns the object with the settings used for calls to deleteHealthCheck. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHealthCheckOperationSettings() {
     return ((HealthCheckStubSettings) getStubSettings()).deleteHealthCheckOperationSettings();
   }
@@ -91,7 +91,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
   /** Returns the object with the settings used for calls to insertHealthCheck. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHealthCheckOperationSettings() {
     return ((HealthCheckStubSettings) getStubSettings()).insertHealthCheckOperationSettings();
   }
@@ -111,7 +111,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
   /** Returns the object with the settings used for calls to patchHealthCheck. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHealthCheckOperationSettings() {
     return ((HealthCheckStubSettings) getStubSettings()).patchHealthCheckOperationSettings();
   }
@@ -124,7 +124,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
   /** Returns the object with the settings used for calls to updateHealthCheck. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHealthCheckOperationSettings() {
     return ((HealthCheckStubSettings) getStubSettings()).updateHealthCheckOperationSettings();
   }
@@ -239,7 +239,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
     /** Returns the builder for the settings used for calls to deleteHealthCheck. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteHealthCheckHttpRequest, EmptyMessage, Operation>
         deleteHealthCheckOperationSettings() {
       return getStubSettingsBuilder().deleteHealthCheckOperationSettings();
     }
@@ -259,7 +259,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
     /** Returns the builder for the settings used for calls to insertHealthCheck. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertHealthCheckHttpRequest, EmptyMessage, Operation>
         insertHealthCheckOperationSettings() {
       return getStubSettingsBuilder().insertHealthCheckOperationSettings();
     }
@@ -280,7 +280,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
     /** Returns the builder for the settings used for calls to patchHealthCheck. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchHealthCheckHttpRequest, EmptyMessage, Operation>
         patchHealthCheckOperationSettings() {
       return getStubSettingsBuilder().patchHealthCheckOperationSettings();
     }
@@ -294,7 +294,7 @@ public class HealthCheckSettings extends ClientSettings<HealthCheckSettings> {
     /** Returns the builder for the settings used for calls to updateHealthCheck. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateHealthCheckHttpRequest, EmptyMessage, Operation>
         updateHealthCheckOperationSettings() {
       return getStubSettingsBuilder().updateHealthCheckOperationSettings();
     }

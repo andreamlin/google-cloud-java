@@ -102,11 +102,11 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteRouteHttpRequest, Operation> deleteRouteSettings;
-  private final OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationSettings;
   private final UnaryCallSettings<GetRouteHttpRequest, Route> getRouteSettings;
   private final UnaryCallSettings<InsertRouteHttpRequest, Operation> insertRouteSettings;
-  private final OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationSettings;
   private final PagedCallSettings<ListRoutesHttpRequest, RouteList, ListRoutesPagedResponse>
       listRoutesSettings;
@@ -118,7 +118,7 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteRoute. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationSettings() {
     return deleteRouteOperationSettings;
   }
@@ -135,7 +135,7 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
 
   /** Returns the object with the settings used for calls to insertRoute. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationSettings() {
     return insertRouteOperationSettings;
   }
@@ -287,11 +287,11 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
     private final ImmutableList<UnaryCallSettings.Builder<?, ?>> unaryMethodSettingsBuilders;
 
     private final UnaryCallSettings.Builder<DeleteRouteHttpRequest, Operation> deleteRouteSettings;
-    private final OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, Operation>
         deleteRouteOperationSettings;
     private final UnaryCallSettings.Builder<GetRouteHttpRequest, Route> getRouteSettings;
     private final UnaryCallSettings.Builder<InsertRouteHttpRequest, Operation> insertRouteSettings;
-    private final OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, Operation>
         insertRouteOperationSettings;
     private final PagedCallSettings.Builder<
             ListRoutesHttpRequest, RouteList, ListRoutesPagedResponse>
@@ -395,8 +395,8 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -416,8 +416,8 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -472,7 +472,7 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
     /** Returns the builder for the settings used for calls to deleteRoute. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteRouteHttpRequest, EmptyMessage, Operation>
         deleteRouteOperationSettings() {
       return deleteRouteOperationSettings;
     }
@@ -490,7 +490,7 @@ public class RouteStubSettings extends StubSettings<RouteStubSettings> {
     /** Returns the builder for the settings used for calls to insertRoute. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRouteHttpRequest, EmptyMessage, Operation>
         insertRouteOperationSettings() {
       return insertRouteOperationSettings;
     }

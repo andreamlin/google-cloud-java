@@ -211,15 +211,13 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
       aggregatedListInterconnectAttachmentsPagedCallable;
   private final UnaryCallable<DeleteInterconnectAttachmentHttpRequest, Operation>
       deleteInterconnectAttachmentCallable;
-  private final OperationCallable<
-          DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationCallable;
   private final UnaryCallable<GetInterconnectAttachmentHttpRequest, InterconnectAttachment>
       getInterconnectAttachmentCallable;
   private final UnaryCallable<InsertInterconnectAttachmentHttpRequest, Operation>
       insertInterconnectAttachmentCallable;
-  private final OperationCallable<
-          InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationCallable;
   private final UnaryCallable<ListInterconnectAttachmentsHttpRequest, InterconnectAttachmentList>
       listInterconnectAttachmentsCallable;
@@ -228,8 +226,7 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
       listInterconnectAttachmentsPagedCallable;
   private final UnaryCallable<PatchInterconnectAttachmentHttpRequest, Operation>
       patchInterconnectAttachmentCallable;
-  private final OperationCallable<
-          PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -394,7 +391,7 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationCallable() {
     return deleteInterconnectAttachmentOperationCallable;
   }
@@ -412,7 +409,7 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationCallable() {
     return insertInterconnectAttachmentOperationCallable;
   }
@@ -437,7 +434,7 @@ public class HttpJsonInterconnectAttachmentStub extends InterconnectAttachmentSt
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationCallable() {
     return patchInterconnectAttachmentOperationCallable;
   }

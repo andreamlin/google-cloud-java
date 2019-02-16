@@ -51,7 +51,7 @@ public abstract class TargetHttpsProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetHttpsProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpsProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteTargetHttpsProxyOperationCallable()");
@@ -70,7 +70,7 @@ public abstract class TargetHttpsProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetHttpsProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpsProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertTargetHttpsProxyOperationCallable()");
@@ -96,7 +96,7 @@ public abstract class TargetHttpsProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetQuicOverrideTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetQuicOverrideTargetHttpsProxyHttpRequest, EmptyMessage, Operation>
       setQuicOverrideTargetHttpsProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setQuicOverrideTargetHttpsProxyOperationCallable()");
@@ -110,8 +110,7 @@ public abstract class TargetHttpsProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<
-          SetSslCertificatesTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSslCertificatesTargetHttpsProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetHttpsProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setSslCertificatesTargetHttpsProxyOperationCallable()");
@@ -125,7 +124,7 @@ public abstract class TargetHttpsProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSslPolicyTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSslPolicyTargetHttpsProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetHttpsProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setSslPolicyTargetHttpsProxyOperationCallable()");
@@ -139,7 +138,7 @@ public abstract class TargetHttpsProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetUrlMapTargetHttpsProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetUrlMapTargetHttpsProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpsProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setUrlMapTargetHttpsProxyOperationCallable()");

@@ -75,7 +75,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to addSignedUrlKeyBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings())
         .addSignedUrlKeyBackendServiceOperationSettings();
@@ -99,7 +99,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to deleteBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings()).deleteBackendServiceOperationSettings();
   }
@@ -114,8 +114,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to deleteSignedUrlKeyBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings())
         .deleteSignedUrlKeyBackendServiceOperationSettings();
@@ -142,7 +141,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to insertBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertBackendServiceHttpRequest, EmptyMessage, Operation>
       insertBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings()).insertBackendServiceOperationSettings();
   }
@@ -163,7 +162,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to patchBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchBackendServiceHttpRequest, EmptyMessage, Operation>
       patchBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings()).patchBackendServiceOperationSettings();
   }
@@ -178,8 +177,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to setSecurityPolicyBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, Operation>
       setSecurityPolicyBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings())
         .setSecurityPolicyBackendServiceOperationSettings();
@@ -194,7 +192,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
   /** Returns the object with the settings used for calls to updateBackendService. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateBackendServiceHttpRequest, EmptyMessage, Operation>
       updateBackendServiceOperationSettings() {
     return ((BackendServiceStubSettings) getStubSettings()).updateBackendServiceOperationSettings();
   }
@@ -311,7 +309,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            AddSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
         addSignedUrlKeyBackendServiceOperationSettings() {
       return getStubSettingsBuilder().addSignedUrlKeyBackendServiceOperationSettings();
     }
@@ -334,8 +332,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     /** Returns the builder for the settings used for calls to deleteBackendService. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteBackendServiceHttpRequest, EmptyMessage, Operation>
         deleteBackendServiceOperationSettings() {
       return getStubSettingsBuilder().deleteBackendServiceOperationSettings();
     }
@@ -350,7 +347,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSignedUrlKeyBackendServiceHttpRequest, EmptyMessage, Operation>
         deleteSignedUrlKeyBackendServiceOperationSettings() {
       return getStubSettingsBuilder().deleteSignedUrlKeyBackendServiceOperationSettings();
     }
@@ -376,8 +373,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     /** Returns the builder for the settings used for calls to insertBackendService. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertBackendServiceHttpRequest, EmptyMessage, Operation>
         insertBackendServiceOperationSettings() {
       return getStubSettingsBuilder().insertBackendServiceOperationSettings();
     }
@@ -398,7 +394,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     /** Returns the builder for the settings used for calls to patchBackendService. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchBackendServiceHttpRequest, EmptyMessage, Operation>
         patchBackendServiceOperationSettings() {
       return getStubSettingsBuilder().patchBackendServiceOperationSettings();
     }
@@ -413,7 +409,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+            SetSecurityPolicyBackendServiceHttpRequest, EmptyMessage, Operation>
         setSecurityPolicyBackendServiceOperationSettings() {
       return getStubSettingsBuilder().setSecurityPolicyBackendServiceOperationSettings();
     }
@@ -427,8 +423,7 @@ public class BackendServiceSettings extends ClientSettings<BackendServiceSetting
     /** Returns the builder for the settings used for calls to updateBackendService. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            UpdateBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateBackendServiceHttpRequest, EmptyMessage, Operation>
         updateBackendServiceOperationSettings() {
       return getStubSettingsBuilder().updateBackendServiceOperationSettings();
     }

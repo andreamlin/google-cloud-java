@@ -73,7 +73,7 @@ public class InterconnectSettings extends ClientSettings<InterconnectSettings> {
   /** Returns the object with the settings used for calls to deleteInterconnect. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationSettings() {
     return ((InterconnectStubSettings) getStubSettings()).deleteInterconnectOperationSettings();
   }
@@ -98,7 +98,7 @@ public class InterconnectSettings extends ClientSettings<InterconnectSettings> {
   /** Returns the object with the settings used for calls to insertInterconnect. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationSettings() {
     return ((InterconnectStubSettings) getStubSettings()).insertInterconnectOperationSettings();
   }
@@ -118,7 +118,7 @@ public class InterconnectSettings extends ClientSettings<InterconnectSettings> {
   /** Returns the object with the settings used for calls to patchInterconnect. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationSettings() {
     return ((InterconnectStubSettings) getStubSettings()).patchInterconnectOperationSettings();
   }
@@ -234,7 +234,7 @@ public class InterconnectSettings extends ClientSettings<InterconnectSettings> {
     /** Returns the builder for the settings used for calls to deleteInterconnect. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
         deleteInterconnectOperationSettings() {
       return getStubSettingsBuilder().deleteInterconnectOperationSettings();
     }
@@ -261,7 +261,7 @@ public class InterconnectSettings extends ClientSettings<InterconnectSettings> {
     /** Returns the builder for the settings used for calls to insertInterconnect. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInterconnectHttpRequest, EmptyMessage, Operation>
         insertInterconnectOperationSettings() {
       return getStubSettingsBuilder().insertInterconnectOperationSettings();
     }
@@ -282,7 +282,7 @@ public class InterconnectSettings extends ClientSettings<InterconnectSettings> {
     /** Returns the builder for the settings used for calls to patchInterconnect. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchInterconnectHttpRequest, EmptyMessage, Operation>
         patchInterconnectOperationSettings() {
       return getStubSettingsBuilder().patchInterconnectOperationSettings();
     }

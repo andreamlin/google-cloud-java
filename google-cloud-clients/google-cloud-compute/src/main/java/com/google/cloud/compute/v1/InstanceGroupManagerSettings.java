@@ -81,7 +81,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .abandonInstancesInstanceGroupManagerOperationSettings();
@@ -107,7 +107,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   /** Returns the object with the settings used for calls to deleteInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .deleteInstanceGroupManagerOperationSettings();
@@ -124,7 +124,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .deleteInstancesInstanceGroupManagerOperationSettings();
@@ -146,7 +146,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   /** Returns the object with the settings used for calls to insertInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .insertInstanceGroupManagerOperationSettings();
@@ -184,7 +184,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   /** Returns the object with the settings used for calls to patchInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .patchInstanceGroupManagerOperationSettings();
@@ -205,7 +205,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .recreateInstancesInstanceGroupManagerOperationSettings();
@@ -221,7 +221,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   /** Returns the object with the settings used for calls to resizeInstanceGroupManager. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .resizeInstanceGroupManagerOperationSettings();
@@ -242,7 +242,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .setInstanceTemplateInstanceGroupManagerOperationSettings();
@@ -259,7 +259,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsInstanceGroupManagerOperationSettings() {
     return ((InstanceGroupManagerStubSettings) getStubSettings())
         .setTargetPoolsInstanceGroupManagerOperationSettings();
@@ -382,7 +382,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         abandonInstancesInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().abandonInstancesInstanceGroupManagerOperationSettings();
     }
@@ -408,7 +408,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().deleteInstanceGroupManagerOperationSettings();
     }
@@ -427,7 +427,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteInstancesInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().deleteInstancesInstanceGroupManagerOperationSettings();
     }
@@ -448,7 +448,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            InsertInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         insertInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().insertInstanceGroupManagerOperationSettings();
     }
@@ -483,7 +483,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            PatchInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         patchInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().patchInstanceGroupManagerOperationSettings();
     }
@@ -502,7 +502,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         recreateInstancesInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().recreateInstancesInstanceGroupManagerOperationSettings();
     }
@@ -517,7 +517,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            ResizeInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         resizeInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().resizeInstanceGroupManagerOperationSettings();
     }
@@ -538,7 +538,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setInstanceTemplateInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().setInstanceTemplateInstanceGroupManagerOperationSettings();
     }
@@ -557,7 +557,7 @@ public class InstanceGroupManagerSettings extends ClientSettings<InstanceGroupMa
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setTargetPoolsInstanceGroupManagerOperationSettings() {
       return getStubSettingsBuilder().setTargetPoolsInstanceGroupManagerOperationSettings();
     }

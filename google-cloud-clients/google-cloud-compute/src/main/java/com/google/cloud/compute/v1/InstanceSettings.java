@@ -76,7 +76,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to addAccessConfigInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).addAccessConfigInstanceOperationSettings();
   }
@@ -98,7 +98,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to attachDiskInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).attachDiskInstanceOperationSettings();
   }
@@ -111,7 +111,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to deleteInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).deleteInstanceOperationSettings();
   }
@@ -125,7 +125,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to deleteAccessConfigInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).deleteAccessConfigInstanceOperationSettings();
   }
@@ -138,7 +138,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to detachDiskInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).detachDiskInstanceOperationSettings();
   }
@@ -167,7 +167,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to insertInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).insertInstanceOperationSettings();
   }
@@ -195,7 +195,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to resetInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).resetInstanceOperationSettings();
   }
@@ -209,7 +209,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setDeletionProtectionInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings())
         .setDeletionProtectionInstanceOperationSettings();
@@ -224,7 +224,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setDiskAutoDeleteInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setDiskAutoDeleteInstanceOperationSettings();
   }
@@ -242,7 +242,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setLabelsInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setLabelsInstanceOperationSettings();
   }
@@ -256,7 +256,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setMachineResourcesInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings())
         .setMachineResourcesInstanceOperationSettings();
@@ -271,7 +271,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setMachineTypeInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setMachineTypeInstanceOperationSettings();
   }
@@ -285,7 +285,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setMetadataInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setMetadataInstanceOperationSettings();
   }
@@ -299,7 +299,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setMinCpuPlatformInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setMinCpuPlatformInstanceOperationSettings();
   }
@@ -313,7 +313,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setSchedulingInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setSchedulingInstanceOperationSettings();
   }
@@ -327,7 +327,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setServiceAccountInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setServiceAccountInstanceOperationSettings();
   }
@@ -340,7 +340,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to setTagsInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).setTagsInstanceOperationSettings();
   }
@@ -354,8 +354,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to simulateMaintenanceEventInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings())
         .simulateMaintenanceEventInstanceOperationSettings();
@@ -369,7 +368,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to startInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).startInstanceOperationSettings();
   }
@@ -383,8 +382,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to startWithEncryptionKeyInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings())
         .startWithEncryptionKeyInstanceOperationSettings();
@@ -398,7 +396,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to stopInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).stopInstanceOperationSettings();
   }
@@ -418,7 +416,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to updateAccessConfigInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings()).updateAccessConfigInstanceOperationSettings();
   }
@@ -432,8 +430,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
   /** Returns the object with the settings used for calls to updateNetworkInterfaceInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationSettings() {
     return ((InstanceStubSettings) getStubSettings())
         .updateNetworkInterfaceInstanceOperationSettings();
@@ -550,7 +547,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         addAccessConfigInstanceOperationSettings() {
       return getStubSettingsBuilder().addAccessConfigInstanceOperationSettings();
     }
@@ -573,7 +570,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to attachDiskInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
         attachDiskInstanceOperationSettings() {
       return getStubSettingsBuilder().attachDiskInstanceOperationSettings();
     }
@@ -587,7 +584,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to deleteInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteInstanceHttpRequest, EmptyMessage, Operation>
         deleteInstanceOperationSettings() {
       return getStubSettingsBuilder().deleteInstanceOperationSettings();
     }
@@ -602,7 +599,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         deleteAccessConfigInstanceOperationSettings() {
       return getStubSettingsBuilder().deleteAccessConfigInstanceOperationSettings();
     }
@@ -616,7 +613,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to detachDiskInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
         detachDiskInstanceOperationSettings() {
       return getStubSettingsBuilder().detachDiskInstanceOperationSettings();
     }
@@ -647,7 +644,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to insertInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertInstanceHttpRequest, EmptyMessage, Operation>
         insertInstanceOperationSettings() {
       return getStubSettingsBuilder().insertInstanceOperationSettings();
     }
@@ -676,7 +673,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to resetInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<ResetInstanceHttpRequest, EmptyMessage, Operation>
         resetInstanceOperationSettings() {
       return getStubSettingsBuilder().resetInstanceOperationSettings();
     }
@@ -691,7 +688,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
         setDeletionProtectionInstanceOperationSettings() {
       return getStubSettingsBuilder().setDeletionProtectionInstanceOperationSettings();
     }
@@ -706,7 +703,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
         setDiskAutoDeleteInstanceOperationSettings() {
       return getStubSettingsBuilder().setDiskAutoDeleteInstanceOperationSettings();
     }
@@ -726,7 +723,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to setLabelsInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
         setLabelsInstanceOperationSettings() {
       return getStubSettingsBuilder().setLabelsInstanceOperationSettings();
     }
@@ -741,7 +738,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
         setMachineResourcesInstanceOperationSettings() {
       return getStubSettingsBuilder().setMachineResourcesInstanceOperationSettings();
     }
@@ -755,8 +752,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to setMachineTypeInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
         setMachineTypeInstanceOperationSettings() {
       return getStubSettingsBuilder().setMachineTypeInstanceOperationSettings();
     }
@@ -770,7 +766,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to setMetadataInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
         setMetadataInstanceOperationSettings() {
       return getStubSettingsBuilder().setMetadataInstanceOperationSettings();
     }
@@ -785,7 +781,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
         setMinCpuPlatformInstanceOperationSettings() {
       return getStubSettingsBuilder().setMinCpuPlatformInstanceOperationSettings();
     }
@@ -799,8 +795,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to setSchedulingInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
         setSchedulingInstanceOperationSettings() {
       return getStubSettingsBuilder().setSchedulingInstanceOperationSettings();
     }
@@ -815,7 +810,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
         setServiceAccountInstanceOperationSettings() {
       return getStubSettingsBuilder().setServiceAccountInstanceOperationSettings();
     }
@@ -829,7 +824,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to setTagsInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
         setTagsInstanceOperationSettings() {
       return getStubSettingsBuilder().setTagsInstanceOperationSettings();
     }
@@ -844,7 +839,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
         simulateMaintenanceEventInstanceOperationSettings() {
       return getStubSettingsBuilder().simulateMaintenanceEventInstanceOperationSettings();
     }
@@ -857,7 +852,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to startInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<StartInstanceHttpRequest, EmptyMessage, Operation>
         startInstanceOperationSettings() {
       return getStubSettingsBuilder().startInstanceOperationSettings();
     }
@@ -872,7 +867,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
         startWithEncryptionKeyInstanceOperationSettings() {
       return getStubSettingsBuilder().startWithEncryptionKeyInstanceOperationSettings();
     }
@@ -885,7 +880,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     /** Returns the builder for the settings used for calls to stopInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<StopInstanceHttpRequest, EmptyMessage, Operation>
         stopInstanceOperationSettings() {
       return getStubSettingsBuilder().stopInstanceOperationSettings();
     }
@@ -906,7 +901,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
         updateAccessConfigInstanceOperationSettings() {
       return getStubSettingsBuilder().updateAccessConfigInstanceOperationSettings();
     }
@@ -921,7 +916,7 @@ public class InstanceSettings extends ClientSettings<InstanceSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
         updateNetworkInterfaceInstanceOperationSettings() {
       return getStubSettingsBuilder().updateNetworkInterfaceInstanceOperationSettings();
     }

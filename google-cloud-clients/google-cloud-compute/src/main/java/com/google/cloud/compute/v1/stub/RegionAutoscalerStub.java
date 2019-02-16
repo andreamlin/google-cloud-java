@@ -49,7 +49,7 @@ public abstract class RegionAutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteRegionAutoscalerOperationCallable()");
@@ -67,7 +67,7 @@ public abstract class RegionAutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertRegionAutoscalerOperationCallable()");
@@ -93,7 +93,7 @@ public abstract class RegionAutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchRegionAutoscalerOperationCallable()");
@@ -106,7 +106,7 @@ public abstract class RegionAutoscalerStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateRegionAutoscalerOperationCallable()");

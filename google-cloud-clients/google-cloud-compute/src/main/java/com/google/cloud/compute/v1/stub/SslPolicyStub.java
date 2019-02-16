@@ -50,7 +50,7 @@ public abstract class SslPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, Operation>
       deleteSslPolicyOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteSslPolicyOperationCallable()");
   }
@@ -66,7 +66,7 @@ public abstract class SslPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, Operation>
       insertSslPolicyOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertSslPolicyOperationCallable()");
   }
@@ -96,7 +96,7 @@ public abstract class SslPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, Operation>
       patchSslPolicyOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: patchSslPolicyOperationCallable()");
   }

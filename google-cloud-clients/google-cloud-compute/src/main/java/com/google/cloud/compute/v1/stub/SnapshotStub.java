@@ -52,7 +52,7 @@ public abstract class SnapshotStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteSnapshotOperationCallable()");
   }
@@ -89,7 +89,7 @@ public abstract class SnapshotStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setLabelsSnapshotOperationCallable()");

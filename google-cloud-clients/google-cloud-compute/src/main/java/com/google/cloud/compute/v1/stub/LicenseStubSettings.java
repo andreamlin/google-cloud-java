@@ -107,13 +107,13 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
           .build();
 
   private final UnaryCallSettings<DeleteLicenseHttpRequest, Operation> deleteLicenseSettings;
-  private final OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationSettings;
   private final UnaryCallSettings<GetLicenseHttpRequest, License> getLicenseSettings;
   private final UnaryCallSettings<GetIamPolicyLicenseHttpRequest, Policy>
       getIamPolicyLicenseSettings;
   private final UnaryCallSettings<InsertLicenseHttpRequest, Operation> insertLicenseSettings;
-  private final OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationSettings;
   private final PagedCallSettings<
           ListLicensesHttpRequest, LicensesListResponse, ListLicensesPagedResponse>
@@ -130,7 +130,7 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteLicense. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationSettings() {
     return deleteLicenseOperationSettings;
   }
@@ -152,7 +152,7 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
 
   /** Returns the object with the settings used for calls to insertLicense. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationSettings() {
     return insertLicenseOperationSettings;
   }
@@ -320,16 +320,14 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
 
     private final UnaryCallSettings.Builder<DeleteLicenseHttpRequest, Operation>
         deleteLicenseSettings;
-    private final OperationCallSettings.Builder<
-            DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, Operation>
         deleteLicenseOperationSettings;
     private final UnaryCallSettings.Builder<GetLicenseHttpRequest, License> getLicenseSettings;
     private final UnaryCallSettings.Builder<GetIamPolicyLicenseHttpRequest, Policy>
         getIamPolicyLicenseSettings;
     private final UnaryCallSettings.Builder<InsertLicenseHttpRequest, Operation>
         insertLicenseSettings;
-    private final OperationCallSettings.Builder<
-            InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, Operation>
         insertLicenseOperationSettings;
     private final PagedCallSettings.Builder<
             ListLicensesHttpRequest, LicensesListResponse, ListLicensesPagedResponse>
@@ -465,8 +463,8 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -486,8 +484,8 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -551,7 +549,7 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
     /** Returns the builder for the settings used for calls to deleteLicense. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, Operation>
         deleteLicenseOperationSettings() {
       return deleteLicenseOperationSettings;
     }
@@ -575,7 +573,7 @@ public class LicenseStubSettings extends StubSettings<LicenseStubSettings> {
     /** Returns the builder for the settings used for calls to insertLicense. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, Operation>
         insertLicenseOperationSettings() {
       return insertLicenseOperationSettings;
     }

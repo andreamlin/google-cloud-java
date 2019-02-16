@@ -85,7 +85,7 @@ public class TargetVpnGatewaySettings extends ClientSettings<TargetVpnGatewaySet
   /** Returns the object with the settings used for calls to deleteTargetVpnGateway. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationSettings() {
     return ((TargetVpnGatewayStubSettings) getStubSettings())
         .deleteTargetVpnGatewayOperationSettings();
@@ -106,7 +106,7 @@ public class TargetVpnGatewaySettings extends ClientSettings<TargetVpnGatewaySet
   /** Returns the object with the settings used for calls to insertTargetVpnGateway. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationSettings() {
     return ((TargetVpnGatewayStubSettings) getStubSettings())
         .insertTargetVpnGatewayOperationSettings();
@@ -241,8 +241,7 @@ public class TargetVpnGatewaySettings extends ClientSettings<TargetVpnGatewaySet
     /** Returns the builder for the settings used for calls to deleteTargetVpnGateway. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
         deleteTargetVpnGatewayOperationSettings() {
       return getStubSettingsBuilder().deleteTargetVpnGatewayOperationSettings();
     }
@@ -262,8 +261,7 @@ public class TargetVpnGatewaySettings extends ClientSettings<TargetVpnGatewaySet
     /** Returns the builder for the settings used for calls to insertTargetVpnGateway. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
         insertTargetVpnGatewayOperationSettings() {
       return getStubSettingsBuilder().insertTargetVpnGatewayOperationSettings();
     }

@@ -187,7 +187,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionAutoscalerAsync(
       ProjectRegionAutoscalerName autoscaler) {
 
     DeleteRegionAutoscalerHttpRequest request =
@@ -215,7 +215,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionAutoscalerAsync(
       String autoscaler) {
 
     DeleteRegionAutoscalerHttpRequest request =
@@ -244,7 +244,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteRegionAutoscalerAsync(
       DeleteRegionAutoscalerHttpRequest request) {
     return deleteRegionAutoscalerOperationCallable().futureCall(request);
   }
@@ -261,14 +261,14 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *   DeleteRegionAutoscalerHttpRequest request = DeleteRegionAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionAutoscalerClient.deleteRegionAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionAutoscalerClient.deleteRegionAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteRegionAutoscalerOperationCallable() {
     return stub.deleteRegionAutoscalerOperationCallable();
   }
@@ -419,7 +419,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionAutoscalerAsync(
       ProjectRegionName region, Autoscaler autoscalerResource) {
 
     InsertRegionAutoscalerHttpRequest request =
@@ -454,7 +454,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionAutoscalerAsync(
       String region, Autoscaler autoscalerResource) {
 
     InsertRegionAutoscalerHttpRequest request =
@@ -488,7 +488,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionAutoscalerAsync(
       InsertRegionAutoscalerHttpRequest request) {
     return insertRegionAutoscalerOperationCallable().futureCall(request);
   }
@@ -507,14 +507,14 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setAutoscalerResource(autoscalerResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionAutoscalerClient.insertRegionAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionAutoscalerClient.insertRegionAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       insertRegionAutoscalerOperationCallable() {
     return stub.insertRegionAutoscalerOperationCallable();
   }
@@ -715,7 +715,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRegionAutoscalerAsync(
       String autoscaler,
       ProjectRegionName region,
       Autoscaler autoscalerResource,
@@ -763,7 +763,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRegionAutoscalerAsync(
       String autoscaler, String region, Autoscaler autoscalerResource, List<String> fieldMask) {
 
     PatchRegionAutoscalerHttpRequest request =
@@ -804,7 +804,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRegionAutoscalerAsync(
       PatchRegionAutoscalerHttpRequest request) {
     return patchRegionAutoscalerOperationCallable().futureCall(request);
   }
@@ -828,14 +828,14 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *     .setAutoscalerResource(autoscalerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionAutoscalerClient.patchRegionAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionAutoscalerClient.patchRegionAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       patchRegionAutoscalerOperationCallable() {
     return stub.patchRegionAutoscalerOperationCallable();
   }
@@ -902,7 +902,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRegionAutoscalerAsync(
       String autoscaler,
       ProjectRegionName region,
       Autoscaler autoscalerResource,
@@ -949,7 +949,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRegionAutoscalerAsync(
       String autoscaler, String region, Autoscaler autoscalerResource, List<String> fieldMask) {
 
     UpdateRegionAutoscalerHttpRequest request =
@@ -989,7 +989,7 @@ public class RegionAutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateRegionAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateRegionAutoscalerAsync(
       UpdateRegionAutoscalerHttpRequest request) {
     return updateRegionAutoscalerOperationCallable().futureCall(request);
   }
@@ -1012,14 +1012,14 @@ public class RegionAutoscalerClient implements BackgroundResource {
    *     .setAutoscalerResource(autoscalerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionAutoscalerClient.updateRegionAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionAutoscalerClient.updateRegionAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateRegionAutoscalerHttpRequest, EmptyMessage, Operation>
       updateRegionAutoscalerOperationCallable() {
     return stub.updateRegionAutoscalerOperationCallable();
   }

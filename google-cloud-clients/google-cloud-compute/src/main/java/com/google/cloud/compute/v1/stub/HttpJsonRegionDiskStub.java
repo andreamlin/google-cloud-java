@@ -231,24 +231,24 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
 
   private final UnaryCallable<CreateSnapshotRegionDiskHttpRequest, Operation>
       createSnapshotRegionDiskCallable;
-  private final OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotRegionDiskOperationCallable;
   private final UnaryCallable<DeleteRegionDiskHttpRequest, Operation> deleteRegionDiskCallable;
-  private final OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, Operation>
       deleteRegionDiskOperationCallable;
   private final UnaryCallable<GetRegionDiskHttpRequest, Disk> getRegionDiskCallable;
   private final UnaryCallable<InsertRegionDiskHttpRequest, Operation> insertRegionDiskCallable;
-  private final OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, Operation>
       insertRegionDiskOperationCallable;
   private final UnaryCallable<ListRegionDisksHttpRequest, DiskList> listRegionDisksCallable;
   private final UnaryCallable<ListRegionDisksHttpRequest, ListRegionDisksPagedResponse>
       listRegionDisksPagedCallable;
   private final UnaryCallable<ResizeRegionDiskHttpRequest, Operation> resizeRegionDiskCallable;
-  private final OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, Operation>
       resizeRegionDiskOperationCallable;
   private final UnaryCallable<SetLabelsRegionDiskHttpRequest, Operation>
       setLabelsRegionDiskCallable;
-  private final OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, Operation>
       setLabelsRegionDiskOperationCallable;
   private final UnaryCallable<TestIamPermissionsRegionDiskHttpRequest, TestPermissionsResponse>
       testIamPermissionsRegionDiskCallable;
@@ -404,7 +404,7 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<CreateSnapshotRegionDiskHttpRequest, EmptyMessage, Operation>
       createSnapshotRegionDiskOperationCallable() {
     return createSnapshotRegionDiskOperationCallable;
   }
@@ -416,7 +416,7 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionDiskHttpRequest, EmptyMessage, Operation>
       deleteRegionDiskOperationCallable() {
     return deleteRegionDiskOperationCallable;
   }
@@ -432,7 +432,7 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionDiskHttpRequest, EmptyMessage, Operation>
       insertRegionDiskOperationCallable() {
     return insertRegionDiskOperationCallable;
   }
@@ -454,7 +454,7 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResizeRegionDiskHttpRequest, EmptyMessage, Operation>
       resizeRegionDiskOperationCallable() {
     return resizeRegionDiskOperationCallable;
   }
@@ -465,7 +465,7 @@ public class HttpJsonRegionDiskStub extends RegionDiskStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsRegionDiskHttpRequest, EmptyMessage, Operation>
       setLabelsRegionDiskOperationCallable() {
     return setLabelsRegionDiskOperationCallable;
   }

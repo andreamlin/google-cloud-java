@@ -51,7 +51,7 @@ public abstract class TargetSslProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetSslProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteTargetSslProxyOperationCallable()");
@@ -68,7 +68,7 @@ public abstract class TargetSslProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
       insertTargetSslProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertTargetSslProxyOperationCallable()");
@@ -92,7 +92,7 @@ public abstract class TargetSslProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetSslProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setBackendServiceTargetSslProxyOperationCallable()");
@@ -106,7 +106,7 @@ public abstract class TargetSslProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetSslProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setProxyHeaderTargetSslProxyOperationCallable()");
@@ -120,7 +120,7 @@ public abstract class TargetSslProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetSslProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setSslCertificatesTargetSslProxyOperationCallable()");
@@ -134,7 +134,7 @@ public abstract class TargetSslProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetSslProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setSslPolicyTargetSslProxyOperationCallable()");

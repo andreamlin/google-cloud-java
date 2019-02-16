@@ -218,24 +218,24 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteUrlMapHttpRequest, Operation> deleteUrlMapCallable;
-  private final OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationCallable;
   private final UnaryCallable<GetUrlMapHttpRequest, UrlMap> getUrlMapCallable;
   private final UnaryCallable<InsertUrlMapHttpRequest, Operation> insertUrlMapCallable;
-  private final OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationCallable;
   private final UnaryCallable<InvalidateCacheUrlMapHttpRequest, Operation>
       invalidateCacheUrlMapCallable;
-  private final OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationCallable;
   private final UnaryCallable<ListUrlMapsHttpRequest, UrlMapList> listUrlMapsCallable;
   private final UnaryCallable<ListUrlMapsHttpRequest, ListUrlMapsPagedResponse>
       listUrlMapsPagedCallable;
   private final UnaryCallable<PatchUrlMapHttpRequest, Operation> patchUrlMapCallable;
-  private final OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationCallable;
   private final UnaryCallable<UpdateUrlMapHttpRequest, Operation> updateUrlMapCallable;
-  private final OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationCallable;
   private final UnaryCallable<ValidateUrlMapHttpRequest, UrlMapsValidateResponse>
       validateUrlMapCallable;
@@ -383,7 +383,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteUrlMapHttpRequest, EmptyMessage, Operation>
       deleteUrlMapOperationCallable() {
     return deleteUrlMapOperationCallable;
   }
@@ -399,7 +399,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertUrlMapHttpRequest, EmptyMessage, Operation>
       insertUrlMapOperationCallable() {
     return insertUrlMapOperationCallable;
   }
@@ -410,7 +410,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InvalidateCacheUrlMapHttpRequest, EmptyMessage, Operation>
       invalidateCacheUrlMapOperationCallable() {
     return invalidateCacheUrlMapOperationCallable;
   }
@@ -433,7 +433,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchUrlMapHttpRequest, EmptyMessage, Operation>
       patchUrlMapOperationCallable() {
     return patchUrlMapOperationCallable;
   }
@@ -444,7 +444,7 @@ public class HttpJsonUrlMapStub extends UrlMapStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateUrlMapHttpRequest, EmptyMessage, Operation>
       updateUrlMapOperationCallable() {
     return updateUrlMapOperationCallable;
   }

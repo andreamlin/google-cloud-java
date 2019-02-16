@@ -189,11 +189,11 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteSslPolicyHttpRequest, Operation> deleteSslPolicyCallable;
-  private final OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, Operation>
       deleteSslPolicyOperationCallable;
   private final UnaryCallable<GetSslPolicyHttpRequest, SslPolicy> getSslPolicyCallable;
   private final UnaryCallable<InsertSslPolicyHttpRequest, Operation> insertSslPolicyCallable;
-  private final OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, Operation>
       insertSslPolicyOperationCallable;
   private final UnaryCallable<ListSslPoliciesHttpRequest, SslPoliciesList> listSslPoliciesCallable;
   private final UnaryCallable<ListSslPoliciesHttpRequest, ListSslPoliciesPagedResponse>
@@ -202,7 +202,7 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
           ListAvailableFeaturesSslPoliciesHttpRequest, SslPoliciesListAvailableFeaturesResponse>
       listAvailableFeaturesSslPoliciesCallable;
   private final UnaryCallable<PatchSslPolicyHttpRequest, Operation> patchSslPolicyCallable;
-  private final OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, Operation>
       patchSslPolicyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -327,7 +327,7 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, Operation>
       deleteSslPolicyOperationCallable() {
     return deleteSslPolicyOperationCallable;
   }
@@ -343,7 +343,7 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, Operation>
       insertSslPolicyOperationCallable() {
     return insertSslPolicyOperationCallable;
   }
@@ -372,7 +372,7 @@ public class HttpJsonSslPolicyStub extends SslPolicyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, Operation>
       patchSslPolicyOperationCallable() {
     return patchSslPolicyOperationCallable;
   }

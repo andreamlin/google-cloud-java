@@ -107,13 +107,13 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   private final UnaryCallSettings<DeleteTargetSslProxyHttpRequest, Operation>
       deleteTargetSslProxySettings;
-  private final OperationCallSettings<DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetSslProxyOperationSettings;
   private final UnaryCallSettings<GetTargetSslProxyHttpRequest, TargetSslProxy>
       getTargetSslProxySettings;
   private final UnaryCallSettings<InsertTargetSslProxyHttpRequest, Operation>
       insertTargetSslProxySettings;
-  private final OperationCallSettings<InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
       insertTargetSslProxyOperationSettings;
   private final PagedCallSettings<
           ListTargetSslProxiesHttpRequest, TargetSslProxyList, ListTargetSslProxiesPagedResponse>
@@ -121,22 +121,22 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
   private final UnaryCallSettings<SetBackendServiceTargetSslProxyHttpRequest, Operation>
       setBackendServiceTargetSslProxySettings;
   private final OperationCallSettings<
-          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetSslProxyOperationSettings;
   private final UnaryCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, Operation>
       setProxyHeaderTargetSslProxySettings;
   private final OperationCallSettings<
-          SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetSslProxyOperationSettings;
   private final UnaryCallSettings<SetSslCertificatesTargetSslProxyHttpRequest, Operation>
       setSslCertificatesTargetSslProxySettings;
   private final OperationCallSettings<
-          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetSslProxyOperationSettings;
   private final UnaryCallSettings<SetSslPolicyTargetSslProxyHttpRequest, Operation>
       setSslPolicyTargetSslProxySettings;
   private final OperationCallSettings<
-          SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetSslProxyOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteTargetSslProxy. */
@@ -147,7 +147,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   /** Returns the object with the settings used for calls to deleteTargetSslProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetSslProxyOperationSettings() {
     return deleteTargetSslProxyOperationSettings;
   }
@@ -166,7 +166,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   /** Returns the object with the settings used for calls to insertTargetSslProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
       insertTargetSslProxyOperationSettings() {
     return insertTargetSslProxyOperationSettings;
   }
@@ -186,8 +186,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   /** Returns the object with the settings used for calls to setBackendServiceTargetSslProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetSslProxyOperationSettings() {
     return setBackendServiceTargetSslProxyOperationSettings;
   }
@@ -200,7 +199,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   /** Returns the object with the settings used for calls to setProxyHeaderTargetSslProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetSslProxyOperationSettings() {
     return setProxyHeaderTargetSslProxyOperationSettings;
   }
@@ -213,8 +212,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   /** Returns the object with the settings used for calls to setSslCertificatesTargetSslProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetSslProxyOperationSettings() {
     return setSslCertificatesTargetSslProxyOperationSettings;
   }
@@ -227,7 +225,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
 
   /** Returns the object with the settings used for calls to setSslPolicyTargetSslProxy. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetSslProxyOperationSettings() {
     return setSslPolicyTargetSslProxyOperationSettings;
   }
@@ -405,14 +403,14 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     private final UnaryCallSettings.Builder<DeleteTargetSslProxyHttpRequest, Operation>
         deleteTargetSslProxySettings;
     private final OperationCallSettings.Builder<
-            DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetSslProxyOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetSslProxyHttpRequest, TargetSslProxy>
         getTargetSslProxySettings;
     private final UnaryCallSettings.Builder<InsertTargetSslProxyHttpRequest, Operation>
         insertTargetSslProxySettings;
     private final OperationCallSettings.Builder<
-            InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
         insertTargetSslProxyOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetSslProxiesHttpRequest, TargetSslProxyList, ListTargetSslProxiesPagedResponse>
@@ -420,22 +418,22 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     private final UnaryCallSettings.Builder<SetBackendServiceTargetSslProxyHttpRequest, Operation>
         setBackendServiceTargetSslProxySettings;
     private final OperationCallSettings.Builder<
-            SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setBackendServiceTargetSslProxyOperationSettings;
     private final UnaryCallSettings.Builder<SetProxyHeaderTargetSslProxyHttpRequest, Operation>
         setProxyHeaderTargetSslProxySettings;
     private final OperationCallSettings.Builder<
-            SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setProxyHeaderTargetSslProxyOperationSettings;
     private final UnaryCallSettings.Builder<SetSslCertificatesTargetSslProxyHttpRequest, Operation>
         setSslCertificatesTargetSslProxySettings;
     private final OperationCallSettings.Builder<
-            SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setSslCertificatesTargetSslProxyOperationSettings;
     private final UnaryCallSettings.Builder<SetSslPolicyTargetSslProxyHttpRequest, Operation>
         setSslPolicyTargetSslProxySettings;
     private final OperationCallSettings.Builder<
-            SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setSslPolicyTargetSslProxyOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -580,8 +578,8 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -601,8 +599,8 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -623,8 +621,8 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -645,8 +643,8 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -667,8 +665,8 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -689,8 +687,8 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -770,8 +768,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     /** Returns the builder for the settings used for calls to deleteTargetSslProxy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
         deleteTargetSslProxyOperationSettings() {
       return deleteTargetSslProxyOperationSettings;
     }
@@ -791,8 +788,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     /** Returns the builder for the settings used for calls to insertTargetSslProxy. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
         insertTargetSslProxyOperationSettings() {
       return insertTargetSslProxyOperationSettings;
     }
@@ -814,7 +810,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setBackendServiceTargetSslProxyOperationSettings() {
       return setBackendServiceTargetSslProxyOperationSettings;
     }
@@ -829,7 +825,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setProxyHeaderTargetSslProxyOperationSettings() {
       return setProxyHeaderTargetSslProxyOperationSettings;
     }
@@ -844,7 +840,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setSslCertificatesTargetSslProxyOperationSettings() {
       return setSslCertificatesTargetSslProxyOperationSettings;
     }
@@ -859,7 +855,7 @@ public class TargetSslProxyStubSettings extends StubSettings<TargetSslProxyStubS
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+            SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
         setSslPolicyTargetSslProxyOperationSettings() {
       return setSslPolicyTargetSslProxyOperationSettings;
     }

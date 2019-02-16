@@ -186,7 +186,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteGlobalAddressAsync(
       ProjectGlobalAddressName address) {
 
     DeleteGlobalAddressHttpRequest request =
@@ -214,8 +214,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalAddressAsync(
-      String address) {
+  public final OperationFuture<EmptyMessage, Operation> deleteGlobalAddressAsync(String address) {
 
     DeleteGlobalAddressHttpRequest request =
         DeleteGlobalAddressHttpRequest.newBuilder().setAddress(address).build();
@@ -243,7 +242,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteGlobalAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteGlobalAddressAsync(
       DeleteGlobalAddressHttpRequest request) {
     return deleteGlobalAddressOperationCallable().futureCall(request);
   }
@@ -260,14 +259,14 @@ public class GlobalAddressClient implements BackgroundResource {
    *   DeleteGlobalAddressHttpRequest request = DeleteGlobalAddressHttpRequest.newBuilder()
    *     .setAddress(address.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalAddressClient.deleteGlobalAddressOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = globalAddressClient.deleteGlobalAddressOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationCallable() {
     return stub.deleteGlobalAddressOperationCallable();
   }
@@ -419,7 +418,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertGlobalAddressAsync(
       ProjectName project, Address addressResource) {
 
     InsertGlobalAddressHttpRequest request =
@@ -452,7 +451,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertGlobalAddressAsync(
       String project, Address addressResource) {
 
     InsertGlobalAddressHttpRequest request =
@@ -486,7 +485,7 @@ public class GlobalAddressClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertGlobalAddressAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertGlobalAddressAsync(
       InsertGlobalAddressHttpRequest request) {
     return insertGlobalAddressOperationCallable().futureCall(request);
   }
@@ -505,14 +504,14 @@ public class GlobalAddressClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setAddressResource(addressResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = globalAddressClient.insertGlobalAddressOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = globalAddressClient.insertGlobalAddressOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationCallable() {
     return stub.insertGlobalAddressOperationCallable();
   }

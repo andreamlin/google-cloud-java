@@ -123,18 +123,18 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
           AggregatedListSubnetworksPagedResponse>
       aggregatedListSubnetworksSettings;
   private final UnaryCallSettings<DeleteSubnetworkHttpRequest, Operation> deleteSubnetworkSettings;
-  private final OperationCallSettings<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationSettings;
   private final UnaryCallSettings<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>
       expandIpCidrRangeSubnetworkSettings;
   private final OperationCallSettings<
-          ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+          ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationSettings;
   private final UnaryCallSettings<GetSubnetworkHttpRequest, Subnetwork> getSubnetworkSettings;
   private final UnaryCallSettings<GetIamPolicySubnetworkHttpRequest, Policy>
       getIamPolicySubnetworkSettings;
   private final UnaryCallSettings<InsertSubnetworkHttpRequest, Operation> insertSubnetworkSettings;
-  private final OperationCallSettings<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationSettings;
   private final PagedCallSettings<
           ListSubnetworksHttpRequest, SubnetworkList, ListSubnetworksPagedResponse>
@@ -145,14 +145,14 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
           ListUsableSubnetworksPagedResponse>
       listUsableSubnetworksSettings;
   private final UnaryCallSettings<PatchSubnetworkHttpRequest, Operation> patchSubnetworkSettings;
-  private final OperationCallSettings<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationSettings;
   private final UnaryCallSettings<SetIamPolicySubnetworkHttpRequest, Policy>
       setIamPolicySubnetworkSettings;
   private final UnaryCallSettings<SetPrivateIpGoogleAccessSubnetworkHttpRequest, Operation>
       setPrivateIpGoogleAccessSubnetworkSettings;
   private final OperationCallSettings<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationSettings;
   private final UnaryCallSettings<TestIamPermissionsSubnetworkHttpRequest, TestPermissionsResponse>
       testIamPermissionsSubnetworkSettings;
@@ -173,7 +173,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
 
   /** Returns the object with the settings used for calls to deleteSubnetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationSettings() {
     return deleteSubnetworkOperationSettings;
   }
@@ -186,7 +186,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
 
   /** Returns the object with the settings used for calls to expandIpCidrRangeSubnetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationSettings() {
     return expandIpCidrRangeSubnetworkOperationSettings;
   }
@@ -209,7 +209,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
 
   /** Returns the object with the settings used for calls to insertSubnetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationSettings() {
     return insertSubnetworkOperationSettings;
   }
@@ -236,7 +236,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
 
   /** Returns the object with the settings used for calls to patchSubnetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationSettings() {
     return patchSubnetworkOperationSettings;
   }
@@ -256,7 +256,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
   /** Returns the object with the settings used for calls to setPrivateIpGoogleAccessSubnetwork. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationSettings() {
     return setPrivateIpGoogleAccessSubnetworkOperationSettings;
   }
@@ -582,12 +582,12 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     private final UnaryCallSettings.Builder<DeleteSubnetworkHttpRequest, Operation>
         deleteSubnetworkSettings;
     private final OperationCallSettings.Builder<
-            DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
         deleteSubnetworkOperationSettings;
     private final UnaryCallSettings.Builder<ExpandIpCidrRangeSubnetworkHttpRequest, Operation>
         expandIpCidrRangeSubnetworkSettings;
     private final OperationCallSettings.Builder<
-            ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
         expandIpCidrRangeSubnetworkOperationSettings;
     private final UnaryCallSettings.Builder<GetSubnetworkHttpRequest, Subnetwork>
         getSubnetworkSettings;
@@ -596,7 +596,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     private final UnaryCallSettings.Builder<InsertSubnetworkHttpRequest, Operation>
         insertSubnetworkSettings;
     private final OperationCallSettings.Builder<
-            InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            InsertSubnetworkHttpRequest, EmptyMessage, Operation>
         insertSubnetworkOperationSettings;
     private final PagedCallSettings.Builder<
             ListSubnetworksHttpRequest, SubnetworkList, ListSubnetworksPagedResponse>
@@ -608,8 +608,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
         listUsableSubnetworksSettings;
     private final UnaryCallSettings.Builder<PatchSubnetworkHttpRequest, Operation>
         patchSubnetworkSettings;
-    private final OperationCallSettings.Builder<
-            PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
         patchSubnetworkOperationSettings;
     private final UnaryCallSettings.Builder<SetIamPolicySubnetworkHttpRequest, Policy>
         setIamPolicySubnetworkSettings;
@@ -617,7 +616,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
             SetPrivateIpGoogleAccessSubnetworkHttpRequest, Operation>
         setPrivateIpGoogleAccessSubnetworkSettings;
     private final OperationCallSettings.Builder<
-            SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
         setPrivateIpGoogleAccessSubnetworkOperationSettings;
     private final UnaryCallSettings.Builder<
             TestIamPermissionsSubnetworkHttpRequest, TestPermissionsResponse>
@@ -796,8 +795,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -818,8 +817,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -839,8 +838,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -860,8 +859,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -882,8 +881,8 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -975,7 +974,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     /** Returns the builder for the settings used for calls to deleteSubnetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
         deleteSubnetworkOperationSettings() {
       return deleteSubnetworkOperationSettings;
     }
@@ -990,7 +989,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
         expandIpCidrRangeSubnetworkOperationSettings() {
       return expandIpCidrRangeSubnetworkOperationSettings;
     }
@@ -1015,7 +1014,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     /** Returns the builder for the settings used for calls to insertSubnetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
         insertSubnetworkOperationSettings() {
       return insertSubnetworkOperationSettings;
     }
@@ -1045,7 +1044,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     /** Returns the builder for the settings used for calls to patchSubnetwork. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
         patchSubnetworkOperationSettings() {
       return patchSubnetworkOperationSettings;
     }
@@ -1070,7 +1069,7 @@ public class SubnetworkStubSettings extends StubSettings<SubnetworkStubSettings>
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
         setPrivateIpGoogleAccessSubnetworkOperationSettings() {
       return setPrivateIpGoogleAccessSubnetworkOperationSettings;
     }

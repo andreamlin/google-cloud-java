@@ -74,7 +74,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
   /** Returns the object with the settings used for calls to addRuleSecurityPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationSettings() {
     return ((SecurityPolicyStubSettings) getStubSettings())
         .addRuleSecurityPolicyOperationSettings();
@@ -89,7 +89,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
   /** Returns the object with the settings used for calls to deleteSecurityPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationSettings() {
     return ((SecurityPolicyStubSettings) getStubSettings()).deleteSecurityPolicyOperationSettings();
   }
@@ -115,7 +115,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
   /** Returns the object with the settings used for calls to insertSecurityPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationSettings() {
     return ((SecurityPolicyStubSettings) getStubSettings()).insertSecurityPolicyOperationSettings();
   }
@@ -136,7 +136,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
   /** Returns the object with the settings used for calls to patchSecurityPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationSettings() {
     return ((SecurityPolicyStubSettings) getStubSettings()).patchSecurityPolicyOperationSettings();
   }
@@ -150,7 +150,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
   /** Returns the object with the settings used for calls to patchRuleSecurityPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationSettings() {
     return ((SecurityPolicyStubSettings) getStubSettings())
         .patchRuleSecurityPolicyOperationSettings();
@@ -165,7 +165,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
   /** Returns the object with the settings used for calls to removeRuleSecurityPolicy. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationSettings() {
     return ((SecurityPolicyStubSettings) getStubSettings())
         .removeRuleSecurityPolicyOperationSettings();
@@ -282,8 +282,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     /** Returns the builder for the settings used for calls to addRuleSecurityPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         addRuleSecurityPolicyOperationSettings() {
       return getStubSettingsBuilder().addRuleSecurityPolicyOperationSettings();
     }
@@ -297,8 +296,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     /** Returns the builder for the settings used for calls to deleteSecurityPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
         deleteSecurityPolicyOperationSettings() {
       return getStubSettingsBuilder().deleteSecurityPolicyOperationSettings();
     }
@@ -324,8 +322,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     /** Returns the builder for the settings used for calls to insertSecurityPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
         insertSecurityPolicyOperationSettings() {
       return getStubSettingsBuilder().insertSecurityPolicyOperationSettings();
     }
@@ -346,7 +343,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     /** Returns the builder for the settings used for calls to patchSecurityPolicy. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
         patchSecurityPolicyOperationSettings() {
       return getStubSettingsBuilder().patchSecurityPolicyOperationSettings();
     }
@@ -361,7 +358,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         patchRuleSecurityPolicyOperationSettings() {
       return getStubSettingsBuilder().patchRuleSecurityPolicyOperationSettings();
     }
@@ -376,7 +373,7 @@ public class SecurityPolicySettings extends ClientSettings<SecurityPolicySetting
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+            RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
         removeRuleSecurityPolicyOperationSettings() {
       return getStubSettingsBuilder().removeRuleSecurityPolicyOperationSettings();
     }

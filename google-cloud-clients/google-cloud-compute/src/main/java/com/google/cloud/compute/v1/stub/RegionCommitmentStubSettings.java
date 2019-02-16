@@ -113,7 +113,7 @@ public class RegionCommitmentStubSettings extends StubSettings<RegionCommitmentS
       getRegionCommitmentSettings;
   private final UnaryCallSettings<InsertRegionCommitmentHttpRequest, Operation>
       insertRegionCommitmentSettings;
-  private final OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationSettings;
   private final PagedCallSettings<
           ListRegionCommitmentsHttpRequest, CommitmentList, ListRegionCommitmentsPagedResponse>
@@ -142,7 +142,7 @@ public class RegionCommitmentStubSettings extends StubSettings<RegionCommitmentS
 
   /** Returns the object with the settings used for calls to insertRegionCommitment. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationSettings() {
     return insertRegionCommitmentOperationSettings;
   }
@@ -396,7 +396,7 @@ public class RegionCommitmentStubSettings extends StubSettings<RegionCommitmentS
     private final UnaryCallSettings.Builder<InsertRegionCommitmentHttpRequest, Operation>
         insertRegionCommitmentSettings;
     private final OperationCallSettings.Builder<
-            InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
         insertRegionCommitmentOperationSettings;
     private final PagedCallSettings.Builder<
             ListRegionCommitmentsHttpRequest, CommitmentList, ListRegionCommitmentsPagedResponse>
@@ -504,8 +504,8 @@ public class RegionCommitmentStubSettings extends StubSettings<RegionCommitmentS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -580,8 +580,7 @@ public class RegionCommitmentStubSettings extends StubSettings<RegionCommitmentS
     /** Returns the builder for the settings used for calls to insertRegionCommitment. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
         insertRegionCommitmentOperationSettings() {
       return insertRegionCommitmentOperationSettings;
     }

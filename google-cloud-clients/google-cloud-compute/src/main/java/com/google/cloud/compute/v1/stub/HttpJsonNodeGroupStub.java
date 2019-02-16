@@ -327,7 +327,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   private final HttpJsonZoneOperationStub operationsStub;
 
   private final UnaryCallable<AddNodesNodeGroupHttpRequest, Operation> addNodesNodeGroupCallable;
-  private final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       addNodesNodeGroupOperationCallable;
   private final UnaryCallable<AggregatedListNodeGroupsHttpRequest, NodeGroupAggregatedList>
       aggregatedListNodeGroupsCallable;
@@ -335,17 +335,17 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
           AggregatedListNodeGroupsHttpRequest, AggregatedListNodeGroupsPagedResponse>
       aggregatedListNodeGroupsPagedCallable;
   private final UnaryCallable<DeleteNodeGroupHttpRequest, Operation> deleteNodeGroupCallable;
-  private final OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodeGroupOperationCallable;
   private final UnaryCallable<DeleteNodesNodeGroupHttpRequest, Operation>
       deleteNodesNodeGroupCallable;
-  private final OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodesNodeGroupOperationCallable;
   private final UnaryCallable<GetNodeGroupHttpRequest, NodeGroup> getNodeGroupCallable;
   private final UnaryCallable<GetIamPolicyNodeGroupHttpRequest, Policy>
       getIamPolicyNodeGroupCallable;
   private final UnaryCallable<InsertNodeGroupHttpRequest, Operation> insertNodeGroupCallable;
-  private final OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
       insertNodeGroupOperationCallable;
   private final UnaryCallable<ListNodeGroupsHttpRequest, NodeGroupList> listNodeGroupsCallable;
   private final UnaryCallable<ListNodeGroupsHttpRequest, ListNodeGroupsPagedResponse>
@@ -358,7 +358,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
       setIamPolicyNodeGroupCallable;
   private final UnaryCallable<SetNodeTemplateNodeGroupHttpRequest, Operation>
       setNodeTemplateNodeGroupCallable;
-  private final OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
       setNodeTemplateNodeGroupOperationCallable;
   private final UnaryCallable<TestIamPermissionsNodeGroupHttpRequest, TestPermissionsResponse>
       testIamPermissionsNodeGroupCallable;
@@ -567,7 +567,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       addNodesNodeGroupOperationCallable() {
     return addNodesNodeGroupOperationCallable;
   }
@@ -590,7 +590,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodeGroupOperationCallable() {
     return deleteNodeGroupOperationCallable;
   }
@@ -601,7 +601,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteNodesNodeGroupHttpRequest, EmptyMessage, Operation>
       deleteNodesNodeGroupOperationCallable() {
     return deleteNodesNodeGroupOperationCallable;
   }
@@ -622,7 +622,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertNodeGroupHttpRequest, EmptyMessage, Operation>
       insertNodeGroupOperationCallable() {
     return insertNodeGroupOperationCallable;
   }
@@ -661,7 +661,7 @@ public class HttpJsonNodeGroupStub extends NodeGroupStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetNodeTemplateNodeGroupHttpRequest, EmptyMessage, Operation>
       setNodeTemplateNodeGroupOperationCallable() {
     return setNodeTemplateNodeGroupOperationCallable;
   }

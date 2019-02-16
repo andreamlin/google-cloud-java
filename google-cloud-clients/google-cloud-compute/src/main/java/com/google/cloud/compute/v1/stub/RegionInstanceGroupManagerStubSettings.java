@@ -114,24 +114,24 @@ public class RegionInstanceGroupManagerStubSettings
   private final UnaryCallSettings<AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       abandonInstancesRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, Operation>
       deleteRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       deleteInstancesRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getRegionInstanceGroupManagerSettings;
   private final UnaryCallSettings<InsertRegionInstanceGroupManagerHttpRequest, Operation>
       insertRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertRegionInstanceGroupManagerOperationSettings;
   private final PagedCallSettings<
           ListRegionInstanceGroupManagersHttpRequest,
@@ -145,28 +145,28 @@ public class RegionInstanceGroupManagerStubSettings
   private final UnaryCallSettings<PatchRegionInstanceGroupManagerHttpRequest, Operation>
       patchRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation>
       recreateInstancesRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, Operation>
       resizeRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<
           SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateRegionInstanceGroupManagerOperationSettings;
   private final UnaryCallSettings<SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>
       setTargetPoolsRegionInstanceGroupManagerSettings;
   private final OperationCallSettings<
-          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsRegionInstanceGroupManagerOperationSettings;
 
   /**
@@ -184,7 +184,7 @@ public class RegionInstanceGroupManagerStubSettings
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallSettings<
-          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesRegionInstanceGroupManagerOperationSettings() {
     return abandonInstancesRegionInstanceGroupManagerOperationSettings;
   }
@@ -197,8 +197,7 @@ public class RegionInstanceGroupManagerStubSettings
 
   /** Returns the object with the settings used for calls to deleteRegionInstanceGroupManager. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteRegionInstanceGroupManagerOperationSettings() {
     return deleteRegionInstanceGroupManagerOperationSettings;
   }
@@ -218,7 +217,7 @@ public class RegionInstanceGroupManagerStubSettings
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallSettings<
-          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesRegionInstanceGroupManagerOperationSettings() {
     return deleteInstancesRegionInstanceGroupManagerOperationSettings;
   }
@@ -237,8 +236,7 @@ public class RegionInstanceGroupManagerStubSettings
 
   /** Returns the object with the settings used for calls to insertRegionInstanceGroupManager. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertRegionInstanceGroupManagerOperationSettings() {
     return insertRegionInstanceGroupManagerOperationSettings;
   }
@@ -271,8 +269,7 @@ public class RegionInstanceGroupManagerStubSettings
 
   /** Returns the object with the settings used for calls to patchRegionInstanceGroupManager. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchRegionInstanceGroupManagerOperationSettings() {
     return patchRegionInstanceGroupManagerOperationSettings;
   }
@@ -292,7 +289,7 @@ public class RegionInstanceGroupManagerStubSettings
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallSettings<
-          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesRegionInstanceGroupManagerOperationSettings() {
     return recreateInstancesRegionInstanceGroupManagerOperationSettings;
   }
@@ -305,8 +302,7 @@ public class RegionInstanceGroupManagerStubSettings
 
   /** Returns the object with the settings used for calls to resizeRegionInstanceGroupManager. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeRegionInstanceGroupManagerOperationSettings() {
     return resizeRegionInstanceGroupManagerOperationSettings;
   }
@@ -326,7 +322,7 @@ public class RegionInstanceGroupManagerStubSettings
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateRegionInstanceGroupManagerOperationSettings() {
     return setInstanceTemplateRegionInstanceGroupManagerOperationSettings;
   }
@@ -346,7 +342,7 @@ public class RegionInstanceGroupManagerStubSettings
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsRegionInstanceGroupManagerOperationSettings() {
     return setTargetPoolsRegionInstanceGroupManagerOperationSettings;
   }
@@ -560,18 +556,18 @@ public class RegionInstanceGroupManagerStubSettings
             AbandonInstancesRegionInstanceGroupManagerHttpRequest, Operation>
         abandonInstancesRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         abandonInstancesRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<DeleteRegionInstanceGroupManagerHttpRequest, Operation>
         deleteRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<
             DeleteInstancesRegionInstanceGroupManagerHttpRequest, Operation>
         deleteInstancesRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteInstancesRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<
             GetRegionInstanceGroupManagerHttpRequest, InstanceGroupManager>
@@ -579,7 +575,7 @@ public class RegionInstanceGroupManagerStubSettings
     private final UnaryCallSettings.Builder<InsertRegionInstanceGroupManagerHttpRequest, Operation>
         insertRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         insertRegionInstanceGroupManagerOperationSettings;
     private final PagedCallSettings.Builder<
             ListRegionInstanceGroupManagersHttpRequest,
@@ -593,30 +589,30 @@ public class RegionInstanceGroupManagerStubSettings
     private final UnaryCallSettings.Builder<PatchRegionInstanceGroupManagerHttpRequest, Operation>
         patchRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         patchRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<
             RecreateInstancesRegionInstanceGroupManagerHttpRequest, Operation>
         recreateInstancesRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         recreateInstancesRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<ResizeRegionInstanceGroupManagerHttpRequest, Operation>
         resizeRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         resizeRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<
             SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, Operation>
         setInstanceTemplateRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setInstanceTemplateRegionInstanceGroupManagerOperationSettings;
     private final UnaryCallSettings.Builder<
             SetTargetPoolsRegionInstanceGroupManagerHttpRequest, Operation>
         setTargetPoolsRegionInstanceGroupManagerSettings;
     private final OperationCallSettings.Builder<
-            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setTargetPoolsRegionInstanceGroupManagerOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -811,8 +807,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -833,8 +829,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -855,8 +851,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -877,8 +873,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -899,8 +895,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -921,8 +917,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -943,8 +939,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -965,8 +961,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -987,8 +983,8 @@ public class RegionInstanceGroupManagerStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1099,7 +1095,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         abandonInstancesRegionInstanceGroupManagerOperationSettings() {
       return abandonInstancesRegionInstanceGroupManagerOperationSettings;
     }
@@ -1114,7 +1110,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteRegionInstanceGroupManagerOperationSettings() {
       return deleteRegionInstanceGroupManagerOperationSettings;
     }
@@ -1136,7 +1132,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         deleteInstancesRegionInstanceGroupManagerOperationSettings() {
       return deleteInstancesRegionInstanceGroupManagerOperationSettings;
     }
@@ -1157,7 +1153,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         insertRegionInstanceGroupManagerOperationSettings() {
       return insertRegionInstanceGroupManagerOperationSettings;
     }
@@ -1192,7 +1188,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         patchRegionInstanceGroupManagerOperationSettings() {
       return patchRegionInstanceGroupManagerOperationSettings;
     }
@@ -1214,7 +1210,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         recreateInstancesRegionInstanceGroupManagerOperationSettings() {
       return recreateInstancesRegionInstanceGroupManagerOperationSettings;
     }
@@ -1229,7 +1225,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         resizeRegionInstanceGroupManagerOperationSettings() {
       return resizeRegionInstanceGroupManagerOperationSettings;
     }
@@ -1251,7 +1247,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setInstanceTemplateRegionInstanceGroupManagerOperationSettings() {
       return setInstanceTemplateRegionInstanceGroupManagerOperationSettings;
     }
@@ -1272,7 +1268,7 @@ public class RegionInstanceGroupManagerStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
         setTargetPoolsRegionInstanceGroupManagerOperationSettings() {
       return setTargetPoolsRegionInstanceGroupManagerOperationSettings;
     }

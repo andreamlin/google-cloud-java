@@ -58,7 +58,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       disableXpnHostProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: disableXpnHostProjectOperationCallable()");
@@ -71,7 +71,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       disableXpnResourceProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: disableXpnResourceProjectOperationCallable()");
@@ -84,7 +84,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       enableXpnHostProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: enableXpnHostProjectOperationCallable()");
@@ -96,7 +96,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       enableXpnResourceProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: enableXpnResourceProjectOperationCallable()");
@@ -144,7 +144,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
       moveDiskProjectOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: moveDiskProjectOperationCallable()");
   }
@@ -155,7 +155,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
       moveInstanceProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: moveInstanceProjectOperationCallable()");
@@ -167,7 +167,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
       setCommonInstanceMetadataProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setCommonInstanceMetadataProjectOperationCallable()");
@@ -181,7 +181,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
       setDefaultNetworkTierProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setDefaultNetworkTierProjectOperationCallable()");
@@ -195,7 +195,7 @@ public abstract class ProjectStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
       setUsageExportBucketProjectOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setUsageExportBucketProjectOperationCallable()");

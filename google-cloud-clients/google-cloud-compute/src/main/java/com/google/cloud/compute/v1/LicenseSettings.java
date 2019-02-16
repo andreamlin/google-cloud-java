@@ -73,7 +73,7 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
   /** Returns the object with the settings used for calls to deleteLicense. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationSettings() {
     return ((LicenseStubSettings) getStubSettings()).deleteLicenseOperationSettings();
   }
@@ -96,7 +96,7 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
   /** Returns the object with the settings used for calls to insertLicense. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationSettings() {
     return ((LicenseStubSettings) getStubSettings()).insertLicenseOperationSettings();
   }
@@ -227,7 +227,7 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
     /** Returns the builder for the settings used for calls to deleteLicense. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteLicenseHttpRequest, EmptyMessage, Operation>
         deleteLicenseOperationSettings() {
       return getStubSettingsBuilder().deleteLicenseOperationSettings();
     }
@@ -251,7 +251,7 @@ public class LicenseSettings extends ClientSettings<LicenseSettings> {
     /** Returns the builder for the settings used for calls to insertLicense. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertLicenseHttpRequest, EmptyMessage, Operation>
         insertLicenseOperationSettings() {
       return getStubSettingsBuilder().insertLicenseOperationSettings();
     }

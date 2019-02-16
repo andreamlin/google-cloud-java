@@ -66,7 +66,7 @@ public abstract class ForwardingRuleStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteForwardingRuleOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteForwardingRuleOperationCallable()");
@@ -83,7 +83,7 @@ public abstract class ForwardingRuleStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertForwardingRuleOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertForwardingRuleOperationCallable()");
@@ -107,7 +107,7 @@ public abstract class ForwardingRuleStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTargetForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetForwardingRuleOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setTargetForwardingRuleOperationCallable()");

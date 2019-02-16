@@ -178,13 +178,13 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
       aggregatedListTargetVpnGatewaysPagedCallable;
   private final UnaryCallable<DeleteTargetVpnGatewayHttpRequest, Operation>
       deleteTargetVpnGatewayCallable;
-  private final OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationCallable;
   private final UnaryCallable<GetTargetVpnGatewayHttpRequest, TargetVpnGateway>
       getTargetVpnGatewayCallable;
   private final UnaryCallable<InsertTargetVpnGatewayHttpRequest, Operation>
       insertTargetVpnGatewayCallable;
-  private final OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationCallable;
   private final UnaryCallable<ListTargetVpnGatewaysHttpRequest, TargetVpnGatewayList>
       listTargetVpnGatewaysCallable;
@@ -332,7 +332,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       deleteTargetVpnGatewayOperationCallable() {
     return deleteTargetVpnGatewayOperationCallable;
   }
@@ -350,7 +350,7 @@ public class HttpJsonTargetVpnGatewayStub extends TargetVpnGatewayStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetVpnGatewayHttpRequest, EmptyMessage, Operation>
       insertTargetVpnGatewayOperationCallable() {
     return insertTargetVpnGatewayOperationCallable;
   }

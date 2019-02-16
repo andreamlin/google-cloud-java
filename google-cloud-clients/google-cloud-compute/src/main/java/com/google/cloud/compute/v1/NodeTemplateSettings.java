@@ -83,7 +83,7 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
   /** Returns the object with the settings used for calls to deleteNodeTemplate. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationSettings() {
     return ((NodeTemplateStubSettings) getStubSettings()).deleteNodeTemplateOperationSettings();
   }
@@ -107,7 +107,7 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
   /** Returns the object with the settings used for calls to insertNodeTemplate. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationSettings() {
     return ((NodeTemplateStubSettings) getStubSettings()).insertNodeTemplateOperationSettings();
   }
@@ -251,7 +251,7 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
     /** Returns the builder for the settings used for calls to deleteNodeTemplate. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
         deleteNodeTemplateOperationSettings() {
       return getStubSettingsBuilder().deleteNodeTemplateOperationSettings();
     }
@@ -277,7 +277,7 @@ public class NodeTemplateSettings extends ClientSettings<NodeTemplateSettings> {
     /** Returns the builder for the settings used for calls to insertNodeTemplate. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
         insertNodeTemplateOperationSettings() {
       return getStubSettingsBuilder().insertNodeTemplateOperationSettings();
     }

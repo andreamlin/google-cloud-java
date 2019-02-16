@@ -74,7 +74,7 @@ public class GlobalAddressSettings extends ClientSettings<GlobalAddressSettings>
   /** Returns the object with the settings used for calls to deleteGlobalAddress. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationSettings() {
     return ((GlobalAddressStubSettings) getStubSettings()).deleteGlobalAddressOperationSettings();
   }
@@ -93,7 +93,7 @@ public class GlobalAddressSettings extends ClientSettings<GlobalAddressSettings>
   /** Returns the object with the settings used for calls to insertGlobalAddress. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationSettings() {
     return ((GlobalAddressStubSettings) getStubSettings()).insertGlobalAddressOperationSettings();
   }
@@ -216,7 +216,7 @@ public class GlobalAddressSettings extends ClientSettings<GlobalAddressSettings>
     /** Returns the builder for the settings used for calls to deleteGlobalAddress. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
         deleteGlobalAddressOperationSettings() {
       return getStubSettingsBuilder().deleteGlobalAddressOperationSettings();
     }
@@ -236,7 +236,7 @@ public class GlobalAddressSettings extends ClientSettings<GlobalAddressSettings>
     /** Returns the builder for the settings used for calls to insertGlobalAddress. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
         insertGlobalAddressOperationSettings() {
       return getStubSettingsBuilder().insertGlobalAddressOperationSettings();
     }

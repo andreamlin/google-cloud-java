@@ -268,23 +268,23 @@ public class HttpJsonImageStub extends ImageStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteImageHttpRequest, Operation> deleteImageCallable;
-  private final OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationCallable;
   private final UnaryCallable<DeprecateImageHttpRequest, Operation> deprecateImageCallable;
-  private final OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationCallable;
   private final UnaryCallable<GetImageHttpRequest, Image> getImageCallable;
   private final UnaryCallable<GetFromFamilyImageHttpRequest, Image> getFromFamilyImageCallable;
   private final UnaryCallable<GetIamPolicyImageHttpRequest, Policy> getIamPolicyImageCallable;
   private final UnaryCallable<InsertImageHttpRequest, Operation> insertImageCallable;
-  private final OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationCallable;
   private final UnaryCallable<ListImagesHttpRequest, ImageList> listImagesCallable;
   private final UnaryCallable<ListImagesHttpRequest, ListImagesPagedResponse>
       listImagesPagedCallable;
   private final UnaryCallable<SetIamPolicyImageHttpRequest, Policy> setIamPolicyImageCallable;
   private final UnaryCallable<SetLabelsImageHttpRequest, Operation> setLabelsImageCallable;
-  private final OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationCallable;
   private final UnaryCallable<TestIamPermissionsImageHttpRequest, TestPermissionsResponse>
       testIamPermissionsImageCallable;
@@ -446,7 +446,7 @@ public class HttpJsonImageStub extends ImageStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationCallable() {
     return deleteImageOperationCallable;
   }
@@ -457,7 +457,7 @@ public class HttpJsonImageStub extends ImageStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationCallable() {
     return deprecateImageOperationCallable;
   }
@@ -483,7 +483,7 @@ public class HttpJsonImageStub extends ImageStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationCallable() {
     return insertImageOperationCallable;
   }
@@ -509,7 +509,7 @@ public class HttpJsonImageStub extends ImageStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationCallable() {
     return setLabelsImageOperationCallable;
   }

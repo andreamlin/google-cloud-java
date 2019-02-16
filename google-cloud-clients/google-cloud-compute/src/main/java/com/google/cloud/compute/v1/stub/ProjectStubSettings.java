@@ -115,21 +115,19 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   private final UnaryCallSettings<DisableXpnHostProjectHttpRequest, Operation>
       disableXpnHostProjectSettings;
-  private final OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       disableXpnHostProjectOperationSettings;
   private final UnaryCallSettings<DisableXpnResourceProjectHttpRequest, Operation>
       disableXpnResourceProjectSettings;
-  private final OperationCallSettings<
-          DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       disableXpnResourceProjectOperationSettings;
   private final UnaryCallSettings<EnableXpnHostProjectHttpRequest, Operation>
       enableXpnHostProjectSettings;
-  private final OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       enableXpnHostProjectOperationSettings;
   private final UnaryCallSettings<EnableXpnResourceProjectHttpRequest, Operation>
       enableXpnResourceProjectSettings;
-  private final OperationCallSettings<
-          EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       enableXpnResourceProjectOperationSettings;
   private final UnaryCallSettings<GetProjectHttpRequest, Project> getProjectSettings;
   private final UnaryCallSettings<GetXpnHostProjectHttpRequest, Project> getXpnHostProjectSettings;
@@ -142,26 +140,26 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
           ListXpnHostsProjectsHttpRequest, XpnHostList, ListXpnHostsProjectsPagedResponse>
       listXpnHostsProjectsSettings;
   private final UnaryCallSettings<MoveDiskProjectHttpRequest, Operation> moveDiskProjectSettings;
-  private final OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
       moveDiskProjectOperationSettings;
   private final UnaryCallSettings<MoveInstanceProjectHttpRequest, Operation>
       moveInstanceProjectSettings;
-  private final OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
       moveInstanceProjectOperationSettings;
   private final UnaryCallSettings<SetCommonInstanceMetadataProjectHttpRequest, Operation>
       setCommonInstanceMetadataProjectSettings;
   private final OperationCallSettings<
-          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
       setCommonInstanceMetadataProjectOperationSettings;
   private final UnaryCallSettings<SetDefaultNetworkTierProjectHttpRequest, Operation>
       setDefaultNetworkTierProjectSettings;
   private final OperationCallSettings<
-          SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+          SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
       setDefaultNetworkTierProjectOperationSettings;
   private final UnaryCallSettings<SetUsageExportBucketProjectHttpRequest, Operation>
       setUsageExportBucketProjectSettings;
   private final OperationCallSettings<
-          SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+          SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
       setUsageExportBucketProjectOperationSettings;
 
   /** Returns the object with the settings used for calls to disableXpnHostProject. */
@@ -172,7 +170,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to disableXpnHostProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       disableXpnHostProjectOperationSettings() {
     return disableXpnHostProjectOperationSettings;
   }
@@ -185,7 +183,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to disableXpnResourceProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       disableXpnResourceProjectOperationSettings() {
     return disableXpnResourceProjectOperationSettings;
   }
@@ -198,7 +196,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to enableXpnHostProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
       enableXpnHostProjectOperationSettings() {
     return enableXpnHostProjectOperationSettings;
   }
@@ -211,7 +209,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to enableXpnResourceProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
       enableXpnResourceProjectOperationSettings() {
     return enableXpnResourceProjectOperationSettings;
   }
@@ -249,7 +247,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to moveDiskProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
       moveDiskProjectOperationSettings() {
     return moveDiskProjectOperationSettings;
   }
@@ -262,7 +260,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to moveInstanceProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
       moveInstanceProjectOperationSettings() {
     return moveInstanceProjectOperationSettings;
   }
@@ -275,8 +273,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to setCommonInstanceMetadataProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<
-          SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
       setCommonInstanceMetadataProjectOperationSettings() {
     return setCommonInstanceMetadataProjectOperationSettings;
   }
@@ -289,7 +286,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to setDefaultNetworkTierProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
       setDefaultNetworkTierProjectOperationSettings() {
     return setDefaultNetworkTierProjectOperationSettings;
   }
@@ -302,7 +299,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
 
   /** Returns the object with the settings used for calls to setUsageExportBucketProject. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
       setUsageExportBucketProjectOperationSettings() {
     return setUsageExportBucketProjectOperationSettings;
   }
@@ -551,22 +548,22 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     private final UnaryCallSettings.Builder<DisableXpnHostProjectHttpRequest, Operation>
         disableXpnHostProjectSettings;
     private final OperationCallSettings.Builder<
-            DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+            DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
         disableXpnHostProjectOperationSettings;
     private final UnaryCallSettings.Builder<DisableXpnResourceProjectHttpRequest, Operation>
         disableXpnResourceProjectSettings;
     private final OperationCallSettings.Builder<
-            DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+            DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
         disableXpnResourceProjectOperationSettings;
     private final UnaryCallSettings.Builder<EnableXpnHostProjectHttpRequest, Operation>
         enableXpnHostProjectSettings;
     private final OperationCallSettings.Builder<
-            EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+            EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
         enableXpnHostProjectOperationSettings;
     private final UnaryCallSettings.Builder<EnableXpnResourceProjectHttpRequest, Operation>
         enableXpnResourceProjectSettings;
     private final OperationCallSettings.Builder<
-            EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+            EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
         enableXpnResourceProjectOperationSettings;
     private final UnaryCallSettings.Builder<GetProjectHttpRequest, Project> getProjectSettings;
     private final UnaryCallSettings.Builder<GetXpnHostProjectHttpRequest, Project>
@@ -581,28 +578,27 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
         listXpnHostsProjectsSettings;
     private final UnaryCallSettings.Builder<MoveDiskProjectHttpRequest, Operation>
         moveDiskProjectSettings;
-    private final OperationCallSettings.Builder<
-            MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
         moveDiskProjectOperationSettings;
     private final UnaryCallSettings.Builder<MoveInstanceProjectHttpRequest, Operation>
         moveInstanceProjectSettings;
     private final OperationCallSettings.Builder<
-            MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+            MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
         moveInstanceProjectOperationSettings;
     private final UnaryCallSettings.Builder<SetCommonInstanceMetadataProjectHttpRequest, Operation>
         setCommonInstanceMetadataProjectSettings;
     private final OperationCallSettings.Builder<
-            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
         setCommonInstanceMetadataProjectOperationSettings;
     private final UnaryCallSettings.Builder<SetDefaultNetworkTierProjectHttpRequest, Operation>
         setDefaultNetworkTierProjectSettings;
     private final OperationCallSettings.Builder<
-            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
         setDefaultNetworkTierProjectOperationSettings;
     private final UnaryCallSettings.Builder<SetUsageExportBucketProjectHttpRequest, Operation>
         setUsageExportBucketProjectSettings;
     private final OperationCallSettings.Builder<
-            SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+            SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
         setUsageExportBucketProjectOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -795,8 +791,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -817,8 +813,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -838,8 +834,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -860,8 +856,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -881,8 +877,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -902,8 +898,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -924,8 +920,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -946,8 +942,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -968,8 +964,8 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -1064,8 +1060,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     /** Returns the builder for the settings used for calls to disableXpnHostProject. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DisableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DisableXpnHostProjectHttpRequest, EmptyMessage, Operation>
         disableXpnHostProjectOperationSettings() {
       return disableXpnHostProjectOperationSettings;
     }
@@ -1080,7 +1075,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DisableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+            DisableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
         disableXpnResourceProjectOperationSettings() {
       return disableXpnResourceProjectOperationSettings;
     }
@@ -1094,8 +1089,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     /** Returns the builder for the settings used for calls to enableXpnHostProject. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            EnableXpnHostProjectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<EnableXpnHostProjectHttpRequest, EmptyMessage, Operation>
         enableXpnHostProjectOperationSettings() {
       return enableXpnHostProjectOperationSettings;
     }
@@ -1110,7 +1104,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            EnableXpnResourceProjectHttpRequest, EmptyMessage, EmptyMessage>
+            EnableXpnResourceProjectHttpRequest, EmptyMessage, Operation>
         enableXpnResourceProjectOperationSettings() {
       return enableXpnResourceProjectOperationSettings;
     }
@@ -1151,7 +1145,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     /** Returns the builder for the settings used for calls to moveDiskProject. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<MoveDiskProjectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<MoveDiskProjectHttpRequest, EmptyMessage, Operation>
         moveDiskProjectOperationSettings() {
       return moveDiskProjectOperationSettings;
     }
@@ -1165,7 +1159,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     /** Returns the builder for the settings used for calls to moveInstanceProject. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<MoveInstanceProjectHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<MoveInstanceProjectHttpRequest, EmptyMessage, Operation>
         moveInstanceProjectOperationSettings() {
       return moveInstanceProjectOperationSettings;
     }
@@ -1180,7 +1174,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, EmptyMessage>
+            SetCommonInstanceMetadataProjectHttpRequest, EmptyMessage, Operation>
         setCommonInstanceMetadataProjectOperationSettings() {
       return setCommonInstanceMetadataProjectOperationSettings;
     }
@@ -1195,7 +1189,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, EmptyMessage>
+            SetDefaultNetworkTierProjectHttpRequest, EmptyMessage, Operation>
         setDefaultNetworkTierProjectOperationSettings() {
       return setDefaultNetworkTierProjectOperationSettings;
     }
@@ -1210,7 +1204,7 @@ public class ProjectStubSettings extends StubSettings<ProjectStubSettings> {
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetUsageExportBucketProjectHttpRequest, EmptyMessage, EmptyMessage>
+            SetUsageExportBucketProjectHttpRequest, EmptyMessage, Operation>
         setUsageExportBucketProjectOperationSettings() {
       return setUsageExportBucketProjectOperationSettings;
     }

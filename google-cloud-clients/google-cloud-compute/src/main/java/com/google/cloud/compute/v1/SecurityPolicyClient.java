@@ -189,7 +189,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> addRuleSecurityPolicyAsync(
       ProjectGlobalSecurityPolicyName securityPolicy,
       SecurityPolicyRule securityPolicyRuleResource) {
 
@@ -222,7 +222,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> addRuleSecurityPolicyAsync(
       String securityPolicy, SecurityPolicyRule securityPolicyRuleResource) {
 
     AddRuleSecurityPolicyHttpRequest request =
@@ -256,7 +256,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> addRuleSecurityPolicyAsync(
       AddRuleSecurityPolicyHttpRequest request) {
     return addRuleSecurityPolicyOperationCallable().futureCall(request);
   }
@@ -275,14 +275,14 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .setSecurityPolicyRuleResource(securityPolicyRuleResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.addRuleSecurityPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = securityPolicyClient.addRuleSecurityPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationCallable() {
     return stub.addRuleSecurityPolicyOperationCallable();
   }
@@ -331,7 +331,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSecurityPolicyAsync(
       ProjectGlobalSecurityPolicyName securityPolicy) {
 
     DeleteSecurityPolicyHttpRequest request =
@@ -359,7 +359,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSecurityPolicyAsync(
       String securityPolicy) {
 
     DeleteSecurityPolicyHttpRequest request =
@@ -388,7 +388,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSecurityPolicyAsync(
       DeleteSecurityPolicyHttpRequest request) {
     return deleteSecurityPolicyOperationCallable().futureCall(request);
   }
@@ -405,14 +405,14 @@ public class SecurityPolicyClient implements BackgroundResource {
    *   DeleteSecurityPolicyHttpRequest request = DeleteSecurityPolicyHttpRequest.newBuilder()
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.deleteSecurityPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = securityPolicyClient.deleteSecurityPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationCallable() {
     return stub.deleteSecurityPolicyOperationCallable();
   }
@@ -672,7 +672,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSecurityPolicyAsync(
       ProjectName project, SecurityPolicy securityPolicyResource) {
 
     InsertSecurityPolicyHttpRequest request =
@@ -705,7 +705,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSecurityPolicyAsync(
       String project, SecurityPolicy securityPolicyResource) {
 
     InsertSecurityPolicyHttpRequest request =
@@ -739,7 +739,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSecurityPolicyAsync(
       InsertSecurityPolicyHttpRequest request) {
     return insertSecurityPolicyOperationCallable().futureCall(request);
   }
@@ -758,14 +758,14 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setSecurityPolicyResource(securityPolicyResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.insertSecurityPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = securityPolicyClient.insertSecurityPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationCallable() {
     return stub.insertSecurityPolicyOperationCallable();
   }
@@ -961,7 +961,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSecurityPolicyAsync(
       ProjectGlobalSecurityPolicyName securityPolicy,
       SecurityPolicy securityPolicyResource,
       List<String> fieldMask) {
@@ -1002,7 +1002,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSecurityPolicyAsync(
       String securityPolicy, SecurityPolicy securityPolicyResource, List<String> fieldMask) {
 
     PatchSecurityPolicyHttpRequest request =
@@ -1039,7 +1039,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSecurityPolicyAsync(
       PatchSecurityPolicyHttpRequest request) {
     return patchSecurityPolicyOperationCallable().futureCall(request);
   }
@@ -1060,14 +1060,14 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setSecurityPolicyResource(securityPolicyResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.patchSecurityPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = securityPolicyClient.patchSecurityPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationCallable() {
     return stub.patchSecurityPolicyOperationCallable();
   }
@@ -1123,7 +1123,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRuleSecurityPolicyAsync(
       Integer priority,
       ProjectGlobalSecurityPolicyName securityPolicy,
       SecurityPolicyRule securityPolicyRuleResource) {
@@ -1160,7 +1160,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRuleSecurityPolicyAsync(
       Integer priority, String securityPolicy, SecurityPolicyRule securityPolicyRuleResource) {
 
     PatchRuleSecurityPolicyHttpRequest request =
@@ -1197,7 +1197,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchRuleSecurityPolicyAsync(
       PatchRuleSecurityPolicyHttpRequest request) {
     return patchRuleSecurityPolicyOperationCallable().futureCall(request);
   }
@@ -1218,14 +1218,14 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .setSecurityPolicyRuleResource(securityPolicyRuleResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.patchRuleSecurityPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = securityPolicyClient.patchRuleSecurityPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationCallable() {
     return stub.patchRuleSecurityPolicyOperationCallable();
   }
@@ -1278,7 +1278,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeRuleSecurityPolicyAsync(
       Integer priority, ProjectGlobalSecurityPolicyName securityPolicy) {
 
     RemoveRuleSecurityPolicyHttpRequest request =
@@ -1309,7 +1309,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeRuleSecurityPolicyAsync(
       Integer priority, String securityPolicy) {
 
     RemoveRuleSecurityPolicyHttpRequest request =
@@ -1343,7 +1343,7 @@ public class SecurityPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeRuleSecurityPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeRuleSecurityPolicyAsync(
       RemoveRuleSecurityPolicyHttpRequest request) {
     return removeRuleSecurityPolicyOperationCallable().futureCall(request);
   }
@@ -1362,14 +1362,14 @@ public class SecurityPolicyClient implements BackgroundResource {
    *     .setPriority(priority)
    *     .setSecurityPolicy(securityPolicy.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = securityPolicyClient.removeRuleSecurityPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = securityPolicyClient.removeRuleSecurityPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationCallable() {
     return stub.removeRuleSecurityPolicyOperationCallable();
   }

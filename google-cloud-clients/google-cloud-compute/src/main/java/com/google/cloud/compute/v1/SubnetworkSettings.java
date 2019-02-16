@@ -84,7 +84,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
   /** Returns the object with the settings used for calls to deleteSubnetwork. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
       deleteSubnetworkOperationSettings() {
     return ((SubnetworkStubSettings) getStubSettings()).deleteSubnetworkOperationSettings();
   }
@@ -98,7 +98,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
   /** Returns the object with the settings used for calls to expandIpCidrRangeSubnetwork. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
       expandIpCidrRangeSubnetworkOperationSettings() {
     return ((SubnetworkStubSettings) getStubSettings())
         .expandIpCidrRangeSubnetworkOperationSettings();
@@ -123,7 +123,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
   /** Returns the object with the settings used for calls to insertSubnetwork. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
       insertSubnetworkOperationSettings() {
     return ((SubnetworkStubSettings) getStubSettings()).insertSubnetworkOperationSettings();
   }
@@ -151,7 +151,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
   /** Returns the object with the settings used for calls to patchSubnetwork. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
       patchSubnetworkOperationSettings() {
     return ((SubnetworkStubSettings) getStubSettings()).patchSubnetworkOperationSettings();
   }
@@ -173,7 +173,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
   public OperationCallSettings<
-          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+          SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
       setPrivateIpGoogleAccessSubnetworkOperationSettings() {
     return ((SubnetworkStubSettings) getStubSettings())
         .setPrivateIpGoogleAccessSubnetworkOperationSettings();
@@ -304,7 +304,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
     /** Returns the builder for the settings used for calls to deleteSubnetwork. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSubnetworkHttpRequest, EmptyMessage, Operation>
         deleteSubnetworkOperationSettings() {
       return getStubSettingsBuilder().deleteSubnetworkOperationSettings();
     }
@@ -319,7 +319,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            ExpandIpCidrRangeSubnetworkHttpRequest, EmptyMessage, Operation>
         expandIpCidrRangeSubnetworkOperationSettings() {
       return getStubSettingsBuilder().expandIpCidrRangeSubnetworkOperationSettings();
     }
@@ -344,7 +344,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
     /** Returns the builder for the settings used for calls to insertSubnetwork. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertSubnetworkHttpRequest, EmptyMessage, Operation>
         insertSubnetworkOperationSettings() {
       return getStubSettingsBuilder().insertSubnetworkOperationSettings();
     }
@@ -374,7 +374,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
     /** Returns the builder for the settings used for calls to patchSubnetwork. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchSubnetworkHttpRequest, EmptyMessage, Operation>
         patchSubnetworkOperationSettings() {
       return getStubSettingsBuilder().patchSubnetworkOperationSettings();
     }
@@ -399,7 +399,7 @@ public class SubnetworkSettings extends ClientSettings<SubnetworkSettings> {
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, EmptyMessage>
+            SetPrivateIpGoogleAccessSubnetworkHttpRequest, EmptyMessage, Operation>
         setPrivateIpGoogleAccessSubnetworkOperationSettings() {
       return getStubSettingsBuilder().setPrivateIpGoogleAccessSubnetworkOperationSettings();
     }

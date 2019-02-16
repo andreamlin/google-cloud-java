@@ -53,7 +53,7 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       addRuleSecurityPolicyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: addRuleSecurityPolicyOperationCallable()");
@@ -66,7 +66,7 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSecurityPolicyHttpRequest, EmptyMessage, Operation>
       deleteSecurityPolicyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteSecurityPolicyOperationCallable()");
@@ -89,7 +89,7 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertSecurityPolicyHttpRequest, EmptyMessage, Operation>
       insertSecurityPolicyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertSecurityPolicyOperationCallable()");
@@ -113,7 +113,7 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchSecurityPolicyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchSecurityPolicyOperationCallable()");
@@ -125,7 +125,7 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       patchRuleSecurityPolicyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchRuleSecurityPolicyOperationCallable()");
@@ -138,7 +138,7 @@ public abstract class SecurityPolicyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<RemoveRuleSecurityPolicyHttpRequest, EmptyMessage, Operation>
       removeRuleSecurityPolicyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: removeRuleSecurityPolicyOperationCallable()");

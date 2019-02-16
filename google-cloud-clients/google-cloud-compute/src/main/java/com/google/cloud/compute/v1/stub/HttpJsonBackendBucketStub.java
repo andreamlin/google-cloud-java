@@ -227,33 +227,32 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
 
   private final UnaryCallable<AddSignedUrlKeyBackendBucketHttpRequest, Operation>
       addSignedUrlKeyBackendBucketCallable;
-  private final OperationCallable<
-          AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationCallable;
   private final UnaryCallable<DeleteBackendBucketHttpRequest, Operation>
       deleteBackendBucketCallable;
-  private final OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationCallable;
   private final UnaryCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, Operation>
       deleteSignedUrlKeyBackendBucketCallable;
   private final OperationCallable<
-          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationCallable;
   private final UnaryCallable<GetBackendBucketHttpRequest, BackendBucket> getBackendBucketCallable;
   private final UnaryCallable<InsertBackendBucketHttpRequest, Operation>
       insertBackendBucketCallable;
-  private final OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationCallable;
   private final UnaryCallable<ListBackendBucketsHttpRequest, BackendBucketList>
       listBackendBucketsCallable;
   private final UnaryCallable<ListBackendBucketsHttpRequest, ListBackendBucketsPagedResponse>
       listBackendBucketsPagedCallable;
   private final UnaryCallable<PatchBackendBucketHttpRequest, Operation> patchBackendBucketCallable;
-  private final OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationCallable;
   private final UnaryCallable<UpdateBackendBucketHttpRequest, Operation>
       updateBackendBucketCallable;
-  private final OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -428,7 +427,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       addSignedUrlKeyBackendBucketOperationCallable() {
     return addSignedUrlKeyBackendBucketOperationCallable;
   }
@@ -440,7 +439,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteBackendBucketOperationCallable() {
     return deleteBackendBucketOperationCallable;
   }
@@ -451,7 +450,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteSignedUrlKeyBackendBucketHttpRequest, EmptyMessage, Operation>
       deleteSignedUrlKeyBackendBucketOperationCallable() {
     return deleteSignedUrlKeyBackendBucketOperationCallable;
   }
@@ -468,7 +467,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertBackendBucketHttpRequest, EmptyMessage, Operation>
       insertBackendBucketOperationCallable() {
     return insertBackendBucketOperationCallable;
   }
@@ -491,7 +490,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchBackendBucketHttpRequest, EmptyMessage, Operation>
       patchBackendBucketOperationCallable() {
     return patchBackendBucketOperationCallable;
   }
@@ -502,7 +501,7 @@ public class HttpJsonBackendBucketStub extends BackendBucketStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateBackendBucketHttpRequest, EmptyMessage, Operation>
       updateBackendBucketOperationCallable() {
     return updateBackendBucketOperationCallable;
   }

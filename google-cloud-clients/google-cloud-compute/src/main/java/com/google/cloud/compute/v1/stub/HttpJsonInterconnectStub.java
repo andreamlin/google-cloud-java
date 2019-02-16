@@ -185,21 +185,21 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteInterconnectHttpRequest, Operation> deleteInterconnectCallable;
-  private final OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationCallable;
   private final UnaryCallable<GetInterconnectHttpRequest, Interconnect> getInterconnectCallable;
   private final UnaryCallable<
           GetDiagnosticsInterconnectHttpRequest, InterconnectsGetDiagnosticsResponse>
       getDiagnosticsInterconnectCallable;
   private final UnaryCallable<InsertInterconnectHttpRequest, Operation> insertInterconnectCallable;
-  private final OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationCallable;
   private final UnaryCallable<ListInterconnectsHttpRequest, InterconnectList>
       listInterconnectsCallable;
   private final UnaryCallable<ListInterconnectsHttpRequest, ListInterconnectsPagedResponse>
       listInterconnectsPagedCallable;
   private final UnaryCallable<PatchInterconnectHttpRequest, Operation> patchInterconnectCallable;
-  private final OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -338,7 +338,7 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInterconnectHttpRequest, EmptyMessage, Operation>
       deleteInterconnectOperationCallable() {
     return deleteInterconnectOperationCallable;
   }
@@ -360,7 +360,7 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInterconnectHttpRequest, EmptyMessage, Operation>
       insertInterconnectOperationCallable() {
     return insertInterconnectOperationCallable;
   }
@@ -382,7 +382,7 @@ public class HttpJsonInterconnectStub extends InterconnectStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchInterconnectHttpRequest, EmptyMessage, Operation>
       patchInterconnectOperationCallable() {
     return patchInterconnectOperationCallable;
   }

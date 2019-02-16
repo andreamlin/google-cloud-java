@@ -326,7 +326,7 @@ public class NodeTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodeTemplateAsync(
       ProjectRegionNodeTemplateName nodeTemplate) {
 
     DeleteNodeTemplateHttpRequest request =
@@ -354,7 +354,7 @@ public class NodeTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodeTemplateAsync(
       String nodeTemplate) {
 
     DeleteNodeTemplateHttpRequest request =
@@ -383,7 +383,7 @@ public class NodeTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNodeTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNodeTemplateAsync(
       DeleteNodeTemplateHttpRequest request) {
     return deleteNodeTemplateOperationCallable().futureCall(request);
   }
@@ -400,14 +400,14 @@ public class NodeTemplateClient implements BackgroundResource {
    *   DeleteNodeTemplateHttpRequest request = DeleteNodeTemplateHttpRequest.newBuilder()
    *     .setNodeTemplate(nodeTemplate.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeTemplateClient.deleteNodeTemplateOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeTemplateClient.deleteNodeTemplateOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteNodeTemplateHttpRequest, EmptyMessage, Operation>
       deleteNodeTemplateOperationCallable() {
     return stub.deleteNodeTemplateOperationCallable();
   }
@@ -660,7 +660,7 @@ public class NodeTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNodeTemplateAsync(
       ProjectRegionName region, NodeTemplate nodeTemplateResource) {
 
     InsertNodeTemplateHttpRequest request =
@@ -692,7 +692,7 @@ public class NodeTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNodeTemplateAsync(
       String region, NodeTemplate nodeTemplateResource) {
 
     InsertNodeTemplateHttpRequest request =
@@ -727,7 +727,7 @@ public class NodeTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNodeTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNodeTemplateAsync(
       InsertNodeTemplateHttpRequest request) {
     return insertNodeTemplateOperationCallable().futureCall(request);
   }
@@ -747,14 +747,14 @@ public class NodeTemplateClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setNodeTemplateResource(nodeTemplateResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = nodeTemplateClient.insertNodeTemplateOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = nodeTemplateClient.insertNodeTemplateOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertNodeTemplateHttpRequest, EmptyMessage, Operation>
       insertNodeTemplateOperationCallable() {
     return stub.insertNodeTemplateOperationCallable();
   }

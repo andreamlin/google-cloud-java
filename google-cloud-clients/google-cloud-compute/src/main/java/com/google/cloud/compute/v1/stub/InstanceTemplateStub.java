@@ -52,7 +52,7 @@ public abstract class InstanceTemplateStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteInstanceTemplateOperationCallable()");
@@ -78,7 +78,7 @@ public abstract class InstanceTemplateStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertInstanceTemplateOperationCallable()");

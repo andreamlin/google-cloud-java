@@ -679,7 +679,7 @@ public class InstanceClientTest {
     ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
     Instance instanceResource = Instance.newBuilder().build();
 
-    Operation actualResponse = client.insertInstanceAsync(zone, instanceResource).get();
+    EmptyMessage actualResponse = client.insertInstanceAsync(zone, instanceResource).get();
     Assert.assertEquals(expectedResponse, actualResponse);
 
     List<String> actualRequests = mockService.getRequestPaths();

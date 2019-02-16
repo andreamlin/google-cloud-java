@@ -137,12 +137,12 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
 
   private final UnaryCallable<DeleteGlobalAddressHttpRequest, Operation>
       deleteGlobalAddressCallable;
-  private final OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationCallable;
   private final UnaryCallable<GetGlobalAddressHttpRequest, Address> getGlobalAddressCallable;
   private final UnaryCallable<InsertGlobalAddressHttpRequest, Operation>
       insertGlobalAddressCallable;
-  private final OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationCallable;
   private final UnaryCallable<ListGlobalAddressesHttpRequest, AddressList>
       listGlobalAddressesCallable;
@@ -256,7 +256,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteGlobalAddressHttpRequest, EmptyMessage, Operation>
       deleteGlobalAddressOperationCallable() {
     return deleteGlobalAddressOperationCallable;
   }
@@ -272,7 +272,7 @@ public class HttpJsonGlobalAddressStub extends GlobalAddressStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertGlobalAddressHttpRequest, EmptyMessage, Operation>
       insertGlobalAddressOperationCallable() {
     return insertGlobalAddressOperationCallable;
   }

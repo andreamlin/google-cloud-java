@@ -106,14 +106,14 @@ public class GlobalForwardingRuleStubSettings
   private final UnaryCallSettings<DeleteGlobalForwardingRuleHttpRequest, Operation>
       deleteGlobalForwardingRuleSettings;
   private final OperationCallSettings<
-          DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationSettings;
   private final UnaryCallSettings<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
       getGlobalForwardingRuleSettings;
   private final UnaryCallSettings<InsertGlobalForwardingRuleHttpRequest, Operation>
       insertGlobalForwardingRuleSettings;
   private final OperationCallSettings<
-          InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+          InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationSettings;
   private final PagedCallSettings<
           ListGlobalForwardingRulesHttpRequest,
@@ -123,7 +123,7 @@ public class GlobalForwardingRuleStubSettings
   private final UnaryCallSettings<SetTargetGlobalForwardingRuleHttpRequest, Operation>
       setTargetGlobalForwardingRuleSettings;
   private final OperationCallSettings<
-          SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteGlobalForwardingRule. */
@@ -134,7 +134,7 @@ public class GlobalForwardingRuleStubSettings
 
   /** Returns the object with the settings used for calls to deleteGlobalForwardingRule. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       deleteGlobalForwardingRuleOperationSettings() {
     return deleteGlobalForwardingRuleOperationSettings;
   }
@@ -153,7 +153,7 @@ public class GlobalForwardingRuleStubSettings
 
   /** Returns the object with the settings used for calls to insertGlobalForwardingRule. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       insertGlobalForwardingRuleOperationSettings() {
     return insertGlobalForwardingRuleOperationSettings;
   }
@@ -175,7 +175,7 @@ public class GlobalForwardingRuleStubSettings
 
   /** Returns the object with the settings used for calls to setTargetGlobalForwardingRule. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
       setTargetGlobalForwardingRuleOperationSettings() {
     return setTargetGlobalForwardingRuleOperationSettings;
   }
@@ -347,14 +347,14 @@ public class GlobalForwardingRuleStubSettings
     private final UnaryCallSettings.Builder<DeleteGlobalForwardingRuleHttpRequest, Operation>
         deleteGlobalForwardingRuleSettings;
     private final OperationCallSettings.Builder<
-            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         deleteGlobalForwardingRuleOperationSettings;
     private final UnaryCallSettings.Builder<GetGlobalForwardingRuleHttpRequest, ForwardingRule>
         getGlobalForwardingRuleSettings;
     private final UnaryCallSettings.Builder<InsertGlobalForwardingRuleHttpRequest, Operation>
         insertGlobalForwardingRuleSettings;
     private final OperationCallSettings.Builder<
-            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         insertGlobalForwardingRuleOperationSettings;
     private final PagedCallSettings.Builder<
             ListGlobalForwardingRulesHttpRequest,
@@ -364,7 +364,7 @@ public class GlobalForwardingRuleStubSettings
     private final UnaryCallSettings.Builder<SetTargetGlobalForwardingRuleHttpRequest, Operation>
         setTargetGlobalForwardingRuleSettings;
     private final OperationCallSettings.Builder<
-            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         setTargetGlobalForwardingRuleOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -480,8 +480,8 @@ public class GlobalForwardingRuleStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -502,8 +502,8 @@ public class GlobalForwardingRuleStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -524,8 +524,8 @@ public class GlobalForwardingRuleStubSettings
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -592,7 +592,7 @@ public class GlobalForwardingRuleStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         deleteGlobalForwardingRuleOperationSettings() {
       return deleteGlobalForwardingRuleOperationSettings;
     }
@@ -613,7 +613,7 @@ public class GlobalForwardingRuleStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            InsertGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         insertGlobalForwardingRuleOperationSettings() {
       return insertGlobalForwardingRuleOperationSettings;
     }
@@ -637,7 +637,7 @@ public class GlobalForwardingRuleStubSettings
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
     public OperationCallSettings.Builder<
-            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, EmptyMessage>
+            SetTargetGlobalForwardingRuleHttpRequest, EmptyMessage, Operation>
         setTargetGlobalForwardingRuleOperationSettings() {
       return setTargetGlobalForwardingRuleOperationSettings;
     }

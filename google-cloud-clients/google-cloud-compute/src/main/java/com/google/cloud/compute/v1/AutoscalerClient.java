@@ -324,7 +324,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAutoscalerAsync(
       ProjectZoneAutoscalerName autoscaler) {
 
     DeleteAutoscalerHttpRequest request =
@@ -352,8 +352,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAutoscalerAsync(
-      String autoscaler) {
+  public final OperationFuture<EmptyMessage, Operation> deleteAutoscalerAsync(String autoscaler) {
 
     DeleteAutoscalerHttpRequest request =
         DeleteAutoscalerHttpRequest.newBuilder().setAutoscaler(autoscaler).build();
@@ -381,7 +380,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteAutoscalerAsync(
       DeleteAutoscalerHttpRequest request) {
     return deleteAutoscalerOperationCallable().futureCall(request);
   }
@@ -398,14 +397,14 @@ public class AutoscalerClient implements BackgroundResource {
    *   DeleteAutoscalerHttpRequest request = DeleteAutoscalerHttpRequest.newBuilder()
    *     .setAutoscaler(autoscaler.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.deleteAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = autoscalerClient.deleteAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationCallable() {
     return stub.deleteAutoscalerOperationCallable();
   }
@@ -558,7 +557,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertAutoscalerAsync(
       ProjectZoneName zone, Autoscaler autoscalerResource) {
 
     InsertAutoscalerHttpRequest request =
@@ -593,7 +592,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertAutoscalerAsync(
       String zone, Autoscaler autoscalerResource) {
 
     InsertAutoscalerHttpRequest request =
@@ -627,7 +626,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertAutoscalerAsync(
       InsertAutoscalerHttpRequest request) {
     return insertAutoscalerOperationCallable().futureCall(request);
   }
@@ -646,14 +645,14 @@ public class AutoscalerClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setAutoscalerResource(autoscalerResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.insertAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = autoscalerClient.insertAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationCallable() {
     return stub.insertAutoscalerOperationCallable();
   }
@@ -851,7 +850,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchAutoscalerAsync(
       String autoscaler,
       ProjectZoneName zone,
       Autoscaler autoscalerResource,
@@ -899,7 +898,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchAutoscalerAsync(
       String autoscaler, String zone, Autoscaler autoscalerResource, List<String> fieldMask) {
 
     PatchAutoscalerHttpRequest request =
@@ -940,7 +939,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchAutoscalerAsync(
       PatchAutoscalerHttpRequest request) {
     return patchAutoscalerOperationCallable().futureCall(request);
   }
@@ -964,14 +963,14 @@ public class AutoscalerClient implements BackgroundResource {
    *     .setAutoscalerResource(autoscalerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.patchAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = autoscalerClient.patchAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationCallable() {
     return stub.patchAutoscalerOperationCallable();
   }
@@ -1037,7 +1036,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateAutoscalerAsync(
       String autoscaler,
       ProjectZoneName zone,
       Autoscaler autoscalerResource,
@@ -1084,7 +1083,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateAutoscalerAsync(
       String autoscaler, String zone, Autoscaler autoscalerResource, List<String> fieldMask) {
 
     UpdateAutoscalerHttpRequest request =
@@ -1124,7 +1123,7 @@ public class AutoscalerClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> updateAutoscalerAsync(
+  public final OperationFuture<EmptyMessage, Operation> updateAutoscalerAsync(
       UpdateAutoscalerHttpRequest request) {
     return updateAutoscalerOperationCallable().futureCall(request);
   }
@@ -1147,14 +1146,14 @@ public class AutoscalerClient implements BackgroundResource {
    *     .setAutoscalerResource(autoscalerResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = autoscalerClient.updateAutoscalerOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = autoscalerClient.updateAutoscalerOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationCallable() {
     return stub.updateAutoscalerOperationCallable();
   }

@@ -164,13 +164,13 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
 
   private final UnaryCallable<DeleteTargetHttpProxyHttpRequest, Operation>
       deleteTargetHttpProxyCallable;
-  private final OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpProxyOperationCallable;
   private final UnaryCallable<GetTargetHttpProxyHttpRequest, TargetHttpProxy>
       getTargetHttpProxyCallable;
   private final UnaryCallable<InsertTargetHttpProxyHttpRequest, Operation>
       insertTargetHttpProxyCallable;
-  private final OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpProxyOperationCallable;
   private final UnaryCallable<ListTargetHttpProxiesHttpRequest, TargetHttpProxyList>
       listTargetHttpProxiesCallable;
@@ -178,7 +178,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
       listTargetHttpProxiesPagedCallable;
   private final UnaryCallable<SetUrlMapTargetHttpProxyHttpRequest, Operation>
       setUrlMapTargetHttpProxyCallable;
-  private final OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpProxyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -307,7 +307,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpProxyOperationCallable() {
     return deleteTargetHttpProxyOperationCallable;
   }
@@ -325,7 +325,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpProxyOperationCallable() {
     return insertTargetHttpProxyOperationCallable;
   }
@@ -349,7 +349,7 @@ public class HttpJsonTargetHttpProxyStub extends TargetHttpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpProxyOperationCallable() {
     return setUrlMapTargetHttpProxyOperationCallable;
   }

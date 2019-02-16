@@ -112,13 +112,13 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
       aggregatedListTargetInstancesSettings;
   private final UnaryCallSettings<DeleteTargetInstanceHttpRequest, Operation>
       deleteTargetInstanceSettings;
-  private final OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
       deleteTargetInstanceOperationSettings;
   private final UnaryCallSettings<GetTargetInstanceHttpRequest, TargetInstance>
       getTargetInstanceSettings;
   private final UnaryCallSettings<InsertTargetInstanceHttpRequest, Operation>
       insertTargetInstanceSettings;
-  private final OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
       insertTargetInstanceOperationSettings;
   private final PagedCallSettings<
           ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse>
@@ -141,7 +141,7 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
 
   /** Returns the object with the settings used for calls to deleteTargetInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
       deleteTargetInstanceOperationSettings() {
     return deleteTargetInstanceOperationSettings;
   }
@@ -160,7 +160,7 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
 
   /** Returns the object with the settings used for calls to insertTargetInstance. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
       insertTargetInstanceOperationSettings() {
     return insertTargetInstanceOperationSettings;
   }
@@ -415,14 +415,14 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     private final UnaryCallSettings.Builder<DeleteTargetInstanceHttpRequest, Operation>
         deleteTargetInstanceSettings;
     private final OperationCallSettings.Builder<
-            DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
         deleteTargetInstanceOperationSettings;
     private final UnaryCallSettings.Builder<GetTargetInstanceHttpRequest, TargetInstance>
         getTargetInstanceSettings;
     private final UnaryCallSettings.Builder<InsertTargetInstanceHttpRequest, Operation>
         insertTargetInstanceSettings;
     private final OperationCallSettings.Builder<
-            InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+            InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
         insertTargetInstanceOperationSettings;
     private final PagedCallSettings.Builder<
             ListTargetInstancesHttpRequest, TargetInstanceList, ListTargetInstancesPagedResponse>
@@ -539,8 +539,8 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -560,8 +560,8 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -634,8 +634,7 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     /** Returns the builder for the settings used for calls to deleteTargetInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
         deleteTargetInstanceOperationSettings() {
       return deleteTargetInstanceOperationSettings;
     }
@@ -655,8 +654,7 @@ public class TargetInstanceStubSettings extends StubSettings<TargetInstanceStubS
     /** Returns the builder for the settings used for calls to insertTargetInstance. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
         insertTargetInstanceOperationSettings() {
       return insertTargetInstanceOperationSettings;
     }

@@ -186,7 +186,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSslPolicyAsync(
       ProjectGlobalSslPolicyName sslPolicy) {
 
     DeleteSslPolicyHttpRequest request =
@@ -216,7 +216,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslPolicyAsync(String sslPolicy) {
+  public final OperationFuture<EmptyMessage, Operation> deleteSslPolicyAsync(String sslPolicy) {
 
     DeleteSslPolicyHttpRequest request =
         DeleteSslPolicyHttpRequest.newBuilder().setSslPolicy(sslPolicy).build();
@@ -245,7 +245,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteSslPolicyAsync(
       DeleteSslPolicyHttpRequest request) {
     return deleteSslPolicyOperationCallable().futureCall(request);
   }
@@ -263,14 +263,14 @@ public class SslPolicyClient implements BackgroundResource {
    *   DeleteSslPolicyHttpRequest request = DeleteSslPolicyHttpRequest.newBuilder()
    *     .setSslPolicy(sslPolicy.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslPolicyClient.deleteSslPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = sslPolicyClient.deleteSslPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteSslPolicyHttpRequest, EmptyMessage, Operation>
       deleteSslPolicyOperationCallable() {
     return stub.deleteSslPolicyOperationCallable();
   }
@@ -422,7 +422,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSslPolicyAsync(
       ProjectName project, SslPolicy sslPolicyResource) {
 
     InsertSslPolicyHttpRequest request =
@@ -457,7 +457,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSslPolicyAsync(
       String project, SslPolicy sslPolicyResource) {
 
     InsertSslPolicyHttpRequest request =
@@ -492,7 +492,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertSslPolicyAsync(
       InsertSslPolicyHttpRequest request) {
     return insertSslPolicyOperationCallable().futureCall(request);
   }
@@ -512,14 +512,14 @@ public class SslPolicyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setSslPolicyResource(sslPolicyResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslPolicyClient.insertSslPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = sslPolicyClient.insertSslPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertSslPolicyHttpRequest, EmptyMessage, Operation>
       insertSslPolicyOperationCallable() {
     return stub.insertSslPolicyOperationCallable();
   }
@@ -818,7 +818,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSslPolicyAsync(
       ProjectGlobalSslPolicyName sslPolicy, SslPolicy sslPolicyResource, List<String> fieldMask) {
 
     PatchSslPolicyHttpRequest request =
@@ -859,7 +859,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSslPolicyAsync(
       String sslPolicy, SslPolicy sslPolicyResource, List<String> fieldMask) {
 
     PatchSslPolicyHttpRequest request =
@@ -896,7 +896,7 @@ public class SslPolicyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchSslPolicyAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchSslPolicyAsync(
       PatchSslPolicyHttpRequest request) {
     return patchSslPolicyOperationCallable().futureCall(request);
   }
@@ -917,14 +917,14 @@ public class SslPolicyClient implements BackgroundResource {
    *     .setSslPolicyResource(sslPolicyResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = sslPolicyClient.patchSslPolicyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = sslPolicyClient.patchSslPolicyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchSslPolicyHttpRequest, EmptyMessage, Operation>
       patchSslPolicyOperationCallable() {
     return stub.patchSslPolicyOperationCallable();
   }

@@ -189,7 +189,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceTemplateAsync(
       ProjectGlobalInstanceTemplateName instanceTemplate) {
 
     DeleteInstanceTemplateHttpRequest request =
@@ -219,7 +219,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceTemplateAsync(
       String instanceTemplate) {
 
     DeleteInstanceTemplateHttpRequest request =
@@ -252,7 +252,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceTemplateAsync(
       DeleteInstanceTemplateHttpRequest request) {
     return deleteInstanceTemplateOperationCallable().futureCall(request);
   }
@@ -271,14 +271,14 @@ public class InstanceTemplateClient implements BackgroundResource {
    *   DeleteInstanceTemplateHttpRequest request = DeleteInstanceTemplateHttpRequest.newBuilder()
    *     .setInstanceTemplate(instanceTemplate.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceTemplateClient.deleteInstanceTemplateOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceTemplateClient.deleteInstanceTemplateOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteInstanceTemplateHttpRequest, EmptyMessage, Operation>
       deleteInstanceTemplateOperationCallable() {
     return stub.deleteInstanceTemplateOperationCallable();
   }
@@ -540,7 +540,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceTemplateAsync(
       ProjectName project, InstanceTemplate instanceTemplateResource) {
 
     InsertInstanceTemplateHttpRequest request =
@@ -575,7 +575,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceTemplateAsync(
       String project, InstanceTemplate instanceTemplateResource) {
 
     InsertInstanceTemplateHttpRequest request =
@@ -612,7 +612,7 @@ public class InstanceTemplateClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceTemplateAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceTemplateAsync(
       InsertInstanceTemplateHttpRequest request) {
     return insertInstanceTemplateOperationCallable().futureCall(request);
   }
@@ -634,14 +634,14 @@ public class InstanceTemplateClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setInstanceTemplateResource(instanceTemplateResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceTemplateClient.insertInstanceTemplateOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceTemplateClient.insertInstanceTemplateOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertInstanceTemplateHttpRequest, EmptyMessage, Operation>
       insertInstanceTemplateOperationCallable() {
     return stub.insertInstanceTemplateOperationCallable();
   }

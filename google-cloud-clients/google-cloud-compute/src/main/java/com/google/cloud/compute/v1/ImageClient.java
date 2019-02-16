@@ -184,7 +184,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteImageAsync(
       ProjectGlobalImageName image) {
 
     DeleteImageHttpRequest request =
@@ -212,7 +212,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteImageAsync(String image) {
+  public final OperationFuture<EmptyMessage, Operation> deleteImageAsync(String image) {
 
     DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder().setImage(image).build();
     return deleteImageAsync(request);
@@ -239,7 +239,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteImageAsync(
       DeleteImageHttpRequest request) {
     return deleteImageOperationCallable().futureCall(request);
   }
@@ -256,14 +256,14 @@ public class ImageClient implements BackgroundResource {
    *   DeleteImageHttpRequest request = DeleteImageHttpRequest.newBuilder()
    *     .setImage(image.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = imageClient.deleteImageOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = imageClient.deleteImageOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteImageHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteImageHttpRequest, EmptyMessage, Operation>
       deleteImageOperationCallable() {
     return stub.deleteImageOperationCallable();
   }
@@ -313,7 +313,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deprecateImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> deprecateImageAsync(
       ProjectGlobalImageName image, DeprecationStatus deprecationStatusResource) {
 
     DeprecateImageHttpRequest request =
@@ -346,7 +346,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deprecateImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> deprecateImageAsync(
       String image, DeprecationStatus deprecationStatusResource) {
 
     DeprecateImageHttpRequest request =
@@ -382,7 +382,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deprecateImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> deprecateImageAsync(
       DeprecateImageHttpRequest request) {
     return deprecateImageOperationCallable().futureCall(request);
   }
@@ -403,14 +403,14 @@ public class ImageClient implements BackgroundResource {
    *     .setImage(image.toString())
    *     .setDeprecationStatusResource(deprecationStatusResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = imageClient.deprecateImageOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = imageClient.deprecateImageOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeprecateImageHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeprecateImageHttpRequest, EmptyMessage, Operation>
       deprecateImageOperationCallable() {
     return stub.deprecateImageOperationCallable();
   }
@@ -757,7 +757,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertImageAsync(
       Boolean forceCreate, ProjectName project, Image imageResource) {
 
     InsertImageHttpRequest request =
@@ -792,7 +792,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertImageAsync(
       Boolean forceCreate, String project, Image imageResource) {
 
     InsertImageHttpRequest request =
@@ -829,7 +829,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertImageAsync(
       InsertImageHttpRequest request) {
     return insertImageOperationCallable().futureCall(request);
   }
@@ -850,14 +850,14 @@ public class ImageClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setImageResource(imageResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = imageClient.insertImageOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = imageClient.insertImageOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertImageHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertImageHttpRequest, EmptyMessage, Operation>
       insertImageOperationCallable() {
     return stub.insertImageOperationCallable();
   }
@@ -1177,7 +1177,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsImageAsync(
       ProjectGlobalImageResourceName resource,
       GlobalSetLabelsRequest globalSetLabelsRequestResource) {
 
@@ -1210,7 +1210,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsImageAsync(
       String resource, GlobalSetLabelsRequest globalSetLabelsRequestResource) {
 
     SetLabelsImageHttpRequest request =
@@ -1245,7 +1245,7 @@ public class ImageClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setLabelsImageAsync(
+  public final OperationFuture<EmptyMessage, Operation> setLabelsImageAsync(
       SetLabelsImageHttpRequest request) {
     return setLabelsImageOperationCallable().futureCall(request);
   }
@@ -1265,14 +1265,14 @@ public class ImageClient implements BackgroundResource {
    *     .setResource(resource.toString())
    *     .setGlobalSetLabelsRequestResource(globalSetLabelsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = imageClient.setLabelsImageOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = imageClient.setLabelsImageOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetLabelsImageHttpRequest, EmptyMessage, Operation>
       setLabelsImageOperationCallable() {
     return stub.setLabelsImageOperationCallable();
   }

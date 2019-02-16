@@ -230,13 +230,13 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
 
   private final UnaryCallable<DeleteTargetSslProxyHttpRequest, Operation>
       deleteTargetSslProxyCallable;
-  private final OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetSslProxyOperationCallable;
   private final UnaryCallable<GetTargetSslProxyHttpRequest, TargetSslProxy>
       getTargetSslProxyCallable;
   private final UnaryCallable<InsertTargetSslProxyHttpRequest, Operation>
       insertTargetSslProxyCallable;
-  private final OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
       insertTargetSslProxyOperationCallable;
   private final UnaryCallable<ListTargetSslProxiesHttpRequest, TargetSslProxyList>
       listTargetSslProxiesCallable;
@@ -245,21 +245,20 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   private final UnaryCallable<SetBackendServiceTargetSslProxyHttpRequest, Operation>
       setBackendServiceTargetSslProxyCallable;
   private final OperationCallable<
-          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetSslProxyOperationCallable;
   private final UnaryCallable<SetProxyHeaderTargetSslProxyHttpRequest, Operation>
       setProxyHeaderTargetSslProxyCallable;
-  private final OperationCallable<
-          SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetSslProxyOperationCallable;
   private final UnaryCallable<SetSslCertificatesTargetSslProxyHttpRequest, Operation>
       setSslCertificatesTargetSslProxyCallable;
   private final OperationCallable<
-          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetSslProxyOperationCallable;
   private final UnaryCallable<SetSslPolicyTargetSslProxyHttpRequest, Operation>
       setSslPolicyTargetSslProxyCallable;
-  private final OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetSslProxyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -437,7 +436,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetSslProxyOperationCallable() {
     return deleteTargetSslProxyOperationCallable;
   }
@@ -453,7 +452,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
       insertTargetSslProxyOperationCallable() {
     return insertTargetSslProxyOperationCallable;
   }
@@ -476,7 +475,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetSslProxyOperationCallable() {
     return setBackendServiceTargetSslProxyOperationCallable;
   }
@@ -488,7 +487,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetSslProxyOperationCallable() {
     return setProxyHeaderTargetSslProxyOperationCallable;
   }
@@ -500,7 +499,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetSslProxyOperationCallable() {
     return setSslCertificatesTargetSslProxyOperationCallable;
   }
@@ -512,7 +511,7 @@ public class HttpJsonTargetSslProxyStub extends TargetSslProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetSslProxyOperationCallable() {
     return setSslPolicyTargetSslProxyOperationCallable;
   }

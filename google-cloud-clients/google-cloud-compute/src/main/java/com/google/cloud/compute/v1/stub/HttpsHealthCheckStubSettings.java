@@ -105,13 +105,13 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
 
   private final UnaryCallSettings<DeleteHttpsHealthCheckHttpRequest, Operation>
       deleteHttpsHealthCheckSettings;
-  private final OperationCallSettings<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHttpsHealthCheckOperationSettings;
   private final UnaryCallSettings<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck2>
       getHttpsHealthCheckSettings;
   private final UnaryCallSettings<InsertHttpsHealthCheckHttpRequest, Operation>
       insertHttpsHealthCheckSettings;
-  private final OperationCallSettings<InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHttpsHealthCheckOperationSettings;
   private final PagedCallSettings<
           ListHttpsHealthChecksHttpRequest,
@@ -120,11 +120,11 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
       listHttpsHealthChecksSettings;
   private final UnaryCallSettings<PatchHttpsHealthCheckHttpRequest, Operation>
       patchHttpsHealthCheckSettings;
-  private final OperationCallSettings<PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHttpsHealthCheckOperationSettings;
   private final UnaryCallSettings<UpdateHttpsHealthCheckHttpRequest, Operation>
       updateHttpsHealthCheckSettings;
-  private final OperationCallSettings<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHttpsHealthCheckOperationSettings;
 
   /** Returns the object with the settings used for calls to deleteHttpsHealthCheck. */
@@ -135,7 +135,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
 
   /** Returns the object with the settings used for calls to deleteHttpsHealthCheck. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       deleteHttpsHealthCheckOperationSettings() {
     return deleteHttpsHealthCheckOperationSettings;
   }
@@ -154,7 +154,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
 
   /** Returns the object with the settings used for calls to insertHttpsHealthCheck. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       insertHttpsHealthCheckOperationSettings() {
     return insertHttpsHealthCheckOperationSettings;
   }
@@ -176,7 +176,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
 
   /** Returns the object with the settings used for calls to patchHttpsHealthCheck. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       patchHttpsHealthCheckOperationSettings() {
     return patchHttpsHealthCheckOperationSettings;
   }
@@ -189,7 +189,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
 
   /** Returns the object with the settings used for calls to updateHttpsHealthCheck. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
       updateHttpsHealthCheckOperationSettings() {
     return updateHttpsHealthCheckOperationSettings;
   }
@@ -359,14 +359,14 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
     private final UnaryCallSettings.Builder<DeleteHttpsHealthCheckHttpRequest, Operation>
         deleteHttpsHealthCheckSettings;
     private final OperationCallSettings.Builder<
-            DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         deleteHttpsHealthCheckOperationSettings;
     private final UnaryCallSettings.Builder<GetHttpsHealthCheckHttpRequest, HttpsHealthCheck2>
         getHttpsHealthCheckSettings;
     private final UnaryCallSettings.Builder<InsertHttpsHealthCheckHttpRequest, Operation>
         insertHttpsHealthCheckSettings;
     private final OperationCallSettings.Builder<
-            InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+            InsertHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         insertHttpsHealthCheckOperationSettings;
     private final PagedCallSettings.Builder<
             ListHttpsHealthChecksHttpRequest,
@@ -376,12 +376,12 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
     private final UnaryCallSettings.Builder<PatchHttpsHealthCheckHttpRequest, Operation>
         patchHttpsHealthCheckSettings;
     private final OperationCallSettings.Builder<
-            PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+            PatchHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         patchHttpsHealthCheckOperationSettings;
     private final UnaryCallSettings.Builder<UpdateHttpsHealthCheckHttpRequest, Operation>
         updateHttpsHealthCheckSettings;
     private final OperationCallSettings.Builder<
-            UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         updateHttpsHealthCheckOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -507,8 +507,8 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -529,8 +529,8 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -551,8 +551,8 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -573,8 +573,8 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -643,8 +643,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
     /** Returns the builder for the settings used for calls to deleteHttpsHealthCheck. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         deleteHttpsHealthCheckOperationSettings() {
       return deleteHttpsHealthCheckOperationSettings;
     }
@@ -664,8 +663,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
     /** Returns the builder for the settings used for calls to insertHttpsHealthCheck. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         insertHttpsHealthCheckOperationSettings() {
       return insertHttpsHealthCheckOperationSettings;
     }
@@ -688,8 +686,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
     /** Returns the builder for the settings used for calls to patchHttpsHealthCheck. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            PatchHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         patchHttpsHealthCheckOperationSettings() {
       return patchHttpsHealthCheckOperationSettings;
     }
@@ -703,8 +700,7 @@ public class HttpsHealthCheckStubSettings extends StubSettings<HttpsHealthCheckS
     /** Returns the builder for the settings used for calls to updateHttpsHealthCheck. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            UpdateHttpsHealthCheckHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateHttpsHealthCheckHttpRequest, EmptyMessage, Operation>
         updateHttpsHealthCheckOperationSettings() {
       return updateHttpsHealthCheckOperationSettings;
     }

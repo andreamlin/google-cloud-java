@@ -186,7 +186,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetSslProxyAsync(
       ProjectGlobalTargetSslProxyName targetSslProxy) {
 
     DeleteTargetSslProxyHttpRequest request =
@@ -214,7 +214,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetSslProxyAsync(
       String targetSslProxy) {
 
     DeleteTargetSslProxyHttpRequest request =
@@ -243,7 +243,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteTargetSslProxyAsync(
       DeleteTargetSslProxyHttpRequest request) {
     return deleteTargetSslProxyOperationCallable().futureCall(request);
   }
@@ -260,14 +260,14 @@ public class TargetSslProxyClient implements BackgroundResource {
    *   DeleteTargetSslProxyHttpRequest request = DeleteTargetSslProxyHttpRequest.newBuilder()
    *     .setTargetSslProxy(targetSslProxy.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetSslProxyClient.deleteTargetSslProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetSslProxyClient.deleteTargetSslProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteTargetSslProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetSslProxyOperationCallable() {
     return stub.deleteTargetSslProxyOperationCallable();
   }
@@ -420,7 +420,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetSslProxyAsync(
       ProjectName project, TargetSslProxy targetSslProxyResource) {
 
     InsertTargetSslProxyHttpRequest request =
@@ -453,7 +453,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetSslProxyAsync(
       String project, TargetSslProxy targetSslProxyResource) {
 
     InsertTargetSslProxyHttpRequest request =
@@ -488,7 +488,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertTargetSslProxyAsync(
       InsertTargetSslProxyHttpRequest request) {
     return insertTargetSslProxyOperationCallable().futureCall(request);
   }
@@ -508,14 +508,14 @@ public class TargetSslProxyClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setTargetSslProxyResource(targetSslProxyResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetSslProxyClient.insertTargetSslProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetSslProxyClient.insertTargetSslProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertTargetSslProxyHttpRequest, EmptyMessage, Operation>
       insertTargetSslProxyOperationCallable() {
     return stub.insertTargetSslProxyOperationCallable();
   }
@@ -706,7 +706,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackendServiceTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackendServiceTargetSslProxyAsync(
       ProjectGlobalTargetSslProxyName targetSslProxy,
       TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource) {
 
@@ -740,7 +740,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackendServiceTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackendServiceTargetSslProxyAsync(
       String targetSslProxy,
       TargetSslProxiesSetBackendServiceRequest targetSslProxiesSetBackendServiceRequestResource) {
 
@@ -776,7 +776,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setBackendServiceTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setBackendServiceTargetSslProxyAsync(
       SetBackendServiceTargetSslProxyHttpRequest request) {
     return setBackendServiceTargetSslProxyOperationCallable().futureCall(request);
   }
@@ -795,7 +795,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    *     .setTargetSslProxy(targetSslProxy.toString())
    *     .setTargetSslProxiesSetBackendServiceRequestResource(targetSslProxiesSetBackendServiceRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetSslProxyClient.setBackendServiceTargetSslProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetSslProxyClient.setBackendServiceTargetSslProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -803,7 +803,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetBackendServiceTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetSslProxyOperationCallable() {
     return stub.setBackendServiceTargetSslProxyOperationCallable();
   }
@@ -854,7 +854,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setProxyHeaderTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setProxyHeaderTargetSslProxyAsync(
       ProjectGlobalTargetSslProxyName targetSslProxy,
       TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource) {
 
@@ -887,7 +887,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setProxyHeaderTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setProxyHeaderTargetSslProxyAsync(
       String targetSslProxy,
       TargetSslProxiesSetProxyHeaderRequest targetSslProxiesSetProxyHeaderRequestResource) {
 
@@ -923,7 +923,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setProxyHeaderTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setProxyHeaderTargetSslProxyAsync(
       SetProxyHeaderTargetSslProxyHttpRequest request) {
     return setProxyHeaderTargetSslProxyOperationCallable().futureCall(request);
   }
@@ -942,15 +942,14 @@ public class TargetSslProxyClient implements BackgroundResource {
    *     .setTargetSslProxy(targetSslProxy.toString())
    *     .setTargetSslProxiesSetProxyHeaderRequestResource(targetSslProxiesSetProxyHeaderRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetSslProxyClient.setProxyHeaderTargetSslProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetSslProxyClient.setProxyHeaderTargetSslProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetProxyHeaderTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetSslProxyOperationCallable() {
     return stub.setProxyHeaderTargetSslProxyOperationCallable();
   }
@@ -1002,7 +1001,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSslCertificatesTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSslCertificatesTargetSslProxyAsync(
       ProjectGlobalTargetSslProxyName targetSslProxy,
       TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource) {
 
@@ -1036,7 +1035,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSslCertificatesTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSslCertificatesTargetSslProxyAsync(
       String targetSslProxy,
       TargetSslProxiesSetSslCertificatesRequest targetSslProxiesSetSslCertificatesRequestResource) {
 
@@ -1072,7 +1071,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSslCertificatesTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSslCertificatesTargetSslProxyAsync(
       SetSslCertificatesTargetSslProxyHttpRequest request) {
     return setSslCertificatesTargetSslProxyOperationCallable().futureCall(request);
   }
@@ -1091,7 +1090,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    *     .setTargetSslProxy(targetSslProxy.toString())
    *     .setTargetSslProxiesSetSslCertificatesRequestResource(targetSslProxiesSetSslCertificatesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetSslProxyClient.setSslCertificatesTargetSslProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetSslProxyClient.setSslCertificatesTargetSslProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
@@ -1099,7 +1098,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public final OperationCallable<
-          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetSslCertificatesTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslCertificatesTargetSslProxyOperationCallable() {
     return stub.setSslCertificatesTargetSslProxyOperationCallable();
   }
@@ -1153,7 +1152,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSslPolicyTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSslPolicyTargetSslProxyAsync(
       ProjectGlobalTargetSslProxyName targetSslProxy,
       SslPolicyReference sslPolicyReferenceResource) {
 
@@ -1188,7 +1187,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSslPolicyTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSslPolicyTargetSslProxyAsync(
       String targetSslProxy, SslPolicyReference sslPolicyReferenceResource) {
 
     SetSslPolicyTargetSslProxyHttpRequest request =
@@ -1224,7 +1223,7 @@ public class TargetSslProxyClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setSslPolicyTargetSslProxyAsync(
+  public final OperationFuture<EmptyMessage, Operation> setSslPolicyTargetSslProxyAsync(
       SetSslPolicyTargetSslProxyHttpRequest request) {
     return setSslPolicyTargetSslProxyOperationCallable().futureCall(request);
   }
@@ -1245,14 +1244,14 @@ public class TargetSslProxyClient implements BackgroundResource {
    *     .setTargetSslProxy(targetSslProxy.toString())
    *     .setSslPolicyReferenceResource(sslPolicyReferenceResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = targetSslProxyClient.setSslPolicyTargetSslProxyOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = targetSslProxyClient.setSslPolicyTargetSslProxyOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetSslPolicyTargetSslProxyHttpRequest, EmptyMessage, Operation>
       setSslPolicyTargetSslProxyOperationCallable() {
     return stub.setSslPolicyTargetSslProxyOperationCallable();
   }

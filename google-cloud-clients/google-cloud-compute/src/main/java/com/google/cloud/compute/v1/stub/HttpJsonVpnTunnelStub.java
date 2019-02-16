@@ -169,11 +169,11 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
           AggregatedListVpnTunnelsHttpRequest, AggregatedListVpnTunnelsPagedResponse>
       aggregatedListVpnTunnelsPagedCallable;
   private final UnaryCallable<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelCallable;
-  private final OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationCallable;
   private final UnaryCallable<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelCallable;
   private final UnaryCallable<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelCallable;
-  private final OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, VpnTunnelList> listVpnTunnelsCallable;
   private final UnaryCallable<ListVpnTunnelsHttpRequest, ListVpnTunnelsPagedResponse>
@@ -301,7 +301,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationCallable() {
     return deleteVpnTunnelOperationCallable;
   }
@@ -317,7 +317,7 @@ public class HttpJsonVpnTunnelStub extends VpnTunnelStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationCallable() {
     return insertVpnTunnelOperationCallable;
   }

@@ -205,12 +205,12 @@ public class HttpJsonLicenseStub extends LicenseStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteLicenseHttpRequest, Operation> deleteLicenseCallable;
-  private final OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationCallable;
   private final UnaryCallable<GetLicenseHttpRequest, License> getLicenseCallable;
   private final UnaryCallable<GetIamPolicyLicenseHttpRequest, Policy> getIamPolicyLicenseCallable;
   private final UnaryCallable<InsertLicenseHttpRequest, Operation> insertLicenseCallable;
-  private final OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationCallable;
   private final UnaryCallable<ListLicensesHttpRequest, LicensesListResponse> listLicensesCallable;
   private final UnaryCallable<ListLicensesHttpRequest, ListLicensesPagedResponse>
@@ -344,7 +344,7 @@ public class HttpJsonLicenseStub extends LicenseStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteLicenseHttpRequest, EmptyMessage, Operation>
       deleteLicenseOperationCallable() {
     return deleteLicenseOperationCallable;
   }
@@ -365,7 +365,7 @@ public class HttpJsonLicenseStub extends LicenseStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertLicenseHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertLicenseHttpRequest, EmptyMessage, Operation>
       insertLicenseOperationCallable() {
     return insertLicenseOperationCallable;
   }

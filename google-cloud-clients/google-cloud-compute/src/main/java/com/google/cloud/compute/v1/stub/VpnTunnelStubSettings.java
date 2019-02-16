@@ -111,11 +111,11 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
           AggregatedListVpnTunnelsPagedResponse>
       aggregatedListVpnTunnelsSettings;
   private final UnaryCallSettings<DeleteVpnTunnelHttpRequest, Operation> deleteVpnTunnelSettings;
-  private final OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationSettings;
   private final UnaryCallSettings<GetVpnTunnelHttpRequest, VpnTunnel> getVpnTunnelSettings;
   private final UnaryCallSettings<InsertVpnTunnelHttpRequest, Operation> insertVpnTunnelSettings;
-  private final OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationSettings;
   private final PagedCallSettings<
           ListVpnTunnelsHttpRequest, VpnTunnelList, ListVpnTunnelsPagedResponse>
@@ -137,7 +137,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
 
   /** Returns the object with the settings used for calls to deleteVpnTunnel. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationSettings() {
     return deleteVpnTunnelOperationSettings;
   }
@@ -154,7 +154,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
 
   /** Returns the object with the settings used for calls to insertVpnTunnel. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationSettings() {
     return insertVpnTunnelOperationSettings;
   }
@@ -388,15 +388,13 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
         aggregatedListVpnTunnelsSettings;
     private final UnaryCallSettings.Builder<DeleteVpnTunnelHttpRequest, Operation>
         deleteVpnTunnelSettings;
-    private final OperationCallSettings.Builder<
-            DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
         deleteVpnTunnelOperationSettings;
     private final UnaryCallSettings.Builder<GetVpnTunnelHttpRequest, VpnTunnel>
         getVpnTunnelSettings;
     private final UnaryCallSettings.Builder<InsertVpnTunnelHttpRequest, Operation>
         insertVpnTunnelSettings;
-    private final OperationCallSettings.Builder<
-            InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
         insertVpnTunnelOperationSettings;
     private final PagedCallSettings.Builder<
             ListVpnTunnelsHttpRequest, VpnTunnelList, ListVpnTunnelsPagedResponse>
@@ -512,8 +510,8 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -533,8 +531,8 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -604,7 +602,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
     /** Returns the builder for the settings used for calls to deleteVpnTunnel. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
         deleteVpnTunnelOperationSettings() {
       return deleteVpnTunnelOperationSettings;
     }
@@ -623,7 +621,7 @@ public class VpnTunnelStubSettings extends StubSettings<VpnTunnelStubSettings> {
     /** Returns the builder for the settings used for calls to insertVpnTunnel. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
         insertVpnTunnelOperationSettings() {
       return insertVpnTunnelOperationSettings;
     }

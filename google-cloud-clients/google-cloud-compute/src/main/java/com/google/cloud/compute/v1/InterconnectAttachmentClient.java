@@ -332,7 +332,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInterconnectAttachmentAsync(
       ProjectRegionInterconnectAttachmentName interconnectAttachment) {
 
     DeleteInterconnectAttachmentHttpRequest request =
@@ -361,7 +361,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInterconnectAttachmentAsync(
       String interconnectAttachment) {
 
     DeleteInterconnectAttachmentHttpRequest request =
@@ -392,7 +392,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInterconnectAttachmentAsync(
       DeleteInterconnectAttachmentHttpRequest request) {
     return deleteInterconnectAttachmentOperationCallable().futureCall(request);
   }
@@ -409,15 +409,14 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    *   DeleteInterconnectAttachmentHttpRequest request = DeleteInterconnectAttachmentHttpRequest.newBuilder()
    *     .setInterconnectAttachment(interconnectAttachment.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectAttachmentClient.deleteInterconnectAttachmentOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = interconnectAttachmentClient.deleteInterconnectAttachmentOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          DeleteInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       deleteInterconnectAttachmentOperationCallable() {
     return stub.deleteInterconnectAttachmentOperationCallable();
   }
@@ -572,7 +571,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInterconnectAttachmentAsync(
       ProjectRegionName region, InterconnectAttachment interconnectAttachmentResource) {
 
     InsertInterconnectAttachmentHttpRequest request =
@@ -606,7 +605,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInterconnectAttachmentAsync(
       String region, InterconnectAttachment interconnectAttachmentResource) {
 
     InsertInterconnectAttachmentHttpRequest request =
@@ -641,7 +640,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInterconnectAttachmentAsync(
       InsertInterconnectAttachmentHttpRequest request) {
     return insertInterconnectAttachmentOperationCallable().futureCall(request);
   }
@@ -661,15 +660,14 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setInterconnectAttachmentResource(interconnectAttachmentResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectAttachmentClient.insertInterconnectAttachmentOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = interconnectAttachmentClient.insertInterconnectAttachmentOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          InsertInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       insertInterconnectAttachmentOperationCallable() {
     return stub.insertInterconnectAttachmentOperationCallable();
   }
@@ -869,7 +867,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInterconnectAttachmentAsync(
       ProjectRegionInterconnectAttachmentName interconnectAttachment,
       InterconnectAttachment interconnectAttachmentResource,
       List<String> fieldMask) {
@@ -912,7 +910,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInterconnectAttachmentAsync(
       String interconnectAttachment,
       InterconnectAttachment interconnectAttachmentResource,
       List<String> fieldMask) {
@@ -952,7 +950,7 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchInterconnectAttachmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchInterconnectAttachmentAsync(
       PatchInterconnectAttachmentHttpRequest request) {
     return patchInterconnectAttachmentOperationCallable().futureCall(request);
   }
@@ -974,14 +972,14 @@ public class InterconnectAttachmentClient implements BackgroundResource {
    *     .setInterconnectAttachmentResource(interconnectAttachmentResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = interconnectAttachmentClient.patchInterconnectAttachmentOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = interconnectAttachmentClient.patchInterconnectAttachmentOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchInterconnectAttachmentHttpRequest, EmptyMessage, Operation>
       patchInterconnectAttachmentOperationCallable() {
     return stub.patchInterconnectAttachmentOperationCallable();
   }

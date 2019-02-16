@@ -186,7 +186,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addPeeringNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> addPeeringNetworkAsync(
       ProjectGlobalNetworkName network,
       NetworksAddPeeringRequest networksAddPeeringRequestResource) {
 
@@ -218,7 +218,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addPeeringNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> addPeeringNetworkAsync(
       String network, NetworksAddPeeringRequest networksAddPeeringRequestResource) {
 
     AddPeeringNetworkHttpRequest request =
@@ -252,7 +252,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addPeeringNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> addPeeringNetworkAsync(
       AddPeeringNetworkHttpRequest request) {
     return addPeeringNetworkOperationCallable().futureCall(request);
   }
@@ -271,14 +271,14 @@ public class NetworkClient implements BackgroundResource {
    *     .setNetwork(network.toString())
    *     .setNetworksAddPeeringRequestResource(networksAddPeeringRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = networkClient.addPeeringNetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = networkClient.addPeeringNetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddPeeringNetworkHttpRequest, EmptyMessage, Operation>
       addPeeringNetworkOperationCallable() {
     return stub.addPeeringNetworkOperationCallable();
   }
@@ -326,7 +326,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNetworkAsync(
       ProjectGlobalNetworkName network) {
 
     DeleteNetworkHttpRequest request =
@@ -354,7 +354,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNetworkAsync(String network) {
+  public final OperationFuture<EmptyMessage, Operation> deleteNetworkAsync(String network) {
 
     DeleteNetworkHttpRequest request =
         DeleteNetworkHttpRequest.newBuilder().setNetwork(network).build();
@@ -382,7 +382,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteNetworkAsync(
       DeleteNetworkHttpRequest request) {
     return deleteNetworkOperationCallable().futureCall(request);
   }
@@ -399,14 +399,14 @@ public class NetworkClient implements BackgroundResource {
    *   DeleteNetworkHttpRequest request = DeleteNetworkHttpRequest.newBuilder()
    *     .setNetwork(network.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = networkClient.deleteNetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = networkClient.deleteNetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteNetworkHttpRequest, EmptyMessage, Operation>
       deleteNetworkOperationCallable() {
     return stub.deleteNetworkOperationCallable();
   }
@@ -552,7 +552,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNetworkAsync(
       ProjectName project, Network networkResource) {
 
     InsertNetworkHttpRequest request =
@@ -585,7 +585,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNetworkAsync(
       String project, Network networkResource) {
 
     InsertNetworkHttpRequest request =
@@ -619,7 +619,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertNetworkAsync(
       InsertNetworkHttpRequest request) {
     return insertNetworkOperationCallable().futureCall(request);
   }
@@ -638,14 +638,14 @@ public class NetworkClient implements BackgroundResource {
    *     .setProject(project.toString())
    *     .setNetworkResource(networkResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = networkClient.insertNetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = networkClient.insertNetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertNetworkHttpRequest, EmptyMessage, Operation>
       insertNetworkOperationCallable() {
     return stub.insertNetworkOperationCallable();
   }
@@ -839,7 +839,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchNetworkAsync(
       ProjectGlobalNetworkName network, Network networkResource, List<String> fieldMask) {
 
     PatchNetworkHttpRequest request =
@@ -879,7 +879,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchNetworkAsync(
       String network, Network networkResource, List<String> fieldMask) {
 
     PatchNetworkHttpRequest request =
@@ -917,7 +917,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> patchNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> patchNetworkAsync(
       PatchNetworkHttpRequest request) {
     return patchNetworkOperationCallable().futureCall(request);
   }
@@ -939,14 +939,14 @@ public class NetworkClient implements BackgroundResource {
    *     .setNetworkResource(networkResource)
    *     .addAllFieldMask(fieldMask)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = networkClient.patchNetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = networkClient.patchNetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<PatchNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<PatchNetworkHttpRequest, EmptyMessage, Operation>
       patchNetworkOperationCallable() {
     return stub.patchNetworkOperationCallable();
   }
@@ -999,7 +999,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removePeeringNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> removePeeringNetworkAsync(
       ProjectGlobalNetworkName network,
       NetworksRemovePeeringRequest networksRemovePeeringRequestResource) {
 
@@ -1031,7 +1031,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removePeeringNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> removePeeringNetworkAsync(
       String network, NetworksRemovePeeringRequest networksRemovePeeringRequestResource) {
 
     RemovePeeringNetworkHttpRequest request =
@@ -1065,7 +1065,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removePeeringNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> removePeeringNetworkAsync(
       RemovePeeringNetworkHttpRequest request) {
     return removePeeringNetworkOperationCallable().futureCall(request);
   }
@@ -1084,14 +1084,14 @@ public class NetworkClient implements BackgroundResource {
    *     .setNetwork(network.toString())
    *     .setNetworksRemovePeeringRequestResource(networksRemovePeeringRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = networkClient.removePeeringNetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = networkClient.removePeeringNetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<RemovePeeringNetworkHttpRequest, EmptyMessage, Operation>
       removePeeringNetworkOperationCallable() {
     return stub.removePeeringNetworkOperationCallable();
   }
@@ -1140,7 +1140,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> switchToCustomModeNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> switchToCustomModeNetworkAsync(
       ProjectGlobalNetworkName network) {
 
     SwitchToCustomModeNetworkHttpRequest request =
@@ -1168,7 +1168,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> switchToCustomModeNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> switchToCustomModeNetworkAsync(
       String network) {
 
     SwitchToCustomModeNetworkHttpRequest request =
@@ -1197,7 +1197,7 @@ public class NetworkClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> switchToCustomModeNetworkAsync(
+  public final OperationFuture<EmptyMessage, Operation> switchToCustomModeNetworkAsync(
       SwitchToCustomModeNetworkHttpRequest request) {
     return switchToCustomModeNetworkOperationCallable().futureCall(request);
   }
@@ -1214,14 +1214,14 @@ public class NetworkClient implements BackgroundResource {
    *   SwitchToCustomModeNetworkHttpRequest request = SwitchToCustomModeNetworkHttpRequest.newBuilder()
    *     .setNetwork(network.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = networkClient.switchToCustomModeNetworkOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = networkClient.switchToCustomModeNetworkOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SwitchToCustomModeNetworkHttpRequest, EmptyMessage, Operation>
       switchToCustomModeNetworkOperationCallable() {
     return stub.switchToCustomModeNetworkOperationCallable();
   }

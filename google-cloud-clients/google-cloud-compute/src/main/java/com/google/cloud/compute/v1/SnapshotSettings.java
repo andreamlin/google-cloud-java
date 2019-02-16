@@ -73,7 +73,7 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
   /** Returns the object with the settings used for calls to deleteSnapshot. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
       deleteSnapshotOperationSettings() {
     return ((SnapshotStubSettings) getStubSettings()).deleteSnapshotOperationSettings();
   }
@@ -107,7 +107,7 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
   /** Returns the object with the settings used for calls to setLabelsSnapshot. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
       setLabelsSnapshotOperationSettings() {
     return ((SnapshotStubSettings) getStubSettings()).setLabelsSnapshotOperationSettings();
   }
@@ -228,7 +228,7 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
     /** Returns the builder for the settings used for calls to deleteSnapshot. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteSnapshotHttpRequest, EmptyMessage, Operation>
         deleteSnapshotOperationSettings() {
       return getStubSettingsBuilder().deleteSnapshotOperationSettings();
     }
@@ -266,7 +266,7 @@ public class SnapshotSettings extends ClientSettings<SnapshotSettings> {
     /** Returns the builder for the settings used for calls to setLabelsSnapshot. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<SetLabelsSnapshotHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<SetLabelsSnapshotHttpRequest, EmptyMessage, Operation>
         setLabelsSnapshotOperationSettings() {
       return getStubSettingsBuilder().setLabelsSnapshotOperationSettings();
     }

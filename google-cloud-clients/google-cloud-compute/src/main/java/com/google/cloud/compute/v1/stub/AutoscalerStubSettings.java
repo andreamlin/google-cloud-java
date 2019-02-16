@@ -113,20 +113,20 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
           AggregatedListAutoscalersPagedResponse>
       aggregatedListAutoscalersSettings;
   private final UnaryCallSettings<DeleteAutoscalerHttpRequest, Operation> deleteAutoscalerSettings;
-  private final OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationSettings;
   private final UnaryCallSettings<GetAutoscalerHttpRequest, Autoscaler> getAutoscalerSettings;
   private final UnaryCallSettings<InsertAutoscalerHttpRequest, Operation> insertAutoscalerSettings;
-  private final OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationSettings;
   private final PagedCallSettings<
           ListAutoscalersHttpRequest, AutoscalerList, ListAutoscalersPagedResponse>
       listAutoscalersSettings;
   private final UnaryCallSettings<PatchAutoscalerHttpRequest, Operation> patchAutoscalerSettings;
-  private final OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationSettings;
   private final UnaryCallSettings<UpdateAutoscalerHttpRequest, Operation> updateAutoscalerSettings;
-  private final OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationSettings;
 
   /** Returns the object with the settings used for calls to aggregatedListAutoscalers. */
@@ -145,7 +145,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
   /** Returns the object with the settings used for calls to deleteAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
       deleteAutoscalerOperationSettings() {
     return deleteAutoscalerOperationSettings;
   }
@@ -162,7 +162,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
   /** Returns the object with the settings used for calls to insertAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
       insertAutoscalerOperationSettings() {
     return insertAutoscalerOperationSettings;
   }
@@ -180,7 +180,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
   /** Returns the object with the settings used for calls to patchAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
       patchAutoscalerOperationSettings() {
     return patchAutoscalerOperationSettings;
   }
@@ -192,7 +192,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
 
   /** Returns the object with the settings used for calls to updateAutoscaler. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
       updateAutoscalerOperationSettings() {
     return updateAutoscalerOperationSettings;
   }
@@ -427,27 +427,26 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     private final UnaryCallSettings.Builder<DeleteAutoscalerHttpRequest, Operation>
         deleteAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
         deleteAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<GetAutoscalerHttpRequest, Autoscaler>
         getAutoscalerSettings;
     private final UnaryCallSettings.Builder<InsertAutoscalerHttpRequest, Operation>
         insertAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            InsertAutoscalerHttpRequest, EmptyMessage, Operation>
         insertAutoscalerOperationSettings;
     private final PagedCallSettings.Builder<
             ListAutoscalersHttpRequest, AutoscalerList, ListAutoscalersPagedResponse>
         listAutoscalersSettings;
     private final UnaryCallSettings.Builder<PatchAutoscalerHttpRequest, Operation>
         patchAutoscalerSettings;
-    private final OperationCallSettings.Builder<
-            PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    private final OperationCallSettings.Builder<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
         patchAutoscalerOperationSettings;
     private final UnaryCallSettings.Builder<UpdateAutoscalerHttpRequest, Operation>
         updateAutoscalerSettings;
     private final OperationCallSettings.Builder<
-            UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+            UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
         updateAutoscalerOperationSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
@@ -580,8 +579,8 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -601,8 +600,8 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -622,8 +621,8 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -643,8 +642,8 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
                   .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
-          .setResponseTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
-          .setMetadataTransformer(ApiMessageOperationTransformers.create(EmptyMessage.class))
+          .setResponseTransformer(ApiMessageOperationTransformers.ResponseTransformer.create(EmptyMessage.class))
+          .setMetadataTransformer(ApiMessageOperationTransformers.MetadataTransformer.create(Operation.class))
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
@@ -720,7 +719,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     /** Returns the builder for the settings used for calls to deleteAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteAutoscalerHttpRequest, EmptyMessage, Operation>
         deleteAutoscalerOperationSettings() {
       return deleteAutoscalerOperationSettings;
     }
@@ -739,7 +738,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     /** Returns the builder for the settings used for calls to insertAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertAutoscalerHttpRequest, EmptyMessage, Operation>
         insertAutoscalerOperationSettings() {
       return insertAutoscalerOperationSettings;
     }
@@ -760,7 +759,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     /** Returns the builder for the settings used for calls to patchAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<PatchAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<PatchAutoscalerHttpRequest, EmptyMessage, Operation>
         patchAutoscalerOperationSettings() {
       return patchAutoscalerOperationSettings;
     }
@@ -774,7 +773,7 @@ public class AutoscalerStubSettings extends StubSettings<AutoscalerStubSettings>
     /** Returns the builder for the settings used for calls to updateAutoscaler. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<UpdateAutoscalerHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<UpdateAutoscalerHttpRequest, EmptyMessage, Operation>
         updateAutoscalerOperationSettings() {
       return updateAutoscalerOperationSettings;
     }

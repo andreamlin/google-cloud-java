@@ -189,7 +189,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addInstancesInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> addInstancesInstanceGroupAsync(
       ProjectZoneInstanceGroupName instanceGroup,
       InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequestResource) {
 
@@ -222,7 +222,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addInstancesInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> addInstancesInstanceGroupAsync(
       String instanceGroup,
       InstanceGroupsAddInstancesRequest instanceGroupsAddInstancesRequestResource) {
 
@@ -258,7 +258,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> addInstancesInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> addInstancesInstanceGroupAsync(
       AddInstancesInstanceGroupHttpRequest request) {
     return addInstancesInstanceGroupOperationCallable().futureCall(request);
   }
@@ -278,14 +278,14 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .setInstanceGroup(instanceGroup.toString())
    *     .setInstanceGroupsAddInstancesRequestResource(instanceGroupsAddInstancesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupClient.addInstancesInstanceGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupClient.addInstancesInstanceGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<AddInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       addInstancesInstanceGroupOperationCallable() {
     return stub.addInstancesInstanceGroupOperationCallable();
   }
@@ -478,7 +478,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceGroupAsync(
       ProjectZoneInstanceGroupName instanceGroup) {
 
     DeleteInstanceGroupHttpRequest request =
@@ -508,7 +508,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceGroupAsync(
       String instanceGroup) {
 
     DeleteInstanceGroupHttpRequest request =
@@ -539,7 +539,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> deleteInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> deleteInstanceGroupAsync(
       DeleteInstanceGroupHttpRequest request) {
     return deleteInstanceGroupOperationCallable().futureCall(request);
   }
@@ -558,14 +558,14 @@ public class InstanceGroupClient implements BackgroundResource {
    *   DeleteInstanceGroupHttpRequest request = DeleteInstanceGroupHttpRequest.newBuilder()
    *     .setInstanceGroup(instanceGroup.toString())
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupClient.deleteInstanceGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupClient.deleteInstanceGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<DeleteInstanceGroupHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupOperationCallable() {
     return stub.deleteInstanceGroupOperationCallable();
   }
@@ -721,7 +721,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceGroupAsync(
       ProjectZoneName zone, InstanceGroup instanceGroupResource) {
 
     InsertInstanceGroupHttpRequest request =
@@ -755,7 +755,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceGroupAsync(
       String zone, InstanceGroup instanceGroupResource) {
 
     InsertInstanceGroupHttpRequest request =
@@ -790,7 +790,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertInstanceGroupAsync(
       InsertInstanceGroupHttpRequest request) {
     return insertInstanceGroupOperationCallable().futureCall(request);
   }
@@ -810,14 +810,14 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .setZone(zone.toString())
    *     .setInstanceGroupResource(instanceGroupResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupClient.insertInstanceGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupClient.insertInstanceGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertInstanceGroupHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupOperationCallable() {
     return stub.insertInstanceGroupOperationCallable();
   }
@@ -1174,7 +1174,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeInstancesInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeInstancesInstanceGroupAsync(
       ProjectZoneInstanceGroupName instanceGroup,
       InstanceGroupsRemoveInstancesRequest instanceGroupsRemoveInstancesRequestResource) {
 
@@ -1213,7 +1213,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeInstancesInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeInstancesInstanceGroupAsync(
       String instanceGroup,
       InstanceGroupsRemoveInstancesRequest instanceGroupsRemoveInstancesRequestResource) {
 
@@ -1254,7 +1254,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> removeInstancesInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> removeInstancesInstanceGroupAsync(
       RemoveInstancesInstanceGroupHttpRequest request) {
     return removeInstancesInstanceGroupOperationCallable().futureCall(request);
   }
@@ -1278,15 +1278,14 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .setInstanceGroup(instanceGroup.toString())
    *     .setInstanceGroupsRemoveInstancesRequestResource(instanceGroupsRemoveInstancesRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupClient.removeInstancesInstanceGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupClient.removeInstancesInstanceGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<
-          RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<RemoveInstancesInstanceGroupHttpRequest, EmptyMessage, Operation>
       removeInstancesInstanceGroupOperationCallable() {
     return stub.removeInstancesInstanceGroupOperationCallable();
   }
@@ -1342,7 +1341,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNamedPortsInstanceGroupAsync(
       ProjectZoneInstanceGroupName instanceGroup,
       InstanceGroupsSetNamedPortsRequest instanceGroupsSetNamedPortsRequestResource) {
 
@@ -1375,7 +1374,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNamedPortsInstanceGroupAsync(
       String instanceGroup,
       InstanceGroupsSetNamedPortsRequest instanceGroupsSetNamedPortsRequestResource) {
 
@@ -1411,7 +1410,7 @@ public class InstanceGroupClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> setNamedPortsInstanceGroupAsync(
+  public final OperationFuture<EmptyMessage, Operation> setNamedPortsInstanceGroupAsync(
       SetNamedPortsInstanceGroupHttpRequest request) {
     return setNamedPortsInstanceGroupOperationCallable().futureCall(request);
   }
@@ -1430,14 +1429,14 @@ public class InstanceGroupClient implements BackgroundResource {
    *     .setInstanceGroup(instanceGroup.toString())
    *     .setInstanceGroupsSetNamedPortsRequestResource(instanceGroupsSetNamedPortsRequestResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = instanceGroupClient.setNamedPortsInstanceGroupOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = instanceGroupClient.setNamedPortsInstanceGroupOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<SetNamedPortsInstanceGroupHttpRequest, EmptyMessage, Operation>
       setNamedPortsInstanceGroupOperationCallable() {
     return stub.setNamedPortsInstanceGroupOperationCallable();
   }

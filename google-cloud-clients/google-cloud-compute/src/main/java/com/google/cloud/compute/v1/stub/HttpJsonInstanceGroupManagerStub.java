@@ -373,7 +373,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   private final UnaryCallable<AbandonInstancesInstanceGroupManagerHttpRequest, Operation>
       abandonInstancesInstanceGroupManagerCallable;
   private final OperationCallable<
-          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesInstanceGroupManagerOperationCallable;
   private final UnaryCallable<
           AggregatedListInstanceGroupManagersHttpRequest, InstanceGroupManagerAggregatedList>
@@ -384,18 +384,18 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
       aggregatedListInstanceGroupManagersPagedCallable;
   private final UnaryCallable<DeleteInstanceGroupManagerHttpRequest, Operation>
       deleteInstanceGroupManagerCallable;
-  private final OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupManagerOperationCallable;
   private final UnaryCallable<DeleteInstancesInstanceGroupManagerHttpRequest, Operation>
       deleteInstancesInstanceGroupManagerCallable;
   private final OperationCallable<
-          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesInstanceGroupManagerOperationCallable;
   private final UnaryCallable<GetInstanceGroupManagerHttpRequest, InstanceGroupManager>
       getInstanceGroupManagerCallable;
   private final UnaryCallable<InsertInstanceGroupManagerHttpRequest, Operation>
       insertInstanceGroupManagerCallable;
-  private final OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupManagerOperationCallable;
   private final UnaryCallable<ListInstanceGroupManagersHttpRequest, InstanceGroupManagerList>
       listInstanceGroupManagersCallable;
@@ -408,26 +408,26 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
       listManagedInstancesInstanceGroupManagersCallable;
   private final UnaryCallable<PatchInstanceGroupManagerHttpRequest, Operation>
       patchInstanceGroupManagerCallable;
-  private final OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchInstanceGroupManagerOperationCallable;
   private final UnaryCallable<RecreateInstancesInstanceGroupManagerHttpRequest, Operation>
       recreateInstancesInstanceGroupManagerCallable;
   private final OperationCallable<
-          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesInstanceGroupManagerOperationCallable;
   private final UnaryCallable<ResizeInstanceGroupManagerHttpRequest, Operation>
       resizeInstanceGroupManagerCallable;
-  private final OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeInstanceGroupManagerOperationCallable;
   private final UnaryCallable<SetInstanceTemplateInstanceGroupManagerHttpRequest, Operation>
       setInstanceTemplateInstanceGroupManagerCallable;
   private final OperationCallable<
-          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerOperationCallable;
   private final UnaryCallable<SetTargetPoolsInstanceGroupManagerHttpRequest, Operation>
       setTargetPoolsInstanceGroupManagerCallable;
   private final OperationCallable<
-          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsInstanceGroupManagerOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -693,8 +693,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<
-          AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AbandonInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesInstanceGroupManagerOperationCallable() {
     return abandonInstancesInstanceGroupManagerOperationCallable;
   }
@@ -721,7 +720,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstanceGroupManagerOperationCallable() {
     return deleteInstanceGroupManagerOperationCallable;
   }
@@ -733,8 +732,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<
-          DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesInstanceGroupManagerOperationCallable() {
     return deleteInstancesInstanceGroupManagerOperationCallable;
   }
@@ -752,7 +750,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertInstanceGroupManagerOperationCallable() {
     return insertInstanceGroupManagerOperationCallable;
   }
@@ -784,7 +782,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchInstanceGroupManagerOperationCallable() {
     return patchInstanceGroupManagerOperationCallable;
   }
@@ -797,7 +795,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesInstanceGroupManagerOperationCallable() {
     return recreateInstancesInstanceGroupManagerOperationCallable;
   }
@@ -809,7 +807,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResizeInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeInstanceGroupManagerOperationCallable() {
     return resizeInstanceGroupManagerOperationCallable;
   }
@@ -822,7 +820,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateInstanceGroupManagerOperationCallable() {
     return setInstanceTemplateInstanceGroupManagerOperationCallable;
   }
@@ -834,8 +832,7 @@ public class HttpJsonInstanceGroupManagerStub extends InstanceGroupManagerStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<
-          SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTargetPoolsInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsInstanceGroupManagerOperationCallable() {
     return setTargetPoolsInstanceGroupManagerOperationCallable;
   }

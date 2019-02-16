@@ -135,11 +135,11 @@ public class HttpJsonRouteStub extends RouteStub {
   private final HttpJsonGlobalOperationStub operationsStub;
 
   private final UnaryCallable<DeleteRouteHttpRequest, Operation> deleteRouteCallable;
-  private final OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationCallable;
   private final UnaryCallable<GetRouteHttpRequest, Route> getRouteCallable;
   private final UnaryCallable<InsertRouteHttpRequest, Operation> insertRouteCallable;
-  private final OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationCallable;
   private final UnaryCallable<ListRoutesHttpRequest, RouteList> listRoutesCallable;
   private final UnaryCallable<ListRoutesHttpRequest, ListRoutesPagedResponse>
@@ -238,7 +238,7 @@ public class HttpJsonRouteStub extends RouteStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRouteHttpRequest, EmptyMessage, Operation>
       deleteRouteOperationCallable() {
     return deleteRouteOperationCallable;
   }
@@ -254,7 +254,7 @@ public class HttpJsonRouteStub extends RouteStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRouteHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRouteHttpRequest, EmptyMessage, Operation>
       insertRouteOperationCallable() {
     return insertRouteOperationCallable;
   }

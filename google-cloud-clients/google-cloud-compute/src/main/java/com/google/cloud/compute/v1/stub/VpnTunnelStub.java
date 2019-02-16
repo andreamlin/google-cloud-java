@@ -63,7 +63,7 @@ public abstract class VpnTunnelStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: deleteVpnTunnelOperationCallable()");
   }
@@ -79,7 +79,7 @@ public abstract class VpnTunnelStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationCallable() {
     throw new UnsupportedOperationException("Not implemented: insertVpnTunnelOperationCallable()");
   }

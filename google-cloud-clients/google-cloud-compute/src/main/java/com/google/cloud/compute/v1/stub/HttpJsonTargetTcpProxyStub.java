@@ -185,13 +185,13 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
 
   private final UnaryCallable<DeleteTargetTcpProxyHttpRequest, Operation>
       deleteTargetTcpProxyCallable;
-  private final OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationCallable;
   private final UnaryCallable<GetTargetTcpProxyHttpRequest, TargetTcpProxy>
       getTargetTcpProxyCallable;
   private final UnaryCallable<InsertTargetTcpProxyHttpRequest, Operation>
       insertTargetTcpProxyCallable;
-  private final OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationCallable;
   private final UnaryCallable<ListTargetTcpProxiesHttpRequest, TargetTcpProxyList>
       listTargetTcpProxiesCallable;
@@ -200,12 +200,11 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
   private final UnaryCallable<SetBackendServiceTargetTcpProxyHttpRequest, Operation>
       setBackendServiceTargetTcpProxyCallable;
   private final OperationCallable<
-          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+          SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationCallable;
   private final UnaryCallable<SetProxyHeaderTargetTcpProxyHttpRequest, Operation>
       setProxyHeaderTargetTcpProxyCallable;
-  private final OperationCallable<
-          SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -350,7 +349,7 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetTcpProxyOperationCallable() {
     return deleteTargetTcpProxyOperationCallable;
   }
@@ -366,7 +365,7 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetTcpProxyOperationCallable() {
     return insertTargetTcpProxyOperationCallable;
   }
@@ -389,7 +388,7 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetBackendServiceTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setBackendServiceTargetTcpProxyOperationCallable() {
     return setBackendServiceTargetTcpProxyOperationCallable;
   }
@@ -401,7 +400,7 @@ public class HttpJsonTargetTcpProxyStub extends TargetTcpProxyStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetProxyHeaderTargetTcpProxyHttpRequest, EmptyMessage, Operation>
       setProxyHeaderTargetTcpProxyOperationCallable() {
     return setProxyHeaderTargetTcpProxyOperationCallable;
   }

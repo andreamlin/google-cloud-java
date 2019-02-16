@@ -83,7 +83,7 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
   /** Returns the object with the settings used for calls to deleteVpnTunnel. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
       deleteVpnTunnelOperationSettings() {
     return ((VpnTunnelStubSettings) getStubSettings()).deleteVpnTunnelOperationSettings();
   }
@@ -101,7 +101,7 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
   /** Returns the object with the settings used for calls to insertVpnTunnel. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
       insertVpnTunnelOperationSettings() {
     return ((VpnTunnelStubSettings) getStubSettings()).insertVpnTunnelOperationSettings();
   }
@@ -231,7 +231,7 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
     /** Returns the builder for the settings used for calls to deleteVpnTunnel. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<DeleteVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteVpnTunnelHttpRequest, EmptyMessage, Operation>
         deleteVpnTunnelOperationSettings() {
       return getStubSettingsBuilder().deleteVpnTunnelOperationSettings();
     }
@@ -250,7 +250,7 @@ public class VpnTunnelSettings extends ClientSettings<VpnTunnelSettings> {
     /** Returns the builder for the settings used for calls to insertVpnTunnel. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<InsertVpnTunnelHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertVpnTunnelHttpRequest, EmptyMessage, Operation>
         insertVpnTunnelOperationSettings() {
       return getStubSettingsBuilder().insertVpnTunnelOperationSettings();
     }

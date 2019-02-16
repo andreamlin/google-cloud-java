@@ -752,7 +752,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
 
   private final UnaryCallable<AddAccessConfigInstanceHttpRequest, Operation>
       addAccessConfigInstanceCallable;
-  private final OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationCallable;
   private final UnaryCallable<AggregatedListInstancesHttpRequest, InstanceAggregatedList>
       aggregatedListInstancesCallable;
@@ -760,24 +760,24 @@ public class HttpJsonInstanceStub extends InstanceStub {
           AggregatedListInstancesHttpRequest, AggregatedListInstancesPagedResponse>
       aggregatedListInstancesPagedCallable;
   private final UnaryCallable<AttachDiskInstanceHttpRequest, Operation> attachDiskInstanceCallable;
-  private final OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationCallable;
   private final UnaryCallable<DeleteInstanceHttpRequest, Operation> deleteInstanceCallable;
-  private final OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationCallable;
   private final UnaryCallable<DeleteAccessConfigInstanceHttpRequest, Operation>
       deleteAccessConfigInstanceCallable;
-  private final OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationCallable;
   private final UnaryCallable<DetachDiskInstanceHttpRequest, Operation> detachDiskInstanceCallable;
-  private final OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationCallable;
   private final UnaryCallable<GetInstanceHttpRequest, Instance> getInstanceCallable;
   private final UnaryCallable<GetIamPolicyInstanceHttpRequest, Policy> getIamPolicyInstanceCallable;
   private final UnaryCallable<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput>
       getSerialPortOutputInstanceCallable;
   private final UnaryCallable<InsertInstanceHttpRequest, Operation> insertInstanceCallable;
-  private final OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
+  private final OperationCallable<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationCallable;
   private final UnaryCallable<ListInstancesHttpRequest, InstanceList> listInstancesCallable;
   private final UnaryCallable<ListInstancesHttpRequest, ListInstancesPagedResponse>
@@ -788,75 +788,73 @@ public class HttpJsonInstanceStub extends InstanceStub {
           ListReferrersInstancesHttpRequest, ListReferrersInstancesPagedResponse>
       listReferrersInstancesPagedCallable;
   private final UnaryCallable<ResetInstanceHttpRequest, Operation> resetInstanceCallable;
-  private final OperationCallable<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationCallable;
   private final UnaryCallable<SetDeletionProtectionInstanceHttpRequest, Operation>
       setDeletionProtectionInstanceCallable;
-  private final OperationCallable<
-          SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationCallable;
   private final UnaryCallable<SetDiskAutoDeleteInstanceHttpRequest, Operation>
       setDiskAutoDeleteInstanceCallable;
-  private final OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationCallable;
   private final UnaryCallable<SetIamPolicyInstanceHttpRequest, Policy> setIamPolicyInstanceCallable;
   private final UnaryCallable<SetLabelsInstanceHttpRequest, Operation> setLabelsInstanceCallable;
-  private final OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationCallable;
   private final UnaryCallable<SetMachineResourcesInstanceHttpRequest, Operation>
       setMachineResourcesInstanceCallable;
-  private final OperationCallable<
-          SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationCallable;
   private final UnaryCallable<SetMachineTypeInstanceHttpRequest, Operation>
       setMachineTypeInstanceCallable;
-  private final OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationCallable;
   private final UnaryCallable<SetMetadataInstanceHttpRequest, Operation>
       setMetadataInstanceCallable;
-  private final OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationCallable;
   private final UnaryCallable<SetMinCpuPlatformInstanceHttpRequest, Operation>
       setMinCpuPlatformInstanceCallable;
-  private final OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationCallable;
   private final UnaryCallable<SetSchedulingInstanceHttpRequest, Operation>
       setSchedulingInstanceCallable;
-  private final OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationCallable;
   private final UnaryCallable<SetServiceAccountInstanceHttpRequest, Operation>
       setServiceAccountInstanceCallable;
-  private final OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationCallable;
   private final UnaryCallable<SetTagsInstanceHttpRequest, Operation> setTagsInstanceCallable;
-  private final OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationCallable;
   private final UnaryCallable<SimulateMaintenanceEventInstanceHttpRequest, Operation>
       simulateMaintenanceEventInstanceCallable;
   private final OperationCallable<
-          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationCallable;
   private final UnaryCallable<StartInstanceHttpRequest, Operation> startInstanceCallable;
-  private final OperationCallable<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationCallable;
   private final UnaryCallable<StartWithEncryptionKeyInstanceHttpRequest, Operation>
       startWithEncryptionKeyInstanceCallable;
   private final OperationCallable<
-          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationCallable;
   private final UnaryCallable<StopInstanceHttpRequest, Operation> stopInstanceCallable;
-  private final OperationCallable<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationCallable;
   private final UnaryCallable<TestIamPermissionsInstanceHttpRequest, TestPermissionsResponse>
       testIamPermissionsInstanceCallable;
   private final UnaryCallable<UpdateAccessConfigInstanceHttpRequest, Operation>
       updateAccessConfigInstanceCallable;
-  private final OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  private final OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationCallable;
   private final UnaryCallable<UpdateNetworkInterfaceInstanceHttpRequest, Operation>
       updateNetworkInterfaceInstanceCallable;
   private final OperationCallable<
-          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+          UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationCallable;
 
   private final HttpJsonStubCallableFactory callableFactory;
@@ -1352,7 +1350,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AddAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       addAccessConfigInstanceOperationCallable() {
     return addAccessConfigInstanceOperationCallable;
   }
@@ -1376,7 +1374,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<AttachDiskInstanceHttpRequest, EmptyMessage, Operation>
       attachDiskInstanceOperationCallable() {
     return attachDiskInstanceOperationCallable;
   }
@@ -1387,7 +1385,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteInstanceHttpRequest, EmptyMessage, Operation>
       deleteInstanceOperationCallable() {
     return deleteInstanceOperationCallable;
   }
@@ -1398,7 +1396,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       deleteAccessConfigInstanceOperationCallable() {
     return deleteAccessConfigInstanceOperationCallable;
   }
@@ -1410,7 +1408,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DetachDiskInstanceHttpRequest, EmptyMessage, Operation>
       detachDiskInstanceOperationCallable() {
     return detachDiskInstanceOperationCallable;
   }
@@ -1437,7 +1435,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertInstanceHttpRequest, Operation, Operation>
+  public OperationCallable<InsertInstanceHttpRequest, EmptyMessage, Operation>
       insertInstanceOperationCallable() {
     return insertInstanceOperationCallable;
   }
@@ -1471,7 +1469,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResetInstanceHttpRequest, EmptyMessage, Operation>
       resetInstanceOperationCallable() {
     return resetInstanceOperationCallable;
   }
@@ -1482,7 +1480,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetDeletionProtectionInstanceHttpRequest, EmptyMessage, Operation>
       setDeletionProtectionInstanceOperationCallable() {
     return setDeletionProtectionInstanceOperationCallable;
   }
@@ -1494,7 +1492,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetDiskAutoDeleteInstanceHttpRequest, EmptyMessage, Operation>
       setDiskAutoDeleteInstanceOperationCallable() {
     return setDiskAutoDeleteInstanceOperationCallable;
   }
@@ -1511,7 +1509,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetLabelsInstanceHttpRequest, EmptyMessage, Operation>
       setLabelsInstanceOperationCallable() {
     return setLabelsInstanceOperationCallable;
   }
@@ -1522,7 +1520,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMachineResourcesInstanceHttpRequest, EmptyMessage, Operation>
       setMachineResourcesInstanceOperationCallable() {
     return setMachineResourcesInstanceOperationCallable;
   }
@@ -1534,7 +1532,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMachineTypeInstanceHttpRequest, EmptyMessage, Operation>
       setMachineTypeInstanceOperationCallable() {
     return setMachineTypeInstanceOperationCallable;
   }
@@ -1546,7 +1544,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMetadataInstanceHttpRequest, EmptyMessage, Operation>
       setMetadataInstanceOperationCallable() {
     return setMetadataInstanceOperationCallable;
   }
@@ -1557,7 +1555,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetMinCpuPlatformInstanceHttpRequest, EmptyMessage, Operation>
       setMinCpuPlatformInstanceOperationCallable() {
     return setMinCpuPlatformInstanceOperationCallable;
   }
@@ -1569,7 +1567,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetSchedulingInstanceHttpRequest, EmptyMessage, Operation>
       setSchedulingInstanceOperationCallable() {
     return setSchedulingInstanceOperationCallable;
   }
@@ -1581,7 +1579,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetServiceAccountInstanceHttpRequest, EmptyMessage, Operation>
       setServiceAccountInstanceOperationCallable() {
     return setServiceAccountInstanceOperationCallable;
   }
@@ -1593,7 +1591,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetTagsInstanceHttpRequest, EmptyMessage, Operation>
       setTagsInstanceOperationCallable() {
     return setTagsInstanceOperationCallable;
   }
@@ -1604,7 +1602,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SimulateMaintenanceEventInstanceHttpRequest, EmptyMessage, Operation>
       simulateMaintenanceEventInstanceOperationCallable() {
     return simulateMaintenanceEventInstanceOperationCallable;
   }
@@ -1616,7 +1614,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<StartInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<StartInstanceHttpRequest, EmptyMessage, Operation>
       startInstanceOperationCallable() {
     return startInstanceOperationCallable;
   }
@@ -1627,7 +1625,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<StartWithEncryptionKeyInstanceHttpRequest, EmptyMessage, Operation>
       startWithEncryptionKeyInstanceOperationCallable() {
     return startWithEncryptionKeyInstanceOperationCallable;
   }
@@ -1639,7 +1637,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<StopInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<StopInstanceHttpRequest, EmptyMessage, Operation>
       stopInstanceOperationCallable() {
     return stopInstanceOperationCallable;
   }
@@ -1656,7 +1654,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateAccessConfigInstanceHttpRequest, EmptyMessage, Operation>
       updateAccessConfigInstanceOperationCallable() {
     return updateAccessConfigInstanceOperationCallable;
   }
@@ -1668,7 +1666,7 @@ public class HttpJsonInstanceStub extends InstanceStub {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateNetworkInterfaceInstanceHttpRequest, EmptyMessage, Operation>
       updateNetworkInterfaceInstanceOperationCallable() {
     return updateNetworkInterfaceInstanceOperationCallable;
   }

@@ -48,7 +48,7 @@ public abstract class TargetHttpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       deleteTargetHttpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteTargetHttpProxyOperationCallable()");
@@ -67,7 +67,7 @@ public abstract class TargetHttpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       insertTargetHttpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertTargetHttpProxyOperationCallable()");
@@ -93,7 +93,7 @@ public abstract class TargetHttpProxyStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<SetUrlMapTargetHttpProxyHttpRequest, EmptyMessage, Operation>
       setUrlMapTargetHttpProxyOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setUrlMapTargetHttpProxyOperationCallable()");

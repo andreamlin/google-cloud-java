@@ -439,7 +439,7 @@ public class RegionCommitmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionCommitmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionCommitmentAsync(
       ProjectRegionName region, Commitment commitmentResource) {
 
     InsertRegionCommitmentHttpRequest request =
@@ -477,7 +477,7 @@ public class RegionCommitmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionCommitmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionCommitmentAsync(
       String region, Commitment commitmentResource) {
 
     InsertRegionCommitmentHttpRequest request =
@@ -511,7 +511,7 @@ public class RegionCommitmentClient implements BackgroundResource {
    */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public final OperationFuture<EmptyMessage, EmptyMessage> insertRegionCommitmentAsync(
+  public final OperationFuture<EmptyMessage, Operation> insertRegionCommitmentAsync(
       InsertRegionCommitmentHttpRequest request) {
     return insertRegionCommitmentOperationCallable().futureCall(request);
   }
@@ -530,14 +530,14 @@ public class RegionCommitmentClient implements BackgroundResource {
    *     .setRegion(region.toString())
    *     .setCommitmentResource(commitmentResource)
    *     .build();
-   *   OperationFuture&lt;EmptyMessage, EmptyMessage&gt; future = regionCommitmentClient.insertRegionCommitmentOperationCallable().futureCall(request);
+   *   OperationFuture&lt;EmptyMessage, Operation&gt; future = regionCommitmentClient.insertRegionCommitmentOperationCallable().futureCall(request);
    *   // Do something
    *   future.get();
    * }
    * </code></pre>
    */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public final OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, EmptyMessage>
+  public final OperationCallable<InsertRegionCommitmentHttpRequest, EmptyMessage, Operation>
       insertRegionCommitmentOperationCallable() {
     return stub.insertRegionCommitmentOperationCallable();
   }

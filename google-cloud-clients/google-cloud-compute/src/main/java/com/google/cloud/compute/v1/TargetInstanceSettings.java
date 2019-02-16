@@ -84,7 +84,7 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
   /** Returns the object with the settings used for calls to deleteTargetInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
       deleteTargetInstanceOperationSettings() {
     return ((TargetInstanceStubSettings) getStubSettings()).deleteTargetInstanceOperationSettings();
   }
@@ -104,7 +104,7 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
   /** Returns the object with the settings used for calls to insertTargetInstance. */
   @BetaApi(
       "The surface for long-running operations is not stable yet and may change in the future.")
-  public OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallSettings<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
       insertTargetInstanceOperationSettings() {
     return ((TargetInstanceStubSettings) getStubSettings()).insertTargetInstanceOperationSettings();
   }
@@ -236,8 +236,7 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
     /** Returns the builder for the settings used for calls to deleteTargetInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            DeleteTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<DeleteTargetInstanceHttpRequest, EmptyMessage, Operation>
         deleteTargetInstanceOperationSettings() {
       return getStubSettingsBuilder().deleteTargetInstanceOperationSettings();
     }
@@ -257,8 +256,7 @@ public class TargetInstanceSettings extends ClientSettings<TargetInstanceSetting
     /** Returns the builder for the settings used for calls to insertTargetInstance. */
     @BetaApi(
         "The surface for long-running operations is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<
-            InsertTargetInstanceHttpRequest, EmptyMessage, EmptyMessage>
+    public OperationCallSettings.Builder<InsertTargetInstanceHttpRequest, EmptyMessage, Operation>
         insertTargetInstanceOperationSettings() {
       return getStubSettingsBuilder().insertTargetInstanceOperationSettings();
     }

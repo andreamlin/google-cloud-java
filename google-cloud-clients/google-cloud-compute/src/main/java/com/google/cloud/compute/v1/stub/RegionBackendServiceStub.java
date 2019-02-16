@@ -51,7 +51,7 @@ public abstract class RegionBackendServiceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       deleteRegionBackendServiceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteRegionBackendServiceOperationCallable()");
@@ -78,7 +78,7 @@ public abstract class RegionBackendServiceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       insertRegionBackendServiceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertRegionBackendServiceOperationCallable()");
@@ -105,7 +105,7 @@ public abstract class RegionBackendServiceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       patchRegionBackendServiceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchRegionBackendServiceOperationCallable()");
@@ -118,7 +118,7 @@ public abstract class RegionBackendServiceStub implements BackgroundResource {
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<UpdateRegionBackendServiceHttpRequest, EmptyMessage, Operation>
       updateRegionBackendServiceOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateRegionBackendServiceOperationCallable()");

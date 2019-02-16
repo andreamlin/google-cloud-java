@@ -57,7 +57,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          AbandonInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       abandonInstancesRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: abandonInstancesRegionInstanceGroupManagerOperationCallable()");
@@ -71,7 +71,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<DeleteRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteRegionInstanceGroupManagerOperationCallable()");
@@ -86,7 +86,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          DeleteInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       deleteInstancesRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: deleteInstancesRegionInstanceGroupManagerOperationCallable()");
@@ -107,7 +107,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<InsertRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       insertRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: insertRegionInstanceGroupManagerOperationCallable()");
@@ -145,7 +145,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<PatchRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       patchRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: patchRegionInstanceGroupManagerOperationCallable()");
@@ -160,7 +160,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          RecreateInstancesRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       recreateInstancesRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: recreateInstancesRegionInstanceGroupManagerOperationCallable()");
@@ -174,7 +174,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
   }
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallable<ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+  public OperationCallable<ResizeRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       resizeRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: resizeRegionInstanceGroupManagerOperationCallable()");
@@ -189,7 +189,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetInstanceTemplateRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setInstanceTemplateRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setInstanceTemplateRegionInstanceGroupManagerOperationCallable()");
@@ -204,7 +204,7 @@ public abstract class RegionInstanceGroupManagerStub implements BackgroundResour
 
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
   public OperationCallable<
-          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, EmptyMessage>
+          SetTargetPoolsRegionInstanceGroupManagerHttpRequest, EmptyMessage, Operation>
       setTargetPoolsRegionInstanceGroupManagerOperationCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: setTargetPoolsRegionInstanceGroupManagerOperationCallable()");
