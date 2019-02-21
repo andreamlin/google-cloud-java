@@ -1,6 +1,8 @@
 package com.google.cloud.compute.v1.longrunning;
 
+import com.google.auto.value.AutoValue;
 import com.google.api.core.ApiFunction;
+import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.LongRunningClient;
@@ -8,26 +10,29 @@ import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Operation;
 
-/** Implementation of LongRunningClient for the Compute client. Package-private for internal use.
- *  Used by gax-java to get callables. */
-abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT>
+/** Unites all Compute's different [Scope]OperationClients under a single shared implementation of the LongRunningClient.
+ *  Package-private for internal use. Used by gax-java to get callables.*/
+@AutoValue
+abstract class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
     implements LongRunningClient {
+
+  abstract BackgroundResource getStub();
 
   abstract UnaryCallable<GetRequestT, Operation> getGetOperationCallable();
 
   abstract UnaryCallable<DeleteRequestT, EmptyMessage> getDeleteOperationCallable();
 
   /* Function that takes an Operation name as a String and creates a Get request object from it. */
-  abstract ApiFunction<String, GetRequestT> createGetRequest();
+  abstract ApiFunction<String, GetRequestT> getCreateGetRequestFunc();
 
   /* Function that takes an Operation name as a String and creates a Delete request object from it. */
-  abstract ApiFunction<String, DeleteRequestT> createDeleteRequest();
+  abstract ApiFunction<String, DeleteRequestT> getCreateDeleteRequestFunc();
 
   @Override
   public UnaryCallable<String, OperationSnapshot> getOperationCallable() {
     return TranslatingUnaryCallable.create(
         getGetOperationCallable(),
-        createGetRequest(),
+        getCreateGetRequestFunc(),
         new ApiFunction<Operation, OperationSnapshot>() {
           @Override
           public OperationSnapshot apply(Operation operation) {
@@ -45,12 +50,33 @@ abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT>
   public UnaryCallable<String, Void> deleteOperationCallable() {
     return TranslatingUnaryCallable.create(
         getDeleteOperationCallable(),
-        createDeleteRequest(),
+        getCreateDeleteRequestFunc(),
         new ApiFunction<EmptyMessage, Void>() {
           @Override
           public Void apply(EmptyMessage empty) {
             return null;
           }
         });
+  }
+
+  static <GetRequestT, DeleteRequestT> ComputeLongRunningClient.Builder<GetRequestT, DeleteRequestT> newBuilder() {
+    return new AutoValue_ComputeLongRunningClient.Builder();
+  }
+
+  @AutoValue.Builder
+  public abstract static class Builder<GetRequestT, DeleteRequestT> {
+    abstract Builder<GetRequestT, DeleteRequestT> setDeleteOperationCallable(UnaryCallable<DeleteRequestT, EmptyMessage> deleteOperationCallable);
+
+    abstract Builder<GetRequestT, DeleteRequestT> setGetOperationCallable(
+        UnaryCallable<GetRequestT, Operation> requestFormatter);
+
+    abstract Builder<GetRequestT, DeleteRequestT> setStub(
+        BackgroundResource backgroundResource);
+
+    abstract Builder<GetRequestT, DeleteRequestT> setCreateGetRequestFunc(ApiFunction<String, GetRequestT> httpMethod);
+
+    abstract Builder<GetRequestT, DeleteRequestT> setCreateDeleteRequestFunc(ApiFunction<String, DeleteRequestT> httpMethod);
+
+    abstract ComputeLongRunningClient<GetRequestT, DeleteRequestT> build();
   }
 }

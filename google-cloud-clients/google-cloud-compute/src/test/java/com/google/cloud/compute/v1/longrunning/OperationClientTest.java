@@ -1,216 +1,345 @@
-// /*
-//  * Copyright 2019 Google LLC
-//  *
-//  * Redistribution and use in source and binary forms, with or without
-//  * modification, are permitted provided that the following conditions are
-//  * met:
-//  *
-//  *     * Redistributions of source code must retain the above copyright
-//  * notice, this list of conditions and the following disclaimer.
-//  *     * Redistributions in binary form must reproduce the above
-//  * copyright notice, this list of conditions and the following disclaimer
-//  * in the documentation and/or other materials provided with the
-//  * distribution.
-//  *     * Neither the name of Google LLC nor the names of its
-//  * contributors may be used to endorse or promote products derived from
-//  * this software without specific prior written permission.
-//  *
-//  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-//  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-//  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-//  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-//  * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-//  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-//  * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-//  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-//  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-//  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//  */
-// package com.google.cloud.compute.v1.longrunning;
-//
-// public class GlobalLongRunningClientTest {
-//     private static MockOperations mockOperations;
-//     private static MockServiceHelper serviceHelper;
-//     private OperationsClient client;
-//     private LocalChannelProvider channelProvider;
-//
-//     @BeforeClass
-//     public static void startStaticServer() {
-//       mockOperations = new MockOperations();
-//       serviceHelper =
-//           new MockServiceHelper("in-process-1", Arrays.<MockGrpcService>asList(mockOperations));
-//       serviceHelper.start();
-//     }
-//
-//     @AfterClass
-//     public static void stopServer() {
-//       serviceHelper.stop();
-//     }
-//
-//     @Before
-//     public void setUp() throws IOException {
-//       serviceHelper.reset();
-//       channelProvider = serviceHelper.createChannelProvider();
-//       OperationsSettings settings =
-//           OperationsSettings.newBuilder()
-//               .setTransportChannelProvider(channelProvider)
-//               .setCredentialsProvider(NoCredentialsProvider.create())
-//               .build();
-//       client = OperationsClient.create(settings);
-//     }
-//
-//     @After
-//     public void tearDown() throws Exception {
-//       client.close();
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void getOperationTest() {
-//       String name2 = "name2-1052831874";
-//       boolean done = true;
-//       Operation expectedResponse = Operation.newBuilder().setName(name2).setDone(done).build();
-//       mockOperations.addResponse(expectedResponse);
-//
-//       String name = "name3373707";
-//
-//       Operation actualResponse = client.getOperation(name);
-//       Assert.assertEquals(expectedResponse, actualResponse);
-//
-//       List<GeneratedMessageV3> actualRequests = mockOperations.getRequests();
-//       Assert.assertEquals(1, actualRequests.size());
-//       GetOperationRequest actualRequest = (GetOperationRequest) actualRequests.get(0);
-//
-//       Assert.assertEquals(name, actualRequest.getName());
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void getOperationExceptionTest() throws Exception {
-//       StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-//       mockOperations.addException(exception);
-//
-//       try {
-//         String name = "name3373707";
-//
-//         client.getOperation(name);
-//         Assert.fail("No exception raised");
-//       } catch (InvalidArgumentException e) {
-//         // Expected exception
-//       }
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void listOperationsTest() {
-//       String nextPageToken = "";
-//       Operation operationsElement = Operation.newBuilder().build();
-//       List<Operation> operations = Arrays.asList(operationsElement);
-//       ListOperationsResponse expectedResponse =
-//           ListOperationsResponse.newBuilder()
-//               .setNextPageToken(nextPageToken)
-//               .addAllOperations(operations)
-//               .build();
-//       mockOperations.addResponse(expectedResponse);
-//
-//       String name = "name3373707";
-//       String filter = "filter-1274492040";
-//
-//       ListOperationsPagedResponse pagedListResponse = client.listOperations(name, filter);
-//
-//       List<Operation> resources = Lists.newArrayList(pagedListResponse.iterateAll());
-//       Assert.assertEquals(1, resources.size());
-//       Assert.assertEquals(expectedResponse.getOperationsList().get(0), resources.get(0));
-//
-//       List<GeneratedMessageV3> actualRequests = mockOperations.getRequests();
-//       Assert.assertEquals(1, actualRequests.size());
-//       ListOperationsRequest actualRequest = (ListOperationsRequest) actualRequests.get(0);
-//
-//       Assert.assertEquals(name, actualRequest.getName());
-//       Assert.assertEquals(filter, actualRequest.getFilter());
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void listOperationsExceptionTest() throws Exception {
-//       StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-//       mockOperations.addException(exception);
-//
-//       try {
-//         String name = "name3373707";
-//         String filter = "filter-1274492040";
-//
-//         client.listOperations(name, filter);
-//         Assert.fail("No exception raised");
-//       } catch (InvalidArgumentException e) {
-//         // Expected exception
-//       }
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void cancelOperationTest() {
-//       Empty expectedResponse = Empty.newBuilder().build();
-//       mockOperations.addResponse(expectedResponse);
-//
-//       String name = "name3373707";
-//
-//       client.cancelOperation(name);
-//
-//       List<GeneratedMessageV3> actualRequests = mockOperations.getRequests();
-//       Assert.assertEquals(1, actualRequests.size());
-//       CancelOperationRequest actualRequest = (CancelOperationRequest) actualRequests.get(0);
-//
-//       Assert.assertEquals(name, actualRequest.getName());
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void cancelOperationExceptionTest() throws Exception {
-//       StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-//       mockOperations.addException(exception);
-//
-//       try {
-//         String name = "name3373707";
-//
-//         client.cancelOperation(name);
-//         Assert.fail("No exception raised");
-//       } catch (InvalidArgumentException e) {
-//         // Expected exception
-//       }
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void deleteOperationTest() {
-//       Empty expectedResponse = Empty.newBuilder().build();
-//       mockOperations.addResponse(expectedResponse);
-//
-//       String name = "name3373707";
-//
-//       client.deleteOperation(name);
-//
-//       List<GeneratedMessageV3> actualRequests = mockOperations.getRequests();
-//       Assert.assertEquals(1, actualRequests.size());
-//       DeleteOperationRequest actualRequest = (DeleteOperationRequest) actualRequests.get(0);
-//
-//       Assert.assertEquals(name, actualRequest.getName());
-//     }
-//
-//     @Test
-//     @SuppressWarnings("all")
-//     public void deleteOperationExceptionTest() throws Exception {
-//       StatusRuntimeException exception = new StatusRuntimeException(Status.INVALID_ARGUMENT);
-//       mockOperations.addException(exception);
-//
-//       try {
-//         String name = "name3373707";
-//
-//         client.deleteOperation(name);
-//         Assert.fail("No exception raised");
-//       } catch (InvalidArgumentException e) {
-//         // Expected exception
-//       }
-//     }
-//   }
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.google.cloud.compute.v1.longrunning;
+
+import static com.google.cloud.compute.v1.GlobalOperationClient.AggregatedListGlobalOperationsPagedResponse;
+import static com.google.cloud.compute.v1.GlobalOperationClient.ListGlobalOperationsPagedResponse;
+import static com.google.cloud.compute.v1.stub.HttpJsonGlobalOperationStub.aggregatedListGlobalOperationsMethodDescriptor;
+import static com.google.cloud.compute.v1.stub.HttpJsonGlobalOperationStub.deleteGlobalOperationMethodDescriptor;
+import static com.google.cloud.compute.v1.stub.HttpJsonGlobalOperationStub.getGlobalOperationMethodDescriptor;
+import static com.google.cloud.compute.v1.stub.HttpJsonGlobalOperationStub.listGlobalOperationsMethodDescriptor;
+
+import com.google.api.gax.core.NoCredentialsProvider;
+import com.google.api.gax.httpjson.ApiMethodDescriptor;
+import com.google.api.gax.httpjson.GaxHttpJsonProperties;
+import com.google.api.gax.httpjson.testing.MockHttpService;
+import com.google.api.gax.rpc.ApiClientHeaderProvider;
+import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.rpc.ApiExceptionFactory;
+import com.google.api.gax.rpc.InvalidArgumentException;
+import com.google.api.gax.rpc.StatusCode.Code;
+import com.google.api.gax.rpc.testing.FakeStatusCode;
+import com.google.cloud.compute.v1.GlobalOperationSettings;
+import com.google.cloud.compute.v1.stub.GlobalOperationStub;
+import com.google.cloud.compute.v1.stub.GlobalOperationStubSettings;
+import com.google.cloud.compute.v1.stub.HttpJsonGlobalOperationStub;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class GlobalOperationClientTest {
+
+  private static final List<ApiMethodDescriptor> METHOD_DESCRIPTORS =
+      ImmutableList.copyOf(
+          Lists.<ApiMethodDescriptor>newArrayList(
+              aggregatedListGlobalOperationsMethodDescriptor,
+              deleteGlobalOperationMethodDescriptor,
+              getGlobalOperationMethodDescriptor,
+              listGlobalOperationsMethodDescriptor));
+  private static final MockHttpService mockService =
+      new MockHttpService(METHOD_DESCRIPTORS, GlobalOperationStubSettings.getDefaultEndpoint());
+
+  private static GlobalLongRunningClient client;
+
+  @BeforeClass
+  public static void setUp() throws IOException {
+    GlobalOperationStubSettings clientSettings =
+        GlobalOperationStubSettings.newBuilder()
+            .setTransportChannelProvider(
+                GlobalOperationSettings.defaultHttpJsonTransportProviderBuilder()
+                    .setHttpTransport(mockService)
+                    .build())
+            .setCredentialsProvider(NoCredentialsProvider.create())
+            .build();
+    client = ComputeLongRunningClientFactory.create(HttpJsonGlobalOperationStub.create(clientSettings));
+  }
+
+  @After
+  public void cleanUp() {
+    mockService.reset();
+  }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
+    client.close();
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void aggregatedListGlobalOperationsTest() {
+    String id = "id3355";
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String selfLink = "selfLink-1691268851";
+    OperationsScopedList itemsItem = OperationsScopedList.newBuilder().build();
+    Map<String, OperationsScopedList> items = new HashMap<>();
+    items.put("items", itemsItem);
+    OperationAggregatedList expectedResponse =
+        OperationAggregatedList.newBuilder()
+            .setId(id)
+            .setKind(kind)
+            .setNextPageToken(nextPageToken)
+            .setSelfLink(selfLink)
+            .putAllItems(items)
+            .build();
+    mockService.addResponse(expectedResponse);
+
+    ProjectName project = ProjectName.of("[PROJECT]");
+
+    AggregatedListGlobalOperationsPagedResponse pagedListResponse =
+        client.aggregatedListGlobalOperations(project);
+
+    List<OperationsScopedList> resources = Lists.newArrayList(pagedListResponse.iterateAll());
+    Assert.assertEquals(1, resources.size());
+    Assert.assertEquals(
+        expectedResponse.getItemsMap().values().iterator().next(), resources.get(0));
+
+    List<String> actualRequests = mockService.getRequestPaths();
+    Assert.assertEquals(1, actualRequests.size());
+
+    String apiClientHeaderKey =
+        mockService
+            .getRequestHeaders()
+            .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey())
+            .iterator()
+            .next();
+    Assert.assertTrue(
+        GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
+            .matcher(apiClientHeaderKey)
+            .matches());
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void aggregatedListGlobalOperationsExceptionTest() throws Exception {
+    ApiException exception =
+        ApiExceptionFactory.createException(
+            new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    mockService.addException(exception);
+
+    try {
+      ProjectName project = ProjectName.of("[PROJECT]");
+
+      client.aggregatedListGlobalOperations(project);
+      Assert.fail("No exception raised");
+    } catch (InvalidArgumentException e) {
+      // Expected exception
+    }
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void deleteGlobalOperationTest() {
+    mockService.addNullResponse();
+
+    ProjectGlobalOperationName operation =
+        ProjectGlobalOperationName.of("[PROJECT]", "[OPERATION]");
+
+    client.deleteGlobalOperation(operation);
+
+    List<String> actualRequests = mockService.getRequestPaths();
+    Assert.assertEquals(1, actualRequests.size());
+
+    String apiClientHeaderKey =
+        mockService
+            .getRequestHeaders()
+            .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey())
+            .iterator()
+            .next();
+    Assert.assertTrue(
+        GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
+            .matcher(apiClientHeaderKey)
+            .matches());
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void deleteGlobalOperationExceptionTest() throws Exception {
+    ApiException exception =
+        ApiExceptionFactory.createException(
+            new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    mockService.addException(exception);
+
+    try {
+      ProjectGlobalOperationName operation =
+          ProjectGlobalOperationName.of("[PROJECT]", "[OPERATION]");
+
+      client.deleteGlobalOperation(operation);
+      Assert.fail("No exception raised");
+    } catch (InvalidArgumentException e) {
+      // Expected exception
+    }
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void getGlobalOperationTest() {
+    String clientOperationId = "clientOperationId-239630617";
+    String creationTimestamp = "creationTimestamp567396278";
+    String description = "description-1724546052";
+    String endTime = "endTime1725551537";
+    String httpErrorMessage = "httpErrorMessage1276263769";
+    Integer httpErrorStatusCode = 1386087020;
+    String id = "id3355";
+    String insertTime = "insertTime-103148397";
+    String kind = "kind3292052";
+    String name = "name3373707";
+    String operationType = "operationType-1432962286";
+    Integer progress = 1001078227;
+    ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
+    String selfLink = "selfLink-1691268851";
+    String startTime = "startTime-1573145462";
+    String status = "status-892481550";
+    String statusMessage = "statusMessage-239442758";
+    String targetId = "targetId-815576439";
+    String targetLink = "targetLink-2084812312";
+    String user = "user3599307";
+    ProjectZoneName zone = ProjectZoneName.of("[PROJECT]", "[ZONE]");
+    Operation expectedResponse =
+        Operation.newBuilder()
+            .setClientOperationId(clientOperationId)
+            .setCreationTimestamp(creationTimestamp)
+            .setDescription(description)
+            .setEndTime(endTime)
+            .setHttpErrorMessage(httpErrorMessage)
+            .setHttpErrorStatusCode(httpErrorStatusCode)
+            .setId(id)
+            .setInsertTime(insertTime)
+            .setKind(kind)
+            .setName(name)
+            .setOperationType(operationType)
+            .setProgress(progress)
+            .setRegion(region.toString())
+            .setSelfLink(selfLink)
+            .setStartTime(startTime)
+            .setStatus(status)
+            .setStatusMessage(statusMessage)
+            .setTargetId(targetId)
+            .setTargetLink(targetLink)
+            .setUser(user)
+            .setZone(zone.toString())
+            .build();
+    mockService.addResponse(expectedResponse);
+
+    ProjectGlobalOperationName operation =
+        ProjectGlobalOperationName.of("[PROJECT]", "[OPERATION]");
+
+    Operation actualResponse = client.getGlobalOperation(operation);
+    Assert.assertEquals(expectedResponse, actualResponse);
+
+    List<String> actualRequests = mockService.getRequestPaths();
+    Assert.assertEquals(1, actualRequests.size());
+
+    String apiClientHeaderKey =
+        mockService
+            .getRequestHeaders()
+            .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey())
+            .iterator()
+            .next();
+    Assert.assertTrue(
+        GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
+            .matcher(apiClientHeaderKey)
+            .matches());
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void getGlobalOperationExceptionTest() throws Exception {
+    ApiException exception =
+        ApiExceptionFactory.createException(
+            new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    mockService.addException(exception);
+
+    try {
+      ProjectGlobalOperationName operation =
+          ProjectGlobalOperationName.of("[PROJECT]", "[OPERATION]");
+
+      client.getGlobalOperation(operation);
+      Assert.fail("No exception raised");
+    } catch (InvalidArgumentException e) {
+      // Expected exception
+    }
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void listGlobalOperationsTest() {
+    String id = "id3355";
+    String kind = "kind3292052";
+    String nextPageToken = "";
+    String selfLink = "selfLink-1691268851";
+    Operation itemsElement = Operation.newBuilder().build();
+    List<Operation> items = Arrays.asList(itemsElement);
+    OperationList expectedResponse =
+        OperationList.newBuilder()
+            .setId(id)
+            .setKind(kind)
+            .setNextPageToken(nextPageToken)
+            .setSelfLink(selfLink)
+            .addAllItems(items)
+            .build();
+    mockService.addResponse(expectedResponse);
+
+    ProjectName project = ProjectName.of("[PROJECT]");
+
+    ListGlobalOperationsPagedResponse pagedListResponse = client.listGlobalOperations(project);
+
+    List<Operation> resources = Lists.newArrayList(pagedListResponse.iterateAll());
+    Assert.assertEquals(1, resources.size());
+    Assert.assertEquals(expectedResponse.getItemsList().get(0), resources.get(0));
+
+    List<String> actualRequests = mockService.getRequestPaths();
+    Assert.assertEquals(1, actualRequests.size());
+
+    String apiClientHeaderKey =
+        mockService
+            .getRequestHeaders()
+            .get(ApiClientHeaderProvider.getDefaultApiClientHeaderKey())
+            .iterator()
+            .next();
+    Assert.assertTrue(
+        GaxHttpJsonProperties.getDefaultApiClientHeaderPattern()
+            .matcher(apiClientHeaderKey)
+            .matches());
+  }
+
+  @Test
+  @SuppressWarnings("all")
+  public void listGlobalOperationsExceptionTest() throws Exception {
+    ApiException exception =
+        ApiExceptionFactory.createException(
+            new Exception(), FakeStatusCode.of(Code.INVALID_ARGUMENT), false);
+    mockService.addException(exception);
+
+    try {
+      ProjectName project = ProjectName.of("[PROJECT]");
+
+      client.listGlobalOperations(project);
+      Assert.fail("No exception raised");
+    } catch (InvalidArgumentException e) {
+      // Expected exception
+    }
+  }
+}
