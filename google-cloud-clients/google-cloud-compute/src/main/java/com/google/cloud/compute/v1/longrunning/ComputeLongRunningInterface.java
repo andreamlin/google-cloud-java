@@ -8,7 +8,8 @@ import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Operation;
 
-/** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
+/** Implementation of LongRunningClient for the Compute client. Package-private for internal use.
+ *  Used by gax-java to get callables. */
 abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT>
     implements LongRunningClient {
 

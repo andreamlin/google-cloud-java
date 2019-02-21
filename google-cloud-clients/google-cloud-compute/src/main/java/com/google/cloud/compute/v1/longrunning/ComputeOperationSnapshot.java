@@ -5,7 +5,6 @@ import com.google.api.gax.httpjson.HttpJsonStatusCode;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.compute.v1.Operation;
-import java.util.logging.Logger;
 
 /**
  * Implementation of a long-running operation for the Compute client. Wraps a compute Operation
@@ -13,8 +12,6 @@ import java.util.logging.Logger;
  */
 @BetaApi
 public class ComputeOperationSnapshot implements OperationSnapshot {
-
-  private static final Logger logger = Logger.getLogger(ComputeOperationSnapshot.class.getName());
 
   public enum Status {
     PENDING,

@@ -2,9 +2,6 @@ package com.google.cloud.compute.v1.longrunning;
 
 import com.google.api.core.ApiFunction;
 import com.google.api.gax.httpjson.EmptyMessage;
-import com.google.api.gax.longrunning.OperationSnapshot;
-import com.google.api.gax.rpc.LongRunningClient;
-import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.DeleteGlobalOperationHttpRequest;
 import com.google.cloud.compute.v1.GetGlobalOperationHttpRequest;
@@ -12,52 +9,49 @@ import com.google.cloud.compute.v1.Operation;
 import com.google.cloud.compute.v1.stub.GlobalOperationStub;
 
 /** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
-class GlobalLongRunningClient implements LongRunningClient {
+class GlobalLongRunningClient
+    extends ComputeLongRunningInterface<
+    GetGlobalOperationHttpRequest, DeleteGlobalOperationHttpRequest> {
 
   private final GlobalOperationStub operationStub;
 
-  public GlobalLongRunningClient(GlobalOperationStub operationStub) {
+  private final ApiFunction<String, GetGlobalOperationHttpRequest> createGetRequestFunc =
+      new ApiFunction<String, GetGlobalOperationHttpRequest>() {
+        public GetGlobalOperationHttpRequest apply(String operationSelfLink) {
+          // Make sure operation is a formatted string.
+          return GetGlobalOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
+        }
+      };
+
+  private final ApiFunction<String, DeleteGlobalOperationHttpRequest> createDeleteRequestFunc =
+      new ApiFunction<String, DeleteGlobalOperationHttpRequest>() {
+        public DeleteGlobalOperationHttpRequest apply(String operationSelfLink) {
+          // Make sure operation is a formatted string.
+          return DeleteGlobalOperationHttpRequest.newBuilder()
+              .setOperation(operationSelfLink)
+              .build();
+        }
+      };
+
+  GlobalLongRunningClient(GlobalOperationStub operationStub) {
     this.operationStub = operationStub;
   }
 
-  @Override
-  public UnaryCallable<String, OperationSnapshot> getOperationCallable() {
-    return TranslatingUnaryCallable.create(
-        operationStub.getGlobalOperationCallable(),
-        new ApiFunction<String, GetGlobalOperationHttpRequest>() {
-          @Override
-          public GetGlobalOperationHttpRequest apply(String request) {
-            return GetGlobalOperationHttpRequest.newBuilder().setOperation(request).build();
-          }
-        },
-        new ApiFunction<Operation, OperationSnapshot>() {
-          @Override
-          public OperationSnapshot apply(Operation operation) {
-            return ComputeOperationSnapshot.create(operation);
-          }
-        });
+  UnaryCallable<GetGlobalOperationHttpRequest, Operation> getGetOperationCallable() {
+    return operationStub.getGlobalOperationCallable();
   }
 
-  @Override
-  public UnaryCallable<String, Void> cancelOperationCallable() {
-    throw new UnsupportedOperationException("Cancelling operations is not supported by this API.");
+  UnaryCallable<DeleteGlobalOperationHttpRequest, EmptyMessage> getDeleteOperationCallable() {
+    return operationStub.deleteGlobalOperationCallable();
   }
 
-  @Override
-  public UnaryCallable<String, Void> deleteOperationCallable() {
-    return TranslatingUnaryCallable.create(
-        operationStub.deleteGlobalOperationCallable(),
-        new ApiFunction<String, DeleteGlobalOperationHttpRequest>() {
-          @Override
-          public DeleteGlobalOperationHttpRequest apply(String request) {
-            return DeleteGlobalOperationHttpRequest.newBuilder().setOperation(request).build();
-          }
-        },
-        new ApiFunction<EmptyMessage, Void>() {
-          @Override
-          public Void apply(EmptyMessage empty) {
-            return null;
-          }
-        });
+  /* Function that takes an Operation name as a String and creates a Get request object from it. */
+  ApiFunction<String, GetGlobalOperationHttpRequest> createGetRequest() {
+    return createGetRequestFunc;
+  }
+
+  /* Function that takes an Operation name as a String and creates a Delete request object from it. */
+  ApiFunction<String, DeleteGlobalOperationHttpRequest> createDeleteRequest() {
+    return createDeleteRequestFunc;
   }
 }
