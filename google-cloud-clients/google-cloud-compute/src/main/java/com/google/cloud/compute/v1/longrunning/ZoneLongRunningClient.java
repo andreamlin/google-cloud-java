@@ -1,4 +1,4 @@
-package com.google.cloud.compute.longrunning;
+package com.google.cloud.compute.v1.longrunning;
 
 import com.google.api.core.ApiFunction;
 import com.google.api.gax.httpjson.EmptyMessage;

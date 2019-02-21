@@ -29,8 +29,8 @@ import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.api.gax.rpc.UnaryCallable;
-import com.google.cloud.compute.longrunning.ComputeLongRunningClientFactory;
-import com.google.cloud.compute.longrunning.OperationSnapshotCallable;
+import com.google.cloud.compute.v1.longrunning.ComputeLongRunningClientFactory;
+import com.google.cloud.compute.v1.longrunning.OperationSnapshotCallable;
 import com.google.cloud.compute.v1.Operation;
 import javax.annotation.Generated;
 

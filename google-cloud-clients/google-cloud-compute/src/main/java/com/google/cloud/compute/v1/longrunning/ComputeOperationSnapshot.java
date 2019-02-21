@@ -1,5 +1,6 @@
-package com.google.cloud.compute.longrunning;
+package com.google.cloud.compute.v1.longrunning;
 
+import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.HttpJsonStatusCode;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.StatusCode;
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
  * Implementation of a long-running operation for the Compute client. Wraps a compute Operation
  * object.
  */
+@BetaApi
 public class ComputeOperationSnapshot implements OperationSnapshot {
 
   private static final Logger logger = Logger.getLogger(ComputeOperationSnapshot.class.getName());

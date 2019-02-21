@@ -1,4 +1,4 @@
-package com.google.cloud.compute.longrunning;
+package com.google.cloud.compute.v1.longrunning;
 
 import com.google.api.core.ApiFunction;
 import com.google.api.gax.httpjson.EmptyMessage;
@@ -6,27 +6,30 @@ import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.LongRunningClient;
 import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
+import com.google.cloud.compute.v1.DeleteGlobalOperationHttpRequest;
+import com.google.cloud.compute.v1.GetGlobalOperationHttpRequest;
 import com.google.cloud.compute.v1.Operation;
+import com.google.cloud.compute.v1.stub.GlobalOperationStub;
 
 /** Implementation of LongRunningClient for the Compute client. Package-private for internal use. */
-abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT>
-    implements LongRunningClient {
+class GlobalLongRunningClient implements LongRunningClient {
 
-  abstract UnaryCallable<GetRequestT, Operation> getGetOperationCallable();
+  private final GlobalOperationStub operationStub;
 
-  abstract UnaryCallable<DeleteRequestT, EmptyMessage> getDeleteOperationCallable();
-
-  /* Function that takes an Operation name as a String and creates a Get request object from it. */
-  abstract ApiFunction<String, GetRequestT> createGetRequest();
-
-  /* Function that takes an Operation name as a String and creates a Delete request object from it. */
-  abstract ApiFunction<String, DeleteRequestT> createDeleteRequest();
+  public GlobalLongRunningClient(GlobalOperationStub operationStub) {
+    this.operationStub = operationStub;
+  }
 
   @Override
   public UnaryCallable<String, OperationSnapshot> getOperationCallable() {
     return TranslatingUnaryCallable.create(
-        getGetOperationCallable(),
-        createGetRequest(),
+        operationStub.getGlobalOperationCallable(),
+        new ApiFunction<String, GetGlobalOperationHttpRequest>() {
+          @Override
+          public GetGlobalOperationHttpRequest apply(String request) {
+            return GetGlobalOperationHttpRequest.newBuilder().setOperation(request).build();
+          }
+        },
         new ApiFunction<Operation, OperationSnapshot>() {
           @Override
           public OperationSnapshot apply(Operation operation) {
@@ -43,8 +46,13 @@ abstract class ComputeLongRunningInterface<GetRequestT, DeleteRequestT>
   @Override
   public UnaryCallable<String, Void> deleteOperationCallable() {
     return TranslatingUnaryCallable.create(
-        getDeleteOperationCallable(),
-        createDeleteRequest(),
+        operationStub.deleteGlobalOperationCallable(),
+        new ApiFunction<String, DeleteGlobalOperationHttpRequest>() {
+          @Override
+          public DeleteGlobalOperationHttpRequest apply(String request) {
+            return DeleteGlobalOperationHttpRequest.newBuilder().setOperation(request).build();
+          }
+        },
         new ApiFunction<EmptyMessage, Void>() {
           @Override
           public Void apply(EmptyMessage empty) {

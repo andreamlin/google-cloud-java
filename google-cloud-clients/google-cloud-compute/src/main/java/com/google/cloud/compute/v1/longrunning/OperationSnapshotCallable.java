@@ -27,13 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.google.cloud.compute.longrunning;
+package com.google.cloud.compute.v1.longrunning;
 
 import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
 
 import com.google.api.core.ApiFunction;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
+import com.google.api.core.BetaApi;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.ApiCallContext;
 import com.google.api.gax.rpc.UnaryCallable;
@@ -43,6 +44,7 @@ import com.google.cloud.compute.v1.Operation;
  * A {@code UnaryCallable} that wraps a UnaryCallable returning an Operation and returns an
  * OperationSnapshot instead.
  */
+@BetaApi
 public class OperationSnapshotCallable<RequestT>
     extends UnaryCallable<RequestT, OperationSnapshot> {
   private final UnaryCallable<RequestT, Operation> innerCallable;
