@@ -1,6 +1,7 @@
 package com.google.cloud.compute.v1.longrunning;
 
 import com.google.api.core.BetaApi;
+import com.google.api.gax.httpjson.EmptyMessage;
 import com.google.api.gax.httpjson.HttpJsonStatusCode;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.rpc.StatusCode;
@@ -12,6 +13,8 @@ import com.google.cloud.compute.v1.Operation;
  */
 @BetaApi
 public class ComputeOperationSnapshot implements OperationSnapshot {
+
+  private static final EmptyMessage response = EmptyMessage.getDefaultInstance();
 
   public enum Status {
     PENDING,
@@ -48,9 +51,9 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
   }
 
   @Override
-  public Object getResponse() {
+  public EmptyMessage getResponse() {
     // Compute methods do not have responses.
-    return null;
+    return response;
   }
 
   @Override
