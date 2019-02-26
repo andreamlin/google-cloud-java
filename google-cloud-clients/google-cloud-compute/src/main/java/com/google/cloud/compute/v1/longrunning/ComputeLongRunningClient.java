@@ -9,12 +9,13 @@ import com.google.api.gax.rpc.LongRunningClient;
 import com.google.api.gax.rpc.TranslatingUnaryCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.compute.v1.Operation;
+import java.util.concurrent.TimeUnit;
 
 /** Unites all Compute's different [Scope]OperationClients under a single shared implementation of the LongRunningClient.
  *  Package-private for internal use. Used by gax-java to get callables.*/
 @AutoValue
 abstract class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
-    implements LongRunningClient {
+    implements LongRunningClient, BackgroundResource {
 
   abstract BackgroundResource getStub();
 
@@ -59,8 +60,38 @@ abstract class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
         });
   }
 
+  @Override
+  public void shutdown() {
+    getStub().shutdown();
+  }
+
+  @Override
+  public boolean isShutdown() {
+    return getStub().isShutdown();
+  }
+
+  @Override
+  public boolean isTerminated() {
+    return getStub().isTerminated();
+  }
+
+  @Override
+  public void shutdownNow() {
+    getStub().shutdown();
+  }
+
+  @Override
+  public boolean awaitTermination(long l, TimeUnit timeUnit) throws InterruptedException {
+    return getStub().awaitTermination(l, timeUnit);
+  }
+
+  @Override
+  public void close() throws Exception {
+    getStub().close();
+  }
+
   static <GetRequestT, DeleteRequestT> ComputeLongRunningClient.Builder<GetRequestT, DeleteRequestT> newBuilder() {
-    return new AutoValue_ComputeLongRunningClient.Builder();
+    return new com.google.cloud.compute.v1.longrunning.AutoValue_ComputeLongRunningClient.Builder<>();
   }
 
   @AutoValue.Builder
