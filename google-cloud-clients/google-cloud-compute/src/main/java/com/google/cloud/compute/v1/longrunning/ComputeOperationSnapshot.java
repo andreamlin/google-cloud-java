@@ -8,7 +8,7 @@ import com.google.api.gax.rpc.StatusCode;
 import com.google.cloud.compute.v1.Operation;
 
 /**
- * Implementation of a long-running operation for the Compute client. Wraps a compute Operation
+ * Implementation of a long-running operation for the Compute client. Wraps a compute {@code Operation}
  * object.
  */
 @BetaApi
