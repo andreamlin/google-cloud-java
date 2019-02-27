@@ -1,6 +1,5 @@
 package com.google.cloud.compute.v1.longrunning;
 
-import com.google.auto.value.AutoValue;
 import com.google.api.core.ApiFunction;
 import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.httpjson.EmptyMessage;
@@ -12,28 +11,36 @@ import com.google.cloud.compute.v1.Operation;
 import java.util.concurrent.TimeUnit;
 
 /** Unites all Compute's different [Scope]OperationClients under a single shared implementation of the LongRunningClient.
- *  Package-private for internal use. Used by gax-java to get callables.*/
-@AutoValue
-abstract class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
+ *  Package-private for internal use. Used by gax-java to get callables. */
+class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
     implements LongRunningClient, BackgroundResource {
 
-  abstract BackgroundResource getStub();
+  private final  UnaryCallable<GetRequestT, Operation> getOperationCallable;
+  private final  UnaryCallable<DeleteRequestT, EmptyMessage> deleteOperationCallable;
+  private final ApiFunction<String, GetRequestT> createGetRequestFunc;
+  private final ApiFunction<String, DeleteRequestT> createDeleteRequestFunc;
+  private final BackgroundResource stub;
 
-  abstract UnaryCallable<GetRequestT, Operation> getGetOperationCallable();
+  public ComputeLongRunningClient(
+      BackgroundResource stub,
+      UnaryCallable<DeleteRequestT, EmptyMessage> deleteOperationCallable,
+      UnaryCallable<GetRequestT, Operation> getOperationCallable,
+      ApiFunction<String, DeleteRequestT> createDeleteRequestFunc,
+      ApiFunction<String, GetRequestT> createGetRequestFunc) {
+    this.stub = stub;
+    this.getOperationCallable = getOperationCallable;
+    this.deleteOperationCallable = deleteOperationCallable;
+    this.createGetRequestFunc = createGetRequestFunc;
+    this.createDeleteRequestFunc = createDeleteRequestFunc;
+  }
 
-  abstract UnaryCallable<DeleteRequestT, EmptyMessage> getDeleteOperationCallable();
-
-  /* Function that takes an Operation name as a String and creates a Get request object from it. */
-  abstract ApiFunction<String, GetRequestT> getCreateGetRequestFunc();
-
-  /* Function that takes an Operation name as a String and creates a Delete request object from it. */
-  abstract ApiFunction<String, DeleteRequestT> getCreateDeleteRequestFunc();
+  private BackgroundResource getStub() { return stub; }
 
   @Override
   public UnaryCallable<String, OperationSnapshot> getOperationCallable() {
     return TranslatingUnaryCallable.create(
-        getGetOperationCallable(),
-        getCreateGetRequestFunc(),
+        getOperationCallable,
+        createGetRequestFunc,
         new ApiFunction<Operation, OperationSnapshot>() {
           @Override
           public OperationSnapshot apply(Operation operation) {
@@ -50,8 +57,8 @@ abstract class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
   @Override
   public UnaryCallable<String, Void> deleteOperationCallable() {
     return TranslatingUnaryCallable.create(
-        getDeleteOperationCallable(),
-        getCreateDeleteRequestFunc(),
+        deleteOperationCallable,
+        createDeleteRequestFunc,
         new ApiFunction<EmptyMessage, Void>() {
           @Override
           public Void apply(EmptyMessage empty) {
@@ -88,26 +95,5 @@ abstract class ComputeLongRunningClient<GetRequestT, DeleteRequestT>
   @Override
   public void close() throws Exception {
     getStub().close();
-  }
-
-  static <GetRequestT, DeleteRequestT> ComputeLongRunningClient.Builder<GetRequestT, DeleteRequestT> newBuilder() {
-    return new com.google.cloud.compute.v1.longrunning.AutoValue_ComputeLongRunningClient.Builder<>();
-  }
-
-  @AutoValue.Builder
-  public abstract static class Builder<GetRequestT, DeleteRequestT> {
-    abstract Builder<GetRequestT, DeleteRequestT> setDeleteOperationCallable(UnaryCallable<DeleteRequestT, EmptyMessage> deleteOperationCallable);
-
-    abstract Builder<GetRequestT, DeleteRequestT> setGetOperationCallable(
-        UnaryCallable<GetRequestT, Operation> requestFormatter);
-
-    abstract Builder<GetRequestT, DeleteRequestT> setStub(
-        BackgroundResource backgroundResource);
-
-    abstract Builder<GetRequestT, DeleteRequestT> setCreateGetRequestFunc(ApiFunction<String, GetRequestT> httpMethod);
-
-    abstract Builder<GetRequestT, DeleteRequestT> setCreateDeleteRequestFunc(ApiFunction<String, DeleteRequestT> httpMethod);
-
-    abstract ComputeLongRunningClient<GetRequestT, DeleteRequestT> build();
   }
 }

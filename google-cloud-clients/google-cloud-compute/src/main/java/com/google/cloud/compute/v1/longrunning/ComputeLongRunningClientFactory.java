@@ -18,76 +18,65 @@ public class ComputeLongRunningClientFactory {
 
   /* Create a ComputeLongRunningClient from a GlobalOperationsStub. */
   public static ComputeLongRunningClient create(GlobalOperationStub operationStub) {
-    return ComputeLongRunningClient.<GetGlobalOperationHttpRequest, DeleteGlobalOperationHttpRequest>newBuilder()
-        .setStub(operationStub)
-        .setGetOperationCallable(operationStub.getGlobalOperationCallable())
-        .setDeleteOperationCallable(operationStub.deleteGlobalOperationCallable())
-        .setCreateDeleteRequestFunc(
-            new ApiFunction<String, DeleteGlobalOperationHttpRequest>() {
-              public DeleteGlobalOperationHttpRequest apply(String operationSelfLink) {
-                // Make sure operation is a formatted string.
-                return DeleteGlobalOperationHttpRequest.newBuilder()
-                    .setOperation(operationSelfLink)
-                    .build();
-              }
-            }
-        )
-        .setCreateGetRequestFunc( new ApiFunction<String, GetGlobalOperationHttpRequest>() {
+    return new ComputeLongRunningClient<>(
+        operationStub,
+        operationStub.deleteGlobalOperationCallable(),
+        operationStub.getGlobalOperationCallable(),
+        new ApiFunction<String, DeleteGlobalOperationHttpRequest>() {
+          public DeleteGlobalOperationHttpRequest apply(String operationSelfLink) {
+            return DeleteGlobalOperationHttpRequest.newBuilder()
+                .setOperation(operationSelfLink)
+                .build();
+          }
+        },
+        new ApiFunction<String, GetGlobalOperationHttpRequest>() {
           public GetGlobalOperationHttpRequest apply(String operationSelfLink) {
-            // Make sure operation is a formatted string.
             return GetGlobalOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
           }
-        })
-        .build();
+        });
   }
 
   /* Create a ComputeLongRunningClient from a ZoneOperationStub. */
   public static ComputeLongRunningClient create(ZoneOperationStub operationStub) {
-    return ComputeLongRunningClient.<GetZoneOperationHttpRequest, DeleteZoneOperationHttpRequest>newBuilder()
-        .setStub(operationStub)
-        .setGetOperationCallable(operationStub.getZoneOperationCallable())
-        .setDeleteOperationCallable(operationStub.deleteZoneOperationCallable())
-        .setCreateDeleteRequestFunc(
-            new ApiFunction<String, DeleteZoneOperationHttpRequest>() {
-              public DeleteZoneOperationHttpRequest apply(String operationSelfLink) {
-                // Make sure operation is a formatted string.
-                return DeleteZoneOperationHttpRequest.newBuilder()
-                    .setOperation(operationSelfLink)
-                    .build();
-              }
-            }
-        )
-        .setCreateGetRequestFunc( new ApiFunction<String, GetZoneOperationHttpRequest>() {
+    return new ComputeLongRunningClient<>(
+        operationStub,
+        operationStub.deleteZoneOperationCallable(),
+        operationStub.getZoneOperationCallable(),
+        new ApiFunction<String, DeleteZoneOperationHttpRequest>() {
+          public DeleteZoneOperationHttpRequest apply(String operationSelfLink) {
+            // Make sure operation is a formatted string.
+            return DeleteZoneOperationHttpRequest.newBuilder()
+                .setOperation(operationSelfLink)
+                .build();
+          }
+        },
+        new ApiFunction<String, GetZoneOperationHttpRequest>() {
           public GetZoneOperationHttpRequest apply(String operationSelfLink) {
             // Make sure operation is a formatted string.
             return GetZoneOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
           }
-        })
-        .build();
+        });
   }
 
   /* Create a ComputeLongRunningClient from a RegionOperationStub. */
   public static ComputeLongRunningClient create(RegionOperationStub operationStub) {
-    return ComputeLongRunningClient.<GetRegionOperationHttpRequest, DeleteRegionOperationHttpRequest>newBuilder()
-        .setStub(operationStub)
-        .setGetOperationCallable(operationStub.getRegionOperationCallable())
-        .setDeleteOperationCallable(operationStub.deleteRegionOperationCallable())
-        .setCreateDeleteRequestFunc(
-            new ApiFunction<String, DeleteRegionOperationHttpRequest>() {
-              public DeleteRegionOperationHttpRequest apply(String operationSelfLink) {
-                // Make sure operation is a formatted string.
-                return DeleteRegionOperationHttpRequest.newBuilder()
-                    .setOperation(operationSelfLink)
-                    .build();
-              }
-            }
-        )
-        .setCreateGetRequestFunc( new ApiFunction<String, GetRegionOperationHttpRequest>() {
+    return new ComputeLongRunningClient<>(
+        operationStub,
+            operationStub.deleteRegionOperationCallable(),
+        operationStub.getRegionOperationCallable(),
+        new ApiFunction<String, DeleteRegionOperationHttpRequest>() {
+          public DeleteRegionOperationHttpRequest apply(String operationSelfLink) {
+            // Make sure operation is a formatted string.
+            return DeleteRegionOperationHttpRequest.newBuilder()
+                .setOperation(operationSelfLink)
+                .build();
+          }
+        },
+         new ApiFunction<String, GetRegionOperationHttpRequest>() {
           public GetRegionOperationHttpRequest apply(String operationSelfLink) {
             // Make sure operation is a formatted string.
             return GetRegionOperationHttpRequest.newBuilder().setOperation(operationSelfLink).build();
           }
-        })
-        .build();
+        });
   }
 }
