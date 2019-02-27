@@ -16,12 +16,6 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   private static final EmptyMessage response = EmptyMessage.getDefaultInstance();
 
-  public enum Status {
-    PENDING,
-    RUNNING,
-    DONE
-  }
-
   private final Operation operation;
 
   private ComputeOperationSnapshot(Operation operation) {
@@ -47,7 +41,7 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   @Override
   public boolean isDone() {
-    return Status.DONE.equals(getOperationStatus());
+    return "DONE".equals(operation.getStatus());
   }
 
   @Override
@@ -58,25 +52,27 @@ public class ComputeOperationSnapshot implements OperationSnapshot {
 
   @Override
   public StatusCode getErrorCode() {
-    if (operation.getError() == null
-        || operation.getError().getErrorsList() == null
-        || operation.getError().getErrorsList().isEmpty()) {
-      // No errors; return 200.
-      return HttpJsonStatusCode.of(200, "OK");
+    int code;
+    String message;
+    try {
+      code = Integer.valueOf(operation.getError().getErrorsList().get(0).getCode());
+      message = operation.getError().getErrorsList().get(0).getMessage();
+    } catch (NullPointerException | IndexOutOfBoundsException e) {
+      code = 200;
+      message = "OK";
     }
 
-    // Return the first Error code.
-    return HttpJsonStatusCode.of(
-        Integer.valueOf(operation.getError().getErrorsList().get(0).getCode()),
-        operation.getError().getErrorsList().get(0).getMessage());
+    return HttpJsonStatusCode.of(code, message);
   }
 
   @Override
   public String getErrorMessage() {
-    return operation.getError().getErrorsList().toString();
-  }
 
-  public Status getOperationStatus() {
-    return Status.valueOf(operation.getStatus());
+    try {
+      return operation.getError().getErrorsList().toString();
+    } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+      // No error found.
+      return null;
+    }
   }
 }
